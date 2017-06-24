@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pollers>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.cisco.CiscoVlanCommunityPoller" suit="2" credence="SNMP">
+		<match>
+			<include symbol="cisco" category="RouteSwitch;Switch" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.cisco.CiscoVlanPoller" suit="2" kpi="Vlan" credence="SNMP">
+		<match>
+			<include symbol="cisco" category="RouteSwitch;Switch" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.cisco.CiscoFdbTablePoller" suit="2" kpi="Fdb" credence="SNMP">
+		<match>
+			<include symbol="cisco" category="RouteSwitch;Switch" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.cisco.CdpTablePoller" suit="2" credence="SNMP">
+		<match>
+			<include symbol="cisco" />
+		</match>
+	</poller>
+	
+	<!-- common pollers -->
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.RouteTablePoller" credence="SNMP" suit="2" enabled="false" interval="3:H" kpi="Route">
+		<match>
+			<include category="Router;RouteSwitch;Switch;Firewall" />
+			<exclude symbol="nortel;topsec" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.IfTablePoller" credence="SNMP" suit="3" kpi="IfTable">
+		<match>
+			<include category="Router;RouteSwitch;Switch;Firewall;Server;VirtMachine" />
+			<exclude symbol="topsec" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.ArpTablePoller" credence="SNMP" suit="2" kpi="Arp">
+		<match>
+			<include category="Router;RouteSwitch;Switch;Firewall;Server;VirtMachine" />
+			<exclude symbol="topsec" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.PortTablePoller" credence="SNMP" suit="2">
+		<match>
+			<include category="RouteSwitch;Switch" />
+			<exclude symbol="huawei;h3c" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.FdbTablePoller" credence="SNMP" suit="2" kpi="Fdb">
+		<match>
+			<include category="RouteSwitch;Switch" />
+			<exclude symbol="huawei;h3c;cisco" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.StpTablePoller" suit="2" credence="SNMP">
+		<match>
+			<include category="RouteSwitch;Switch" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.huawei.HuaweiVlanPoller" credence="SNMP" kpi="Vlan" suit="2">
+		<match>
+			<include symbol="huawei;h3c" category="RouteSwitch;Switch" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.huawei.HuaweiNdpTablePoller" suit="2" credence="SNMP">
+		<match>
+			<include symbol="huawei;h3c" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.huawei.HuaweiFdbTablePoller" suit="2" credence="SNMP" kpi="Fdb">
+		<match>
+			<include symbol="huawei;h3c" category="RouteSwitch;Switch" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.huawei.HuaweiPortTablePoller" credence="SNMP" suit="2">
+		<match>
+			<include symbol="huawei;h3c" category="RouteSwitch;Switch" />
+		</match>
+	</poller>
+	<!-- ZTE Pollers -->
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.zte.ZteVlanPoller" credence="SNMP" suit="2" kpi="Vlan">
+		<match>
+			<include symbol="zte" category="RouteSwitch;Switch" />
+		</match>
+	</poller>
+	<!-- ruijie Pollers -->
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.ruijie.RuijieVlanPoller" credence="SNMP" suit="2" kpi="Vlan">
+		<match>
+			<include symbol="ruijie" category="RouteSwitch;Switch" />
+		</match>
+	</poller>
+	
+	<!-- link pollers -->
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.LinkStatus" interval="30:S" kpi="Ping">
+		<match>
+			<include symbol="genericLink" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.LinkSpeed" kpi="LinkSpeed">
+		<match>
+			<include symbol="genericLink" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.apc.ApcUpsPoller" credence="SNMP">
+		<match>
+			<include symbol="apc" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.sangfor.SangforPoller" credence="SNMP" suit="3">
+		<match>
+			<include symbol="sangfor" />
+		</match>
+	</poller>
+	<poller clazz="com.isoft.imon.topo.engine.discover.poller.host.sangfor.SangforCpu" credence="SNMP" kpi="CPU">
+		<match>
+			<include symbol="sangfor" />
+		</match>
+	</poller>
+</pollers>

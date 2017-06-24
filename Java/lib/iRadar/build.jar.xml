@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="iRadar Build Jar" default="build-jar" basedir=".">
+
+	<target name="build-jar">
+		<jar encoding="UTF-8" destfile="dist/isoft-iradar-2014-02-07.jar" basedir="WebRoot/WEB-INF/classes" >
+		</jar>
+	</target>
+
+</project>

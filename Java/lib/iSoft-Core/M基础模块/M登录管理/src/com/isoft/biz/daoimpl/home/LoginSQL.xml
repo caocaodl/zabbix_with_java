@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="SQL_GET_USER">
+<![CDATA[
+select 
+    su.id   userId#,
+    su.tenant_id tenantId#,
+    su.name userName#,
+    su.pswd userPswd#,
+    su.status status#,
+    su.admin admin#
+from sys_user su
+where su.deleted = 'N'
+  and su.tenant_id=#{tenant}
+  and su.name=#{username}
+]]>
+</entry>
+
+<entry key="SQL_UPDATE_LAST_LOGIN_AT">
+<![CDATA[
+update sys_user su
+    set su.last_login_at = now()
+where su.id=#{userId}
+]]>
+</entry>
+
+<entry key="SQL_GET_TENANT">
+<![CDATA[
+select 
+    st.id   id#,
+    st.name name#,
+    st.role role#Integer,
+    st.os_tenant_id osTenantId#,
+    st.status status#
+from sys_tenant st
+where st.deleted = 'N'
+  and st.id=#{tid}
+]]>
+</entry>
+
+<entry key="SQL_GET_USER_PERMS">
+<![CDATA[
+select 
+    sft.id id#, 
+    sft.fid funcId#,
+    concat(sft.bt_name,'$',sf.func_id) label#
+from sys_user_role sur
+inner join sys_role sr on sr.id = sur.role_id and sr.tenant_id = sur.tenant_id and sr.deleted = 'N'
+inner join sys_role_func srf on srf.role_id =sr.id and srf.tenant_id = sur.tenant_id
+inner join sys_func_bt sft on sft.id = srf.func_id and sft.status = 1
+inner join sys_func sf on sf.id = sft.fid and sf.status = 1 and sf.role & #{tRole}
+where sur.user_id = #{tUserId}
+  and sur.tenant_id = #{tid}
+]]>
+</entry>
+</properties>

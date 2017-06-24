@@ -1,0 +1,342 @@
+html{
+	background: url("../../images/bg.png");
+}
+
+/* simple tree -- start */
+.simple .tree-node{
+	margin: 5px 20px;
+	padding: 10px 0;
+	-webkit-border-radius: .3em;
+	-moz-border-radius: .3em;
+	-o-border-radius: .3em;
+	border-radius: .3em;	
+	background: #d2d9e1;
+	color: #4c596b;
+}
+.simple .tree-icon{
+	margin-right: 5px;
+}
+.simple .tree-node-hover, .simple .tree-node-selected{
+	background: #226496;
+	color: #FFF;
+}
+/* simple tree -- end */
+/* itree tree -- start */
+.itree .tree-node{
+	margin: 5px 18px;
+	padding: 4px 0;
+	-webkit-border-radius: .3em;
+	-moz-border-radius: .3em;
+	-o-border-radius: .3em;
+	border-radius: .3em;	
+	/*background: #d2d9e1;*/
+	color: #4e4e4e;
+}
+.layout-panel-west .west_tree .itree .tree-file{
+	background-position: -240px 0;
+}
+.itree .tree-icon{
+	margin-right: 5px;
+}
+
+.itree .tree-node-hover, .itree .tree-node-selected{
+	background: #226496;
+	color: #fff;
+	width:auto;
+}
+/* itree tree -- end */
+
+
+/* simple menu -- start */
+.west_menu .simple .icon{
+	background-image: url(../../../c/images/icon_nav.png);
+	background-position: 27px 10px;
+}
+/* simple menu -- end */
+
+/* menu title icon -- start */
+.layout-panel-west .title,
+.layout_north .header_nav A,
+.layout_north .header_nav A:hover,
+.layout_north .header_nav A.active{
+	background-repeat: no-repeat;
+	background-position: 5px 8px;
+}
+.layout-panel-west .title{
+	background-position: 14px 10px;
+}
+.layout-panel-west .cloudhost,
+.layout_north .header_nav A.cloudhost{
+	background-image: url(../../../c/images/icons/cloudhost.png);	
+}
+
+.layout_north .header_nav A.cloudhost:hover,
+.layout_north .header_nav A.cloudhost.active{
+	background-image: url(../../../c/images/icons/cloudhost_hover.png);	
+}
+
+
+.layout-panel-west .cloudhostmgr,
+.layout_north .header_nav A.cloudhostmgr{
+	background-image: url(../../../c/images/icons/cloudhostmgr.png);	
+}
+.layout_north .header_nav A.cloudhostmgr:hover,
+.layout_north .header_nav A.cloudhostmgr.active{
+	background-image: url(../../../c/images/icons/cloudhostmgr_hover.png);	
+}
+
+
+.layout-panel-west .cdesktopmgr,
+.layout_north .header_nav A.cdesktopmgr{
+	background-image: url(../../../c/images/icons/cdesktopmgr.png);	
+}
+.layout_north .header_nav A.cdesktopmgr:hover,
+.layout_north .header_nav A.cdesktopmgr.active{
+	background-image: url(../../../c/images/icons/cdesktopmgr_hover.png);	
+}
+
+.layout-panel-west .capacitymgr,
+.layout_north .header_nav A.capacitymgr{
+	background-image: url(../../../c/images/icons/capacitymgr.png);	
+}
+.layout_north .header_nav A.capacitymgr:hover,
+.layout_north .header_nav A.capacitymgr.active{
+	background-image: url(../../../c/images/icons/capacitymgr_hover.png);	
+}
+
+.layout-panel-west .performsmgr,
+.layout_north .header_nav A.performsmgr{
+	background-image: url(../../../c/images/icons/performsmgr.png);	
+}
+.layout_north .header_nav A.performsmgr:hover,
+.layout_north .header_nav A.performsmgr.active{
+	background-image: url(../../../c/images/icons/performsmgr_hover.png);	
+}
+
+.layout-panel-west .allocmgr,
+.layout_north .header_nav A.allocmgr{
+	background-image: url(../../../c/images/icons/allocmgr.png);	
+}
+.layout_north .header_nav A.allocmgr:hover,
+.layout_north .header_nav A.allocmgr.active{
+	background-image: url(../../../c/images/icons/allocmgr_hover.png);	
+}
+
+.layout-panel-west .safemgr,
+.layout_north .header_nav A.safemgr{
+	background-image: url(../../../c/images/icons/safemgr.png);	
+}
+.layout_north .header_nav A.safemgr:hover,
+.layout_north .header_nav A.safemgr.active{
+	background-image: url(../../../c/images/icons/safemgr_hover.png);	
+}
+
+.layout-panel-west .logmgr,
+.layout_north .header_nav A.logmgr{
+	background-image: url(../../../c/images/icons/logmgr.png);	
+}
+.layout_north .header_nav A.logmgr:hover,
+.layout_north .header_nav A.logmgr.active{
+	background-image: url(../../../c/images/icons/logmgr_hover.png);	
+}
+
+
+/* menu title icon -- end */
+
+
+/* menu icon -- start */
+
+.layout-panel-west .tree-file{
+	background-position: 0 0;
+}
+.layout-panel-west .west_menu .body A{
+	background-position: 18px 10px;
+}
+
+.layout-panel-west .choverview,
+.layout-panel-west .west_menu .body A.choverview{
+	background-image: url("../../../c/images/icons/nav/choverview.png");
+}
+.layout-panel-west .west_menu .body A.choverview:hover,
+.layout-panel-west .tree-node-hover .choverview{
+	background-image: url("../../../c/images/icons/nav/choverview_hover.png");
+}
+
+.layout-panel-west .cdeskchoverview,
+.layout-panel-west .west_menu .body A.cdeskchoverview{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverview.png");
+}
+.layout-panel-west .west_menu .body A.cdeskchoverview:hover,
+.layout-panel-west .tree-node-hover .cdeskchoverview{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverview_hover.png");
+}
+
+.layout-panel-west .cdiskchoverview,
+.layout-panel-west .west_menu .body A.cdiskchoverview{
+	background-image: url("../../../c/images/icons/nav/cdiskchoverview.png");
+}
+.layout-panel-west .west_menu .body A.cdiskchoverview:hover,
+.layout-panel-west .tree-node-hover .cdiskchoverview{
+	background-image: url("../../../c/images/icons/nav/cdiskchoverview_hover.png");
+}
+
+.layout-panel-west .cappchoverview,
+.layout-panel-west .west_menu .body A.cappchoverview{
+	background-image: url("../../../c/images/icons/nav/cappchoverview.png");
+}
+.layout-panel-west .west_menu .body A.cappchoverview:hover,
+.layout-panel-west .tree-node-hover .cappchoverview{
+	background-image: url("../../../c/images/icons/nav/cappchoverview_hover.png");
+}
+
+.layout-panel-west .resanalyse,
+.layout-panel-west .west_menu .body A.resanalyse{
+	background-image: url("../../../c/images/icons/nav/resanalyse_hover.png");
+}
+.layout-panel-west .cdeskcapmgr,
+.layout-panel-west .west_menu .body A.cdeskcapmgr{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverview.png");
+}
+.layout-panel-west .west_menu .body A.cdeskcapmgr:hover,
+.layout-panel-west .tree-node-hover .cdeskcapmgr{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverview_hover.png");
+}
+
+.layout-panel-west .hostperf,
+.layout-panel-west .west_menu .body A.hostperf{
+	background-image: url("../../../c/images/icons/nav/hostperf_hover.png");
+}
+.layout-panel-west .vmperf,
+.layout-panel-west .west_menu .body A.vmperf{
+	background-image: url("../../../c/images/icons/nav/vmperf.png");
+}
+.layout-panel-west .west_menu .body A.vmperf:hover,
+.layout-panel-west .tree-node-hover .vmperf{
+	background-image: url("../../../c/images/icons/nav/vmperf_hover.png");
+}
+.layout-panel-west .cdeskperf,
+.layout-panel-west .west_menu .body A.cdeskperf{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverview.png");
+}
+.layout-panel-west .west_menu .body A.cdeskperf:hover,
+.layout-panel-west .tree-node-hover .cdeskperf{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverview_hover.png");
+}
+.layout-panel-west .usermgr,
+.layout-panel-west .west_menu .body A.usermgr{
+	background-image: url("../../../c/images/icons/nav/usermgr_hover.png");
+}
+
+.layout-panel-west .rolemgr,
+.layout-panel-west .west_menu .body A.rolemgr{
+	background-image: url("../../../c/images/icons/nav/rolemgr.png");
+}
+.layout-panel-west .west_menu .body A.rolemgr:hover,
+.layout-panel-west .tree-node-hover .rolemgr{
+	background-image: url("../../../c/images/icons/nav/rolemgr_hvoer.png");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.layout-panel-west .west_tree .body A{
+	background-position: 24px 10px;
+}
+.layout-panel-west .choverview,
+.layout-panel-west .west_tree .body A.choverview{
+	background-image: url("../../../c/images/icons/nav/choverviewmin.png");
+}
+.layout-panel-west .west_tree .body A.choverview:hover,
+.layout-panel-west .tree-node-hover .choverview{
+	background-image: url("../../../c/images/icons/nav/choverviewmin_hover.png");
+}
+
+.layout-panel-west .cdeskchoverview,
+.layout-panel-west .west_tree .body A.cdeskchoverview{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverviewmin.png");
+}
+.layout-panel-west .west_tree .body A.cdeskchoverview:hover,
+.layout-panel-west .tree-node-hover .cdeskchoverview{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverviewmin_hover.png");
+}
+
+.layout-panel-west .cdiskchoverview,
+.layout-panel-west .west_tree .body A.cdiskchoverview{
+	background-image: url("../../../c/images/icons/nav/cdiskchoverviewmin.png");
+}
+.layout-panel-west .west_tree .body A.cdiskchoverview:hover,
+.layout-panel-west .tree-node-hover .cdiskchoverview{
+	background-image: url("../../../c/images/icons/nav/cdiskchoverviewmin_hover.png");
+}
+
+.layout-panel-west .cappchoverview,
+.layout-panel-west .west_tree .body A.cappchoverview{
+	background-image: url("../../../c/images/icons/nav/cappchoverviewmin.png");
+}
+.layout-panel-west .west_tree .body A.cappchoverview:hover,
+.layout-panel-west .tree-node-hover .cappchoverview{
+	background-image: url("../../../c/images/icons/nav/cappchoverviewmin_hover.png");
+}
+.layout-panel-west .resanalyse,
+.layout-panel-west .west_tree .body A.resanalyse{
+	background-image: url("../../../c/images/icons/nav/resanalysemin_hover.png");
+}
+
+.layout-panel-west .cdeskcapmgr,
+.layout-panel-west .west_tree .body A.cdeskcapmgr{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverviewmin.png");
+}
+.layout-panel-west .west_tree .body A.cdeskcapmgr:hover,
+.layout-panel-west .tree-node-hover .cdeskcapmgr{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverviewmin_hover.png");
+}
+
+.layout-panel-west .hostperf,
+.layout-panel-west .west_tree .body A.hostperf{
+	background-image: url("../../../c/images/icons/nav/hostperfmin_hover.png");
+}
+.layout-panel-west .vmperf,
+.layout-panel-west .west_tree .body A.vmperf{
+	background-image: url("../../../c/images/icons/nav/vmperfmin.png");
+}
+.layout-panel-west .west_tree .body A.vmperf:hover,
+.layout-panel-west .tree-node-hover .vmperf{
+	background-image: url("../../../c/images/icons/nav/vmperfmin_hover.png");
+}
+.layout-panel-west .cdeskperf,
+.layout-panel-west .west_tree .body A.cdeskperf{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverviewmin.png");
+}
+.layout-panel-west .west_tree .body A.cdeskperf:hover,
+.layout-panel-west .tree-node-hover .cdeskperf{
+	background-image: url("../../../c/images/icons/nav/cdeskchoverviewmin_hover.png");
+}
+.layout-panel-west .usermgr,
+.layout-panel-west .west_tree .body A.usermgr{
+	background-image: url("../../../c/images/icons/nav/usermgrmin_hover.png");
+}
+
+.layout-panel-west .rolemgr,
+.layout-panel-west .west_tree .body A.rolemgr{
+	background-image: url("../../../c/images/icons/nav/rolemgrmin.png");
+}
+.layout-panel-west .west_tree .body A.rolemgr:hover,
+.layout-panel-west .tree-node-hover .rolemgr{
+	background-image: url("../../../c/images/icons/nav/rolemgrmin_hover.png");
+}
+
+/* menu icon -- end */
+

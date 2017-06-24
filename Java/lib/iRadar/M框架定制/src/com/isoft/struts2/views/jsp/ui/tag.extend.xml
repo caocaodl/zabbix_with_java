@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GB18030"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="Head.js">
+<![CDATA[]]>
+</entry>
+
+<entry key="Head.css">
+<![CDATA[]]>
+</entry>
+
+</properties>

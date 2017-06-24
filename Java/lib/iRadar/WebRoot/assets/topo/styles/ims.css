@@ -1,0 +1,154 @@
+@charset "utf-8";
+
+#pageh1 {
+	padding: 5px;
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.tbar-add {
+	background-image: url(../images/ims/ext/icons/add.png) !important;
+}
+
+.tbar-folder {
+	background-image: url(../images/ims/ext/icons/folder.png) !important;
+}
+
+.tbar-folder-add {
+	background-image: url(../images/ims/ext/icons/folder_add.png) !important;
+}
+
+.tbar-folder-page {
+	background-image: url(../images/ims/ext/icons/page.png) !important;
+}
+
+.tbar-folder-cross {
+	background-image: url(../images/ims/ext/icons/cross.png) !important;
+}
+
+.tbar-page-edit {
+	background-image: url(../images/ims/ext/icons/page_edit.png) !important;
+}
+
+.tbar-page-cut {
+	background-image: url(../images/ims/ext/icons/cut.png) !important;
+}
+
+.tbar-page-copy {
+	background-image: url(../images/ims/ext/icons/page_copy.png) !important;
+}
+
+.tbar-page-paste {
+	background-image: url(../images/ims/ext/icons/page_paste.png) !important;
+}
+
+.tbar-magnifier {
+	background-image: url(../images/ims/ext/icons/magnifier.png) !important;
+}
+
+.tbar-arrow-redo {
+	background-image: url(../images/ims/ext/icons/arrow_redo.png) !important;
+}
+
+.tbar-help {
+	background-image: url(../images/ims/ext/icons/help.png) !important;
+}
+
+.tbar-color-gray {
+	background-image: url(../images/ims/ext/icons/color_gray.png) !important;
+}
+
+.tbar-color-green {
+	background-image: url(../images/ims/ext/icons/color_green.png)
+		!important;
+}
+
+.tbar-color-blue {
+	background-image: url(../images/ims/ext/icons/color_blue.png) !important;
+}
+
+.tbar-color-swatch {
+	background-image: url(../images/ims/ext/icons/color_swatch.png)
+		!important;
+}
+
+.tbar-picture {
+	background-image: url(../images/ims/ext/icons/picture.png) !important;
+}
+
+.tbar-photos {
+	background-image: url(../images/ims/ext/icons/photos.png) !important;
+}
+
+.tbar-zoomin {
+	background-image: url(../images/ims/ext/icons/zoom_in.png) !important;
+}
+
+.tbar-zoomout {
+	background-image: url(../images/ims/ext/icons/zoom_out.png) !important;
+}
+
+.tbar-chart-organisation {
+	background-image: url(../images/ims/ext/icons/chart_organisation.png)
+		!important;
+}
+.tbar-chart-lefttoright {
+	background-image: url(../images/ims/ext/icons/chart_lefttoright.png)
+		!important;
+}
+
+.tbar-chart-line {
+	background-image: url(../images/ims/ext/icons/chart_line.png) !important;
+}
+
+.tbar-chart-pie {
+	background-image: url(../images/ims/ext/icons/chart_pie.png) !important;
+}
+
+
+/*缩略图(图形连线)*/
+.min-mapCon {
+	/*position: absolute;*/
+	left: 0px;
+	top: 0px;
+	
+}
+/*缩略图地图.小方块*/
+.min-map {
+	position: absolute;
+	width: 20px;
+	height: 15px;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+	cursor: all-scroll;
+	background-color: #999;
+	border: 1px solid gray;
+	filter: alpha(opacity =     50);
+	opacity: 0.4;
+}
+/*缩略图右下角小图标*/
+.min-btn {
+	height: 13px;
+	width: 13px;
+	position: absolute;
+	cursor: pointer;
+	overflow: hidden;
+	right: 0px;
+	bottom: 0px;
+	background: url(../images/ims/map/minmap.gif) no-repeat;
+	background-position: -26px -26px;
+}
+
+.min-btn:hover {
+	background-position: 0px -26px;
+}
+/*缩略图右下角小图标.关闭*/
+.min-btn-closed {
+	background-position: -26px -39px;
+}
+
+.min-btn-closed:hover {
+	background-position: 0px -39px;
+}

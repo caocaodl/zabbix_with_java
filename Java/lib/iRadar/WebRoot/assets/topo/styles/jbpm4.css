@@ -1,0 +1,103 @@
+
+.tb-activity,
+.x-tree-node-leaf .tb-activity,
+.x-panel-tl .tb-activity,
+.x-btn-text-icon .tb-activity {
+    background: url(../images/visualpharm/Settings_16x16.png) no-repeat;
+}
+
+.tb-form,
+.x-tree-node-leaf .tb-form
+.x-panel-tl .tb-form,
+.x-btn-text-icon .tb-form {
+    background: url('../images/visualpharm/Text Document_16x16.png') no-repeat;
+}
+
+.tb-process,
+.x-tree-node-leaf .tb-process
+.x-panel-tl .tb-process,
+.x-btn-text-icon .tb-process {
+    background: url(../images/visualpharm/Preview_16x16.png) no-repeat;
+}
+
+.tb-prop,
+.x-tree-node-leaf .tb-prop
+.x-panel-tl .tb-prop,
+.x-btn-text-icon .tb-prop {
+    background: url(../images/visualpharm/Copy_16x16.png) no-repeat;
+}
+
+.tb-webform,
+.x-tree-node-leaf .tb-webform
+.x-panel-tl .tb-webform,
+.x-btn-text-icon .tb-webform {
+    background: url(../images/visualpharm/Properties_16x16.png) no-repeat;
+}
+
+.tb-new,
+.x-tree-node-leaf .tb-new,
+.x-panel-tl .tb-new,
+.x-btn-text-icon .tb-new {
+    background: url(../images/visualpharm/New-16x16.png) no-repeat;
+}
+
+.tb-save,
+.x-tree-node-leaf .tb-save,
+.x-panel-tl .tb-save,
+.x-btn-text-icon .tb-save {
+    background: url(../images/visualpharm/Save-16x16.png) no-repeat;
+}
+
+.tb-deploy,
+.x-tree-node-leaf .tb-deploy,
+.x-panel-tl .tb-deploy,
+.x-btn-text-icon .tb-deploy {
+    background: url(../images/visualpharm/Stock-Index-Up-16x16.png) no-repeat;
+}
+
+.tb-clear,
+.x-tree-node-leaf .tb-clear,
+.x-panel-tl .tb-clear,
+.x-btn-text-icon .tb-clear {
+    background: url(../images/visualpharm/Cancel_16x16.png) no-repeat;
+}
+
+.tb-undo,
+.x-tree-node-leaf .tb-undo,
+.x-panel-tl .tb-undo,
+.x-btn-text-icon .tb-undo {
+    background: url(../images/visualpharm/Undo_16x16.png) no-repeat;
+}
+
+.tb-redo,
+.x-tree-node-leaf .tb-redo,
+.x-panel-tl .tb-redo,
+.x-btn-text-icon .tb-redo {
+    background: url(../images/visualpharm/Redo_16x16.png) no-repeat;
+}
+
+.tb-add,
+.x-tree-node-leaf .tb-add,
+.x-panel-tl .tb-add,
+.x-btn-text-icon .tb-add {
+    background: url(../images/visualpharm/Add_16x16.png) no-repeat;
+}
+
+.tb-delete,
+.x-tree-node-leaf .tb-delete,
+.x-panel-tl .tb-delete,
+.x-btn-text-icon .tb-delete {
+    background: url(../images/visualpharm/Delete_16x16.png) no-repeat;
+}
+
+.tb-remove,
+.x-tree-node-leaf .tb-remove,
+.x-panel-tl .tb-remove,
+.x-btn-text-icon .tb-remove {
+    background: url(../images/visualpharm/Remove_16x16.png) no-repeat;
+}
+
+#__gef_jbs_palette__ img,
+#__gef_jbs_palette__ div {
+    -moz-user-select: none;
+}

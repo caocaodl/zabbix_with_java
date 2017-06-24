@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(JAVASCRIPT)</comment>
+
+<entry key="VerticalRotation"><![CDATA[ jQuery(function($) {
+	$.fn.makeVerticalRotation = function () {
+		var cellsToRotate = $(".vertical_rotation", this),
+			betterCells = [];
+
+		// insert spans
+		cellsToRotate.each(function () {
+			var cell = $(this);
+
+			var text = $("<span>", {
+				text: cell.text()
+			});
+
+			if (IE) {
+				text.css({"font-family": "monospace"});
+			}
+
+			cell.text("").append(text);
+		});
+
+		// rotate cells
+		cellsToRotate.each(function () {
+			var cell = $(this),
+				span = cell.children(),
+				height = cell.height(),
+				width = span.width(),
+				transform = (width / 2) + "px " + (width / 2) + "px";
+
+			var css = {
+				"transform-origin": transform,
+				"-webkit-transform-origin": transform,
+				"-moz-transform-origin": transform,
+				"-o-transform-origin": transform
+			};
+
+			if (IE) {
+				css["font-family"] = "monospace";
+				css["-ms-transform-origin"] = "50% 50%";
+			}
+
+			if (IE9) {
+				css["-ms-transform-origin"] = transform;
+			}
+
+			var divInner = $("<div>", {
+				"class": "vertical_rotation_inner"
+			})
+			.css(css)
+			.append(span.text());
+
+			var div = $("<div>", {
+				height: width,
+				width: height
+			})
+			.append(divInner);
+
+			betterCells.push(div);
+		});
+
+		cellsToRotate.each(function (i) {
+			$(this).html(betterCells[i]);
+		});
+
+		// align text to cell center
+		cellsToRotate.each(function () {
+			var cell = $(this),
+				width = cell.width();
+
+			if (width > 30) {
+				cell.children().css({
+					position: "relative",
+					left: width / 2 - 12
+				});
+			}
+		});
+	};
+});
+
+jQuery(document).ready(function() {
+	jQuery("._JS_").makeVerticalRotation();
+
+	if (IE8) {
+		jQuery(".vertical_rotation_inner").css({
+			filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"
+		});
+	}
+	else if (IE9) {
+		jQuery(".vertical_rotation_inner").css({
+			"-ms-transform": "rotate(270deg)"
+		});
+	}
+
+	if (!IE9) {
+		jQuery(".vertical_rotation_inner").css({
+			"writing-mode": "tb-rl"
+		});
+	}
+});]]></entry>
+
+<entry key="javascript_for_editable_combobox"><![CDATA[function CEditableComboBoxInit(obj) {
+	// check if option exist
+	var opt = obj.options;
+	if (obj.value) {
+		obj.oldValue = obj.value;
+	}
+	for (var i = 0; i < opt.length; i++) {
+		if (-1 == opt.item(i).value) {
+			return null;
+		}
+	}
+	// create option
+	opt = document.createElement("option");
+	opt.value = -1;
+	if (IE) {
+		opt.innerHTML = "(%1s ...)";
+	}
+	else {
+		opt.text = "(%2s ...)";
+	}
+	obj.insertBefore(opt, obj.firstChild);
+}
+
+function CEditableComboBoxOnChange(obj, size) {
+	if (-1 != obj.value) {
+		obj.oldValue = obj.value;
+	} else {
+		var new_obj = document.createElement("input");
+		new_obj.type = "text";
+		new_obj.name = obj.name;
+		if (size && size > 0) {
+			new_obj.size = size;
+		}
+		if (obj.oldValue) {
+			new_obj.value = obj.oldValue;
+		}
+		obj.parentNode.replaceChild(new_obj, obj);
+		new_obj.focus();
+		new_obj.select();
+	}
+}]]></entry>
+
+<entry key="show_color_picker_javascript"><![CDATA[var color_picker = null;
+var curr_lbl = null;
+var curr_txt = null;
+var color_table = %1s]]></entry>
+
+<entry key="javascript_for_visibilitybox"><![CDATA[function visibility_status_changeds(value, obj_name, replace_to) {
+    var obj = document.getElementsByName(obj_name);
+    if (obj.length <= 0) {
+        obj = [document.getElementById(obj_name)];
+    }
+    if (obj.length <= 0 || is_null(obj[0])) {
+        throw "%1s [" + obj_name +"]";
+    }
+
+    for (i = obj.length - 1; i >= 0; i--) {
+        if (replace_to && replace_to != "") {
+            if (obj[i].originalObject) {
+                var old_obj = obj[i].originalObject;
+                old_obj.originalObject = obj[i];
+                obj[i].parentNode.replaceChild(old_obj, obj[i]);
+            }
+            else if (!value) {
+                try {
+                    var new_obj = document.createElement("a");
+                    new_obj.setAttribute("name", obj[i].name);
+                    new_obj.setAttribute("id", obj[i].id);
+                }
+                catch(e) {
+                    throw "%2s";
+                }
+                new_obj.style.textDecoration = "none";
+                new_obj.innerHTML = replace_to;
+                new_obj.originalObject = obj[i];
+                obj[i].parentNode.replaceChild(new_obj, obj[i]);
+            }
+            else {
+                throw "Missing originalObject for restoring";
+            }
+        }
+        else {
+            value = value ? "visible" : "hidden";
+            obj[i].style.visibility = value;
+        }
+    }
+}]]></entry>
+
+<entry key="javascript_for_play_sound"><![CDATA[if (IE) {
+    document.writeln('<bgsound src="%1s" loop="0" />');
+} else {
+    document.writeln('<embed src="%2s" autostart="true" width="0" height="0" loop="0" />');
+    document.writeln('<noembed><bgsound src="%3s" loop="0" /></noembed>');
+}]]></entry>
+
+<entry key="javascript_for_insert_function_add_item_variable"><![CDATA[function add_item_variable(s_formname, x_value) {
+    if (add_variable(null, "itemid[" + x_value + "]", x_value, s_formname, window.opener.document)) {
+        var o_form;
+        if (!(o_form = window.opener.document.forms[s_formname])) {
+            throw "Missing form with name [" + s_formname + "].";
+        }
+        var element = o_form.elements["itemid"];
+        if (element) {
+            element.name = "itemid[" + element.value + "]";
+        }
+        o_form.submit();
+    }
+    close_window();
+    return true;
+}]]></entry>
+
+<entry key="javascript_for_insert_function_add_media"><![CDATA[function add_media(formname, media, mediatypeid, sendto, period, active, severity) {
+    var form = window.opener.document.forms[formname];
+    var media_name = (media > -1) ? "user_medias[" + media + "]" : "new_media";
+    if (!form) {
+        close_window();
+        return false;
+    }
+    window.opener.create_var(form, media_name + "[mediatypeid]", mediatypeid);
+    window.opener.create_var(form, media_name + "[sendto]", sendto);
+    window.opener.create_var(form, media_name + "[period]", period);
+    window.opener.create_var(form, media_name + "[active]", active);
+    window.opener.create_var(form, media_name + "[severity]", severity);
+
+    form.submit();
+    close_window();
+    return true;
+}]]></entry>
+
+<entry key="javascript_for_insert_function_add_bitem"><![CDATA[function add_bitem(formname, caption, itemid, color, calc_fnc, axisside) {
+    var form = window.opener.document.forms[formname];
+    if (!form) {
+        close_window();
+        return false;
+    }
+    window.opener.create_var(form, "new_graph_item[caption]", caption);
+    window.opener.create_var(form, "new_graph_item[itemid]", itemid);
+    window.opener.create_var(form, "new_graph_item[color]", color);
+    window.opener.create_var(form, "new_graph_item[calc_fnc]", calc_fnc);
+    window.opener.create_var(form, "new_graph_item[axisside]", axisside);
+
+    form.submit();
+    close_window();
+    return true;
+}]]></entry>
+
+<entry key="javascript_for_insert_function_update_bitem"><![CDATA[function update_bitem(formname, list_name, gid, caption, itemid, color, calc_fnc, axisside) {
+    var form = window.opener.document.forms[formname];
+    if (!form) {
+        close_window();
+        return false;
+    }
+    window.opener.create_var(form, list_name + "[" + gid + "][caption]", caption);
+    window.opener.create_var(form, list_name + "[" + gid + "][itemid]", itemid);
+    window.opener.create_var(form, list_name + "[" + gid + "][color]", color);
+    window.opener.create_var(form, list_name + "[" + gid + "][calc_fnc]", calc_fnc);
+    window.opener.create_var(form, list_name + "[" + gid + "][axisside]", axisside);
+
+    form.submit();
+    close_window();
+    return true;
+}]]></entry>
+
+<entry key="javascript_for_insert_function_add_period"><![CDATA[function add_period(formname, caption, since, till, color) {
+    var form = window.opener.document.forms[formname];
+    if (!form) {
+        close_window();
+        return false;
+    }
+    window.opener.create_var(form, "new_period[caption]", caption);
+    window.opener.create_var(form, "new_period[report_timesince]", since);
+    window.opener.create_var(form, "new_period[report_timetill]", till);
+    window.opener.create_var(form, "new_period[color]", color);
+
+    form.submit();
+    close_window();
+    return true;
+}]]></entry>
+
+<entry key="javascript_for_insert_function_update_period"><![CDATA[function update_period(pid, formname, caption, since, till, color) {
+    var form = window.opener.document.forms[formname];
+    if (!form) {
+        close_window();
+        return false;
+    }
+    window.opener.create_var(form, "periods[" + pid + "][caption]", caption);
+    window.opener.create_var(form, "periods[" + pid + "][report_timesince]", since);
+    window.opener.create_var(form, "periods[" + pid + "][report_timetill]", till);
+    window.opener.create_var(form, "periods[" + pid + "][color]", color);
+
+    form.submit();
+    close_window();
+    return true;
+}]]></entry>
+
+<entry key="javascript_for_insert_function_addSelectedValues"><![CDATA[function addSelectedValues(form, object, parentId) {
+    form = $(form);
+    if (is_null(form)) {
+        return close_window()
+    };
+    var parent = window.opener;
+    if (!parent) {
+        return close_window();
+    }
+
+    if (typeof parentId === "undefined") {
+        var parentId = null;
+    }
+
+    var data = { object: object, values: [], parentId: parentId };
+    var chkBoxes = form.getInputs("checkbox");
+    for (var i = 0; i < chkBoxes.length; i++) {
+        if (chkBoxes[i].checked && (chkBoxes[i].name.indexOf("all_") < 0)) {
+            var value = {};
+            if (isset(chkBoxes[i].value, popupReference)) {
+                value = popupReference[chkBoxes[i].value];
+            }
+            else {
+                value[object] = chkBoxes[i].value;
+            }
+            data["values"].push(value);
+        }
+    }
+    close_window();
+
+    parent.jQuery(parent.document).trigger("add.popup", data);
+}]]></entry>
+
+<entry key="javascript_for_insert_function_addValue"><![CDATA[function addValue(object, singleValue, parentId) {
+    var parent = window.opener;
+    if (!parent) {
+        return close_window();
+    }
+    var value = {};
+    if (isset(singleValue, popupReference)) {
+        value = popupReference[singleValue];
+    }
+    else {
+        value[object] = singleValue;
+    }
+
+    if (typeof parentId === "undefined") {
+        var parentId = null;
+    }
+    var data = { object: object, values: [value], parentId: parentId };
+
+    close_window();
+
+    parent.jQuery(parent.document).trigger("add.popup", data);
+}]]></entry>
+
+<entry key="javascript_for_insert_function_addValues"><![CDATA[function addValues(frame, values, submitParent) {
+    var parentDocument = window.opener.document;
+    if (!parentDocument) {
+        return close_window();
+    }
+    var parentDocumentForms = $(parentDocument.body).select("form[name=" + frame + "]");
+    var submitParent = submitParent || false;
+    var frmStorage = null;
+
+    for (var key in values) {
+        if (is_null(values[key])) {
+            continue;
+        }
+
+        if (parentDocumentForms.length > 0) {
+            frmStorage = jQuery(parentDocumentForms[0]).find("#" + key).get(0);
+        }
+        if (typeof frmStorage === "undefined" || is_null(frmStorage)) {
+            frmStorage = parentDocument.getElementById(key);
+        }
+
+        if (jQuery(frmStorage).is("span")) {
+            jQuery(frmStorage).html(values[key]);
+        } else {
+            frmStorage.value = values[key];
+        }
+    }
+    if (!is_null(frmStorage) && submitParent) {
+        frmStorage.form.submit();
+    }
+    close_window();
+}]]></entry>
+
+<entry key="javascript_for_insert_function_check_all"><![CDATA[function check_all(objname, value) {
+    $(objname).getInputs("checkbox").each(function(e) {
+        e.checked = value;
+    });
+}]]></entry>
+
+<entry key="javascript_for_insert_function_default"><![CDATA[throw("JS function not found [%1s]");]]></entry>
+
+<entry key="administration.users.edit"><![CDATA[jQuery('#messages_enabled').bind('click', function() {
+    if (this.checked
+            && !jQuery("input[id='messages_triggers.recovery']").is(':checked')
+            && !jQuery("input[id='messages_triggers.severities_0']").is(':checked')
+            && !jQuery("input[id='messages_triggers.severities_1']").is(':checked')
+            && !jQuery("input[id='messages_triggers.severities_2']").is(':checked')
+            && !jQuery("input[id='messages_triggers.severities_3']").is(':checked')
+            && !jQuery("input[id='messages_triggers.severities_4']").is(':checked')
+            && !jQuery("input[id='messages_triggers.severities_5']").is(':checked')) {
+        jQuery("input[id='messages_triggers.recovery']").attr('checked', true);
+        jQuery("input[id='messages_triggers.severities_0']").attr('checked', true);
+        jQuery("input[id='messages_triggers.severities_1']").attr('checked', true);
+        jQuery("input[id='messages_triggers.severities_2']").attr('checked', true);
+        jQuery("input[id='messages_triggers.severities_3']").attr('checked', true);
+        jQuery("input[id='messages_triggers.severities_4']").attr('checked', true);
+        jQuery("input[id='messages_triggers.severities_5']").attr('checked', true);
+    }
+
+    // enable/disable childs fields
+    if (this.checked) {
+        jQuery('#messagingTab input, #messagingTab select').removeAttr('disabled');
+    } else {
+        jQuery('#messagingTab input, #messagingTab select').attr('disabled', 'disabled');
+        jQuery('#messages_enabled').removeAttr('disabled');
+    }
+});
+
+// initial state: enable/disable childs fields
+if (jQuery('#messages_enabled').is(':checked')) {
+    jQuery('#messagingTab input, #messagingTab select').removeAttr('disabled');
+} else {
+    jQuery('#messagingTab input, #messagingTab select').attr('disabled', 'disabled');
+    jQuery('#messages_enabled').removeAttr('disabled');
+}]]></entry>
+
+<entry key="javascript_for_popup_right"><![CDATA[<script type="text/javascript">
+    function addGroups(formName) {
+        var parentDocument = window.opener.document;
+
+        if (!parentDocument) {
+            return close_window();
+        }
+
+        jQuery("#groups input[type=checkbox]").each(function() {
+            var obj = jQuery(this);
+
+            if (obj.attr("name") !== "all_groups" && obj.prop("checked")) {
+                var id = obj.data("id");
+
+                add_variable("input", "new_right[" + id + "][permission]", obj.data("permission"), formName,
+                    parentDocument);
+                add_variable("input", "new_right[" + id + "][name]", obj.data("name"), formName, parentDocument);
+            }
+        });
+
+        parentDocument.forms[formName].submit();
+
+        close_window();
+    }
+
+    function checkAll(value) {
+        jQuery("#groups input[type=checkbox]").each(function() {
+            jQuery(this).prop("checked", value);
+        });
+    }
+</script>]]></entry>
+
+<entry key="javascript_for_dashboard"><![CDATA[<script type="text/javascript">
+    function addPopupValues(list) {
+        if (!isset('object', list)) {
+            throw("Error hash attribute 'list' doesn't contain 'object' index");
+            return false;
+        }
+        if ('undefined' == typeof(Ajax)) {
+            throw('Prototype.js lib is required!');
+            return false;
+        }
+
+        var favorites = {graphid: 1, itemid: 1, screenid: 1, slideshowid: 1, sysmapid: 1};
+
+        if (isset(list.object, favorites)) {
+            var favid = [];
+            for (var i = 0; i < list.values.length; i++) {
+                favid.push(list.values[i][list.object]);
+            }
+
+            var params = {
+                'favobj': list.object,
+                'favid[]': favid,
+                'favaction': 'add'
+            };
+            send_params(params);
+        }
+    }
+</script>]]></entry>
+
+<entry key="javascript_for_cseverity"><![CDATA[         jQuery("%1s").mouseenter(function() {
+                jQuery("%2s").each(function() {
+                    var obj = jQuery(this);
+
+                    if (obj.attr("aria-pressed") == "false") {
+                        obj.removeClass("ui-state-hover " + obj.data("severityStyle"));
+                    }
+                });
+
+                var obj = jQuery(this);
+
+                obj.addClass(obj.data("severityStyle"));
+            })
+            .mouseleave(function() {
+                jQuery("#%3s [aria-pressed=\"true\"]").trigger("mouseenter");
+            });
+
+            jQuery("%4s").change(function() {
+                jQuery("#%5s [aria-pressed=\"true\"]").trigger("mouseenter");
+            });]]></entry>
+
+</properties>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="IaaS-Jasdk">
+        <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/keystone-client/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/glance-model/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/glance-client/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/openstack-client/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/M测试用例/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/keystone-model/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/heat-model/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/heat-client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/swift-model/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/ceilometer-model/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/ceilometer-client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/nova-model/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/quantum-model/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/nova-client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/quantum-client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/swift-client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/openstack-console/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/openstack-client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/glance-model/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/glance-client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/keystone-client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/openstack-client-connectors/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/database-client/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/cinder-model/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MOps驱动/cinder-client/src"/>
+        <property name="context-root" value="IaaS-Jasdk"/>
+        <property name="java-output-path" value="/IaaS-Jasdk/build/classes"/>
+    </wb-module>
+</project-modules>

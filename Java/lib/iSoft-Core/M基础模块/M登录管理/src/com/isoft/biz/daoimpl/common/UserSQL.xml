@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="SQL_USER_PAGE">
+<![CDATA[
+select 
+  t.id id#,
+  t.name name#,
+  '' pswd#,
+  t.mobile mobile#,
+  t.email  email#,  
+  t.admin as admin#,
+  date_format(t.last_login_at,'%Y-%m-%d %T') lastLoginAt#,
+  t.status status#,
+  date_format(t.status_at,'%Y-%m-%d %T') statusAt#,
+  t.deleted deleted#,
+  date_format(t.deleted_at,'%Y-%m-%d %T') deletedAt#,
+  t.deleted_user deletedUser#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from sys_user t
+where t.tenant_id = #{tenantId}
+  and t.deleted = 'N'
+#if($dictName && $dictName!='')
+  and t.name = #{dictName}
+#end 
+#if($dictMobile && $dictMobile!='')
+  and t.mobile = #{dictMobile}
+#end
+#if($dictEmail && $dictEmail!='')
+  and t.email = #{dictEmail}
+#end
+]]>
+</entry>
+
+<entry key="SQL_USER_VIEW">
+<![CDATA[
+select 
+  t.id     id#,
+  t.name   name#,
+  t.pswd   pswd#,
+  t.mobile mobile#,
+  t.email  email#,  
+  date_format(t.last_login_at,'%Y-%m-%d %T') lastLoginAt#,
+  t.status status#,
+  date_format(t.status_at,'%Y-%m-%d %T') statusAt#,
+  t.deleted deleted#,
+  date_format(t.deleted_at,'%Y-%m-%d %T') deletedAt#,
+  t.deleted_user deletedUser#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from sys_user t
+where t.id = #{id}
+  and t.tenant_id = #{tenantId}
+  and t.deleted = 'N'
+]]>
+</entry>
+
+<entry key="SQL_USER_DUPLICATE_CHECK">
+<![CDATA[
+select id from sys_user
+where name=#{name}
+  and tenant_id = #{tenantId}
+  and deleted = 'N'
+#if( $id!='' )
+  and id<>#{id}
+#end
+limit 1
+]]>
+</entry>
+
+<entry key="SQL_USER_ADD">
+<![CDATA[
+insert into sys_user(
+id,tenant_id,name,mobile,email,admin,
+status,status_at,deleted,modified_at,modified_user,created_at,created_user
+)values(
+#{id},#{tenantId},#{name},#{mobile},#{email},'N',
+'N',now(),'N',now(),#{userId},now(),#{userId}
+)
+]]>
+</entry>
+
+<entry key="SQL_USER_EDIT">
+<![CDATA[
+update sys_user t set
+    t.name = #{name},
+    t.mobile = #{mobile},
+    t.email = #{email},
+    t.modified_at = now(),
+    t.modified_user = #{userId}
+where t.id = #{id}
+  and t.tenant_id = #{tenantId}
+  and t.deleted = 'N'
+  and t.status = 'N'
+]]>
+</entry>
+
+<entry key="SQL_USER_DEL">
+<![CDATA[
+update sys_user t set
+    t.deleted = 'Y',
+    t.deleted_at = now(),
+    t.deleted_user = #{userId}
+where t.id = #{id}
+  and t.tenant_id = #{tenantId}
+  and t.deleted = 'N'
+  and t.admin = 'N'
+  and t.status in ('N','F')
+]]>
+</entry>
+
+<entry key="SQL_DEL_ROLE_BY_USER">
+<![CDATA[
+delete from sys_user_role where user_id=#{id}
+]]>
+</entry>
+
+<entry key="SQL_GET_USER_EMAIL">
+<![CDATA[
+select 
+  st.tenant_id tenantId#,
+  st.name name#,
+  st.email email#
+from sys_user st
+where st.id = #{id}
+  and st.tenant_id = #{tenantId}
+]]>
+</entry>
+
+<entry key="SQL_USER_ACTIVE">
+<![CDATA[
+update sys_user t set
+  t.pswd = #{password},
+  t.status = 'Y',
+  t.status_at = now(),
+  t.modified_user = #{userId},
+  t.modified_at = now()
+where t.id = #{id}
+  and t.deleted = 'N'
+  and t.admin = 'N'
+  and t.status = 'N'
+]]>
+</entry>
+
+<entry key="SQL_USER_FORBID">
+<![CDATA[
+update sys_user t set
+  t.status = 'F',
+  t.status_at = now(),
+  t.modified_user = #{userId},
+  t.modified_at = now()
+where t.id = #{id}
+  and t.tenant_id = #{tenantId}
+  and t.deleted = 'N'
+  and t.admin = 'N'
+  and t.status = 'Y'
+]]>
+</entry>
+
+<entry key="SQL_USER_RESUME">
+<![CDATA[
+update sys_user t set
+  t.status = 'Y',
+  t.status_at = now(),
+  t.modified_user = #{userId},
+  t.modified_at = now()
+where t.id = #{id}
+  and t.tenant_id = #{tenantId}
+  and t.deleted = 'N'
+  and t.admin = 'N'
+  and t.status = 'F'
+]]>
+</entry>
+
+<entry key="SQL_ROLE_GET_ROLES">
+<![CDATA[
+select role_id
+from sys_user_role sur
+where sur.user_id = #{uid}
+]]>
+</entry>
+
+<entry key="SQL_ROLE_GET_ALL_ROLE_SET">
+<![CDATA[
+select
+  sr.id id#,
+  '-1' pid#,
+  sr.role_name roleName#,
+  'role' icon#
+from sys_role sr
+where sr.deleted='N'
+  order by sr.created_at asc
+]]>
+</entry>
+
+<entry key="SQL_ROLE_GRANT_ROLES">
+<![CDATA[
+insert into sys_user_role(id,tenant_id,user_id,role_id)
+values(#{id},#{tenantId},#{uid},#{roleId})
+]]>
+</entry>
+
+<entry key="SQL_ROLE_DELETE_ROLES">
+<![CDATA[delete from sys_user_role where tenant_id = #{tenantId} and user_id = #{uid}]]>
+</entry>
+
+<entry key="SQL_USER_VIEW_BY_USERNAME">
+<![CDATA[
+select 
+  t.id     id#,
+  t.name   name#,
+  t.tenant_id tenantId#,
+  t.pswd   pswd#,
+  t.mobile mobile#,
+  t.email  email#,  
+  date_format(t.last_login_at,'%Y-%m-%d %T') lastLoginAt#,
+  t.status status#,
+  date_format(t.status_at,'%Y-%m-%d %T') statusAt#,
+  t.deleted deleted#,
+  date_format(t.deleted_at,'%Y-%m-%d %T') deletedAt#,
+  t.deleted_user deletedUser#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from sys_user t
+where t.name = #{name}
+  and t.deleted = 'N'
+]]>
+</entry>
+
+</properties>

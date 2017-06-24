@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="iRadar Coding Helpers" default="qa@war" basedir=".">
+	<property name="dist" value="./dist/wars" />
+	
+	<property name="qa.db.user" value="root" />
+	<property name="qa.db.password" value="root" />
+	<property name="qa.db.ipaddr" value="192.168.39.109" />
+	<property name="qa.web.user" value="admin" />
+	<property name="qa.web.password" value="iradar" />
+	<property name="qa.debug" value="false" />
+	
+    <target name="clean">
+        <delete dir="${dist}" />
+        <mkdir dir="${dist}" />
+    </target>
+	
+    <target name="qa@war" depends="clean">
+    	
+    	<mkdir dir="${dist}/WebRoot/META-INF" />
+    	
+    	<copy file="WebRoot/META-INF/context.xml" todir="${dist}/WebRoot/META-INF"/>
+    	<replaceregexp file="${dist}/WebRoot/META-INF/context.xml" byline="true"
+    		match="user=&quot;.+?&quot;" 
+    		replace="user=&quot;${qa.db.user}&quot;"/>
+    	<replaceregexp file="${dist}/WebRoot/META-INF/context.xml" byline="true"
+            match="password=&quot;.+?&quot;" 
+            replace="password=&quot;${qa.db.password}&quot;"/>
+    	<replaceregexp file="${dist}/WebRoot/META-INF/context.xml" byline="true"
+            match="jdbc:mysql://.+?:" 
+            replace="jdbc:mysql://${qa.db.ipaddr}:"/>
+    	
+    	<mkdir dir="${dist}/WebRoot/WEB-INF/classes" />
+    	<copy file="WebRoot/WEB-INF/classes/features.xml" todir="${dist}/WebRoot/WEB-INF/classes"/>
+    	<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/features.xml" byline="true"
+            match="&lt;entry key=&quot;debug&quot;&gt;.*&lt;/entry&gt;" 
+            replace="&lt;entry key=&quot;debug&quot;&gt;${qa.debug}&lt;/entry&gt;"/>
+    	<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/features.xml" byline="true"
+            match="&lt;entry key=&quot;iradarServer&quot;&gt;.*&lt;/entry&gt;" 
+            replace="&lt;entry key=&quot;iradarServer&quot;&gt;${qa.db.ipaddr}&lt;/entry&gt;"/>
+    	<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/features.xml" byline="true"
+    	            match="&lt;entry key=&quot;defaultUser&quot;&gt;.*&lt;/entry&gt;" 
+    	            replace="&lt;entry key=&quot;defaultUser&quot;&gt;${qa.web.user}&lt;/entry&gt;"/>
+        <replaceregexp file="${dist}/WebRoot/WEB-INF/classes/features.xml" byline="true"
+            match="&lt;entry key=&quot;defaultPassword&quot;&gt;.*&lt;/entry&gt;" 
+            replace="&lt;entry key=&quot;defaultPassword&quot;&gt;${qa.web.password}&lt;/entry&gt;"/>
+        <replaceregexp file="${dist}/WebRoot/WEB-INF/classes/features.xml" byline="true"
+            match="&lt;!--.*?--&gt;\n?\r?" 
+            replace=""/>
+
+         <war destfile="${dist}/iradar.war" webxml="WebRoot/WEB-INF/web.xml">
+             <fileset dir="WebRoot">
+                <exclude name="**/*.bak" />
+             	<exclude name="META-INF/context.xml" />
+             	<exclude name="WEB-INF/classes/features.xml" />
+             </fileset>
+         	<fileset dir="${dist}/WebRoot">
+             </fileset>
+         </war>
+    	
+    	<delete dir="${dist}/WebRoot" />
+     </target>
+
+</project>

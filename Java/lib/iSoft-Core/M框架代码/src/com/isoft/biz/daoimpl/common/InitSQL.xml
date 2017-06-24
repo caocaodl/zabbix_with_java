@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="GB18030"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="GET_OS_FUNCT">
+<![CDATA[
+select
+ func_name funcName#,
+ func_id funcId#,
+ bt_name btName#,
+ bt_id btId#,
+ bt_deps btDeps#,
+ bt_extra btExtra#,
+ func_url funcUrl#,
+ seq_no seqNo#Integer,
+ role role#
+from os_func 
+where status = 2
+order by role, seq_no asc
+]]>
+</entry>
+
+
+<entry key="GET_MODULE_ID_BY_NAME">
+<![CDATA[
+select id from sys_func where func_name = #{moduleName} and role = #{role} and pid = #{pid}
+]]>
+</entry>
+
+<entry key="GET_MAX_MODULE_ID_BY_PID">
+<![CDATA[
+select max(id) from sys_func where pid = #{pid} and role = #{role}
+]]>
+</entry>
+
+<entry key="INSERT_SYS_FUNC">
+<![CDATA[
+insert into sys_func
+(id,pid,func_name,func_id,entrance,status,seq_no,role,note)
+values
+(#{moduleId},#{pid},#{moduleName},#{funcId},'N',1,#{seqNo},#{role},'')
+]]>
+</entry>
+
+<entry key="GET_BT_ID_BY_NAME">
+<![CDATA[
+select id from sys_func_bt where fid = #{fid} and bt_name = #{btName}
+]]>
+</entry>
+
+<entry key="INSERT_SYS_FUNC_BT">
+<![CDATA[
+insert into sys_func_bt(id,fid,bt_name,bt_alias,bt_deps,bt_extra,status,seq_no)
+values(#{id},#{fid},#{btName},#{btAlias},#{btDeps},#{btExtra},'1',#{seqNo})
+]]>
+</entry>
+
+<entry key="GET_URI_ID_BY_NAME">
+<![CDATA[
+select id from sys_func_bt_uri where fid = #{fid} and bid = #{bid} and uri = #{uri}
+]]>
+</entry>
+
+<entry key="INSERT_SYS_FUNC_BT_URI">
+<![CDATA[
+insert into sys_func_bt_uri(fid,bid,uri,status)
+values(#{fid},#{bid},#{uri},'1')
+]]>
+</entry>
+
+</properties>

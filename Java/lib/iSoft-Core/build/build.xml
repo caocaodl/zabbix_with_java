@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="iSoft Core Deploy" default="isoft-core.jar" basedir=".">
+	<tstamp><format pattern="yyyyMMdd_HHmmss" property="timeStamp" /></tstamp>
+	<property name="dist.root" value="../../iSoft-Core-pure" />
+	<property name="dist.dir" value="${dist.root}/WebRoot" />
+	
+	<property name="src.dir" value=".." />
+	<property name="webroot.dir" value="${src.dir}/WebRoot" />
+	
+	<property name="temp" location="dist" />
+	<property name="temp.src" location="${temp}/src" />
+	<property name="temp.classes" location="${temp}/classes" />
+
+	<target name="clean">
+		<mkdir dir="${temp}"/>
+		<delete dir="${temp}/" />
+	</target>
+	
+	<!-- 拷贝源代码文件 -->
+	<target name="copy-source-code" depends="clean">
+		<copy todir="${temp.src}">
+			<fileset dir="${src.dir}">
+				<exclude name="M框架定制/**/*"/>
+				<include name="**/*.java" />
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+				<include name="**/*.ftl" />
+			</fileset>
+			<mapper type="regexp" from=".*\\src(\\.*)" to="\1" />
+		</copy>
+	</target>
+	
+	<!-- 编译 -->
+	<target name="compile" depends="copy-source-code">
+		<mkdir dir="${temp.classes}" />
+		<javac srcdir="${temp.src}" destdir="${temp.classes}" 
+			debug="true" encoding="UTF-8" includeantruntime="true">
+			<classpath>
+				<fileset dir="${webroot.dir}/WEB-INF/lib" includes="*.jar" />
+				<fileset dir="require/j2ee" includes="**/*.jar" />
+			</classpath>
+		</javac>
+		<copy todir="${temp.classes}">
+			<fileset dir="${temp.src}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+				<include name="**/*.ftl" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="isoft-core.jar" depends="compile">
+		<jar destfile="dist/isoft-core.jar">
+			<fileset dir="${temp.classes}" />
+		</jar>
+		<echo>发布平台框架核心代码jar包成功.</echo>
+	</target>
+
+	
+	<target name="project-pure-build" depends="build-jar, copy-resources, compress-resource">
+		<echo>构建iSoft-Core-pure项目成功.</echo>
+	</target>
+	
+	<target name="build-jar" depends="compile">
+		<jar destfile="${dist.dir}/WEB-INF/lib/isoft-core.jar">
+			<fileset dir="${temp.classes}" />
+		</jar>
+		<delete dir="${temp}/" />
+	</target>
+
+	<target name="copy-resources">
+		<property name="image_path" value="assets/f/core/images"/>
+		<copy todir="${dist.dir}/${image_path}" overwrite="true">
+			<fileset dir="${webroot.dir}/${image_path}" />
+		</copy>
+				
+		<property name="import_path" value="assets/f/import"/>
+		<copy todir="${dist.dir}/${import_path}" overwrite="true">
+			<fileset dir="${webroot.dir}/${import_path}" />
+		</copy>
+		
+		<property name="tld_path" value="WEB-INF/tlds"/>
+		<copy todir="${dist.dir}/${tld_path}" overwrite="true">
+			<fileset dir="${webroot.dir}/${tld_path}" />
+		</copy>
+		
+		<property name="dbscript_path" value="M数据库脚本"/>
+		<copy todir="${dist.root}/${dbscript_path}" overwrite="true" >
+			<fileset dir="${src.dir}/${dbscript_path}" />
+		</copy>
+			
+		<property name="project_path" value="P项目文档"/>
+		<copy todir="${dist.root}/${project_path}" overwrite="true">
+			<fileset dir="${src.dir}/${project_path}" />
+		</copy>
+	</target>
+	
+	<target name="compress-resource">
+		<property name="core_path" value="assets/f/core/"/>
+		
+		<taskdef name="yui-compressor" classname="net.noha.tools.ant.yuicompressor.tasks.YuiCompressorTask">
+			<classpath>
+				<fileset dir="require/yuicompressor" includes="*.jar" />
+			</classpath>
+		</taskdef>
+		
+		<yui-compressor jsSuffix=".js" cssSuffix=".css" charset="UTF-8" 
+			warn="false" munge="true" preserveAllSemiColons="false" verbose="true"
+			fromDir="${webroot.dir}/${core_path}" toDir="${dist.dir}/${core_path}" 
+			stampFile="stamp.properties"
+		>
+			<include name="js/**/*.js" />
+			<include name="css/**/*.css" />
+		</yui-compressor>
+	</target>
+	
+</project>

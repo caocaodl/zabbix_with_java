@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_LOG_PAGE">
+<![CDATA[
+select 
+  t.id id#,
+  t.user_id  userId#,
+  t.func_id funcId#,
+  t.func_name  funcName#,  
+  t.request_uri requestUri#,
+  t.func_menu funcMenu#,
+  t.description description#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt# 
+from sys_logs t 
+where t.tenant_id = #{tenantId}
+#if($dictFuncName && $dictFuncName!='')
+  and t.func_name regexp toregexp(#{dictFuncName})
+#end
+  order by t.created_at desc
+]]>
+</entry>
+<entry key="SQL_LOG_ADD">
+<![CDATA[
+insert into sys_logs(
+id,tenant_id,user_id,func_id,func_name,request_uri,func_menu,description,created_at
+)values(
+#{id},#{tenantId},#{userId},#{FuncId},#{funcName},#{requestUri},#{funcMenu},#{description},now()
+)
+]]>
+</entry>
+
+<entry key="SQL_GET_FUNC_REQ">
+<![CDATA[
+select id
+from os_func
+where func_url = #{uri} 
+  and role = #{roleMagic}
+]]>
+</entry>
+
+<entry key="SQL_ADD_FUNC_REQ">
+<![CDATA[
+insert into os_func(func_url,role,view_at)
+values(#{uri},#{roleMagic},now())
+]]>
+</entry>
+
+<entry key="SQL_UPDATE_FUNC_REQ">
+<![CDATA[
+update os_func set
+  view_at = now()
+where id = #{id}
+]]>
+</entry>
+
+</properties>

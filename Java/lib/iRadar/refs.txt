@@ -1,0 +1,1 @@
+https://www.zabbix.com/documentation/2.2/manual/discovery/low_level_discovery

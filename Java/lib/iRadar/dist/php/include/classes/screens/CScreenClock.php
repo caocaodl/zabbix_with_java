@@ -1,0 +1,91 @@
+<?php
+/*
+** Zabbix
+** Copyright (C) 2001-2014 Zabbix SIA
+**
+** This program is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 2 of the License, or
+** (at your option) any later version.
+**
+** This program is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with this program; if not, write to the Free Software
+** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+**/
+
+
+class CScreenClock extends CScreenBase {
+
+	/**
+	 * Process screen.
+	 *
+	 * @return CDiv (screen inside container)
+	 */
+	public function get() {
+		$error = null;
+		$timeOffset = null;
+		$timeZone = null;
+
+		switch (Nest.value(screenitem,"style").$()) {
+			case TIME_TYPE_HOST:
+				$items = API.Item().get(CArray.array(
+					"itemids" => Nest.value(screenitem,"resourceid").$(),
+					"selectHosts" => CArray.array("host"),
+					"output" => CArray.array("lastvalue", "lastclock")
+				));
+				$item = reset($items);
+				$host = reset(Nest.value($item,"hosts").$());
+
+				$timeType = Nest.value($host,"host").$();
+				preg_match("/([+-]{1})([\d]{1,2}):([\d]{1,2})/", Nest.value($item,"lastvalue").$(), $arr);
+
+				if (!empty($arr)) {
+					$timeZone = $arr[2] * SEC_PER_HOUR + $arr[3] * SEC_PER_MIN;
+					if ($arr[1] == "-") {
+						$timeZone = 0 - $timeZone;
+					}
+				}
+
+				if ($lastvalue = strtotime(Nest.value($item,"lastvalue").$())) {
+					$diff = (time() - Nest.value($item,"lastclock").$());
+					$timeOffset = $lastvalue + $diff;
+				}
+				else {
+					$error = _("NO DATA");
+				}
+				break;
+			case TIME_TYPE_SERVER:
+				$error = null;
+				$timeType = _("SERVER");
+				$timeOffset = time();
+				$timeZone = date("Z");
+				break;
+			default:
+				$error = null;
+				$timeType = _("LOCAL");
+				$timeOffset = null;
+				$timeZone = null;
+				break;
+		}
+
+		if (Nest.value(screenitem,"width").$() > Nest.value(screenitem,"height").$()) {
+			Nest.value(screenitem,"width").$() = Nest.value(screenitem,"height").$();
+		}
+
+		$item = new CFlashClock(Nest.value(screenitem,"width").$(), Nest.value(screenitem,"height").$(), action);
+		$item.setTimeError($error);
+		$item.setTimeType($timeType);
+		$item.setTimeZone($timeZone);
+		$item.setTimeOffset($timeOffset);
+
+		$flashclockOverDiv = new CDiv(null, "flashclock");
+		$flashclockOverDiv.setAttribute("style", "width: ".screenitem["width"]."px; height: ".screenitem["height"]."px;");
+
+		return getOutput(CArray.array($item, $flashclockOverDiv));
+	}
+}

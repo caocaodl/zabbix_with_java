@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="demo" namespace="/" extends="default">
+		<action name="demo" class="com.isoft.web.bean.HomeAction">
+			<result>/WEB-INF/views/platform/demo/demo.jsp</result>
+		</action>
+	</package>
+
+	<package name="home" namespace="/" extends="default">
+		<action name="*" class="com.isoft.web.bean.HomeAction" method="{1}">
+			<result name="index">/WEB-INF/views/index.jsp</result>
+			<result name="login" type="json" />
+			<result name="logout" type="redirect">index.action</result>
+			<result name="workspace" type="redirect">/platform/workspace.action</result>
+		</action>
+	</package>
+
+	<package name="platform" namespace="/platform" extends="default">
+
+		<action name="workspace" class="com.isoft.web.bean.platform.WorkspaceAction">
+			<result name="success">/WEB-INF/views/platform/workspace.jsp</result>
+			<result name="funcNav">/WEB-INF/views/platform/workspaceNav.jsp</result>
+		</action>
+
+		<action name="workspaceTop" class="com.isoft.web.bean.platform.WorkspaceAction">
+			<result name="success">/WEB-INF/views/platform/workspaceTop.jsp</result>
+		</action>
+
+		<action name="workspaceMenu" class="com.isoft.web.bean.platform.WorkspaceAction" method="doLeftMenu">
+			<result name="success">/WEB-INF/views/platform/workspaceLeftMenu.jsp</result>
+		</action>
+
+		<action name="Role*" class="com.isoft.web.bean.common.RoleAction" method="do{1}">
+			<result name="success">/WEB-INF/views/platform/common/RoleList.jsp</result>
+			<result name="funcTree">/WEB-INF/views/platform/common/RoleTreeList.jsp</result>
+			<result type="jqGrid" name="json">
+				<param name="jsonProperty">dataPage</param>
+			</result>
+			<result type="rosjson" name="resultList">
+				<param name="jsonProperty">resultList</param>
+			</result>
+			<result type="rosjson" name="resultMap">
+				<param name="jsonProperty">resultMap</param>
+			</result>
+		</action>
+
+		<action name="User*" class="com.isoft.web.bean.common.UserAction" method="do{1}">
+			<result name="success">/WEB-INF/views/platform/common/UserList.jsp</result>
+			<result name="roleTree">/WEB-INF/views/platform/common/UserRoleTreeList.jsp</result>
+			<result type="jqGrid" name="json">
+				<param name="jsonProperty">dataPage</param>
+			</result>
+			<result type="rosjson" name="resultMap">
+				<param name="jsonProperty">resultMap</param>
+			</result>
+		</action>
+
+		<action name="Prof*" class="com.isoft.web.bean.common.ProfAction" method="do{1}">
+			<result name="success">/WEB-INF/views/platform/common/ProfList.jsp</result>
+			<result name="tenant">/WEB-INF/views/platform/common/ProfTenant.jsp</result>
+			<result name="pswd">/WEB-INF/views/platform/common/ProfPswd.jsp</result>
+			<result name="forgotPwd">/WEB-INF/views/platform/common/ProfForgotPwd.jsp</result>
+			<result type="rosjson" name="resultMap">
+				<param name="jsonProperty">resultMap</param>
+			</result>
+		</action>
+
+		<action name="Log*" class="com.isoft.web.bean.common.LogAction" method="do{1}">
+			<result name="success">/WEB-INF/views/platform/common/LogList.jsp</result>
+			<result type="jqGrid" name="json">
+				<param name="jsonProperty">dataPage</param>
+			</result>
+		</action>
+
+	</package>
+</struts>

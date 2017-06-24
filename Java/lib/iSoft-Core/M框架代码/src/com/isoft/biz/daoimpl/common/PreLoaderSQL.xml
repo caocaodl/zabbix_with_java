@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="SQL_LOAD_SYS_DICT">
+<![CDATA[
+SELECT 
+ type#,
+ dlabel#,
+ dkey# 
+FROM sys_dict 
+WHERE STATUS=1 
+ORDER BY SEQ_NO ASC
+]]>
+</entry>
+
+<entry key="SQL_LOAD_SYS_FUNC">
+<![CDATA[
+select
+  sf.id        id#,
+  sf.pid      pid#,
+  sf.func_name funcName#,
+  IF(length(sf.func_url)>0,sf.func_url,sfbu.uri)  funcUrl#,
+  sf.render_type renderType#,
+  sf.render_style renderStyle#,
+  sf.render_url renderUrl#,
+  sf.icon iconClass#,
+  sf.entrance  entrance#Boolean,
+  sf.leaf      leaf#Boolean,
+  sf.role   as role#
+from sys_func sf
+left join sys_func_bt_uri sfbu on sfbu.fid=sf.id and sfbu.status = 1 and sfbu.entrance='Y'
+where sf.status=1
+order by sf.id asc
+]]>
+</entry>
+
+<entry key="SQL_LOAD_SYS_PERM">
+<![CDATA[
+select 
+    sft.id id#, 
+    sft.bt_alias alias#,
+    sf.func_name funcName#,
+    sft.fid funcId#, 
+    sf.role as role#,
+    sfbu.uri uri#
+from sys_func_bt sft
+inner join sys_func sf on sf.id = sft.fid and sf.status = 1 
+inner join sys_func_bt_uri sfbu on sfbu.bid = sft.id and sfbu.fid = sft.fid and sfbu.status = 1
+where sft.status = 1
+]]>
+</entry>
+
+</properties>

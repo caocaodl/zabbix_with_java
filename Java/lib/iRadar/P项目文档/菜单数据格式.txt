@@ -1,0 +1,41 @@
+{
+    "type":"tree", 
+    "cls":"simple", 
+    "url":"tree.json", 
+    "initial":"1",
+    "data":[{
+        "id": "1",
+        "text":"Item1", 
+        "iconCls":"icon-test",
+        "state":"closed", 
+        "href":"/demo/book/abc",
+        "url":"tree1.json"
+    },{
+        "id": "2",
+        "text":"Item2",
+        "href":"/demo/book/abc",
+        "children":[{
+            "id": "3",
+            "text":"Item3",
+            "href":"/demo/book/abc"
+        }]
+    }]
+}
+
+1.根节点数据：
+type: 菜单类型，可选参数[tree|nomenu]    tree:树，nomenu:无菜单类型
+cls: 菜单对应的样式
+url: 根据type不同作用有所不同：tree: 动态加载树节点数据的请求URL；nomenu: 对应要展示的页面URL
+initial: 树类型菜单的初始加载节点ID（如果找不到，则会直接找第一个叶子节点，如果还是找不到，则不自动加载页面）
+data: 用来生成树类型菜单的静态数据（不能与url共存，会被url动态加载的数据覆盖; 格式为数组）
+
+2.DATA节点数据：
+id: 节点ID
+text: 节点名称
+iconCls： 节点图标样式
+href: 点击节点加载的页面URL,(可以与url共存)
+state: 设置节点的状态为关闭，主要是用来加在需要动态加载数据的节点上
+url：动态加载节点数据的URL，当要加载的节点没有此属性时，会自动向上一级父节点找此属性
+chilren: 当前节点的子节点，（格式为数组）
+
+3.树类型对应URL返回数据的格式与“DATA节点数据”相同

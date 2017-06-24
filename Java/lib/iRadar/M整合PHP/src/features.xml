@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(features)</comment>
+
+<!-- 调试输出开关 -->
+<entry key="debug">true</entry>
+<entry key="debugout">true</entry>
+
+<!-- 运营商的租户ID -->
+<entry key="defaultTenantId">b77cff72790044bcb876ff96f7bab7c2</entry>
+
+<!-- 登录页面默认用户名 -->
+<entry key="defaultUser">admin</entry>
+<!-- 登录页面默认密码 -->
+<entry key="defaultPassword">admin</entry>
+<!-- 登录页面默认图形校验码 -->
+<entry key="defaultCheckCode">AAAA</entry>
+
+<!-- 平台名称 -->
+<entry key="title"><![CDATA[普华数据中心综合监控平台]]></entry>
+
+<!-- iradar数据库事务 -->
+<entry key="autoCommit">true</entry>
+<entry key="idsUseConnection">true</entry>
+
+<!-- iradar监控服务器地址 -->
+<entry key="iradarServer">192.168.39.109</entry>
+<!-- iradar监控服务器端口 -->
+<entry key="iradarPort">10051</entry>
+
+<!-- 权限校验之登录校验开关 -->
+<entry key="enableLoginCheck">false</entry>
+
+<!-- 拓扑开关 -->
+<entry key="enableTopo">false</entry>
+
+<!-- 页眉开关 -->
+<entry key="ignorePageFooter">false</entry>
+<!-- 页脚开关 -->
+<entry key="ignorePageHeader">false</entry>
+
+<!-- 全屏图标开关 -->
+<entry key="showFullscreenIcon">true</entry>
+<!-- 收藏图标开关 -->
+<entry key="showFavouriteIcon">true</entry>
+<!-- 输出图标开关 -->
+<entry key="showExportCsvIcon">true</entry>
+<!-- 弹出菜单开关 -->
+<entry key="showPopupMenu">true</entry>
+
+<!-- 图形字符集 -->
+<!--entry key="validateCodeChars">0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ</entry-->
+<entry key="validateCodeChars">A</entry>
+
+</properties>

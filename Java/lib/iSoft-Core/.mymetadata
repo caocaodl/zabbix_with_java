@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="iSoft-Core"
+  id="myeclipse.1375106793647"
+  context-root="/iSoft-Core"
+  j2ee-spec="5.0"
+  archive="iSoft-Core.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

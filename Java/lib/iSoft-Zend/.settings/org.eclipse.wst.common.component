@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="iSoft-Zend">
+        <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/M框架代码/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/M框架定制/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/M开源扩展/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/MZend引擎/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/M测试模块/src"/>
+        <property name="context-root" value="/iSoft-Zend"/>
+        <property name="java-output-path" value="/iSoft-Zend/WebRoot/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<project name="isoft-zend" default="jar">
+	<target name="jar" description="Packages classes to a JAR file">
+		<jar destfile="isoft-zend-v0.3.jar">
+			<fileset dir="WebRoot/WEB-INF/classes">
+				<exclude name="**/*.bak" />
+				<exclude name="**/A.class" />
+				<exclude name="test/**"/>
+			</fileset>
+		</jar>
+	</target>
+</project>

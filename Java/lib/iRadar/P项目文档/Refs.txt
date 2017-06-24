@@ -1,0 +1,60 @@
+10/11,7500,
+11,12,
+
+/usr/share/zabbix
+
+http://192.168.30.64:8888/chart3.php?period=3600&name=CPU%20load&width=900&height=200
+
+&graphtype=0&legend=1&percent_left=0.00&percent_right=0.00&ymin_type=1&ymax_type=0&yaxismin=0.0000&yaxismax=100.0000
+&ymin_itemid=0&ymax_itemid=0&showworkperiod=1&showtriggers=1
+
+&items[0][gitemid]=1720
+&items[0][graphid]=524
+&items[0][itemid]=23296
+&items[0][sortorder]=0&items[0][flags]=0&items[0][type]=0&items[0][calc_fnc]=2&items[0][drawtype]=0&items[0][yaxisside]=0
+&items[0][color]=009900&items[1][gitemid]=1721&items[1][graphid]=524
+
+&items[1][itemid]=23297
+&items[1][sortorder]=1&items[1][flags]=0&items[1][type]=0&items[1][calc_fnc]=2&items[1][drawtype]=0&items[1][yaxisside]=0
+&items[1][color]=000099
+
+&items[2][gitemid]=1722&items[2][graphid]=524&items[2][itemid]=23295
+&items[2][sortorder]=2&items[2][flags]=0&items[2][type]=0
+&items[2][calc_fnc]=2&items[2][drawtype]=0&items[2][yaxisside]=0&items[2][color]=990000
+
+
+http://192.168.30.64:8888
+http://192.168.30.59:8888
+
+'(.*)'.*=> null,
+private String[] $1;
+
+\$sqlParts\['(.*)'\]\['(.+)'\] = '(.*)';
+sqlParts.$1.put("$2","$3");
+
+\$sqlParts\['(.*)'\]\[\] = '(.*)';
+sqlParts.$1.put("$2");
+
+\$sqlParts\['where'\]\[\] = dbConditionInt\('(.*)', (.*)\);
+sqlParts.where.dbConditionInt("$1",$2);
+
+\$sqlParts\['where'\]\['(.*)'\] = dbConditionInt\('(.*)', (.*)\);
+sqlParts.where.dbConditionInt("$1","$2",$3);
+
+\$sqlParts\['where'\]\[\] = '(.*)'\.(.*);
+sqlParts.where.put("$1"+$2);
+
+\$sqlParts\['where'\]\['(.*)'\] = '(.*)'\.(.*);
+sqlParts.where.put("$1","$2"+$3);
+
+\$sqlParts\['where'\]\[\] = '(.*)';
+sqlParts.where.put("$1");
+
+\$sqlParts\['where'\]\['(.*)'\] = '(.*)'\.
+sqlParts.where.put("$1","$2"+
+
+if \(!is_null\(\$options\['s(.*)'\]\) && !isset\(\$result\[\$template\['templateid'\]\]\['(.*)'\]\)\)
+if (!is_null(params.getS$1()) && !isset(result.get(id).get("$2")))
+
+\$template\['(.*)'\] = array\(\);
+result.get(id).put("$1", new ArrayList());

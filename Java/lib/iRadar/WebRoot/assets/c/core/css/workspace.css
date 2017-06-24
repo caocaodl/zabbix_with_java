@@ -1,0 +1,61 @@
+html{
+	background: url("../../images/bg.png");
+}
+
+/* simple tree -- start */
+.simple .tree-node{
+	margin: 5px 20px;
+	padding: 10px 0;
+	-webkit-border-radius: .3em;
+	-moz-border-radius: .3em;
+	-o-border-radius: .3em;
+	border-radius: .3em;
+	
+	background: #d2d9e1;
+	color: #7e8796;
+}
+.simple .tree-icon{
+	margin-right: 5px;
+}
+.simple .tree-node-hover, .simple .tree-node-selected{
+	background: #226496;
+	color: #FFF;
+}
+/* simple tree -- end */
+
+/* simple menu -- start */
+.west_menu .simple .icon{
+	background-image: url(../../../c/images/icon_nav.png);
+	background-position: 27px 10px;
+}
+/* simple menu -- end */
+
+
+/* menu title icon -- start */
+.layout-panel-west .icon,
+.layout_north .header_nav A.icon,
+.layout_north .header_nav A.icon:hover,
+.layout_north .header_nav A.icon.active{
+	background-image: url(../../../c/images/icon_nav.png);
+	background-repeat: no-repeat;
+	background-position: 5px 9px;
+}
+.layout-panel-west .icon{
+	background-position: 10px 13px;
+}
+.layout_north .header_nav A.icon{
+	background-image: url(../../../c/images/icon.png);
+}
+/* menu title icon -- end */
+
+
+
+/* menu icon -- start */
+.tree-icon.icon-test{
+	background-position: 0 0;
+}
+/* menu icon -- end */
+
+.layout-panel-west .west_tree .collapse{
+	visibility: hidden;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<project name="openstack-ant-task" default="jar">
+	<target name="jar" description="Packages classes to a JAR file">
+		<jar destfile="isoft-jasdk-v2.0.jar">
+			<fileset dir="WebRoot/WEB-INF/classes">
+				<exclude name="**/*.bak" />
+				<exclude name="openstack.properties" />
+				<exclude name="test/**"/>
+			</fileset>
+		</jar>
+	</target>
+</project>

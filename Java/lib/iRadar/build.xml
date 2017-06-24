@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="iRadar Coding Helpers" default="transfer-source-code" basedir=".">
+
+	<property name="php.file" value="E:\workspaces-core\iRadar\zabbix-2.2.4\frontends\php\include\views\configuration.action.edit.php" />
+
+	<property name="temp" value="dist" />
+	<target name="clean">
+		<delete dir="${temp}/" />
+		<mkdir dir="${temp}" />
+	</target>
+
+	<target name="transfer-source-code" depends="transfer-nested-code">
+		<echo>代码替换完成!</echo>
+	</target>
+
+	<!-- 拷贝源代码文件 -->
+	<target name="transfer-copy-source" depends="clean">
+		<copy file="${php.file}" todir="${temp}" />
+	</target>
+
+	<target name="transfer-base-code" depends="transfer-copy-source">
+		<replaceregexp flags="g">
+			<regexp pattern="&quot;" />
+			<substitution expression="\\\\&quot;" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="''" />
+			<substitution expression="&quot;&quot;" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="'(.+?)'" />
+			<substitution expression="&quot;\1&quot;" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="(\$.+?)->" />
+			<substitution expression="\1\." />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="\$this\." />
+			<substitution expression="" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="foreach ?\(" />
+			<substitution expression="for(" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="array\(" />
+			<substitution expression="CArray.array(" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="str_in_CArray\.array" />
+			<substitution expression="str_in_array" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="is_CArray\.array" />
+			<substitution expression="is_array" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+		<!--
+		<replaceregexp flags="g">
+			<regexp pattern="isset\(" />
+			<substitution expression="php.isset(" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="order_result\(" />
+			<substitution expression="FuncsUtil.order_result(" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="zbx_jsvalue\(" />
+			<substitution expression="JsUtil.rda_jsvalue(" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="zbx_add_post_js\(" />
+			<substitution expression="JsUtil.rda_add_post_js(" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+-->
+	</target>
+
+	<target name="transfer-nested-code" depends="transfer-base-code">
+		<replaceregexp flags="g">
+			<regexp pattern="([\(\) ,:;\?]{0,1})([a-zA-Z0-9$_]+?)\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]([\(\) ,:;\?]{1,1})" />
+			<substitution expression="\1Nest.value(\2,\3,\4,\5,\6).$()\7" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="([\(\) ,:;\?]{0,1})([a-zA-Z0-9$_]+?)\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]([\(\) ,:;\?]{1,1})" />
+			<substitution expression="\1Nest.value(\2,\3,\4,\5).$()\6" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="([\(\) ,:;\?]{0,1})([a-zA-Z0-9$_]+?)\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]([\(\) ,:;\?]{1,1})" />
+			<substitution expression="\1Nest.value(\2,\3,\4).$()\5" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="([\(\) ,:;\?]{0,1})([a-zA-Z0-9$_]+?)\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]([\(\) ,:;\?]{1,1})" />
+			<substitution expression="\1Nest.value(\2,\3).$()\4" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="([\(\) ,:;\?]{0,1})([a-zA-Z0-9$_]+?)\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[([0-9]+)\]" />
+			<substitution expression="\1Nest.array(\2,\3,\4,\5,\6).get(\7)" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="([\(\) ,:;\?]{0,1})([a-zA-Z0-9$_]+?)\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[([0-9]+)\]" />
+			<substitution expression="\1Nest.array(\2,\3,\4,\5).get(\6)" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="([\(\) ,:;\?]{0,1})([a-zA-Z0-9$_]+?)\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[([0-9]+)\]" />
+			<substitution expression="\1Nest.array(\2,\3,\4).get(\5)" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp flags="g">
+			<regexp pattern="([\(\) ,:;\?]{0,1})([a-zA-Z0-9$_]+?)\[(&quot;[a-zA-Z0-9$_]+?&quot;)\]\[([0-9]+)\]" />
+			<substitution expression="\1Nest.array(\2,\3).get(\4)" />
+			<fileset dir="${temp}">
+				<include name="*.php" />
+			</fileset>
+		</replaceregexp>
+	</target>
+</project>

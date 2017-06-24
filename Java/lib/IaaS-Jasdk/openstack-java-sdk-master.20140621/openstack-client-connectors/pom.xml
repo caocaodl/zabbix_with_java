@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.woorea</groupId>
+		<artifactId>openstack-java-sdk</artifactId>
+		<version>3.2.2-SNAPSHOT</version>
+	</parent>
+	<artifactId>openstack-client-connectors</artifactId>
+	<name>OpenStack Client Connectors</name>
+	<description>OpenStack Client Connectors</description>
+	<packaging>pom</packaging>
+	<profiles>
+		<profile>
+			<id>jersey</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>jersey-connector</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>jersey2</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>jersey2-connector</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>resteasy</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>resteasy-connector</module>
+			</modules>
+		</profile>
+	</profiles>
+	<dependencies>
+		<dependency>
+			<groupId>com.woorea</groupId>
+			<artifactId>openstack-client</artifactId>
+			<version>3.2.2-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(Tag Resource)</comment>
+
+<entry key="$Head.js">
+<![CDATA[
+/assets/f/import/jquery/jquery-1.8.0.min.js,
+/assets/f/core/js/jquery_extra.js,
+/assets/f/import/jquery.easyui/1.3.5/jquery.easyui.min.js,
+/assets/f/import/jquery.easyui/1.3.5/locale/easyui-lang-zh_CN.js,
+/assets/f/import/jquery.alerts/jquery.alerts.js,
+/assets/f/core/js/isoft.core.js,
+/assets/f/core/js/isoft.jquery.ext.js
+]]>
+</entry>
+
+<entry key="$Head.css">
+<![CDATA[
+/assets/f/import/jquery.easyui/1.3.5/themes/default/easyui.css,
+/assets/f/import/jquery.easyui/1.3.5/themes/icon.css,
+/assets/f/import/jquery.alerts/jquery.alerts.css,
+/assets/f/core/css/frame.css,
+/assets/f/core/css/isoft.ext.css,
+/assets/f/core/css/isoft.ui.css,
+/assets/c/core/css/isoft.custom.css
+]]>
+</entry>
+
+<entry key="iHead.js">
+<![CDATA[
+/assets/f/jquery-1.10.2/jquery-1.10.2.src.js,
+]]>
+</entry>
+
+<entry key="FuncBody.css">
+<![CDATA[
+/assets/f/nav/isoft.nav.css
+]]>
+</entry>
+
+<entry key="DataGrid.detailview.js">
+<![CDATA[
+/assets/f/jquery-easyui-1.3.5/datagrid-detailview.js
+]]>
+</entry>
+
+<entry key="DataGrid.groupview.js">
+<![CDATA[
+/assets/f/jquery-easyui-1.3.5/datagrid-groupview.js
+]]>
+</entry>
+
+
+<entry key="$ZTree.js">
+<![CDATA[
+/assets/f/import/jquery.ztree/jquery.ztree.all-3.5.min.js
+]]>
+</entry>
+
+<entry key="$ZTree.css">
+<![CDATA[
+/assets/f/import/jquery.ztree/zTreeStyle.css
+]]>
+</entry>
+
+<entry key="SelectMultiMenu.js">
+<![CDATA[
+/assets/f/jquery-1.10.2/jquery-1.10.2.src.js,
+/assets/javascripts/jquery-ui.min.js,
+/assets/jquery.multiselect/js/plugins/localisation/jquery.localisation-min.js,
+/assets/jquery.multiselect/js/plugins/scrollTo/jquery.scrollTo-min.js,
+/assets/jquery.multiselect/js/ui.multiselect.js
+]]>
+</entry>
+
+<entry key="SelectMultiMenu.css">
+<![CDATA[
+/assets/jquery.multiselect/css/common.css,
+/assets/jquery-ui/jquery-ui.css,
+/assets/jquery.multiselect/css/ui.multiselect.css
+]]>
+</entry>
+
+</properties>

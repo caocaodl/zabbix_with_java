@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="MOps驱动/cinder-model/src"/>
+	<classpathentry kind="src" path="MOps驱动/cinder-client/src"/>
+	<classpathentry kind="src" path="MOps驱动/database-client/src"/>
+	<classpathentry kind="src" path="MOps驱动/openstack-client-connectors/src"/>
+	<classpathentry kind="src" path="M测试用例/src"/>
+	<classpathentry kind="src" path="MOps驱动/keystone-model/src"/>
+	<classpathentry kind="src" path="MOps驱动/heat-model/src"/>
+	<classpathentry kind="src" path="MOps驱动/heat-client/src"/>
+	<classpathentry kind="src" path="MOps驱动/swift-model/src"/>
+	<classpathentry kind="src" path="MOps驱动/ceilometer-model/src"/>
+	<classpathentry kind="src" path="MOps驱动/ceilometer-client/src"/>
+	<classpathentry kind="src" path="MOps驱动/nova-model/src"/>
+	<classpathentry kind="src" path="MOps驱动/quantum-model/src"/>
+	<classpathentry kind="src" path="MOps驱动/nova-client/src"/>
+	<classpathentry kind="src" path="MOps驱动/quantum-client/src"/>
+	<classpathentry kind="src" path="MOps驱动/swift-client/src"/>
+	<classpathentry kind="src" path="MOps驱动/openstack-console/src"/>
+	<classpathentry kind="src" path="MOps驱动/openstack-client/src"/>
+	<classpathentry kind="src" path="MOps驱动/glance-model/src"/>
+	<classpathentry kind="src" path="MOps驱动/glance-client/src"/>
+	<classpathentry kind="src" path="MOps驱动/keystone-client/src"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

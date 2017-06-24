@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="iradar" namespace="/platform/iradar" extends="default">
+       
+        <!--  benne code begin -->
+        <action name="index" class="com.isoft.iradar.web.action.core.IndexAction" method="doWork"/>
+        <action name="jsrpc" class="com.isoft.iradar.web.action.core.JsrpcAction" method="doWork"/>
+        <!-- Common -->
+        <action name="jsLoader" class="com.isoft.iradar.web.action.core.JsloaderAction" method="doWork"/>
+        <action name="popup" class="com.isoft.iradar.web.action.core.PopupAction" method="doWork"/>
+        <action name="popup_bitem" class="com.isoft.iradar.web.action.core.PopupBitemAction" method="doWork"/>
+        <action name="popup_httpstep" class="com.isoft.iradar.web.action.core.PopupHttpstepAction" method="doWork"/>
+        <action name="popup_media" class="com.isoft.iradar.web.action.core.PopupMediaAction" method="doWork"/>
+        <action name="popup_period" class="com.isoft.iradar.web.action.core.PopupPeriodAction" method="doWork"/>
+        <action name="popup_right" class="com.isoft.iradar.web.action.core.PopupRightAction" method="doWork"/>
+        <action name="popup_trexpr" class="com.isoft.iradar.web.action.core.PopupTrexprAction" method="doWork"/>
+        <action name="popup_usrgrp" class="com.isoft.iradar.web.action.core.PopupUsrgrpAction" method="doWork"/>
+        <action name="profile" class="com.isoft.iradar.web.action.core.ProfileAction" method="doWork"/>
+        <action name="search" class="com.isoft.iradar.web.action.core.SearchAction" method="doWork"/>
+        <action name="imgstore" class="com.isoft.iradar.web.action.core.ImgstoreAction" method="doWork"/>
+        <action name="image" class="com.isoft.iradar.web.action.core.ImageAction" method="doWork"/>
+        <!-- Configuration -->
+        <action name="hostgroups" class="com.isoft.iradar.web.action.core.HostgroupsAction" method="doWork"/>
+        <action name="templates" class="com.isoft.iradar.web.action.core.TemplatesAction" method="doWork"/>
+        <action name="hosts" class="com.isoft.iradar.web.action.core.HostsAction" method="doWork"/>
+        <action name="applications" class="com.isoft.iradar.web.action.core.ApplicationsAction" method="doWork"/>
+        <action name="items" class="com.isoft.iradar.web.action.core.ItemsAction" method="doWork"/>
+        <action name="disc_prototypes" class="com.isoft.iradar.web.action.core.DiscPrototypesAction" method="doWork"/>
+        <action name="triggers" class="com.isoft.iradar.web.action.core.TriggersAction" method="doWork"/>
+        <action name="trigger_prototypes" class="com.isoft.iradar.web.action.core.TriggerPrototypesAction" method="doWork"/>
+        <action name="graphs" class="com.isoft.iradar.web.action.core.GraphsAction" method="doWork"/>
+        <action name="host_discovery" class="com.isoft.iradar.web.action.core.HostDiscoveryAction" method="doWork"/>
+        <action name="host_prototypes" class="com.isoft.iradar.web.action.core.HostPrototypesAction" method="doWork"/>
+        <action name="host_screen" class="com.isoft.iradar.web.action.core.HostScreenAction" method="doWork"/>
+        <action name="httpconf" class="com.isoft.iradar.web.action.core.HttpconfAction" method="doWork"/>        
+        
+        <action name="maintenance" class="com.isoft.iradar.web.action.core.MaintenanceAction" method="doWork"/>
+        <action name="actionconf" class="com.isoft.iradar.web.action.core.ActionconfAction" method="doWork"/>
+        <action name="screenconf" class="com.isoft.iradar.web.action.core.ScreenconfAction" method="doWork"/>
+        <action name="screenedit" class="com.isoft.iradar.web.action.core.ScreeneditAction" method="doWork"/>
+        <action name="slideconf" class="com.isoft.iradar.web.action.core.SlideconfAction" method="doWork"/>
+        <action name="sysmaps" class="com.isoft.iradar.web.action.core.SysmapsAction" method="doWork"/>
+        <action name="discoveryconf" class="com.isoft.iradar.web.action.core.DiscoveryconfAction" method="doWork"/>
+        <action name="services" class="com.isoft.iradar.web.action.core.ServicesAction" method="doWork"/>
+        <!-- Monitoring -->
+        <action name="dashboard" class="com.isoft.iradar.web.action.core.DashboardAction" method="doWork"/>
+        <action name="dashconf" class="com.isoft.iradar.web.action.core.DashconfAction" method="doWork"/>
+        <action name="overview" class="com.isoft.iradar.web.action.core.OverviewAction" method="doWork"/>
+        <action name="httpmon" class="com.isoft.iradar.web.action.core.HttpmonAction" method="doWork"/>
+        <action name="httpdetails" class="com.isoft.iradar.web.action.core.HttpdetailsAction" method="doWork"/>
+        <action name="latest" class="com.isoft.iradar.web.action.core.LatestAction" method="doWork"/>
+        <action name="tr_status" class="com.isoft.iradar.web.action.core.TrStatusAction" method="doWork"/>
+        <action name="tr_comments" class="com.isoft.iradar.web.action.core.TrCommentsAction" method="doWork"/>
+        <action name="tr_events" class="com.isoft.iradar.web.action.core.TrEventsAction" method="doWork"/>
+        <action name="tr_logform" class="com.isoft.iradar.web.action.core.TrLogformAction" method="doWork"/>
+        <action name="tr_testexpr" class="com.isoft.iradar.web.action.core.TrTestexprAction" method="doWork"/>
+        <action name="events" class="com.isoft.iradar.web.action.core.EventsAction" method="doWork"/>
+        <action name="history" class="com.isoft.iradar.web.action.core.HistoryAction" method="doWork"/>
+        <action name="acknow" class="com.isoft.iradar.web.action.core.AcknowAction" method="doWork"/>
+        <action name="charts" class="com.isoft.iradar.web.action.core.ChartsAction" method="doWork"/>
+        <action name="screens" class="com.isoft.iradar.web.action.core.ScreensAction" method="doWork"/>
+        <action name="slides" class="com.isoft.iradar.web.action.core.SlidesAction" method="doWork"/>
+        <!--  
+        <action name="maps" class="com.isoft.iradar.web.action.core.MapsAction" method="doWork"/>
+        -->
+        <action name="discovery" class="com.isoft.iradar.web.action.core.DiscoveryAction" method="doWork"/>
+        <action name="srv_status" class="com.isoft.iradar.web.action.core.Srv_statusAction" method="doWork"/>
+        <!-- Administration -->
+        <action name="adm.gui" class="com.isoft.iradar.web.action.core.AdmGuiAction" method="doWork"/>
+        <action name="adm.housekeeper" class="com.isoft.iradar.web.action.core.AdmHousekeeperAction" method="doWork"/>
+        <action name="adm.iconmapping" class="com.isoft.iradar.web.action.core.AdmIconmappingAction" method="doWork"/>
+        <action name="adm.images" class="com.isoft.iradar.web.action.core.AdmImagesAction" method="doWork"/>
+        <action name="adm.macros" class="com.isoft.iradar.web.action.core.AdmMacrosAction" method="doWork"/>
+        <action name="adm.other" class="com.isoft.iradar.web.action.core.AdmOtherAction" method="doWork"/>
+        <action name="adm.regexps" class="com.isoft.iradar.web.action.core.AdmRegexpsAction" method="doWork"/>
+        <action name="adm.triggerdisplayoptions" class="com.isoft.iradar.web.action.core.AdmTriggerdisplayoptionsAction" method="doWork"/>
+        <action name="adm.triggerseverities" class="com.isoft.iradar.web.action.core.AdmTriggerseveritiesAction" method="doWork"/>
+        <action name="adm.valuemapping" class="com.isoft.iradar.web.action.core.AdmValuemappingAction" method="doWork"/>
+        <action name="adm.workingtime" class="com.isoft.iradar.web.action.core.AdmWorkingtimeAction" method="doWork"/>
+        <action name="proxies" class="com.isoft.iradar.web.action.core.ProxiesAction" method="doWork"/>
+        <action name="authentication" class="com.isoft.iradar.web.action.core.AuthenticationAction" method="doWork"/>
+        <action name="usergrps" class="com.isoft.iradar.web.action.core.UsergrpsAction" method="doWork"/>
+        <action name="users" class="com.isoft.iradar.web.action.core.UsersAction" method="doWork"/>
+        <action name="media_types" class="com.isoft.iradar.web.action.core.MediatypesAction" method="doWork"/>
+        <action name="scripts" class="com.isoft.iradar.web.action.core.ScriptsAction" method="doWork"/>
+        <action name="scripts_exec" class="com.isoft.iradar.web.action.core.ScriptsExecAction" method="doWork"/>
+        <action name="auditlogs" class="com.isoft.iradar.web.action.core.AuditlogsAction" method="doWork"/>
+        <action name="auditacts" class="com.isoft.iradar.web.action.core.AuditactsAction" method="doWork"/>
+        <action name="queue" class="com.isoft.iradar.web.action.core.QueueAction" method="doWork"/>
+        <action name="report3" class="com.isoft.iradar.web.action.core.Report3Action" method="doWork"/>
+        <action name="report4" class="com.isoft.iradar.web.action.core.Report4Action" method="doWork"/>
+        <action name="setup" class="com.isoft.iradar.web.action.core.SetupAction" method="doWork"/>
+         <!-- Inventory -->
+        <action name="hostinventoriesoverview" class="com.isoft.iradar.web.action.core.HostinventoriesoverviewAction" method="doWork"/>
+        <action name="hostinventories" class="com.isoft.iradar.web.action.core.HostinventoriesAction" method="doWork"/>
+        <!-- Reports -->
+        <action name="report1" class="com.isoft.iradar.web.action.core.Report1Action" method="doWork"/>
+        <action name="report2" class="com.isoft.iradar.web.action.core.Report2Action" method="doWork"/>
+        <action name="report5" class="com.isoft.iradar.web.action.core.Report5Action" method="doWork"/>
+        <action name="report6" class="com.isoft.iradar.web.action.core.Report6Action" method="doWork"/>
+        <!-- Charts -->
+        <action name="chart_bar" class="com.isoft.iradar.web.action.core.ChartBarAction" method="doWork"/>
+        <action name="chart" class="com.isoft.iradar.web.action.core.ChartAction" method="doWork"/>
+        <action name="chart2" class="com.isoft.iradar.web.action.core.Chart2Action" method="doWork"/>
+        <action name="chart3" class="com.isoft.iradar.web.action.core.Chart3Action" method="doWork"/>
+        <action name="chart4" class="com.isoft.iradar.web.action.core.Chart4Action" method="doWork"/>
+        <action name="chart5" class="com.isoft.iradar.web.action.core.Chart5Action" method="doWork"/>
+        <action name="chart6" class="com.isoft.iradar.web.action.core.Chart6Action" method="doWork"/>
+        <action name="chart7" class="com.isoft.iradar.web.action.core.Chart7Action" method="doWork"/>
+        <!--  benne code end -->
+        
+    </package>
+</struts>

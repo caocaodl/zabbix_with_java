@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sys_func PUBLIC "sys_func" "../libs/sys_func.dtd" >
+<sys>
+	<func func_name="监控中心" func_id="monitoring" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="" 
+		status="1" role="2" note="">
+		<func func_name="监控面板" func_id="dashboard" func_url="/platform/iradar/dashboard.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="" 
+			status="1" role="2" note="">
+		</func>	
+        <func func_name="发现中心" func_id="discovery" func_url="/platform/iradar/discovery.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func> 
+		<func func_name="监控矩阵" func_id="overview" func_url="/platform/iradar/overview.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+			status="1" role="2" note="">
+		</func>	
+		<func func_name="采集中心" func_id="latestdata" func_url="/platform/iradar/latest.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+			status="1" role="2" note="">
+		</func>	
+		<func func_name="预警中心" func_id="triggers" func_url="/platform/iradar/tr_status.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+			status="1" role="2" note="">
+		</func>	
+		<func func_name="事件中心" func_id="events" func_url="/platform/iradar/events.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+			status="1" role="2" note="">
+		</func>	
+        <func func_name="图形报表" func_id="graphs" func_url="/platform/iradar/charts.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="网站监控" func_id="web" func_url="/platform/iradar/httpmon.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func> 
+		<func func_name="服务质量" func_id="itsla" func_url="/platform/iradar/srv_status.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+			status="1" role="2" note="">
+		</func>	
+        <func func_name="监控大屏" func_id="screens" func_url="/platform/iradar/screens.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func> 
+	</func>
+    <func func_name="拓扑中心" func_id="maps" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon=""
+        status="1" role="2" note="">
+		<func func_name="网络拓扑" func_id="topos" func_url="/platform/iradar/maps.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+	        status="1" role="2" note="">
+	    </func>
+    </func>
+	<func func_name="资产中心" func_id="inventory" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon=""
+		status="1" role="2" note="">
+		<func func_name="资产概览" func_id="inventoryoverview" func_url="/platform/iradar/hostinventoriesoverview.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+			status="1" role="2" note="">
+		</func>
+		<func func_name="设备管理" func_id="hostinventories" func_url="/platform/iradar/hostinventories.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+			status="1" role="2" note="">
+		</func>
+	</func>
+    <func func_name="运维分析" func_id="" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon=""
+        status="1" role="2" note="">
+        <func func_name="服务器状态" func_id="report1" func_url="/platform/iradar/report1.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="可用性分析" func_id="report2" func_url="/platform/iradar/report2.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="TOPx分析" func_id="report5" func_url="/platform/iradar/report5.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="柱状报表" func_id="report6" func_url="/platform/iradar/report6.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+    </func>
+    <func func_name="系统管理" func_id="" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon=""
+        status="1" role="2" note="">
+        <func func_name="系统参数" func_id="setting" func_url="/platform/iradar/adm.gui.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="集群管理" func_id="proxies" func_url="/platform/iradar/proxies.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="认证管理" func_id="authentication" func_url="/platform/iradar/authentication.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="用户管理" func_id="usergrps" func_url="/platform/iradar/usergrps.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="通知机制" func_id="mediatypes" func_url="/platform/iradar/media_types.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="工具脚本" func_id="scripts" func_url="/platform/iradar/scripts.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+    </func>
+    <func func_name="平台审计" func_id="" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon=""
+        status="1" role="2" note="">
+        <func func_name="日志审计" func_id="auditlogs" func_url="/platform/iradar/auditlogs.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="消息队列" func_id="queue" func_url="/platform/iradar/queue.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="通知历史" func_id="report4" func_url="/platform/iradar/report4.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+    </func>
+    <func func_name="监控配置" func_id="" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon=""
+        status="1" role="2" note="">
+        <func func_name="设备分组" func_id="hostgroups" func_url="/platform/iradar/hostgroups.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="监控模型" func_id="templates" func_url="/platform/iradar/templates.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="设备管理" func_id="hosts" func_url="/platform/iradar/hosts.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="维护模式" func_id="maintenance" func_url="/platform/iradar/maintenance.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="网站监控" func_id="httpconf" func_url="/platform/iradar/httpconf.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="分析策略" func_id="actionconf" func_url="/platform/iradar/actionconf.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="监控大屏管理" func_id="screenconf" func_url="/platform/iradar/screenconf.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="幻灯片管理" func_id="slideconf" func_url="/platform/iradar/slideconf.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="拓扑管理" func_id="sysmaps" func_url="/platform/iradar/sysmaps.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="发现策略" func_id="discoveryconf" func_url="/platform/iradar/discoveryconf.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+        <func func_name="运维服务" func_id="services" func_url="/platform/iradar/services.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+    </func>
+</sys>

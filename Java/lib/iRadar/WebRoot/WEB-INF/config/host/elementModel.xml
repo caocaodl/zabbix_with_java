@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ElementModels>
+	<enterprise enterpriseOid="1.3.6.1.4.1.11." name="HP" symbol="hp">
+		<!-- HP 打印机 -->
+		<ElementModel sysOid="1.3.6.1.4.1.11.1" model="HP LaserJet Professional" category="Printer" />
+		<ElementModel sysOid="1.3.6.1.4.1.11.2.3.9.0" model="HP Jet-Direct Print Server" category="Printer" /> 
+	    <ElementModel sysOid="1.3.6.1.4.1.11.2.3.9.1" model="HP Jet-Direct Print Server" category="Printer" /> 
+	    <ElementModel sysOid="1.3.6.1.4.1.11.2.3.9.2" model="HP Jet-Direct Network Plotter" category="Printer" /> 
+	    <ElementModel sysOid="1.3.6.1.4.1.11.2.3.9.5" model="HP Jet-Direct J3113A" category="Printer" /> 
+	    <ElementModel sysOid="1.3.6.1.4.1.11.2.3.9.6" model="HP Jet-Direct JD86" category="Printer" />
+	    <!-- HP-Storage-->
+	    <ElementModel sysOid="1.3.6.1.4.1.11.2.51" symbol="HP StorageWorks" model="HP StorageWorks MSA2312i" category="STORAGE"/>
+	    <!-- HP-UX-->
+	    <ElementModel sysOid="1.3.6.1.4.1.11.2.3.2.2" model="HP9000s300" symbol="HP-UX" category="Server"/> 
+	    <ElementModel sysOid="1.3.6.1.4.1.11.2.3.2.3" model="HP9000s800" symbol="HP-UX" category="Server"/> 
+	    <ElementModel sysOid="1.3.6.1.4.1.11.2.3.2.5" model="HP9000s700" symbol="HP-UX" category="Server"/> 	    
+	    <ElementModel sysOid="1.3.6.1.4.1.11.2.3.2.6" model="HP Integrity rx" symbol="HP-UX" category="Server"/> 		    
+	    <ElementModel sysOid="1.3.6.1.4.1.11.2.3.7.11.33.4.1.1" model="GbE2c Ethernet Blade Switch" category="Switch"/>
+        <ElementModel sysOid="1.3.6.1.4.1.11.5.7.1.2" model="HP Blade System" category="Ignore" /> 	
+	    <ElementModel sysOid="1.3.6.1.4.1.11.5.7.5.1" model="HP Virtual Connect Ethernet Modules" category="Ignore"/>
+	</enterprise>
+
+	<enterprise enterpriseOid="1.3.6.1.4.1.2." name="IBM" symbol="ibm">
+	    <ElementModel sysOid="1.3.6.1.4.1.2.3.1.2.1.1.2" model="IBM RS/6000" symbol="AIX" category="Server" /> 
+	    <ElementModel sysOid="1.3.6.1.4.1.2.3.1.2.1.1.3" model="IBM PowerPC" symbol="AIX" category="Server" /> 
+	    <ElementModel sysOid="1.3.6.1.4.1.2.3.1.2.1.1.31" model="IBM RISC System" symbol="AIX" category="Server" /> 
+	</enterprise>
+	<enterprise enterpriseOid="1.3.6.1.4.1.9." name="Cisco" symbol="cisco">
+	    <ElementModel sysOid="1.3.6.1.4.1.9.1.359" model="catalyst2950T24" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.9.1.745" model="ASA5505" category="Firewall" />
+	    <ElementModel sysOid="1.3.6.1.4.1.9.1.828" model="AIR-WLC2112-K9" category="Controller" /> 
+	    <ElementModel sysOid="1.3.6.1.4.1.9.5.7" model="catalyst5000" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.9.5.20" model="catalyst2820" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.9.5.28" model="catalyst1900C" category="Switch" />	
+	    <ElementModel sysOid="1.3.6.1.4.1.9.6.1.82.24.1" model="SF300-24" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.9.6.1.82.24.2" model="SF300-24P" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.9.6.1.83.28.1" model="SG300-28" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.9.6.1.83.28.2" model="SG300-28P" category="Switch" />
+	</enterprise>			
+	<enterprise enterpriseOid="1.3.6.1.4.1.4874." name="Juniper" symbol="juniper">
+	    <ElementModel sysOid="1.3.6.1.4.1.4874.1.1.1.1.5" model="ERX310" category="RouteSwitch" />
+	</enterprise>			
+	<enterprise enterpriseOid="1.3.6.1.4.1.311." name="Microsoft">
+	    <!-- 有sysDescr的必须放在前面-->
+	    <ElementModel sysOid="1.3.6.1.4.1.311.1.1.3.1.1" symbol="Windows7" sysDescr="Version 6" category="Server" />	    
+	    <ElementModel sysOid="1.3.6.1.4.1.311.1.1.3.1.1" symbol="WindowsXP" category="Server" />
+	    <ElementModel sysOid="1.3.6.1.4.1.311.1.1.3.1.2" symbol="Windows2012" sysDescr="Version 6.2" category="Server" />
+	    <ElementModel sysOid="1.3.6.1.4.1.311.1.1.3.1.2" symbol="Windows2008" sysDescr="Version 6.0" category="Server" />	    
+	    <ElementModel sysOid="1.3.6.1.4.1.311.1.1.3.1.2" symbol="Windows2008" sysDescr="Version 6.1" category="Server" />
+	    <ElementModel sysOid="1.3.6.1.4.1.311.1.1.3.1.3" symbol="Windows2008" sysDescr="Version 6.1" category="Server" />	    
+	    <ElementModel sysOid="1.3.6.1.4.1.311.1.1.3.1.2" symbol="Windows2003" category="Server" /> 	    
+	    <ElementModel sysOid="1.3.6.1.4.1.311.1.1.3.1.3" symbol="Windows2000" category="Server" />
+	</enterprise>	
+	<enterprise enterpriseOid="1.3.6.1.4.1.2272." name="Nortel" symbol="nortel">
+		<ElementModel sysOid="1.3.6.1.4.1.45.3.30.1" model="BayStack350F-HD" category="Switch" />
+        <ElementModel sysOid="1.3.6.1.4.1.45.3.35.1" model="BayStack450-24T" category="Switch" />
+        <ElementModel sysOid="1.3.6.1.4.1.45.3.52.1" model="BayStack5510-24T" category="Switch" />
+        <ElementModel sysOid="1.3.6.1.4.1.45.3.53.1" model="BayStack5510-48T" category="Switch" />
+        <ElementModel sysOid="1.3.6.1.4.1.45.3.57.2" model="BayStack425-24T" category="Switch" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.2" model="rcA1100" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.6" model="rcA1250" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.7" model="rcA1150" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.8" model="rcA1200" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.9" model="rcA1050" />				
+		<ElementModel sysOid="1.3.6.1.4.1.2272.20" model="rcA740" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.21" model="rcA750" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.22" model="rcA790" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.23" model="rcA750S" />		
+		<ElementModel sysOid="1.3.6.1.4.1.2272.30" model="rcA8610" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.31" model="rcA8606" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.32" model="rcA8110" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.33" model="rcA8106" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.34" model="rcA8603" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.35" model="rcA8103" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.36" model="rcA8110co" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.37" model="rcA8610co" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.40" model="rcBayStack" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.42" model="rcA1424" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.43" model="rcA1648" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.44" model="rcA1612" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.45" model="rcA1624" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.47" model="rcAtr8310" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.48" model="rcAtr8306" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.49" model="rcAtr8010" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.50" model="rcAtr8006" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.1623064842" model="rcA8010co" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.280887555" model="rcA8003" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.280887558" model="rcA8006" />
+		<ElementModel sysOid="1.3.6.1.4.1.2272.280887562" model="rcA8010" />		
+	</enterprise>					
+	<enterprise enterpriseOid="1.3.6.1.4.1.1751." name="Lucent" symbol="lucent">
+		<ElementModel sysOid="1.3.6.1.4.1.1751.1.18.2" model="PSAX 1250" category="ATMSwitch" />
+		<ElementModel sysOid="1.3.6.1.4.1.1751.1.18.7" model="PSAX 2300" category="ATMSwitch" />
+		<ElementModel sysOid="1.3.6.1.4.1.1751.1.18.8" model="PSAX 4500" category="ATMSwitch" />
+		<ElementModel sysOid="1.3.6.1.4.1.1751.1.18.9" model="PSAX 1000" category="ATMSwitch" />
+		<ElementModel sysOid="1.3.6.1.4.1.277.1" model="GX 550" category="ATMSwitch" /> 		
+	</enterprise>	
+	<!-- Alcatel-Lucent -->
+	<enterprise enterpriseOid="1.3.6.1.4.1.6486.800." name="Lucent" symbol="lucent">
+		<ElementModel sysOid="1.3.6.1.4.1.6486.800.1.1.2.1.7.1.1" model="Lucent Switch" category="Switch" />
+	</enterprise>					
+	<!-- Zhongxing Telecom Co. -->
+	<enterprise enterpriseOid="1.3.6.1.4.1.3902." name="ZTE" symbol="zte" >
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.3.100.10" model="T64G" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.3.100.20" model="ZXR10 5928" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.3.100.25" model="T40G" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.15.2.11.2" model="ZXR10 2928-SI" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.15.2.3.4" model="ZXR10 2852S-LE" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.15.2.4.5" model="ZXR10 2826A-PS" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.1004.9806.2.1.1" model="ZXDSL 9806H" category="Switch" /><!-- 光交换 -->	    
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.1015.3.1.220.1.2" model="ZXA10 C220" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.1015.300.3.1" model="ZXA10 C300" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.1015.803.2.1.1" model="ZXA10 F803" category="Switch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.3902.1015.822.1.1.1" model="ZXA10 F822" category="Switch" />
+	</enterprise>    
+	<!-- Riverstone Networks -->
+	<enterprise enterpriseOid="1.3.6.1.4.1.5567." name="ZTE" symbol="zte" />	
+	<enterprise enterpriseOid="1.3.6.1.4.1.4881." name="Ruijie" symbol="ruijie" >
+	    <ElementModel sysOid="1.3.6.1.4.1.4881.1.1.10.1.18" model="s2126S" category="RouteSwitch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.4881.1.1.10.1.19" model="s2126" category="RouteSwitch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.4881.1.1.10.1.41" model="s5750-24GT" category="RouteSwitch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.4881.1.1.10.1.44" model="s8610" category="RouteSwitch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.4881.1.1.10.1.48" model="s3760-24" category="RouteSwitch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.4881.1.1.10.1.53" model="s5750S-24GT" category="RouteSwitch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.4881.1.1.10.1.58" model="s7606" category="RouteSwitch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.4881.1.1.10.1.82" model="s2628G" category="RouteSwitch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.4881.1.1.10.1.83" model="s2652G" category="RouteSwitch" />
+	    <ElementModel sysOid="1.3.6.1.4.1.4881.1.1.10.1.118" model="s2952G-E" category="RouteSwitch" />
+	</enterprise>    
+	<!-- Maipu Communication Technolog Co. -->
+	<enterprise enterpriseOid="1.3.6.1.4.1.5651." name="Maipu" symbol="maipu" >
+	    <ElementModel sysOid="1.3.6.1.4.1.5651.1.31.7" model="mp-router" category="Router" />
+	    <ElementModel sysOid="1.3.6.1.4.1.5651.1.31.10" model="mp-router" category="Router" />
+	    <ElementModel sysOid="1.3.6.1.4.1.5651.1.40" model="mp-router" category="Router" />
+	    <ElementModel sysOid="1.3.6.1.4.1.5651.1.54" model="mp-router" category="Router" />	    
+	    <ElementModel sysOid="1.3.6.1.4.1.5651.1.67" model="maipu3780" category="Router" />
+	</enterprise>
+	<!-- Allied Telesyn -->
+	<enterprise enterpriseOid="1.3.6.1.4.1.207." name="Allied" symbol="allied" >
+	  	<ElementModel sysOid="1.3.6.1.4.1.207.1.4.67" model="at-8024GB" category="Switch" />
+	  	<ElementModel sysOid="1.3.6.1.4.1.207.1.4.86" model="at-8026FC" category="Switch" />
+	  	<ElementModel sysOid="1.3.6.1.4.1.207.1.14.21" model="at-Rapier48i" category="Switch" />
+	</enterprise>  	
+
+	<enterprise enterpriseOid="1.3.6.1.4.1.2011." name="Huawei" symbol="huawei">
+		<ElementModel sysOid="1.3.6.1.4.1.2011.2.176.1" model="USG2130" category="Firewall" />
+		<ElementModel sysOid="1.3.6.1.4.1.2011.2.183.1" model="USG2210" category="Firewall" />
+		<ElementModel sysOid="1.3.6.1.4.1.2011.2.23.92" model="s2326TP-EI" sysDescr="S2326TP-EI" category="RouteSwitch" />
+		<ElementModel sysOid="1.3.6.1.4.1.2011.2.23.92" model="s2326TP" category="RouteSwitch" />
+		<ElementModel sysOid="1.3.6.1.4.1.2011.2.4.1.0" model="s2403F" category="RouteSwitch" />
+	</enterprise>
+	<enterprise enterpriseOid="1.3.6.1.4.1.25506." name="H3C" symbol="h3c">
+		<ElementModel sysOid="1.3.6.1.4.1.25506.1.194" model="hh3c-sr6608" category="Router" />
+		<ElementModel sysOid="1.3.6.1.4.1.25506.1.372" model="SecPath T1000-A(IPS)" category="Firewall" />
+	</enterprise>
+	<!-- NETGEAR -->
+	<enterprise enterpriseOid="1.3.6.1.4.1.4526." name="Netgear" symbol="netgear">
+		<ElementModel sysOid="1.3.6.1.4.1.4526.100.6.5" model="VPN Firewall FVS318v3" category="Firewall" />
+		<ElementModel sysOid="1.3.6.1.4.1.4526.100.9.1" model="Chassisswitch gcm9600" category="Switch" />
+		<ElementModel sysOid="1.3.6.1.4.1.4526.100.9.5" model="Chassisswitch gcm8810" category="Switch" />		
+	</enterprise>	
+	<!-- ruckus -->
+	<enterprise enterpriseOid="1.3.6.1.4.1.25053." name="Ruckus" symbol="ruckus">
+		<ElementModel sysOid="1.3.6.1.4.1.25053.3" model="ZF7762-S" category="AccessPoint" />
+		<ElementModel sysOid="1.3.6.1.4.1.25053.3.1.4.7" model="ZF7761CM" category="AccessPoint" />
+		<ElementModel sysOid="1.3.6.1.4.1.25053.3.1.4.8" model="ZF7762S" category="AccessPoint" />
+		<ElementModel sysOid="1.3.6.1.4.1.25053.3.1.4.9" model="ZF7762T" category="AccessPoint" />		
+	</enterprise>
+	<enterprise enterpriseOid="1.3.6.1.4.1.15922." name="易尚" symbol="yishang">
+		<ElementModel sysOid="1.3.6.1.4.1.15922.40001" label="ES4000A" category="Firewall" />
+		<ElementModel sysOid="1.3.6.1.4.1.15922.9041" label="ES904A" category="Firewall" />
+	</enterprise>
+	<enterprise enterpriseOid="1.3.6.1.4.1.28557." name="Hillstone" symbol="hillstone">
+		<ElementModel sysOid="1.3.6.1.4.1.28557.40001" label="ES4000A" category="Firewall" />
+		<ElementModel sysOid="1.3.6.1.4.1.28557.9041" label="ES904A" category="Firewall" />
+	</enterprise>		
+				
+	<enterprise enterpriseOid="1.3.6.1.4.1.171." name="DLink" symbol="dlink">
+		<ElementModel sysOid="1.3.6.1.4.1.171.11.10.1" label="DP-301U" category="Server" />
+	</enterprise>			
+	<enterprise enterpriseOid="1.3.6.1.4.1.318." name="APC" symbol="apc">
+		<ElementModel sysOid="1.3.6.1.4.1.318.1.3.2.15" model="smartUPS10000" category="UPS" />
+		<ElementModel sysOid="1.3.6.1.4.1.318.1.3.2.16" model="smartUPS1500" category="UPS" />
+		<ElementModel sysOid="1.3.6.1.4.1.318.1.3.5.4" model="symmetraUPS16kVA" category="UPS" />
+	</enterprise>
+	<ElementModel sysOid="1.3.6.1.4.1.8072.3.2.8" symbol="FreeBSD" category="Server" enterprise="Unknown"/>
+	<ElementModel sysOid="1.3.6.1.4.1.8072.3.2.10" symbol="Linux" sysDescr="Ubuntu" category="Server" enterprise="Ubuntu"/>
+	<ElementModel sysOid="1.3.6.1.4.1.8072.3.2.10" symbol="Linux" category="Server" enterprise="Redhat"/>
+	<ElementModel sysOid="0.1" symbol="Linux" category="Server" enterprise="Kylin"/>
+	<ElementModel sysOid="1.3" symbol="Linux" category="Server" enterprise="Kylin"/>
+	
+	
+	<!-- infortrend -->
+	<ElementModel sysOid="1.3.6.1.4.1.1714.1.1" symbol="infortrend" model="DS S16F-R1840-4" category="STORAGE" enterprise="Infortrend"/>
+	<ElementModel sysOid="1.3.6.1.4.1.3149.1.1" symbol="infortrend_3149" model="DS S16F-R1840-4" category="STORAGE" enterprise="Infortrend"/>
+	
+	
+	<ElementModel sysOid="1.3.6.1.4.1.8072.3.2.3" model="SunOS" symbol="Solaris" category="Server" enterprise="Oracle" />
+	<ElementModel sysOid="1.3.6.1.4.1.42.2.1.1" model="SunFire" symbol="Solaris" category="Server" enterprise="Oracle" />
+   	<!-- 深信服 -->	  
+	<ElementModel sysOid="1.3.6.1.4.1" sysDescr="Sinfor" symbol="sangfor" category="Firewall" enterprise="Sangfor"/>		
+	     	
+    <!-- 柯尼卡美能达 打印机 -->
+	<ElementModel sysOid="1.3.6.1.4.1.18334.1.1.1.2.1.40.2.1" model="KONICA MINOLTA" category="Printer" />
+	<ElementModel sysOid="1.3.6.1.4.1.18334.1.1.1.2.1.19.2.1" model="KONICA MINOLTA" category="Printer" />
+	<ElementModel sysOid="1.3.6.1.4.1.18334.1.1.1.2.1.7.1" model="KONICA MINOLTA" category="Printer" />
+	<!-- Fuji Xerox -->
+	<ElementModel sysOid="1.3.6.1.4.1.297.1.11.93.1.21.5.1.1" model="Fuji Xerox" category="Printer" />
+	<ElementModel sysOid="1.3.6.1.4.1.297.1.11.93.1.28.7.1.1" model="Fuji Xerox" category="Printer" />	
+	<ElementModel sysOid="1.3.6.1.4.1.297.1.11.93.1.35.17.5.2" model="Fuji Xerox" category="Printer" />
+
+	<ElementModel sysOid="1.3.6.1.4.0" model="Printer Server" category="Printer" />
+	<!-- CANON 打印机 -->
+	<ElementModel sysOid="1.3.6.1.4.1.1602.4.7" model="CANON Network Multi-PDL Printer" category="Printer" />
+	<ElementModel sysOid="1.3.6.1.4.1.1602.4.2" model="Canon LBP6300" category="Printer" />
+	<!-- Okidata 打印机 -->
+	<ElementModel sysOid="1.3.6.1.4.1.2001.1.1.1.1" model="Okidata" category="Printer" />
+	<!-- Avaya IP PHONE -->
+	<ElementModel sysOid="1.3.6.1.4.1.6889.1.69.1.6" model="Avaya IP PHONE" category="Ignore" />
+	<!-- Raisecom Scientific & Technology Development Co. (瑞斯康达)-->
+	<ElementModel sysOid="1.3.6.1.4.1.8886.2" model="unknown" category="Ignore" />		
+	<!-- Phoenixtec Power Co. -->
+	<ElementModel sysOid="1.3.6.1.4.1.935" model="UPS Agent" category="Ignore" />
+	<!-- Ricoh Black and White Copier -->
+	<ElementModel sysOid="1.3.6.1.4.1.367.1.1" model="Savin 2070DP EB-70" category="Ignore" />
+	<ElementModel sysOid="1.3.6.1.4.1.442.1.1.1.9.0" model="BMC Software" category="Ignore" />
+	<!-- Moxa Technologies Co.-->
+	<ElementModel sysOid="1.3.6.1.4.1.8691.2.7" model="Moxa" category="Ignore" />
+	<!-- Brother Industries, iLtd..-->
+	<ElementModel sysOid="1.3.6.1.4.1.2435.2.3.9.1" model="Brother" category="Printer" />
+	<!-- Guangzhou Gaoke Communication Equipment Co. , Ltd.-->
+	<ElementModel sysOid="1.3.6.1.4.1.7452.1.11.2.1" model="Gaoke" category="Ignore" />
+	<!-- RIH and RPS,Ricoh-->
+	<ElementModel sysOid="1.3.6.1.4.1.22163.1.1.1.8.11" model="Ricoh" category="Ignore" />
+	<!-- E260dn Printer -->
+	<ElementModel sysOid="1.3.6.1.4.1.641.1.71106851" model="E260dn" category="Ignore" />
+	<!-- KONICA_MINOLTA_HOLDINGS_INC -->
+	<ElementModel sysOid="1.3.6.1.4.1.18334.1.1.1.1.1.23.1.1" model="KONICA" category="Ignore" />	
+	<ElementModel sysOid="1.3.6.1.4.1.99.1.1.3.11" model="ntEMANATEMasterAgent" category="Ignore" />
+	<!-- Clickarrray Networks -->
+	<ElementModel sysOid="1.3.6.1.4.1.7564" model="CA SNMP MIB extensions" category="Ignore" />
+	<!-- AudioCodes -->
+	<ElementModel sysOid="1.3.6.1.4.1.5003.8.1.1.56" model="CA SNMP MIB extensions" category="Ignore" />
+	<!-- Dell 远程程控器 -->
+	<ElementModel sysOid="1.3.6.1.4.1.674.10892.2" category="Ignore" />
+	<ElementModel sysOid="1.3.6.1.4.1.674.10892.5" category="Ignore" />	
+</ElementModels>

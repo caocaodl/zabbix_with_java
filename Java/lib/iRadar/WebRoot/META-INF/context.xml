@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <Resource name="jdbc/isoft" 
+    auth="Container" 
+    type="javax.sql.DataSource" 
+    factory="org.logicalcobwebs.proxool.ProxoolDataSource" 
+    proxool.alias="isoft" 
+    user="root" 
+    password="root"
+    useUnicode="true"
+    characterEncoding="utf8"
+    noAccessToProcedureBodies="true"
+    proxool.prototype-count="0"
+    proxool.minimum-connection-count="20"
+    proxool.maximum-connection-count="60"
+    proxool.simultaneous-build-throttle="10"
+    proxool.house-keeping-sleep-time="50000"
+    proxool.house-keeping-test-sql="SELECT CURRENT_DATE"
+    proxool.maximum-connection-lifetime="90000"
+    proxool.maximum-active-time="90000"
+    proxool.statistics-log-level="ERROR"
+    proxool.driver-url="jdbc:mysql://192.168.30.59:3306/isoft_app" 
+    proxool.driver-class="com.mysql.jdbc.Driver"/>
+
+    <Resource name="jdbc/iradar" 
+    auth="Container" 
+    type="javax.sql.DataSource" 
+    factory="org.logicalcobwebs.proxool.ProxoolDataSource" 
+    proxool.alias="iradar" 
+    user="root" 
+    password="root"
+    useUnicode="true"
+    characterEncoding="utf8"
+    noAccessToProcedureBodies="true"
+    proxool.prototype-count="0"
+    proxool.minimum-connection-count="20"
+    proxool.maximum-connection-count="60"
+    proxool.simultaneous-build-throttle="10"
+    proxool.house-keeping-sleep-time="50000"
+    proxool.house-keeping-test-sql="SELECT CURRENT_DATE"
+    proxool.maximum-connection-lifetime="90000"
+    proxool.maximum-active-time="90000"
+    proxool.statistics-log-level="ERROR"
+    proxool.driver-url="jdbc:mysql://192.168.30.59:3306/iradar" 
+    proxool.driver-class="com.mysql.jdbc.Driver"/>
+    
+</Context>
