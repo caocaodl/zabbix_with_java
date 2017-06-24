@@ -1,0 +1,12 @@
+QueryList=AveWaitForLock,TotalLogSpAvail,TotalLogSpUsed,ApplCommitsAttempted,ApplCount,Version,BpHitRatio,SortTime,alive
+AveWaitForLock.Query=select (ap.lock_wait_time/ap.lock_waits) as "Avg Wait(ms)" from sysibmadm.snapappl_info ai,sysibmadm.snapappl ap where ai.agent_id=ap.agent_id and ap.lock_waits>0 
+AveWaitForLock.NoDataFound=0
+TotalLogSpAvail.Query=select ( 1.0*TOTAL_LOG_AVAILABLE) from TABLE(SNAP_GET_DB(CAST (NULL AS VARCHAR(128)), -2))
+TotalLogSpUsed.Query=select ( 1.0*TOTAL_LOG_USED) from TABLE(SNAP_GET_DB(CAST (NULL AS VARCHAR(128)), -2))
+ApplCommitsAttempted.Query=select sum(total_app_commits) from SYSIBMADM.MON_CONNECTION_SUMMARY
+ApplCount.Query=select count(*) from table(snapshot_appl('',-2))
+Version.Query=SELECT service_level FROM TABLE(sysproc.env_get_inst_info())
+BpHitRatio.Query=select substr(bp_name,1,30) as bp_name, total_hit_ratio_percent from sysibmadm.bp_hitratio where bp_name not like 'IBMSYSTEM%'
+BpHitRatio.AddSpaces=true
+SortTime.Query=select sum(total_sort_time) from SYSIBMADM.SNAPDYN_SQL
+alive.Query=SELECT 1 from SYSIBM.SYSVERSIONS

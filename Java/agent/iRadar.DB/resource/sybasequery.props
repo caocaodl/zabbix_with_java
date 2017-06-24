@@ -1,0 +1,17 @@
+#QueryList=dbsize,logsize,logusedsize,users_locked,session_active,session_inactive,locks
+QueryList=dbsize,logsize,logusedsize,users_locked,session_active,session_inactive
+#QueryList=session_active,session_inactive,locks
+
+#statistic of database
+
+dbsize.Query=select sum(size * abs(sign(segmap - 4))) / 512.0 from master..sysusages where segmap < 5
+
+logsize.Query=select sum(size * (1 - abs(sign(segmap - 4)))) / 512.0 from master..sysusages where segmap < 5
+
+logusedsize.Query=select sum((size - curunreservedpgs(dbid, lstart, unreservedpgs))* (1 - abs(sign(segmap - 4)))) / 512.0 from master..sysusages where segmap < 5
+
+
+users_locked.Query=select count(*) from master..sysprocesses where blocked>0
+session_active.Query=select count(*) from master..sysprocesses where status='running'
+session_inactive.Query=select count(*) from master..sysprocesses where status<>'running'
+locks.Query=sp_lock

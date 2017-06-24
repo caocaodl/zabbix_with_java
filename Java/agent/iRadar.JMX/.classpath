@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_21"/>
+	<classpathentry kind="lib" path="zlib/websphere/com.ibm.ws.admin.client_8.5.0.jar"/>
+	<classpathentry kind="lib" path="zlib/websphere/ibmorb.jar"/>
+	<classpathentry kind="lib" path="zlib/websphere/ibmorbapi.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
