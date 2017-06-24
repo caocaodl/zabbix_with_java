@@ -1,0 +1,270 @@
+BODY{
+	background: #f2f2f2;
+}
+#dashboard_wdgt{
+	background: #fff;
+	padding: 15px 15px 15px 0;
+}
+#dashboard_wdgt .header, #dashboard_wdgt .footer, #dashboard_wdgt .footer .textwhite{
+	color: #444;
+	font-weight: normal;
+	font-size: 14px;
+}
+#dashboard_wdgt .footer, #dashboard_wdgt .footer .textwhite{
+	font-size: 12px;
+	text-align: right;
+}
+
+#dashboard_wdgt .footer{
+	background: #f7f7f7;
+	border-top: 1px rgba(5,143,206,0.7) solid;
+	border-radius: 0px;
+}
+#dashboard_wdgt .headeractions, #dashboard_wdgt .column .widget, #dashboard_wdgt .widget{
+	padding: 0;
+	box-shadow: 0px 2px 2px #d8d8d8;
+	border:1px #d8d8d8 solid;
+}
+#dashboard_wdgt .column{
+	margin: 0 15px 0 0;
+}
+.ui-widget{
+	margin-top: 15px;
+}
+.originalblue .ui-widget-header a{
+	color: #444;
+	font-weight: normal;
+}
+
+/* home page icon start */
+
+.iconconfig{
+	background-image: url(images/dashboard/config_h1.png);
+}
+.iconconfig, .iconconfig:hover{
+	border: none;
+	box-shadow: none;
+}
+
+.arrowup{
+	background-image: url(images/dashboard/arrowup.png);
+}
+
+.arrowdown{
+	background-image: url(images/dashboard/arrowdown.png);
+}
+
+.iconmenu{
+	background-image: url(images/dashboard/menu.png);
+}
+
+ul.favorites li{
+	list-style: url(images/dashboard/chart.png);
+	margin:4px 0 4px 28px;
+	padding-left:5px;
+}
+
+#dashboard_wdgt .header, .header td.header_l, #hat_faultHis_widget .header{
+	background: #f8f9fa no-repeat 17px center;
+	padding-left:45px;
+	margin-bottom: 0;	
+}
+
+
+#hat_favgrph_widget .header, #hat_noRepFault_widget .header{
+	background-image: url(images/dashboard/user_figure.png);
+}
+#hat_favmap_widget .header{
+	background-image:url(images/dashboard/user_topology.png);
+}
+
+#hat_favscr_widget .header{
+	background-image:url(images/dashboard/user_sift.png);
+}
+
+#hat_syssum_widget .header, #hat_VMStatus_widget .header, #hat_VMStatus_widget .header{
+	background-image:url(images/dashboard/system_state.png);
+}
+
+#hat_lastiss_widget .header{
+	background-image:url(images/dashboard/lastiss.png);
+}
+
+#hat_stsrda_widget .header{
+	background-image:url(images/dashboard/stsrda.png);
+}
+
+#hat_hoststat_widget .header, #hat_todayArtSts_widget .header, #hat_monStaSts_widget .header{
+	background-image:url(images/dashboard/facility_state.png);
+}
+
+#hat_webovr_widget .header{
+	background-image:url(images/dashboard/webovr.png);
+}
+
+#hat_cloudSerStat_widget .header{
+	background-image:url(images/dashboard/cloudserstat.png);
+}
+
+#hat_totalSituation_widget .header{
+	background-image:url(images/dashboard/totalsituation.png);
+}
+
+#hat_resUsedRate_widget .header, #hat_resUsed_widget .header{
+	background-image:url(images/dashboard/resusedrate.png);
+}
+
+#hat_dscvry_widget .header{
+	background-image:url(images/dashboard/dscvry.png);
+}
+
+#hat_topN_widget .header{
+	background-image:url(images/dashboard/topn.png);
+}
+
+#hat_platformInfo_widget .header, #hat_Announcement_widget .header{
+	background-image:url(images/dashboard/favplatforminfo.png);
+}
+
+.originalblue .ui-widget-content a, TABLE.tableinfo > tbody tr td, #dashboard_wdgt .header{
+	text-decoration:none;
+	color:#727272;
+}
+
+
+/* dashboard -> platform info  */
+.clear {
+	clear: both;
+	line-height: 0;
+	font-size: 0
+}
+#hat_platformInfo .ctn{
+	float: left;
+	padding-top: 80px;
+	background: no-repeat center 20px;
+	width: 60px;
+	text-align: center;
+	margin: 0 10px;
+}
+#hat_platformInfo DIV DIV DIV{
+	font-weight: bold;
+	font-size: 1.2em;
+}
+#hat_platformInfo DIV DIV SPAN{
+	color: #888;
+}
+
+
+/* home page icon end */
+
+/* monitoring panel srart*/
+.header td.header_l{
+	background-image:url(images/dashboard/monitoring_panel.png);
+	background-position:2px center;
+}
+
+#dashboard_wdgt table.header, .header td.header_l{
+	padding-left:6px;
+	text-indent:22px;
+}
+
+.floatright{
+	text-indent:0px;
+}
+/* monitoring panel end*/
+
+/*Capacity start ��ҳ������*/
+
+.pum_o_submenu .pum_oheader, .pum_o_submenu, .pum_b_submenu, .pum_o_item{
+	border:none;
+	-webkit-border-radius:2px;
+	-moz-webkit-border-radius:2px;
+	border-radius:2px;
+	background:#F3F7FC;
+	color:#727272;
+}
+
+.pum_iheader{
+	color:#727272;
+}
+
+ .pum_b_submenu, .pum_o_item{
+ 	background:#F3F7FC;
+ }
+
+.pum_oheader, .pum_o_submenu{
+	background:#fff;
+	border:none;
+}
+.pum_o_item{
+	display: inline-block;
+}
+.pum_o_item:hover{
+	text-decoration:none;
+	background:#FFD6AC;
+}
+
+.pum_iheader, .pum_o_submenu .pum_i_submenu{
+	background:no-repeat 10px center;
+	padding-left:28px;
+	margin:0;
+}
+
+.pum_oheader .user_figure{
+	background-image:url(images/dashboard/user_figure_gray.png);
+}
+
+ #hat_faultHis_widget .header{
+ 	background-image:url(images/dashboard/user_figure_big_gray.png);
+ }
+
+.pum_o_submenu .add{
+	background-image:url(images/dashboard/create_gray.png);
+}
+
+.pum_o_submenu .remove {
+	background-image:url(images/dashboard/delete_gray.png);
+}
+
+.triangle {
+	background:#fff no-repeat 95% center;
+	background-image:url(images/dashboard/arrow.png);
+}
+
+a.triangle:hover{
+	background:#FFD6AC url(images/dashboard/arrow.png) no-repeat 95% center;
+}
+
+.pum_o_submenu:hover{
+	background:#FFD6AC;
+}
+
+.madkdiv{
+	position:absolute;
+	z-index:1002;
+	left:30%;
+	top:30%; 
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	background:#fff;
+	border:1px solid #F16436;
+	width:45%;
+	height:180px;
+	overflow:hidden;
+	overflow-x:auto;
+	overflow-y:auto;
+	filter:alpha(opacity=100);
+}
+
+.madkdiv p.p_button input.buttonorange{
+	margin-left:340px !important;
+}
+.madkdiv div.p_text{
+	padding:0 15px 0 15px;
+}
+
+.madkdiv h4{
+	font-size:18px;
+}
+/*Capacity end*/

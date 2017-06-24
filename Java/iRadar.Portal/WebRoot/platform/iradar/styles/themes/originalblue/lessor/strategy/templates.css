@@ -1,0 +1,21 @@
+/*策略中心.模型策略*/
+
+
+#macrosFormList .formlist .dt{
+	display:none;
+}
+
+ul.formlist .formrow .dd{
+	margin-left: 0;
+}
+
+.formElementTable tr td{
+	padding:5px 5px 5px 0;
+}
+
+/*定义模型策略下方第二个select width*/
+#hosts_left,
+#hosts_right{
+	max-width:20em !important;
+}
+

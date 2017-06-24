@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="iradar-dashboard" namespace="/platform/iradar" extends="default">
+        <action name="dashboards" class="com.isoft.iradar.web.action.DashBoardAction" method="show">
+        	<result>/WEB-INF/views/platform/dashboard.jsp</result>
+        </action>
+        <action name="tenantdashboards" class="com.isoft.iradar.web.action.TenantDashBoardAction" method="show">
+        	<result>/WEB-INF/views/platform/tenantDashboard.jsp</result>
+        </action>
+    </package>
+</struts>

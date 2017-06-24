@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>(MYSQL)</comment>
+	
+	<!-- 获取审批详情 -->
+	<entry key="GET_PROCESS">
+        <![CDATA[
+        	SELECT 
+				h.username               username#,
+				h.approve_result             result#,
+				h.description                   description#,
+				h.operating_time         operating_time#
+			FROM
+				i_host_process_monitor h
+			WHERE h.hostid=#{hostid}
+			ORDER BY h.processid
+		]]>
+	</entry>
+	
+<!-- 获取发布前的监控指标数目 -->
+	<entry key="SQL_PROCESS_REMARK_NUM">
+        <![CDATA[
+        	SELECT 
+        	   username  name#
+			FROM
+				i_host_process_monitor m
+			WHERE m.hostid=#{hostid}
+		]]>
+	</entry>
+	
+	<!-- 获取审批备注名称 -->
+	<entry key="SQL_PROCESS_REMARK">
+        <![CDATA[
+        	SELECT 
+				m.description       description#
+			FROM
+				i_host_process_monitor m
+			WHERE m.hostid=#{hostid}
+			ORDER BY m.processid desc
+			LIMIT 0,1
+		]]>
+	</entry>
+	
+	
+	<!-- ******************************添加操作部分********************************************-->
+	<!-- 在审批表主添加新审批备注-->
+	<entry key="ADD_PROCESS_REMARK">
+         <![CDATA[
+       		INSERT INTO i_host_process_monitor
+				(hostid,userid,username,approve_result,operating_time,description)
+			VALUES
+				(#{hostid},#{userid},#{username},#{approve_result},now(),#{description})
+		]]>
+	</entry>
+	<!-- 在租户模型副表中，创建新的监控模型-->
+	<entry key="ADD_VICE_HOST">
+         <![CDATA[
+       		INSERT INTO i_tenant_hosts
+				(hostid,name,flag) 
+			VALUES
+				(#{hostid},#{name},#{flag})
+		]]>
+	</entry>
+	
+	
+	<!-- ******************************更新操作部分********************************************-->
+	<!-- 更新审批状态 -->
+	<entry key="UPDATE_PROCESS_STATUS">
+           <![CDATA[
+			UPDATE i_tenant_template h SET
+				h.process_status = #{process_status}	
+			WHERE h.hostid= #{hostid}
+		]]>
+	</entry>
+	<!--    在租户模型副表中，更新具有跟主表相同hostid的host数据-->
+	<entry key="UPDATE_VICE_HOST">
+        <![CDATA[
+        	 UPDATE i_tenant_hosts SET
+               	name = #{name},
+               	flag = #{flag}
+			WHERE hostid= #{hostid}
+		]]>
+	</entry>
+	<!--    在租户模型主表中，更新具有跟副表相同hostid的host数据-->
+	<entry key="UPDATE_MAIN_TEMPLATE">
+        <![CDATA[
+        	 UPDATE i_tenant_template SET 
+        	     host=#{host} 
+        	 WHERE hostid=#{hostid}
+		]]>
+	</entry>
+	
+	
+	<!-- ******************************删除操作部分********************************************-->
+	<!-- 重置时，删除副表中原来的监控模型-->
+	<entry key="DELETE_VICE_HOST">
+         <![CDATA[
+            DELETE  FROM i_tenant_hosts 
+			WHERE hostid= #{hostid}
+		]]>
+	</entry>
+	
+	
+	
+</properties>

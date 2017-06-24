@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="iradar-events" namespace="/platform/iradar" extends="default">
+        <!-- Events -->
+        <action name="activealarm" class="com.isoft.iradar.web.action.monitoring.ActiveAlarmAction" method="doWork"/>
+        <action name="historyalarm" class="com.isoft.iradar.web.action.monitoring.HistoryAlarmAction" method="doWork"/>
+        <action name="activefault" class="com.isoft.iradar.web.action.monitoring.ActiveFaultAction" method="doWork"/>
+        <action name="historyfault" class="com.isoft.iradar.web.action.monitoring.HistoryFaultAction" method="doWork"/>
+        <!-- /Events -->
+    </package>
+</struts>

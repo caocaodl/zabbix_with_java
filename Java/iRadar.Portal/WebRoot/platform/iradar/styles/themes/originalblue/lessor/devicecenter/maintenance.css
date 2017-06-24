@@ -1,0 +1,12 @@
+/*
+ *设备中心.维护规划
+ *
+*/
+
+/* 下拉框 */
+#hostids_left,
+#hostids_right,
+#groupids_left,
+#groupids_right{
+	max-width:20em !important;
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>(MYSQL)</comment>
+
+	<entry key="SQL_GET_STATUS">
+		<![CDATA[
+			SELECT
+				s.hostid    			hostid#,
+				s.service_status		serviceStatus#
+			FROM 
+				i_hosts_service s
+			WHERE
+				hostid 	
+			IN(#foreach($var in $hostIdList)$var #if($velocityCount<$hostIdList.size()),#end #end)
+		]]>
+	</entry>
+	
+	<entry key="SQL_GET_BYID">
+		<![CDATA[
+			SELECT
+				s.hostid    			hostid#,
+				s.service_status		serviceStatus#
+			FROM 
+				i_hosts_service s
+			WHERE
+				hostid = #{id}
+		]]>
+	</entry>
+
+	<entry key="SQL_UPDATE_STATUS">
+		<![CDATA[
+			UPDATE 
+				i_hosts_service s
+			SET service_status = #{status}
+			WHERE
+				hostid 
+			IN(#foreach($var in $hostIdList)$var #if($velocityCount<$hostIdList.size()),#end #end)
+		]]>
+	</entry>	
+
+	<entry key="SQL_ADD_HOSTSERVICE">
+		<![CDATA[
+			INSERT INTO i_hosts_service(hostid,service_status) VALUES(#{id},#{status});
+		]]>
+	</entry>	
+	
+</properties>

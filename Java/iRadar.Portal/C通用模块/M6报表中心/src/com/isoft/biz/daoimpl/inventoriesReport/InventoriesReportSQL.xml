@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>(MYSQL)</comment>
+	
+	<entry key="SQL_INVENTORIESREPORT_PAGE">
+        <![CDATA[
+			SELECT 
+				hi.vendor                     vendor#,
+				hi.contract_number            contractNumber#,
+				hi.host_networks              hostNetworks#,
+				g.name                        hostGroup#,
+				hi.os                         os#
+			FROM
+				host_inventory hi 
+			LEFT JOIN hosts_groups hg ON hg.hostid = hi.hostid
+			LEFT JOIN groups g ON hg.groupid = g.groupid
+			WHERE 1=1  
+			#if($hostGroup && $hostGroup!='')  
+				AND hg.groupid = #{hostGroup}
+			#end			
+			#if($os && $os!='')  
+				AND hi.os = #{os}
+			#end			      	
+			#if($vendor && $vendor!='')  
+				AND hi.vendor regexp  toregexp(#{vendor})
+			#end
+			#if($contractNumber && $contractNumber!='')  
+				AND hi.contract_number regexp  toregexp(#{contractNumber})
+			#end  			
+			#if($hostNetworks && $hostNetworks!='')  
+				AND hi.host_networks regexp  toregexp(#{hostNetworks})
+			#end 
+		]]>
+	</entry>
+</properties>

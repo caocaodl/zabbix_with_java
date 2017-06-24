@@ -1,0 +1,147 @@
+ul li{
+	list-style:none;
+}
+body{
+	background: #e5e8ee url(img/bd_bj.png) no-repeat center center;
+	margin: 0;
+}
+BODY, INPUT, LABEL{
+	font-family: "Microsoft YaHei" ! important;
+}
+
+.text_input{
+	  border: 1px solid #cbccd1;
+      height: 39px !important;
+      line-height:39px !important;
+      line-height:39px\9 !important;
+      width: 359px !important;
+      font-size:14px;
+      font-size:13px\0;
+      color:#4c5058;
+}
+
+.input{
+		border: 1px solid #cbccd1;
+		border-radius:4px;
+      	height: 49px !important;
+      	line-height:49px !important;
+      	line-height:49px\9 !important;
+      	width: 369px;
+      	background:#058fcd;
+      	color:#fff;
+      	font-size:18px;
+      	font-weight:bold;
+      	cursor: pointer;
+}
+
+.login{
+	width:100%;
+	height:100%;
+}
+
+/*登陆页下半部分列表*/
+.login-bottom{
+	width:100%;
+	height:25%;
+	background: #848FA5;
+}
+
+.login-bottom .footer{
+		margin: 0 auto;
+		background:#5E6C89;
+		width:480px;
+		height:55px;
+		line-height:55px;
+}
+
+.login-bottom .footer{
+	color: #D7DBE4;
+	font-size:12px;
+	text-align:center;
+	font-weight:bold;
+}
+
+.footer ul{padding-left:50px;}
+.footer ul li{float:left;padding-left:8px;}
+.footer ul li a{text-decoration:none;font-size:14px;color:#e5e8ee;font-weight:bold;}
+.footer ul li b{color:#fff;padding-left:8px;}
+
+/*登陆页上半部分登陆信息框*/
+.login-top{
+	width:100%;
+	height:75%;
+	position: relative;
+}
+
+.login-top .loginForm{
+	position: absolute;
+	margin: auto;
+	left: 50%;
+	bottom: 0;
+	margin-left: -240px;
+	width: 480px;
+	height: 400px;
+	background: #fff;
+}
+
+/*logo*/
+.logo_bj{
+	background: url(img/logo_bj.png) no-repeat;
+	width:405px;
+	height:50px;
+	margin:38px auto 0px auto;
+}
+.logo_bj .logo{
+	background: url(../../images/logo.png) no-repeat;
+	margin:-15px 0 0 85px;
+	width:42px;
+	height:41px;
+	float:left;
+}
+
+
+
+.loginform_box{
+	width: 370px;
+	height: 208px;
+	margin: auto;
+}
+
+.login-top .loginForm div form ul li{
+	margin:12px 0 0 0;
+	padding-top: 1px;
+	height: 49px;
+	width: 359px;
+	white-space: nowrap;
+}
+
+.login-top .loginForm div form ul .hint{
+	padding-right: 6px; height: 30px;
+}
+
+.login-top .loginForm div form ul .hint #error{
+	padding-left:18px;
+	font-size:12px;
+}
+
+.login-top .loginForm div form ul .hint .hint_info{
+	padding: 3px 4px; 
+}
+
+.login-top .loginForm div form ul .rememberPassword{
+	margin:18px 0 0 0;
+}
+
+.login-top .loginForm div form ul .rememberPassword label{
+	line-height: 20px; vertical-align: top;
+	font-size:14px;
+}
+
+#username{
+	background: url(img/admin.png) no-repeat 340px center;
+}
+
+#password{
+	background: url(img/password.png) no-repeat 340px center;
+}
+

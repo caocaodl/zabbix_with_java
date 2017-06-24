@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_GET_EXP_HOST_DATA">
+<![CDATA[
+SELECT th.hostid id#,
+       th.category hostType#,
+       th.sys_name name#,
+       th.subnet subnet#,
+       th.error  error#
+FROM t_host_exp th
+]]>
+</entry>
+
+<entry key="SQL_GET_LINK_DATA">
+<![CDATA[
+SELECT tl.linkid id#,
+       tl.start_id f#,
+       tl.end_id t#
+FROM t_link tl
+]]>
+</entry>
+
+<entry key="SQL_GET_SUBNET_DATA">
+<![CDATA[
+SELECT tl.subnetId id#,
+       tl.alias name#
+FROM t_subnet tl
+#if($subnets && $subnets!='')
+  WHERE tl.subnetId IN (#{subnets})
+#end
+]]>
+</entry>
+
+</properties>

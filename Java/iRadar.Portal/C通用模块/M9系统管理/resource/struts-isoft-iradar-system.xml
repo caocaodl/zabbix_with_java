@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="iradar-system" namespace="/platform/iradar" extends="default">
+		<action name="Role*" class="com.isoft.web.bean.common.RoleAction" method="do{1}">
+			<result name="success">/WEB-INF/views/platform/common/RoleList.jsp</result>
+			<result name="funcTree">/WEB-INF/views/platform/common/RoleTreeList.jsp</result>
+			<result type="jqGrid" name="json">
+				<param name="jsonProperty">dataPage</param>
+			</result>
+			<result type="rosjson" name="resultList">
+				<param name="jsonProperty">resultList</param>
+			</result>
+			<result type="rosjson" name="resultMap">
+				<param name="jsonProperty">resultMap</param>
+			</result>
+		</action>
+
+		<action name="User*" class="com.isoft.web.bean.common.UserAction" method="do{1}">
+			<result name="success">/WEB-INF/views/platform/common/UserList.jsp</result>
+			<result name="roleTree">/WEB-INF/views/platform/common/UserRoleTreeList.jsp</result>
+			<result type="jqGrid" name="json">
+				<param name="jsonProperty">dataPage</param>
+			</result>
+			<result type="rosjson" name="resultMap">
+				<param name="jsonProperty">resultMap</param>
+			</result>
+		</action>
+
+		<action name="Prof*" class="com.isoft.web.bean.common.ProfAction" method="do{1}">
+			<result name="success">/WEB-INF/views/platform/common/ProfList.jsp</result>
+			<result name="tenant">/WEB-INF/views/platform/common/ProfTenant.jsp</result>
+			<result name="pswd">/WEB-INF/views/platform/common/ProfPswd.jsp</result>
+			<result name="forgotPwd">/WEB-INF/views/platform/common/ProfForgotPwd.jsp</result>
+			<result type="rosjson" name="resultMap">
+				<param name="jsonProperty">resultMap</param>
+			</result>
+		</action>
+
+		<action name="Log*" class="com.isoft.web.bean.common.LogAction" method="do{1}">
+			<result name="success">/WEB-INF/views/platform/common/LogList.jsp</result>
+			<result type="jqGrid" name="json">
+				<param name="jsonProperty">dataPage</param>
+			</result>
+		</action>
+
+		<action name="Tenant*" class="com.isoft.web.bean.common.TenantAction" method="do{1}">
+            <result name="success">/WEB-INF/views/platform/common/TenantList.jsp</result>
+            <result type="jqGrid" name="json">
+                <param name="jsonProperty">dataPage</param>
+            </result>
+            <result type="rosjson" name="resultMap">
+                <param name="jsonProperty">resultMap</param>
+            </result>
+        </action>
+        <action name="Cabinet*" class="com.isoft.biz.web.bean.common.CabinetAtion" method="do{1}"/>
+        <action name="announce" class="com.isoft.web.bean.common.AnnounceAction" method="doWork"/>
+        <action name="cbn" class="com.isoft.web.bean.common.CabinetAction" method="doWork"/>
+        <action name="adm.operationsystem" class="com.isoft.web.bean.common.AdmOperationsystemAction" method="doWork"></action>
+	</package>
+</struts>

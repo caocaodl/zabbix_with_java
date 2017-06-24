@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="iradar-inventories" namespace="/platform/iradar" extends="default">
+        <action name="equipMgr" class="com.isoft.iradar.web.action.EquipMgrAction" method="doWork"/>
+        <action name="operation" class="com.isoft.iradar.web.action.HostOperationsAction" method="doWork"/>
+        <action name="tentantTemplate" class="com.isoft.iradar.web.action.TentantTemplateAction" method="doWork"/>
+        <action name="tentantitems" class="com.isoft.iradar.web.action.TentantItemsAction" method="doWork"/>
+    </package>
+</struts>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_SUBNET_ADD">
+<![CDATA[
+insert into t_subnet(
+id,subnetId,alias,subnetmask,vlanId,gateway,ipAddress,netAddress,startIp,startLongIp,endIp,endLongIp)values(
+#{id},#{subnetId},#{alias},#{subnetmask},#{vlanId},#{gateway},#{ipAddress},#{netAddress},#{startIp},#{startLongIp},#{endIp},#{endLongIp})
+]]>
+</entry>
+
+<entry key="SQL_SUBNET_TRUNCATE">
+<![CDATA[
+truncate table t_subnet  
+]]>
+</entry>
+
+</properties>

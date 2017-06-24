@@ -1,0 +1,23 @@
+/*
+ *策略中心.通知策略
+ */
+ table.tableinfo{
+ 	table-layout:fixed;
+ }
+ 
+ table.tableinfo.tableinfo tr td:first-child{
+ 	width:3%;
+ }
+
+ table.tableinfo tr td:nth-child(2){
+	width:8%;
+}
+
+table.tableinfo tr td:nth-child(3),
+table.tableinfo tr td:nth-child(4){
+	width:10%;
+}
+
+table.tableinfo tr td:nth-child(5){
+	width:18%;
+}

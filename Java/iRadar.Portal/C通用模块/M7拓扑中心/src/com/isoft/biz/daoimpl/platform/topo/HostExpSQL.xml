@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_HOST_LIST">
+<![CDATA[
+select 
+   t.hostid         id#, 
+   t.sys_name       alias#,
+   t.category       category#,
+   t.enterprise     enterprise#,
+   t.model	        model#,
+   t.symbol         symbol#,
+   t.sys_oid	    sysOid#,
+   t.sys_name	    sysName#,
+   t.sys_descr	    sysDescr#,
+   t.bridge_mac	    bridgeMac#,
+   t.serial_num     serialNum#,
+   t.tenantid        tenantId#,
+   date_format(t.created_at,'%Y-%m-%d %T') createdAt#
+from t_host_exp t,hosts t2  
+  order by t.hostid desc
+]]>
+</entry>
+
+<entry key="SQL_HOST_LOAD">
+<![CDATA[
+select 
+   t.hostid         id#,    
+   t.enterprise     enterprise#,
+   t.model	        model#,
+   t.symbol         symbol#,
+   t.category       category#,
+   t.sys_oid	    sysOid#,
+   t.sys_name	    sysName#,
+   t.sys_descr	    sysDescr#,
+   t.bridge_mac	    bridgeMac#,
+   t.serial_num     serialNum#,
+   t.tenantid        tenantId#,
+   date_format(t.created_at,'%Y-%m-%d %T') createdAt#
+from t_host_exp t 
+where t.hostid=#{hostId}
+  order by t.hostid desc
+]]>
+</entry>
+<entry key="SQL_HOST_GROUP">
+<![CDATA[
+select 
+   g.groupid         groupid#    
+from groups g 
+left join hosts_groups h on g.groupid=h.groupid
+where h.hostid=#{hostId}
+]]>
+</entry>
+<!-- <entry key="SQL_HOST_ADD">
+<![CDATA[
+insert into t_host_exp(
+hostid,enterprise,category,model,symbol,sys_oid,sys_name,sys_descr,bridge_mac,serial_num,
+tenantid,created_at,subnet,error
+)values(
+#{hostId},#{enterprise},#{category},#{model},#{symbol},#{sysOid},#{sysName},#{sysDescr},#{bridgeMac},#{serialNum},
+#{tenantId},now(),#{subnet},'false'
+)
+]]>
+</entry>
+
+<entry key="SQL_HOST_UPDATE">
+<![CDATA[
+UPDATE t_host_exp
+SET enterprise = #{enterprise},
+    category = #{category},
+    model = #{model},
+    symbol = #{symbol},
+    sys_oid = #{sysOid},
+    sys_name = #{sysName},
+    sys_descr = #{sysDescr},
+    bridge_mac = #{bridgeMac},
+    serial_num = #{serialNum},
+    subnet = #{subnet},
+    error = 'false',
+	tenantid = #{tenantId}
+WHERE hostid = #{hostId}
+]]>
+</entry> -->
+
+<entry key="SQL_HOST_ADD">
+<![CDATA[
+insert into t_host_exp(
+hostid,enterprise,category,model,symbol,sys_oid,sys_name,sys_descr,bridge_mac,serial_num,
+tenantid,created_at,error
+)values(
+#{hostId},#{enterprise},#{category},#{model},#{symbol},#{sysOid},#{sysName},#{sysDescr},#{bridgeMac},#{serialNum},
+#{tenantId},now(),'false'
+)
+]]>
+</entry>
+
+<entry key="SQL_HOST_UPDATE">
+<![CDATA[
+UPDATE t_host_exp
+SET enterprise = #{enterprise},
+    category = #{category},
+    model = #{model},
+    symbol = #{symbol},
+    sys_oid = #{sysOid},
+    sys_name = #{sysName},
+    sys_descr = #{sysDescr},
+    bridge_mac = #{bridgeMac},
+    serial_num = #{serialNum},
+    error = 'false',
+	tenantid = #{tenantId}
+WHERE hostid = #{hostId}
+]]>
+</entry>
+
+<entry key="SQL_HOST_GET">
+<![CDATA[
+SELECT t.hostid hostid#,
+	   t.error  error# 
+FROM t_host_exp t 
+WHERE t.hostid = #{hostId}
+]]>
+</entry>
+
+<entry key="SQL_HOST_NOT_EXIST_DEL">
+<![CDATA[
+DELETE 
+FROM t_host_exp
+WHERE hostid NOT IN (#{hostIds})
+]]>
+</entry>
+
+<entry key="SQL_HOST_NOT_EXIST_LINK_DEL">
+<![CDATA[
+DELETE 
+FROM t_link
+WHERE start_id NOT IN (SELECT hostid FROM t_host_exp)
+OR end_id NOT IN (SELECT hostid FROM t_host_exp)
+]]>
+</entry>
+
+<entry key="SQL_HOST_NOT_EXIST_EXTEND_DEL">
+<![CDATA[
+DELETE 
+FROM t_topo_extend
+WHERE hostId NOT IN (#{hostIds}) AND topoType='TopoPhy' AND nodeType='NODEHOST'
+]]>
+</entry>
+
+<entry key="SQL_HOST_NOT_EXIST_LOCATION_DEL">
+<![CDATA[
+DELETE 
+FROM t_topo_location
+WHERE hostId NOT IN (#{hostIds}) AND topoType='TopoPhy' AND nodeType='NODEHOST'
+]]>
+</entry>
+
+<entry key="SQL_HOST_ERROR_SET">
+<![CDATA[
+UPDATE t_host_exp
+SET error = 'true'
+WHERE hostid NOT IN (#{hostIds})
+]]>
+</entry>
+
+<entry key="SQL_HOST_TRUNCATE">
+<![CDATA[
+truncate table  t_host_exp;
+]]>
+</entry>
+
+<entry key="SQL_HOST_CATEGORY_LIST">
+<![CDATA[
+select 
+  t.category category# 
+from t_host_exp t 
+where 1=1 
+  group by t.category
+]]>
+</entry>
+
+<entry key="SQL_ASSETS_HOST_LIST">
+<![CDATA[
+select
+  t1.hostid           hostId#,
+  t1.name             name#,
+  t1.host		      host#,
+  t1.ipmi_username    type#,
+  t1.ipmi_password 	  ownerHost#,
+  GROUP_CONCAT(t2.ip) ip#
+from 
+  hosts t1 ,
+  interface t2
+where 
+ t1.hostid = t2.hostid 
+ and  status = 0
+ and  t1.tenantid = #{tenantId}
+ #if($groupid && $groupid!='')
+  and t1.hostid in (select hostid from hosts_groups hg where hg.groupid in (#{groupid}))
+ #end
+group by t1.hostid,t1.name
+]]>
+</entry>
+<!-- 注释掉下面的sql,后续可能使用 -->
+<!-- <entry key="SQL_ASSETS_HOST_LIST">
+<![CDATA[
+select
+  t1.hostid      hostId#,
+  t1.name        name#,
+  t2.ip          ip#
+from 
+  hosts t1 ,
+  interface t2
+where 
+ t1.hostid = t2.hostid 
+ and  status = 0
+ and  t1.tenantid = #{tenantId}
+ #if($groupid && $groupid!='')
+  and t1.hostid in (select hostid from hosts_groups hg where hg.tenantid = #{tenantId} and hg.groupid in (#{groupid}))
+ #end
+ #if($hostName && $hostName!='')
+  and (t1.host regexp toregexp(#{hostName}) or t1.name regexp toregexp(#{hostName}))
+ #end
+group by t1.hostid,t1.name,t2.ip
+]]>
+</entry> -->
+
+<entry key="SQL_ASSETS_CATEGORY_LIST">
+<![CDATA[
+select
+  t1.groupid      name#,
+  t1.name         text#
+from 
+  groups          t1 
+  where t1.groupid  in(#foreach($var in $groupList)$var #if($velocityCount<$groupList.size()),#end #end)
+]]>
+</entry>
+<entry key="SQL_ASSETS_CATEGORY_LIST_TEN">
+<![CDATA[
+select
+  t1.groupid      name#,
+  t1.name         text#
+from 
+  groups          t1
+  where groupid in(#foreach($var in $groupList)$var #if($velocityCount<$groupList.size()),#end #end)
+]]>
+</entry>
+<entry key="SQL_ASSETS_CATEGORY_BY_HOSTID">
+<![CDATA[
+select
+  t2.groupid     category#
+from 
+  hosts_groups t1 ,
+  groups       t2
+where t1.groupid = t2.groupid 
+ and  t1.hostid = #{hostId}
+ #if($groupid && $groupid!='')
+  and t1.groupid in (#{groupid})
+ #end
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_GROUP_BY_HOSTID">
+<![CDATA[
+select hostid hostid# 
+from hosts_groups hg 
+where hg.groupid in (#{groupid}) and hg.hostid = #{hostid}
+]]>
+</entry>
+
+</properties>

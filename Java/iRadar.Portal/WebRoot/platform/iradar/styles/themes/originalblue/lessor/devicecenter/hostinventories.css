@@ -1,0 +1,9 @@
+/*
+ *设备中心.资产列表
+ *
+*/
+
+/*"资产列表的设备名称中的“snmp接口”的对齐方式"*/
+#overviewTab ul.formlist li.interfaceClass .dt{
+	padding-top:58px;
+}

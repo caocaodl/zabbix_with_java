@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="iradar-report" namespace="/platform/iradar" extends="default">
+       <!--  <action name="Report*" class="com.isoft.web.bean.inventoriesReport.InventoriesReportAction" method="do{1}">
+        	<result name="success">/WEB-INF/views/platform/report/inventoriesReport.jsp</result>
+        	<result name="list">/WEB-INF/views/platform/report/inventoriesReport.jsp</result>
+			<result type="jqGrid" name="json">
+				<param name="jsonProperty">dataPage</param>
+			</result>
+			<result type="rosjson" name="resultMap">
+				<param name="jsonProperty">resultMap</param>
+			</result>
+        </action> 
+        
+        <action name="RForms*" class="com.isoft.web.bean.reportForms.ReportFormsAction" method="{1}">
+        	<result type="rosjson" name="resultList">
+				<param name="jsonProperty">resultList</param>
+			</result>
+        </action>
+ -->
+        <!--  <action name="RTU*" class="com.isoft.web.bean.reportForms.ReportTopnUseAction" method="{1}">
+        	  
+              //  <result name="list">/WEB-INF/views/platform/report/reportTopnUseList.jsp</result>
+             //    <result name="listmemory">/WEB-INF/views/platform/report/reportTopnUseMemoryList.jsp</result>
+              //    <result name="listdisk">/WEB-INF/views/platform/report/reportTopnUseDiskList.jsp</result>
+              //     <result name="listband">/WEB-INF/views/platform/report/reportTopnUseBandList.jsp</result>  
+                  <result name="page">/WEB-INF/views/platform/report/reportTopnUse.jsp</result>
+        	    <result type="rosjson" name="resultList">
+				<param name="jsonProperty">resultList</param>
+			</result>
+		
+        </action> -->
+        
+       <!--  <action name="PerformancedoIndex" class="com.isoft.web.bean.topnPerformance.TOPNperfAction"   method="doWork">
+		  </action> -->
+        
+<!--         <action name="InspectionReport*" class="com.isoft.web.bean.inspectionReport.InspectionReportAction" method="do{1}">
+        	<result name="success">/WEB-INF/views/platform/report/inspectionReportList.jsp</result>
+        	<result name="monitorHost">/WEB-INF/views/platform/report/inspectionReportHostTree.jsp</result>
+        	<result name="historyList">/WEB-INF/views/platform/report/inspectionReportHistoryList.jsp</result>
+        	<result name="historyInfo">/WEB-INF/views/platform/report/inspectionReportHistoryInfo.jsp</result>
+		    <result type="jqGrid" name="json">
+				<param name="jsonProperty">dataPage</param>
+			</result>
+		    <result type="rosjson" name="resultMap">
+				<param name="jsonProperty">resultMap</param>
+			</result>
+        </action> -->
+		
+		<!-- <action name="SubscribeCurrent*" class="com.isoft.web.bean.subscribeCurrent.SubscribeCurrentAction" method="{1}">
+			<result name="success">/WEB-INF/views/platform/report/subscribeCurrentList.jsp</result>
+			<result type="rosjson" name="resultList">
+				<param name="jsonProperty">resultList</param>
+			</result>
+        </action>
+		
+		<action name="SubscribeStatistical*" class="com.isoft.web.bean.subscribeStatistical.SubscribeStatisticalAction" method="{1}">
+			<result name="success">/WEB-INF/views/platform/report/subscribeStatisticalList.jsp</result>
+			<result type="rosjson" name="resultList">
+				<param name="jsonProperty">resultList</param>
+			</result>
+        </action> -->
+        <!-- <action name="TopnUseTwo" class="com.isoft.web.bean.reportForms.TopnUseTwoAction" method="doWork"/>
+        <action name="zichanInfor" class="com.isoft.web.bean.reportForms.InverntoriesAction" method="doWork"/> -->
+         
+        <!-- 巡检报告 -->
+        <action name="inspectionReport" class="com.isoft.iradar.web.action.InspectionReportAction" method="doWork"/>
+        <!-- 性能报表 -->
+        <action name="performance_report" class="com.isoft.web.bean.performance.PerformanceReportAction" method="doWork"/>
+         <!-- 容量报表 -->
+        <!-- <action name="capacity_report" class="com.isoft.web.bean.capacity.ReportCapacityAction" method="doWork"/> -->
+        <!-- 告警报表 -->
+        <action name="events_report" class="com.isoft.web.bean.reportForms.EventsReportForms" method="doWork"/>
+        <!-- 资产报表 -->
+        <action name="intvoisport" class="com.isoft.web.bean.reportForms.ReportFormInverntoriesAction" method="doWork"/> 
+        <!-- <action name="intvoisport" class="com.isoft.web.bean.reportForms.InverntoriesReportFormAction" method="doWork"/> -->
+         <!-- 业务报表 -->
+        <action name="business_report" class="com.isoft.web.bean.business.ReportBusinessAction" method="doWork"/>
+        
+    </package>
+</struts>

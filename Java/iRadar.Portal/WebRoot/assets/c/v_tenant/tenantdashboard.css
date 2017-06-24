@@ -1,0 +1,148 @@
+.col-xs-12 {
+	padding: 0;
+	float: left;
+	width: 100%;
+	position: relative;
+	min-height: 1px;
+	min-width: 777px;
+}
+
+#content>DIV.cell{
+	width: 99.7%;
+	height: 306px;
+	float: left;
+	padding: 0;
+	border: solid 1px #E5E8EF;
+	margin-bottom: 20px;
+	
+	margin-left: 1.1%;
+}
+#content>.cell.first{
+	margin-left: 0;
+}
+#content>.cell.colspan1{
+	width: 32.4% !important;
+}
+#content>.cell.colspan11{
+	width: 66% !important;
+}
+#content>.cell.colspan2{
+	width: 66.1% !important;
+}
+
+
+div#content>div label, div#content>div>div label {
+	height: 33px;
+	line-height: 33px;
+	background-color: #E5E8EF;
+	display: block;
+	text-align: left;
+	padding-left: 18px;
+}
+div#content>div label {
+	font-size: 16px;
+	font-weight: normal;
+}
+
+
+
+/* platform_information */
+.platform_information .ctn{
+	float: left;
+	padding-top: 80px;
+	background: no-repeat center 20px;
+	text-align: center;
+	margin: 0 1%;
+	width: 14%;
+	font-weight: bold;
+}
+.platform_information DIV DIV DIV{
+	font-size: 1.2em;
+}
+.platform_information DIV DIV SPAN{
+	color: #888;
+}
+.platform_information .information_user{
+	background-image: url('../images/users_03.png');
+}
+.platform_information .information_machine{
+	background-image: url('../images/machine_05.png');
+}
+.platform_information .information_physics{
+	background-image: url('../images/physics_07.png');
+}
+.platform_information .information_core_tenant{			
+	background-image: url('../images/np.png');
+}
+.platform_information .information_cloud_disk{
+	background-image: url('../images/cloud_host.png');
+}
+.platform_information .information_cloud_disk_img{
+	background-image: url('../images/cloud_host_snapshot.png');
+}
+.platform_information .information_mem_subnet{
+	background-image: url('../images/ziwang.png');
+}
+.platform_information .information_mem_port{
+	background-image: url('../images/port.png');
+}
+.platform_information .information_mem_router{
+	background-image: url('../images/router.png');
+}
+.platform_information .information_mem_float_ip{
+	background-image: url('../images/floatip.png');
+}
+.platform_information .information_security_group{
+	background-image: url('../images/safety.png');
+}
+.platform_information .information_security_group_rule{
+	background-image: url('../images/safety_rule.png');
+}
+/* / platform_information */
+.echart_ctn{
+	width: 100%;
+	height: 270px;
+}
+.information_core div span{
+	font-size: 18px;
+	color: #000;
+}
+.graph_report .iconmenu{
+	display: inline-block;
+	background-repeat: no-repeat;
+	height: 16px;
+	width: 16px;
+	cursor: pointer;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-o-border-radius: 2px;
+	border-radius: 2px;
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/menu.png);
+	float: right;
+	background-position: center;
+	margin: 7px 7px 0 0;
+}
+
+
+#content>DIV.cell.graph_report{
+	height: auto;
+}
+#hat_favgrph .firstshape{
+	margin: 0;
+	padding: 0;
+}
+#hat_favgrph .firstshape LI.left{
+	float: left;
+}
+#hat_favgrph .firstshape LI.right{
+	float: right;
+}
+#hat_favgrph .firstshape LI.clearfix{
+	clear: both;
+	font-size: 0;
+	height: 0;
+	border-bottom: 1px dashed #ccc;
+	margin: 5px 0;
+	width: 100%;
+}
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_THUMBNAIL_LIST">
+<![CDATA[
+select
+  t.id                                     id#,
+  t.name                                   name#, 
+  t.tenantid                               tenantId#,
+  t.userid                                 userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user                          modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T')  createdAt#,
+  t.created_user                           createdUser#
+from t_thumbnail t 
+where 
+  t.tenantid = #{tenantId}  and t.userid = #{userId} 
+#if($name && $name!='')
+  and t.name regexp toregexp(#{name})
+#end
+  order by t.id desc
+]]>
+</entry>
+
+<entry key="SQL_THUMBNAIL_DUPLICATE_CHECK">
+<![CDATA[
+select
+  t.id           id#
+from t_thumbnail t 
+where 
+  t.tenantid = #{tenantId}   
+  and t.userid = #{userId} 
+  and t.name = #{name}
+#if($id && $id!='')
+ and t.id <> #{id}
+#end
+limit 1
+]]>
+</entry>
+
+<entry key="SQL_THUMBNAIL_ADD">
+<![CDATA[
+insert into t_thumbnail(
+id,name,tenantid,userid,created_at,created_user 
+)values(
+#{id},#{name},#{tenantId},#{userId},now(),#{userName}
+)
+]]>
+</entry>
+
+<entry key="SQL_THUMBNAIL_DEL">
+<![CDATA[
+delete from 
+   t_thumbnail 
+where 
+   id = #{id} and userid = #{userId} 
+   and tenantid = #{tenantId}
+]]>
+</entry>
+
+<entry key="SQL_THUMBNAIL_UPDATE">
+<![CDATA[
+update t_thumbnail set
+  name = #{name} ,
+  modified_at = now(),
+  modified_user = #{userName}
+where id=#{id}
+]]>
+</entry>
+
+</properties>

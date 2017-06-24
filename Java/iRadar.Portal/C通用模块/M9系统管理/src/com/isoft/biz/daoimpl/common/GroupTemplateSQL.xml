@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+	<entry key="SQL_LIST">
+		<![CDATA[
+			select
+				templateid   templateid#	
+			from
+			i_group_templates 
+			where groupid
+			IN(#foreach($var in $idList)$var #if($velocityCount<$idList.size()),#end #end)
+		]]>
+	</entry>
+	
+
+</properties>

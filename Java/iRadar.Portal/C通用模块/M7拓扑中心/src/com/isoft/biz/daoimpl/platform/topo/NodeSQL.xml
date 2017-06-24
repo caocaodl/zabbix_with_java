@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_T_NODE_LIST">
+<![CDATA[
+select
+  t.nodeid           nodeId#,
+  t.topoid           topoId#,
+  t.tbnailid         tbnailId#,
+  IF(t.tbnailid='-100',"暂无",(SELECT tn.name FROM t_node tn WHERE tn.nodeid=t.tbnailId)) tbnailName#,
+  t.hostid           hostId#,
+  t.category         category#,
+  t.tagname          tagName#, 
+  t.name             name#,
+  t.g                g# ,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_node t 
+where topoid = #{topoId} 
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+#if($name && $name!='')
+  and t.name regexp toregexp(#{name})
+#end
+#if($tagName && $tagName!='')
+  and t.tagname = #{tagName}
+#end
+#if($tbnailId && $tbnailId!='')
+  and t.tbnailid = #{tbnailId}
+#end
+  order by t.nodeid desc
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_LIST_EXCLUDE_THUMBNAIL">
+<![CDATA[
+select
+  t.nodeid           nodeId#,
+  t.topoid           topoId#,
+  t.tbnailid         tbnailId#,
+  IF(t.tbnailid='-100',"暂无",(SELECT tn.name FROM t_node tn WHERE tn.nodeid=t.tbnailId)) tbnailName#,
+  t.hostid           hostId#,
+  t.category         category#,
+  t.tagname          tagName#, 
+  t.name             name#,
+  t.g                g# ,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_node t 
+where topoid = #{topoId} 
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+ and  t.tagname != 'thumbnail'
+#if($name && $name!='')
+ and t.name regexp toregexp(#{name})
+#end
+#if($tbnailId && $tbnailId!='')
+  and t.tbnailid = #{tbnailId}
+#end
+  order by t.nodeid desc
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_ADD">
+<![CDATA[
+insert into t_node(
+nodeid,topoid,tbnailid,hostid,category,tagname,name,g,
+tenantid,userid,created_at,created_user 
+)values(
+#{nodeId},#{topoId},#{tbnailId},#{hostId},#{category},#{tagName},#{name},#{g},
+#{tenantId},#{userId},now(),#{userName}
+)
+]]>
+</entry>
+                 
+<entry key="SQL_DEL_EXCLUDE_THUMBNAIL_OF_NODE">
+<![CDATA[
+delete 
+  from t_node 
+where topoid = #{topoId} 
+  and tbnailid='-100' 
+  and tagname!='thumbnail'
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_MODIFY_G">
+<![CDATA[
+update t_node 
+set 
+  g=#{g} , 
+  modified_at = now(),
+  modified_user = #{userName} 
+where nodeid=#{nodeId}
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_MODIFY_TBNAILID">
+<![CDATA[
+update t_node set 
+  tbnailid=#{tbnailId},
+  modified_at = now(),
+  modified_user = #{userName} 
+where topoid = #{topoId}
+#if($nodeId && $nodeId!='')
+  and nodeid=#{nodeId}
+#end
+#if($oldTbnailId && $oldTbnailId!='')
+  and tbnailid=#{oldTbnailId}
+#end
+]]>
+</entry>
+
+<entry key="SQL_THUMBNAIL_CHECK_OPER">
+<![CDATA[
+update t_node set 
+  tbnailid=#{thumbnailId},
+  modified_at = now(),
+  modified_user = #{userName} 
+where 
+  topoid = #{topoId}  and nodeid=#{nodeId}
+]]>
+</entry>
+
+<entry key="SQL_THUMBNAIL_CHECK_ALL_OPER">
+<![CDATA[
+update t_node set 
+  tbnailid=#{thumbnailId},
+  modified_at = now(),
+  modified_user = #{userName} 
+where 
+  topoid = #{topoId}
+  and category='Server'
+]]>
+</entry>
+
+<entry key="SQL_THUMBNAIL_UPDATE_TBNAILID_G">
+<![CDATA[
+update t_node set 
+  tbnailid=#{thumbnailId},
+  g = #{g},
+  modified_at = now(),
+  modified_user = #{userName} 
+where 
+  topoid = #{topoId}  and nodeid=#{nodeId}
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_LOAD_BY_ID">
+<![CDATA[
+select
+  t.nodeid           nodeId#,
+  t.tbnailid         tbnailId#,
+  t.hostid           hostId#,
+  t.category         category#,
+  t.tagname          tagName#, 
+  t.name             name#,
+  t.g                g#,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from 
+  t_node t 
+where
+  t.nodeid = #{nodeId}
+  and topoid = #{topoId}
+order by t.nodeid desc
+]]>
+</entry>
+
+<entry key="SQL_TOPO_NODE_DUPLICATE_CHECK">
+<![CDATA[
+select 
+   nodeid nodeId#
+from t_node
+where name=#{name}
+ and topoid=#{topoId} 
+#if($nodeId && $nodeId!='')
+  and nodeid<>#{nodeId}
+#end
+limit 1
+]]>
+</entry>
+
+<entry key="SQL_T_NET_TOPO_DEL_BY_ID">
+<![CDATA[
+delete from t_node where topoid = #{topoId}   
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_DEL_BY_ID">
+<![CDATA[
+delete from t_node where nodeid = #{nodeId}   
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_UPDATE_THUMBNAIL_BY_ID">
+<![CDATA[
+update t_node set
+tbnailid = '-100' 
+where tbnailid = #{nodeId} and category='Server'  
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_LOAD_WITH_THUMBNAIL">
+<![CDATA[
+select 
+  nodeid nodeId#,
+  name   name#
+from t_node 
+  where topoid = #{topoId} and 
+(tbnailid!='-100' or tagname='thumbnail')   
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_THUMBNAIL_TREE">
+<![CDATA[
+SELECT  
+  t.nodeid nodeId#,
+  t.topoid topoId#,
+  t.name   name#,
+  'module'   icon#
+FROM t_node t
+WHERE t.topoid=#{topoId}
+ and  t.tagname = #{tagName}
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+order by t.nodeid desc
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_THUMBNAIL_UNCHECKED_NODE">
+<![CDATA[
+select
+  t.nodeid           nodeId#,
+  t.topoid           topoId#,
+  t.tbnailid         tbnailId#,
+  IF(t.tbnailid='-100',"暂无",(SELECT tn.name FROM t_node tn WHERE tn.nodeid=t.tbnailId)) tbnailName#,
+  t.hostid           hostId#,
+  t.category         category#,
+  t.tagname          tagName#, 
+  t.name             name#,
+  t.g                g# ,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_node t 
+where topoid = #{topoId} 
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+ and  t.tbnailid != #{tbnailId}
+ and  t.tagname !='thumbnail'
+#if($name && $name!='')
+   and t.name regexp toregexp(#{name})
+#end
+  order by t.nodeid desc
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_THUMBNAIL_UNCHECKED_NODE_TYPE_LIST">
+<![CDATA[
+select
+  t.category         category#
+from t_node t 
+where topoid = #{topoId} 
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+ and  t.tbnailid != #{tbnailId}
+ and  t.tagname !='thumbnail'
+ group by t.category
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_HOST_ID_LIST_BY_TOPO_ID">
+<![CDATA[
+select
+  t.hostid           hostId#
+from t_node t 
+where topoid = #{topoId} 
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+ and  t.tagname != 'thumbnail'
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_GET_HOSTID_IN_IRADAR">
+<![CDATA[
+SELECT h.host host#,
+       h.name name#
+FROM hosts h
+WHERE h.hostid=#{hostId}
+]]>
+</entry>
+
+</properties>

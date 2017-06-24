@@ -1,0 +1,148 @@
+/*
+	 *
+	 *	jQuery Sliding Menu Plugin
+	 *	Mobile app list-style navigation in the browser
+	 *
+	 *	Written by Ali Zahid
+	 *	http://designplox.com/jquery-sliding-menu
+	 *
+	 */
+.sliding-menu {
+
+	/* overflow: hidden; */
+	position: relative;
+}
+.sliding-menu ul {
+	float: left;
+	margin: 0;
+}
+.sliding-menu li {
+	list-style: none;
+	margin: 0;
+	width: 100% !important;
+	border-bottom: 1px solid #e5e8ef;
+}
+.sliding-menu a {
+	display: block;
+	margin-left: 20px;
+	padding: 0.78em 0;
+	padding-left: 1.87em;
+	color: inherit;
+	font-size: 16px;
+	background: center center no-repeat;
+}
+.sliding-menu a.nav, .sliding-menu a.treeicon {
+	background-position: center left;
+}
+.sliding-menu A:hover {
+	color: #fff;
+}
+.sliding-menu li:hover {
+	background: rgba(251, 131, 2, 0.7);
+}
+.sliding-menu a.nav:before {
+	content: '\3009';
+	float: right;
+	margin-right: 1em;
+}
+.sliding-menu a.top, .sliding-menu a.back {
+	display: inline-block;
+	margin-left: 0px;
+	border-bottom: 1px solid #e5e8ef;
+}
+.sliding-menu a.top {
+	padding: 25px 30px;
+	background-image: url('../image/top.png');
+	background-color: #fb8302;
+}
+.sliding-menu a.top:hover {
+	background-image: url('../image/top_hover.png');
+	background-color: rgba(251, 131, 2, 0.7);
+}
+.sliding-menu a.back {
+	padding: 25px;
+	background-image: url('../image/back.png');
+}
+.sliding-menu a.back:hover {
+	background-color: rgba(251, 131, 2, 0.7);
+}
+
+/*鍏釜鍥炬爣*/
+.sliding-menu A.strategy {
+	background-image: url("../../../images/strategy.png");
+}
+.sliding-menu A.host {
+	background-image: url("../../../images/host.png");
+}
+.sliding-menu A.monitor {
+	background-image: url("../../../images/monitor.png");
+}
+.sliding-menu A.event {
+	background-image: url("../../../images/event.png");
+}
+.sliding-menu A.report {
+	background-image: url("../../../images/report.png");
+}
+.sliding-menu A.topology {
+	background-image: url("../../../images/topology.png");
+}
+.sliding-menu A.script {
+	background-image: url("../../../images/tool.png");
+}
+.sliding-menu A.system {
+	background-image: url("../../../images/system.png");
+}
+
+/*鍏釜鍥炬爣*/
+.sliding-menu A.strategy:hover {
+	background-image: url("../../../images/strategy_hover.png");
+}
+.sliding-menu A.host:hover {
+	background-image: url("../../../images/host_hover.png");
+}
+.sliding-menu A.monitor:hover {
+	background-image: url("../../../images/monitor_hover.png");
+}
+.sliding-menu A.event:hover {
+	background-image: url("../../../images/event_hover.png");
+}
+.sliding-menu A.report:hover {
+	background-image: url("../../../images/report_hover.png");
+}
+.sliding-menu A.topology:hover {
+	background-image: url("../../../images/topology_hover.png");
+}
+.sliding-menu A.script:hover {
+	background-image: url("../../../images/tool_hover.png");
+}
+.sliding-menu A.system:hover {
+	background-image: url("../../../images/system_hover.png");
+}
+.sliding-menu A.treeicon {
+	margin-left: 0;
+	padding-left: 40px;
+	background-image: url("../../../images/tree_icon3.png");
+	background-position: 20px;
+}
+.sliding-menu A.treeicon:hover {
+	background-image: url("../../../images/tree_icon3_hover.png");
+}
+.sliding-menu-wrapper .open {
+	display: block !important;
+}
+.sliding-menu-wrapper .close {
+	display: none !important;
+}
+
+/*
+* 不可单击的标题样式
+*/
+.layout-panel-west .west_tree .sliding-menu-wrapper A.accordion_title {
+	margin: 0;
+	padding: 4px 0 4px 40px;
+	font-size:14px;
+	color:#000000;
+	background-image: none;
+	background-color: #e1e4e9;
+	cursor: default;
+}

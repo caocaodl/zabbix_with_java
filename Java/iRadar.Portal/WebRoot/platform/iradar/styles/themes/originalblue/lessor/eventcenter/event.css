@@ -1,0 +1,25 @@
+/*
+ *事件中心.所有事件
+ *列数不固定
+*/
+
+.flicker_table, .body_header{
+	margin-bottom: 6px;
+}
+
+table.formtable tr.footer{
+	display: none;
+}
+
+/* 事件中心.活动告警.选择input */
+input[type="text"]{
+	height: 2.5em !important;
+	line-height: 2.5em !important;
+}
+
+/* 事件中心.活动告警.table设备管理列 */
+.link_menu, .link_menu:hover{
+	padding:0;
+}
+
+

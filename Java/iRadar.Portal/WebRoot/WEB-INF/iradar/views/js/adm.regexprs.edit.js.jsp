@@ -1,0 +1,452 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page import="com.isoft.iradar.Cphp"%>
+<%@ page import="com.isoft.iradar.inc.Defines"%>
+<%@ page import="com.isoft.iradar.utils.CJs"%>
+<%@ page import="com.isoft.iradar.helpers.CHtml"%>
+<script type="text/x-jquery-tmpl" id="expressionRow">
+	<tr id="exprRow_#{id}">
+		<td>#{expression}</td>
+		<td>#{type}</td>
+		<td>#{case_sensitive}</td>
+		<td class="nowrap">
+			<button class="input link_menu exprEdit" type="button" data-id="#{id}"><%=Cphp._("Edit")%></button>&nbsp;
+			<button class="input link_menu exprRemove" type="button" data-id="#{id}"><%=Cphp._("Remove")%></button>
+		</td>
+	</tr>
+</script>
+
+<script type="text/x-jquery-tmpl" id="testTableRow">
+	<tr class="even_row">
+		<td class="wraptext">#{expression}</td>
+		<td>#{type}</td>
+		<td><span class="bold #{resultClass}">#{result}</span></td>
+	</tr>
+</script>
+
+<script type="text/x-jquery-tmpl" id="testCombinedTableRow">
+	<tr class="odd_row">
+		<td colspan="2"><%=Cphp._("Combined result")%></td>
+		<td><span class="bold #{resultClass}">#{result}</span></td>
+	</tr>
+</script>
+
+<script>
+	(function($) {
+		/**
+		 * Class for single expression from global regular expression.
+		 * @constructor
+		 *
+		 * @param {Object} expression Expression data.
+		 *                 If expression has 'expressionid' it means that it exists in DB,
+		 *                 otherwise it's treated as new expression.
+		 *
+		 * @property {String} id Unique id of expression.
+		 *                    For new expression it's generated, for existing it's equal to 'expressionid'.
+		 * @property {Object} data Expression data same as in DB table.
+		 */
+		function Expression(expression) {
+			this.data = expression;
+
+			this.id = (typeof expression.expressionid === 'undefined')
+				? getUniqueId()
+				: expression.expressionid;
+
+			this.render(true);
+		}
+
+		Expression.prototype = {
+
+			/**
+			 * Template for expression in expressions list.
+			 *
+			 * @type {Object}
+			 */
+			expressionRowTpl: new Template($('#expressionRow').html()),
+
+			/**
+			 * Render expression row in list of expressions.
+			 *
+			 * @param {Boolean} isNew If true it appends row to list, otherwise it search for expression row and replace it.
+			 */
+			render: function(isNew) {
+				var tplData = {
+					id: this.id,
+					expression: this.data.expression,
+					type: this.type2str(),
+					case_sensitive: this.case2str()
+				};
+
+				if (isNew) {
+					$('#exprTable tr.footer').before(this.expressionRowTpl.evaluate(tplData));
+				}
+				else {
+					$('#exprRow_' + this.id).replaceWith(this.expressionRowTpl.evaluate(tplData));
+				}
+			},
+
+			/**
+			 * Remove expression row.
+			 */
+			remove: function() {
+				$('#exprRow_' + this.id).remove();
+			},
+
+			/**
+			 * Update expression 'data' property with new values and rerender expression row.
+			 *
+			 * @param {Object} data New expression data values
+			 */
+			update: function(data) {
+				$.extend(this.data, data);
+				this.render();
+			},
+
+			/**
+			 * Converts expression_type numeric value to string.
+			 *
+			 * @return {String}
+			 */
+			type2str: function() {
+				var str;
+
+				switch (+this.data.expression_type) {
+					case <%=Defines.EXPRESSION_TYPE_INCLUDED%>:
+						str = <%=CJs.encodeJson(Cphp._("Character string included"))%>;
+						break;
+					case <%=Defines.EXPRESSION_TYPE_ANY_INCLUDED%>:
+						str = <%=CJs.encodeJson(Cphp._("Any character string included"))%>;
+						break;
+					case <%=Defines.EXPRESSION_TYPE_NOT_INCLUDED%>:
+						str = <%=CJs.encodeJson(Cphp._("Character string not included"))%>;
+						break;
+					case <%=Defines.EXPRESSION_TYPE_TRUE%>:
+						str = <%=CJs.encodeJson(Cphp._("Result is TRUE"))%>;
+						break;
+					case <%=Defines.EXPRESSION_TYPE_FALSE%>:
+						str = <%=CJs.encodeJson(Cphp._("Result is FALSE"))%>;
+						break;
+				}
+
+				if (+this.data.expression_type === <%=Defines.EXPRESSION_TYPE_ANY_INCLUDED%>) {
+					str += ' (' + <%=CJs.encodeJson(Cphp._("delimiter"))%> + '="' + this.data.exp_delimiter + '")';
+				}
+
+				return str;
+			},
+
+			/**
+			 * Converts expression case_sensitive numeric value to string.
+			 *
+			 * @return {String}
+			 */
+			case2str: function() {
+				if (+this.data.case_sensitive) {
+					return <%=CJs.encodeJson(Cphp._("Yes"))%>;
+				}
+				else {
+					return <%=CJs.encodeJson(Cphp._("No"))%>;
+				}
+			},
+
+			/**
+			 * Compare with object.
+			 *
+			 * @param {Object} obj
+			 *
+			 * @return {Boolean}
+			 */
+			equals: function(obj) {
+				return (this.data.expression === obj.expression
+						&& this.data.expression_type === obj.expression_type
+						&& this.data.case_sensitive === obj.case_sensitive
+						&& this.data.exp_delimiter === obj.exp_delimiter);
+			}
+		};
+
+		/**
+		 * Object to manage expression related GUI elements.
+		 * @type {Object}
+		 */
+		window.iradarRegExp = {
+
+			/**
+			 * List of Expression objects with keys equal to Expression.id.
+			 * @type {Object}
+			 */
+			expressions: {},
+
+			/**
+			 * When upen expression form, it holds expression id if we update any or null if we create new.
+			 * @type {String|Null}
+			 */
+			selectedID: null,
+
+			/**
+			 * Template for expression row of testing results table.
+			 * @type {String}
+			 */
+			testTableRowTpl: new Template($('#testTableRow').html()),
+
+			/**
+			 * Template for combined result row in testing results table.
+			 * @type {String}
+			 */
+			testCombinedTableRowTpl: new Template($('#testCombinedTableRow').html()),
+
+			/**
+			 * Add expressions to manipulate with.
+			 * For each expression data new Expression object is created.
+			 *
+			 * @param {Array} expressions List of expressions with DB data
+			 */
+			addExpressions: function(expressions) {
+				var expr;
+
+				for (var i = 0, ln = expressions.length; i < ln; i++) {
+					expr = new Expression(expressions[i]);
+					this.expressions[expr.id] = expr;
+				}
+			},
+
+			/**
+			 * Validate expression data.
+			 *  - expression cannot be empty
+			 *  - expression must be unique
+			 *
+			 * @param {Object} data
+			 */
+			validateExpression: function(data) {
+				if (data.expression === '') {
+					alert(<%=CJs.encodeJson(Cphp._("Expression cannot be empty"))%>);
+					return false;
+				}
+
+				for (var id in this.expressions) {
+					// if we update expression, no error if equals itself
+					if (id != this.selectedID && this.expressions[id].equals(data)) {
+						alert(<%=CJs.encodeJson(Cphp._("Identical expression already exists"))%>);
+						return false;
+					}
+				}
+
+				return true;
+			},
+
+			/**
+			 * Show expression edit form.
+			 *
+			 * @param {String[]} id Id of expression which data should be shown in form.
+			 *                      If id is not passed, form is filled with default values
+			 *                      and on save new expression should be created.
+			 */
+			showForm: function(id) {
+				var data;
+
+				if (typeof id === 'undefined') {
+					data = {
+						expression: '',
+						expression_type: '0',
+						exp_delimiter: ',',
+						case_sensitive: '1'
+					};
+					this.selectedID = null;
+
+					$('#saveExpression').val(<%=CJs.encodeJson(Cphp._("Add"))%>);
+				}
+				else {
+					data = this.expressions[id].data;
+					this.selectedID = id;
+
+					$('#saveExpression').val(<%=CJs.encodeJson(Cphp._("Update"))%>);
+				}
+
+				$('#expressionNew').val(data.expression);
+				$('#typeNew').val(data.expression_type);
+				$('#delimiterNew').val(data.exp_delimiter);
+				$('#case_sensitiveNew').prop('checked', +data.case_sensitive);
+
+				// when type is updated fire change event to show/hide delimiter row
+				$('#typeNew').change();
+
+				$('#exprForm').removeClass('hidden');
+			},
+
+			/**
+			 * Hide expression form.
+			 */
+			hideForm: function() {
+				$('#exprForm').addClass('hidden');
+			},
+
+			/**
+			 * Either update data of existing expression or create new expression with data in form.
+			 */
+			saveForm: function() {
+				var data = {
+					expression: $('#expressionNew').val(),
+					expression_type: $('#typeNew').val(),
+					exp_delimiter: $('#delimiterNew').val(),
+					case_sensitive: $('#case_sensitiveNew').prop('checked') ? '1' : '0'
+				};
+
+				if (this.validateExpression(data)) {
+					if (this.selectedID === null) {
+						this.addExpressions([data]);
+					}
+					else {
+						this.expressions[this.selectedID].update(data);
+					}
+
+					this.hideForm();
+				}
+			},
+
+			/**
+			 * Remove expression.
+			 *
+			 * @param {String} id Id of expression
+			 */
+			removeExpression: function(id) {
+				this.expressions[id].remove();
+				delete this.expressions[id];
+			},
+
+			/**
+			 * Send all expressions data to server with test string.
+			 *
+			 * @param {String} string Test string to test expression against
+			 */
+			testExpressions: function(string) {
+				var url,
+					ajaxData = {
+						testString: string,
+						expressions: {}
+					};
+
+				if ($.isEmptyObject(this.expressions)) {
+					$('#testResultTable tr:not(.header)').remove();
+				}
+				else {
+					url = new Curl();
+
+					$('#testResultTable').css({opacity: 0.5});
+					$('#testPreloader').show();
+
+					for (var id in this.expressions) {
+						ajaxData.expressions[id] = this.expressions[id].data;
+					}
+
+					$.post(
+						'adm.regexps.action?output=ajax&ajaxaction=test&sid=' + url.getArgument('sid'),
+						{ajaxdata: ajaxData},
+						$.proxy(this.showTestResults, this),
+						'json'
+					);
+				}
+			},
+
+			/**
+			 * Update test results table with data received form server.
+			 *
+			 * @param {Object} response ajax response
+			 */
+			showTestResults: function(response) {
+				var tplData, expr, exprResult;
+
+				$('#testResultTable tr:not(.header)').remove();
+
+				for (var id in this.expressions) {
+					expr = this.expressions[id];
+					exprResult = response.data.expressions[id];
+
+					tplData = {
+						expression: expr.data.expression,
+						type: expr.type2str(),
+						result: exprResult ? <%=CJs.encodeJson(Cphp._("TRUE"))%> : <%=CJs.encodeJson(Cphp._("FALSE"))%>,
+						resultClass: exprResult ? 'green' : 'red'
+					};
+
+					$('#testResultTable').append(this.testTableRowTpl.evaluate(tplData));
+				}
+
+				tplData = {
+					resultClass: response.data.final ? 'green' : 'red',
+					result: response.data.final ? <%=CJs.encodeJson(Cphp._("TRUE"))%> : <%=CJs.encodeJson(Cphp._("FALSE"))%>
+				};
+
+				$('#testResultTable').append(this.testCombinedTableRowTpl.evaluate(tplData));
+				$('#testResultTable').css({opacity: 1});
+				$('#testPreloader').hide();
+			}
+		};
+	}(jQuery));
+
+	jQuery(function($) {
+		$('#exprTable').on('click', 'button.exprRemove', function() {
+			iradarRegExp.removeExpression($(this).attr('data-id'));
+		});
+
+		$('#exprTable').on('click', 'input.exprAdd', function() {
+			iradarRegExp.showForm();
+		});
+
+		$('#exprTable').on('click', 'button.exprEdit', function() {
+			iradarRegExp.showForm($(this).attr('data-id'));
+		});
+
+		$('#saveExpression').click(function() {
+			iradarRegExp.saveForm();
+		});
+
+		$('#cancelExpression').click(function() {
+			iradarRegExp.hideForm();
+		});
+
+		$('#testExpression, #tab_test').click(function() {
+			iradarRegExp.testExpressions($('#test_string').val());
+		});
+
+		// on submit we need to add all expressions data as hidden fields to form
+		$('#iradarRegExpForm').submit(function() {
+			var form = $('#iradarRegExpForm'),
+				expr,
+				counter = 0;
+
+			for (var id in iradarRegExp.expressions) {
+				expr = iradarRegExp.expressions[id].data;
+
+				for (var fieldName in expr) {
+					$('<input>').attr({
+						type: 'hidden',
+						name: 'expressions[' + counter + '][' + fieldName + ']'
+					}).val(expr[fieldName]).appendTo(form);
+				}
+
+				counter++;
+			}
+		});
+
+		// on clone we remove regexpid hidden field and also expressionid from expressions
+		// it's needed because after clone all expressions should be added as new for cloned reg. exp
+		$('#clone').click(function() {
+			$('#regexpid').remove();
+			$('#clone').remove();
+			$('#delete').remove();
+			$('#cancel').addClass('ui-corner-left');
+
+			for (var id in iradarRegExp.expressions) {
+				delete iradarRegExp.expressions[id].data['expressionid'];
+			}
+		});
+
+		// handler for type select in form, show/hide delimiter select
+		$('#typeNew').change(function() {
+			if ($(this).val() === '<%=Defines.EXPRESSION_TYPE_ANY_INCLUDED%>') {
+				$('#delimiterNewRow').show();
+			}
+			else {
+				$('#delimiterNewRow').hide();
+			}
+		});
+	});
+</script>

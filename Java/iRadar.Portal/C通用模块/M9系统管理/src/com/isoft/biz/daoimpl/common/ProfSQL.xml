@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="SQL_PROF_VIEW">
+<![CDATA[
+select 
+  t.name name#,
+  t.mobile mobile#,
+  t.email  email#,  
+  date_format(t.last_login_at,'%Y-%m-%d %T') lastLoginAt#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from sys_user t
+where t.id = #{userId}
+  and t.tenant_id =#{tenantId}
+]]>
+</entry>
+
+<entry key="SQL_PROF_EDIT">
+<![CDATA[
+update sys_user t set
+    t.mobile = #{mobile},
+    t.email = #{email},
+    t.modified_at = now(),
+    t.modified_user = #{userId}
+where t.id = #{userId}
+  and t.tenant_id =#{tenantId}
+]]>
+</entry>
+
+<entry key="SQL_PROF_GET_PSWD">
+<![CDATA[
+select t.pswd
+from sys_user t
+where t.id = #{userId}
+  and t.tenant_id =#{tenantId}
+]]>
+</entry>
+
+<entry key="SQL_PROF_CHANGE_PSWD">
+<![CDATA[
+update sys_user t set
+    t.pswd = #{pswd},
+    t.modified_at = now(),
+    t.modified_user = #{userId}
+where t.id = #{userId}
+  and t.tenant_id =#{tenantId}
+]]>
+</entry>
+
+<entry key="SQL_TENANT_VIEW">
+<![CDATA[
+select 
+  t.name name#,
+  t.contact contact#,
+  t.mobile mobile#,
+  t.email  email#,
+  t.address  address#,
+  t.postcode  postcode#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from sys_tenant t
+where t.id =#{tenantId}
+]]>
+</entry>
+
+<entry key="SQL_TENANT_EDIT">
+<![CDATA[
+update sys_tenant t set
+    t.name = #{name},
+    t.contact = #{contact},
+    t.mobile = #{mobile},
+    t.email = #{email},
+    t.address = #{address},
+    t.postcode = #{postcode},
+    t.modified_at = now(),
+    t.modified_user = #{userId}
+where t.id = #{tenantId}
+]]>
+</entry>
+
+<entry key="SQL_PROF_BY_TID_USERNAME">
+<![CDATA[
+select 
+  t.id  id#,
+  t.name name#,
+  t.email  email#,  
+  t.tenant_id tenantId#,
+  t.status status#
+from sys_user t
+where t.name = #{userName}
+  and t.tenant_id =#{tenantId}
+  and t.deleted = 'N'
+]]>
+</entry>
+
+</properties>

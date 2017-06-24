@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="iRadar Coding Helpers" default="qa@war" basedir=".">
+	<property name="dist" value="./dist/wars" />
+	
+	<!-- 设置ant编译器 
+	                注意：通过ant编译，需要将 antlib 目录下的jar包copy到ant安装目录的lib目录下
+	-->
+	<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+	
+	<!-- 内部测试  -->
+	<property name="qa.db.ipaddr" value="192.168.39.139" />
+	<property name="qa.server.ipaddr" value="192.168.39.113" />
+	<property name="qa.openstack.ipaddr" value="192.168.39.123" />
+	<property name="qa.ovirt.ipaddr" value="192.168.39.121" />
+	<property name="qa.ovirt.user" value="admin@internal" />
+	<property name="qa.ovirt.password" value="123.com" />
+	<property name="qa.openstack.user" value="admin" />
+	<property name="qa.openstack.password" value="admin" />
+	<property name="qa.debug" value="false" />
+	
+	<!-- 内部开发  -->
+	<property name="release.db.ipaddr" value="127.0.0.1" />
+	<property name="release.server.ipaddr" value="192.168.10.251" />
+	<property name="release.openstack.ipaddr" value="192.168.39.123" />
+	<property name="release.ovirt.ipaddr" value="192.168.39.121" />
+	<property name="release.ovirt.user" value="admin@internal" />
+	<property name="release.ovirt.password" value="123.com" />
+	<property name="release.openstack.user" value="admin" />
+	<property name="release.openstack.password" value="admin" />
+	<property name="release.debug" value="false" />
+	
+	<!-- 30S交付版本  -->
+	<property name="product.db.ipaddr" value="127.0.0.1" />
+	<property name="product.server.ipaddr" value="192.168.10.22" />
+	<property name="product.openstack.ipaddr" value="192.168.10.180" />
+	<property name="product.ovirt.ipaddr" value="1.1.1.1" />
+	<property name="product.ovirt.user" value="admin@internal" />
+	<property name="product.ovirt.password" value="123.com" />
+	<property name="product.openstack.user" value="admin" />
+	<property name="product.openstack.password" value="admin" />
+	<property name="product.debug" value="false" />
+	
+	<target name="clean">
+		<delete dir="${dist}" />
+		<mkdir dir="${dist}" />
+	</target>
+
+	<target name="dev@war" depends="clean">
+		<mkdir dir="${dist}/WebRoot/META-INF" />
+		<copy file="WebRoot/META-INF/context_local.xml" tofile="${dist}/WebRoot/META-INF/context.xml" />
+
+		<mkdir dir="${dist}/WebRoot/WEB-INF/classes" />
+		<copy file="WebRoot/WEB-INF/classes/features.xml" todir="${dist}/WebRoot/WEB-INF/classes" />
+
+		<war destfile="${dist}/imon.war" webxml="WebRoot/WEB-INF/web.xml">
+			<fileset dir="WebRoot">
+				<exclude name="**/*.bak" />
+				<exclude name="META-INF/context.xml" />
+				<exclude name="WEB-INF/classes/features.xml" />
+			</fileset>
+			<fileset dir="${dist}/WebRoot">
+			</fileset>
+		</war>
+
+		<delete dir="${dist}/WebRoot" />
+	</target>
+	
+	<target name="qa@war" depends="clean">
+		<mkdir dir="${dist}/WebRoot/META-INF" />
+		<copy file="WebRoot/META-INF/context_local.xml" tofile="${dist}/WebRoot/META-INF/context.xml" />
+
+		<mkdir dir="${dist}/WebRoot/WEB-INF/classes" />
+		<copy file="M框架定制/resource/features.xml" todir="${dist}/WebRoot/WEB-INF/classes" />
+		<copy file="M框架定制/resource/openstack.properties" todir="${dist}/WebRoot/WEB-INF/classes" />
+		<copy file="M框架定制/resource/ovirt.properties" todir="${dist}/WebRoot/WEB-INF/classes" />
+
+		<!-- context.xml -->
+		<replaceregexp file="${dist}/WebRoot/META-INF/context.xml" byline="true" 
+			match="proxool.driver-url=&quot;jdbc:mysql://.*:3306/iradar&quot;" 
+			replace="proxool.driver-url=&quot;jdbc:mysql://${qa.db.ipaddr}:3306/iradar&quot;" />
+		
+		<!-- features.xml -->
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/features.xml" byline="true" 
+			match="&lt;entry key=&quot;debug&quot;&gt;.*&lt;/entry&gt;" 
+			replace="&lt;entry key=&quot;debug&quot;&gt;${qa.debug}&lt;/entry&gt;" encoding="utf8"/>
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/features.xml" byline="true" 
+			match="&lt;entry key=&quot;iradarServer&quot;&gt;.*&lt;/entry&gt;" 
+			replace="&lt;entry key=&quot;iradarServer&quot;&gt;${qa.server.ipaddr}&lt;/entry&gt;"  encoding="utf8"/>
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/features.xml" byline="true" 
+			match="&lt;entry key=&quot;defaultUser&quot;&gt;.*&lt;/entry&gt;" 
+			replace="&lt;entry key=&quot;defaultUser&quot;&gt;${qa.openstack.user}&lt;/entry&gt;"  encoding="utf8"/>
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/features.xml" byline="true" 
+			match="&lt;entry key=&quot;defaultPassword&quot;&gt;.*&lt;/entry&gt;" 
+			replace="&lt;entry key=&quot;defaultPassword&quot;&gt;${qa.openstack.password}&lt;/entry&gt;"  encoding="utf8"/>
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/features.xml" byline="true" 
+			match="&lt;!--.*?--&gt;\n?\r?" 
+			replace=""  encoding="utf8"/>
+		
+		<!-- openstack.properties -->
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/openstack.properties" byline="true" 
+			match="iaas.identity.endpoint.auth.url=http://.*:35357/v2.0" 
+			replace="iaas.identity.endpoint.auth.url=http://${qa.openstack.ipaddr}:35357/v2.0" />
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/openstack.properties" byline="true" 
+			match="iaas.auth.username=.*" 
+			replace="iaas.auth.username=${qa.openstack.user}" />
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/openstack.properties" byline="true" 
+			match="iaas.auth.password=.*" 
+			replace="iaas.auth.password=${qa.openstack.password}" />
+		
+		<!-- ovirt.properties -->
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/ovirt.properties" byline="true" 
+			match="ovirt.auth.url=https://.*:443/ovirt-engine/api" 
+			replace="ovirt.auth.url=https://${qa.ovirt.ipaddr}:443/ovirt-engine/api" />
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/ovirt.properties" byline="true" 
+			match="ovirt.auth.username=.*" 
+			replace="ovirt.auth.username=${qa.ovirt.user}" />
+		<replaceregexp file="${dist}/WebRoot/WEB-INF/classes/ovirt.properties" byline="true" 
+			match="ovirt.auth.password=.*" 
+			replace="ovirt.auth.password=${qa.ovirt.password}" />
+		
+		<path id="compile.classpath">  
+		    <fileset dir="WebRoot/WEB-INF/lib">  
+		        <include name="*.jar"/>  
+		    </fileset>  
+		</path>
+
+		<mkdir dir="WebRoot/WEB-INF/classes" />
+		
+		<mkdir dir="${dist}/java" />
+		
+		<copy todir="${dist}/java" verbose="no">
+			<fileset dir="./C通用模块">
+			</fileset>
+			<fileset dir="./L租户视角">
+			</fileset>
+			<fileset dir="./M框架定制">
+			</fileset>
+		</copy>	
+		
+		<copy file="antlib/jsp-api.jar" tofile="WebRoot/WEB-INF/lib/jsp-api.jar" />	
+		<copy file="antlib/servlet-api.jar" tofile="WebRoot/WEB-INF/lib/servlet-api.jar" />	
+		
+		<javac destdir="WebRoot/WEB-INF/classes" encoding="UTF-8" target="1.7" source="1.7" debug="no" srcdir="${dist}/java" nowarn="true" optimize="true" >  
+        	<classpath refid="compile.classpath"/>  
+    	</javac>
+		
+	    <antcall target="copyfiles" />  
+		
+		<war destfile="${dist}/imon.war" webxml="WebRoot/WEB-INF/web.xml">
+			<fileset dir="WebRoot">
+				<exclude name="**/*.bak" />
+				<exclude name="META-INF/context.xml" />
+				<exclude name="WEB-INF/classes/features.xml" />
+				<exclude name="WEB-INF/classes/openstack.properties" />
+				<exclude name="WEB-INF/classes/ovirt.properties" />
+			</fileset>
+			<fileset dir="${dist}/WebRoot">
+			</fileset>
+		</war>
+		         
+        <delete dir="${dist}/java" />
+		<delete dir="${dist}/WebRoot" />
+		<delete file="WebRoot/WEB-INF/lib/jsp-api.jar" />	
+		<delete file="WebRoot/WEB-INF/lib/servlet-api.jar" />	
+		<delete dir="WebRoot/WEB-INF/classes" />
+	</target>
+	
+	<target name="release@war">
+		<antcall target="qa@war">
+			<param name="qa.db.ipaddr" 			value="${release.db.ipaddr}" />
+			<param name="qa.server.ipaddr" 		value="${release.server.ipaddr}" />	
+			<param name="qa.openstack.ipaddr" 	value="${release.openstack.ipaddr}" />
+			<param name="qa.ovirt.ipaddr" 		value="${release.ovirt.ipaddr}" />
+			<param name="qa.ovirt.user" 		value="${release.ovirt.user}" />	
+			<param name="qa.ovirt.password" 	value="${release.ovirt.password}" />	
+			<param name="qa.openstack.user" 	value="${release.openstack.user}" />
+			<param name="qa.openstack.password" value="${release.openstack.password}" />
+			<param name="qa.debug" 				value="${release.debug}" />
+		</antcall>
+	</target>
+	
+	<target name="product@war">
+		<antcall target="qa@war">
+			<param name="qa.db.ipaddr" 			value="${product.db.ipaddr}" />
+			<param name="qa.server.ipaddr" 		value="${product.server.ipaddr}" />	
+			<param name="qa.openstack.ipaddr" 	value="${product.openstack.ipaddr}" />
+			<param name="qa.ovirt.ipaddr" 		value="${product.ovirt.ipaddr}" />
+			<param name="qa.ovirt.user" 		value="${product.ovirt.user}" />	
+			<param name="qa.ovirt.password" 	value="${product.ovirt.password}" />	
+			<param name="qa.openstack.user" 	value="${product.openstack.user}" />
+			<param name="qa.openstack.password" value="${product.openstack.password}" />
+			<param name="qa.debug" 				value="${product.debug}" />
+		</antcall>
+	</target>
+
+	<!-- 探测操作系统类型 -->
+	<target name="os.type.init">
+		<echo>Define the type of OS!</echo>
+		<condition property="isWindows">  
+	        <os family="windows"/>  
+	    </condition>
+		<condition property="isLinux">  
+	        <os family="unix"/>  
+	    </condition>
+	</target>
+	
+	<target name="windows-copyfiles" if="isWindows" depends="os.type.init">
+		<echo>Define win's paths!</echo>
+		<property name="copy-confs-regexp" value="resource[^\\]*\\(.*[^java]$)" />
+		<property name="copy-sqls-regexp" value="src[^\\]*\\(.*[xml]$)" />
+	</target>
+	
+	<target name="linux-copyfiles" if="isLinux" depends="os.type.init">
+		<echo>Define linux's paths!</echo>
+		<property name="copy-confs-regexp" value="resource[^/]*/(.*[^java]$)" />
+		<property name="copy-sqls-regexp" value="src[^/]*/(.*[xml]$)" />
+	</target>
+	
+	<target name="copyfiles" depends="windows-copyfiles,linux-copyfiles">
+		<!-- copy resource目录下的各类配置文件(struts、properties等) -->
+		<copy todir="WebRoot/WEB-INF/classes" verbose="no">
+			<fileset dir="${dist}/java"/>
+			<mapper type="regexp" from="${copy-confs-regexp}" to="\1"  />
+		</copy>
+		
+		<!-- copy src*目录下的各xml文件(*SQL.xml) -->
+		<copy todir="WebRoot/WEB-INF/classes" verbose="no">
+			<fileset dir="${dist}/java"/>
+			<mapper type="regexp" from="${copy-sqls-regexp}" to="\1"  />
+		</copy>
+	</target>
+	
+</project>

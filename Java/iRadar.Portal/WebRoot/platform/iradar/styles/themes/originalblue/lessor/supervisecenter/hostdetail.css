@@ -1,0 +1,23 @@
+/*
+ *监控中心.云主机监察.名称
+ *
+*/
+table.tableinfo_alarm tr td {
+	padding-left: 0 !important;
+}
+table.tableinfo_alarm tr td:first-child {
+	padding-left: 0.8em !important;
+}
+
+/*监控中心.服务器监察.Windows系列.设备详情*/
+ul.formlist .dd #rightFormDiv span.text-field-notServer {
+	display: inline-block;
+	white-space: nowrap;
+}
+.inventory-host .page_header .equipment_details {
+	text-align: left;
+}
+/*mysql 详情页面 表空间列表*/
+.inventory-host .page_header .head_left .equipment_details > div > ul.formlist li:nth-child(2) > .dd > div > ul.formlist{
+	margin-left: 2%;
+}

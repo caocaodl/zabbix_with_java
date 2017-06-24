@@ -1,0 +1,11 @@
+/*
+ *设备中心.资产列表.设备管理.部门结构设置.预定义宏
+ *
+*/
+
+#macrosFormList .dt{
+	display: none;
+}
+#macrosFormList .dd{
+	margin-left: 0;
+}

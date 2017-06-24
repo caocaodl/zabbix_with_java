@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>(MYSQL_LOG)</comment>
+
+	<entry key="SQL_ALL_SYSTEM">
+		<![CDATA[
+			SELECT 
+				t.id	id#,
+				t.dkey	dkey#,
+				t.dlabel	dlabel#,
+				t.seq_no	seq_no#
+			FROM 
+				sys_dict t 
+			WHERE 1=1
+				#if($type && $type!='')
+				AND t.type = #{type}
+				#end
+				#if($id && $id!='')
+				AND t.id = #{id}
+				#end
+				#if($dkey && $dkey!='')
+				AND t.dkey = #{dkey}
+				#end
+				#if($seq_no && $seq_no!='')
+				AND t.seq_no = #{seq_no}
+				#end
+		]]>
+	</entry>
+	<entry key="SQL_ALL_SYSTEM_INTERY">
+		<![CDATA[
+			SELECT 
+				t.hostid	id#
+			FROM 
+				host_inventory t
+			WHERE  t.url_a = #{url_a}
+				
+		]]>
+	</entry>
+	<entry key="SQL_ADD_SYSTEM">
+		<![CDATA[
+			INSERT INTO sys_dict
+				(id,type,dlabel,dkey,status,seq_no,note)
+			VALUES
+				(#{id},#{type},#{dlabel},#{dkey},'1','1','1')
+		]]>
+	</entry>
+	<entry key="SQL_ADD_MOTOR_ROOM">
+		<![CDATA[
+			INSERT INTO sys_dict
+				(id,type,dlabel,dkey,status,seq_no,note)
+			VALUES
+				(#{id},#{type},#{dlabel},#{dkey},'1',#{seq_no},'1')
+		]]>
+	</entry>
+	<entry key="SQL_UPDATE_SYSTEM">
+		<![CDATA[
+			UPDATE sys_dict t SET
+			    #if($dlabel && $dlabel!='' && $seq_no && $seq_no!='')
+				 t.dlabel = #{dlabel},
+				#else
+				 t.dlabel = #{dlabel}
+				#end
+				#if($seq_no && $seq_no!='')
+				 t.seq_no = #{seq_no}
+				#end
+			WHERE t.id = #{id}
+		]]>
+	</entry>
+   	<entry key="SQL_UPDATE_TWO">
+		<![CDATA[
+			UPDATE sys_dict t SET
+				t.dlabel = #{dlabel}
+			WHERE t.id = #{id}
+		]]>
+	</entry>
+	<entry key="SQL_DELETE_SYSTEM">
+		<![CDATA[
+			DELETE FROM
+				sys_dict
+			WHERE 
+				id 
+			IN(#foreach($var in $oslist)$var #if($velocityCount<$oslist.size()),#end #end)
+		]]>
+	</entry>
+
+	<entry key="SQL_SYSTEM_CHECK_UPDATE_CA">
+		<![CDATA[
+			SELECT 
+				id 
+			FROM 
+				sys_dict
+			WHERE
+			type='CABINET' and seq_no=#{seq_no} and dlabel=#{dlabel} 
+			AND
+				id!=#{id}
+		]]>
+	</entry>
+	
+	<entry key="SQL_SYSTEM_CHECK_UPDATE">
+		<![CDATA[
+			SELECT 
+				id 
+			FROM 
+				sys_dict
+			WHERE
+			type=#{type} and dlabel=#{dlabel} 
+			AND
+				id!=#{id}
+		]]>
+	</entry>
+
+	<entry key="SQL_SYSTEM_CHECK_ADD">
+		<![CDATA[
+			SELECT 
+				id 
+			FROM 
+				sys_dict
+			WHERE
+				dlabel=#{dlabel} and  type=#{type}
+		]]>
+	</entry>
+	<entry key="SQL_SYSTEM_CHECK_ADD_CA">
+		<![CDATA[
+			SELECT 
+				id 
+			FROM 
+				sys_dict
+			WHERE
+				type='CABINET' and seq_no=#{seq_no} and dlabel=#{dlabel} 
+		]]>
+	</entry>
+	
+	<entry key="SQL_SYSTEM_RELATION_GET">
+		<![CDATA[
+			SELECT hi.hostid hostId#
+			FROM host_inventory hi
+			WHERE hi.type_full in (select sd.dkey from sys_dict sd where sd.id in (#{osId}))
+		]]>
+	</entry>
+	
+<entry key="SQL_UPDATE_HOST_ROOM">
+	<![CDATA[
+		UPDATE host_inventory t SET
+			t.software = #{seq_no}
+		WHERE t.url_a = (SELECT dkey 
+						 FROM sys_dict 
+						 WHERE id=#{id})
+	]]>
+</entry>	
+	
+</properties>

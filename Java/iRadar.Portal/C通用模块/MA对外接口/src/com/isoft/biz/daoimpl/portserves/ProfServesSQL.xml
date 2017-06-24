@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+
+<entry key="SQL_UPDATA">
+<![CDATA[
+update i_userserves t set
+    t.status =0
+   
+where t.userid = #{userid}
+ 
+]]>
+</entry>
+
+<entry key="SQL_TENANT_VIEW">
+<![CDATA[
+select 
+  u.name     name#,
+  u.userid     id#
+from i_userserves u
+where u.status =0
+]]>
+</entry>
+<entry key="SQL_UPDATA_VIEW">
+<![CDATA[
+update i_userserves t set
+    t.status =1
+   
+where t.userid = #{userid}
+  
+]]>
+</entry>
+<entry key="SQL_SELECT">
+<![CDATA[
+select 
+  u.name     name#,
+  u.userid     id#
+from i_userserves u   
+where u.userid = #{userid}
+  
+]]>
+</entry>
+
+
+</properties>

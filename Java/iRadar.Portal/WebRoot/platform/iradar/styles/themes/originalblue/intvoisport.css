@@ -1,0 +1,69 @@
+/*
+* 报表中心.资产报表-设备类型
+*/
+.body_header input.equipment, .body_header input.manufacturers {
+	width: 134px;
+	height: 28px;
+	border: none;
+	outline: none;
+	background: no-repeat;
+	cursor: pointer;
+	float: right;
+}
+.body_header input.equipment {
+	background-image: url(images/iradar/equipment1.png);
+}
+.body_header input.manufacturers {
+	background-image: url(images/iradar/manufacturers1.png);
+}
+
+/* start 报表中心.资产报表-厂商-饼状图 */
+#todayMonItemChart, #todayMonItemChart span.fusioncharts-container, #todayMonItemChart span.fusioncharts-container svg {
+	width: 100% !important;
+	overflow: hidden;
+}
+#inventoryHostTypeChart, #inventoryHostTypeChart span.fusioncharts-container, #inventoryHostTypeChart span.fusioncharts-container svg {
+	width: 100% !important;
+	overflow: hidden;
+}
+table.table_inverntories tr.even_row td {
+	padding: 0 !important;
+}
+table.tableinfo.table_inverntories {
+	margin-top: 20px;
+}
+div#todayMonItemChart,div#inventoryHostTypeChart, table.tableinfo.table_inverntories {
+	height: 300px;
+}
+.toolbar {
+	margin-top: 15px;
+	padding-top: 3px;
+	box-shadow: -3px -2px 3px #c3c3c3;
+}
+.manufacturCon {
+	height: 300px;
+	overflow: auto;
+}
+table.table_inverntories tr.even_row > td:nth-child(2) {
+	vertical-align: top;
+}
+table.tableinfo.table_inverntories >tbody>tr:first-child>td {
+	width: 50%;
+	background-color: #fff;
+}
+/* table.tableinfo.table_inverntories >tbody>tr:first-child>td:nth-child(2) {
+	background-color: #f6f9fb;
+} */
+.caption {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
+input.export {
+	margin: 5px 0;
+}
+.body_header {
+	display: none;
+}
+
+/* end */

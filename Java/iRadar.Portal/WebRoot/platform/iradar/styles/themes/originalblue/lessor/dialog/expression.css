@@ -1,0 +1,9 @@
+/*
+ *策略中心.分析策略.阈值规则.名称.阈值规则.添加
+*/
+
+.trigger-expression #expr_type{
+	width: 360px;
+	max-width: 360px;
+}
+

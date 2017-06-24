@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="topo" namespace="/platform/iradar" extends="default">
+		
+		<action name="TopoMonitorData" class="com.isoft.biz.web.platform.topo.MonitorDataAction" method="doWork"/>
+		<!-- 网络链路拓扑 -->
+		<action name="TopoNetList" class="com.isoft.biz.web.platform.topo.NetTopoListAction" method="doWork"/>
+		
+		<!-- 云主机从属拓扑 -->
+		<action name="TopoCloudList" class="com.isoft.biz.web.platform.topo.CloudTopoListAction" method="doWork"/>
+		
+		<!-- 云主机链路拓扑 -->
+		<action name="TopoVirtLinkList" class="com.isoft.biz.web.platform.topo.VirtLinkTopoListAction" method="doWork"/>
+		
+		<!-- 机房拓扑 -->
+		<action name="TopoCabList" class="com.isoft.biz.web.platform.topo.CabTopoListAction" method="doWork"/>
+		
+		<!-- 业务拓扑 -->
+		<action name="topo_client_business" class="com.isoft.biz.web.platform.topo.BizTopoListAction" method="doWork"/>
+		
+		<!-- 首页概览拓扑生成图片 -->
+		<action name="topochart" class="com.isoft.iradar.web.action.core.TopoChartAction" method="doWork"/>
+		
+		<action name="TPicIndex" class="com.isoft.biz.web.platform.topo.TPicAction" method="doWork"/>  
+		
+		<!-- 浏览网络链路拓扑 -->
+		<action name="NetTopo*" class="com.isoft.biz.web.platform.topo.NetTopoAction" method="do{1}">
+            <result name="success">/WEB-INF/views/platform/topo/nettopo.jsp</result>
+            <result name="successPhy">/WEB-INF/views/platform/topo/nettopoIndex.jsp</result>
+            <result name="successDash">/WEB-INF/views/platform/topo/dsNettopoIndex.jsp</result>
+            <result type="jqGrid" name="json">
+               <param name="jsonProperty">dataPage</param>
+            </result>           
+            <result type="rosjson" name="resultMap">
+                <param name="jsonProperty">resultMap</param>
+            </result>
+            <result type="rosjson" name="resultList">
+                <param name="jsonProperty">resultList</param>
+            </result>
+        </action>
+         <!-- 浏览机房拓扑 -->
+		<action name="CabTopo*" class="com.isoft.biz.web.platform.topo.CabTopoAction" method="do{1}">
+		    <result name="success">/WEB-INF/views/platform/topo/cabtopo.jsp</result>
+		    <result name="successCab">/WEB-INF/views/platform/topo/cabtopoIndex.jsp</result>
+		    <result name="successCabHost">/WEB-INF/views/platform/topo/cabTopoHostIndex.jsp</result>
+		    <result type="jqGrid" name="json">
+                <param name="jsonProperty">dataPage</param>
+            </result>
+            <result type="rosjson" name="resultList">
+                <param name="jsonProperty">resultList</param>
+            </result>
+            <result type="rosjson" name="resultMap">
+                <param name="jsonProperty">resultMap</param>
+            </result>
+        </action>
+        
+        <!-- 浏览业务拓扑 -->
+        <action name="BizTopo*" class="com.isoft.biz.web.platform.topo.BizTopoAction" method="do{1}">
+		    <result name="success">/WEB-INF/views/platform/topo/biztopo.jsp</result>
+		    <result name="successTenant">/WEB-INF/views/platform/topo/biztopoIndex.jsp</result>
+		    <result name="successAdmin">/WEB-INF/views/platform/topo/biztopoAdminIndex.jsp</result>
+		    <result type="jqGrid" name="json">
+                <param name="jsonProperty">dataPage</param>
+            </result>
+            <result type="rosjson" name="resultList">
+                <param name="jsonProperty">resultList</param>
+            </result>
+            <result type="rosjson" name="resultMap">
+                <param name="jsonProperty">resultMap</param>
+            </result>
+        </action>
+        
+         <!-- 浏览云主机链路拓扑 -->
+        <action name="VirtLinkTopo*" class="com.isoft.biz.web.platform.topo.VirtLinkTopoAction" method="do{1}">
+		    <result name="successtenantindex">/WEB-INF/views/platform/topo/virtlinktopoTenantIndex.jsp</result>
+		    <result name="successadmin">/WEB-INF/views/platform/topo/virtlinktopoIndex.jsp</result>
+		     <result name="success">/WEB-INF/views/platform/topo/virtlinkTenantOverview.jsp</result>
+		    <!-- <result name="success">/WEB-INF/views/platform/topo/virtlinktopo.jsp</result> -->
+            <result type="rosjson" name="resultMap">
+                <param name="jsonProperty">resultMap</param>
+            </result>
+            <result type="rosjson" name="resultList">
+                <param name="jsonProperty">resultList</param>
+            </result>
+        </action>
+        <action name="VlanTopo*" class="com.isoft.biz.web.platform.topo.VlanTopoAction" method="do{1}">
+		    <result name="success">/WEB-INF/views/platform/topo/vlantopo.jsp</result>
+            <result name="result" type="stream">
+                <param name="contentType">text/json</param>   
+                <param name= "inputName">result</param>    
+            </result>
+        </action>
+        
+		<action name="BackGPic*" class="com.isoft.biz.web.platform.topo.BackGPicAction" method="do{1}">
+            <result type="rosjson" name="resultMap">
+                <param name="jsonProperty">resultMap</param>
+            </result>
+            <result type="rosjson" name="resultList">
+                <param name="jsonProperty">resultList</param>
+            </result>
+        </action>
+        
+		<action name="Thumbnail*" class="com.isoft.biz.web.platform.topo.ThumbnailAction" method="do{1}">
+		    <result name="detail">/WEB-INF/views/platform/topo/thumbnail.jsp</result>
+		    <result name="thumbnailTreeIndex">/WEB-INF/views/platform/topo/thumbnailmgr.jsp</result>
+		    <result type="jqGrid" name="json">
+                <param name="jsonProperty">dataPage</param>
+            </result>
+            <result type="rosjson" name="resultList">
+                <param name="jsonProperty">resultList</param>
+            </result>
+            <result type="rosjson" name="resultMap">
+                <param name="jsonProperty">resultMap</param>
+            </result>
+        </action>
+        
+        <action name="HostExp*" class="com.isoft.biz.web.platform.topo.HostExpAction" method="do{1}">
+            <result type="jqGrid" name="json">
+                <param name="jsonProperty">dataPage</param>
+            </result>
+            <result type="rosjson" name="resultMap">
+                <param name="jsonProperty">resultMap</param>
+            </result>
+            <result type="rosjson" name="resultList">
+                <param name="jsonProperty">resultList</param>
+            </result>
+        </action> 
+        
+        <action name="TopoDataOper*" class="com.isoft.biz.web.platform.topo.TopoDataOperAction" method="do{1}">
+            <result type="jqGrid" name="json">
+                <param name="jsonProperty">dataPage</param>
+            </result>
+            <result type="rosjson" name="resultMap">
+                <param name="jsonProperty">resultMap</param>
+            </result>
+            <result type="rosjson" name="resultList">
+                <param name="jsonProperty">resultList</param>
+            </result>
+        </action> 
+        
+    </package>
+</struts>

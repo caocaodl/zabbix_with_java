@@ -1,0 +1,144 @@
+
+.layout_north .header_top .expand.tree{
+	background-position: 5px center;
+}
+
+
+.layout_north .header_top .logo{
+	width: 20.5em;
+	margin: 1em 0 0 25px;
+}
+
+.layout_north .header_top .notice{
+	width: 8.7em;  	
+  	margin-left: 4em;
+}
+
+/* header 告警图标*/
+.layout_north .header_top .notice span{	
+	position: relative;
+	width: 2.2em;
+	height: 1.9em;
+	margin: 2.1em 1.8em 0px 0px;	
+}
+
+.layout_north .header_top #alarm{
+	margin: 0;
+}
+
+.layout_north .header_top .notice A.active{
+    position: absolute;
+    left: 1.7em;
+    top: -1em;
+    margin: 0;
+    padding: 7px 5px;
+}
+
+.layout_north .userinfo{
+	margin: 2.4em 0px 0px 0px;  	
+}
+
+.layout_north .userinfo .spliter{
+	margin-right: 1.5em;
+	padding: 1px;
+}
+
+.layout_north .userinfo .spliter A{    
+  	height: 1.5em;  
+}
+
+.layout_north .userinfo .user{
+	min-width: 1.8em;
+	padding-left: 2.2em;
+}
+
+.layout_north .userinfo .down{
+	padding: 0 0 1.43em 1.43em;
+	background: url("../../images/download.png") no-repeat;
+
+}
+
+.layout_north .userinfo .exit{
+	padding: 0 0 1.43em 1.43em;
+	background: url("../../images/exit.png") no-repeat;
+}
+
+/* 左侧菜单 */
+.layout-panel-west .tree .tree-node{
+	margin: 0.4em 1.5em;
+	padding: 0.9em 0;	
+	background: #d2d9e1;
+}
+.layout-panel-west .tree .tree-node-hover, 
+.layout-panel-west .tree .tree-node-selected{
+	background: #226496;
+}
+
+.layout-panel-west .tree-node .tree-title{
+	padding: 0 0.2em;
+	font-size: 1.1em;	
+	white-space: pre-wrap;
+}
+.layout-panel-west .tree-expanded, .tree-collapsed, .tree-folder, .tree-file, .tree-checkbox, .tree-indent{
+	width: 1.2em;
+	height: 1.2em;
+}
+
+.layout-panel-west .tree-node .tree-collapsed, .layout-panel-west .tree-node .tree-collapsed-hover,.layout-panel-west .tree-node .tree-expanded, .layout-panel-west .tree-node .tree-expanded-hover{
+	margin-left: 0.5em;
+}
+
+/*收缩图标*/
+.layout-panel-west .tree-node .tree-collapsed, .layout-panel-west .tree-node .tree-collapsed-hover{
+	background-position: -96px -1px;
+}
+
+/*展开图标*/
+.layout-panel-west .tree-node .tree-expanded, .layout-panel-west .tree-node .tree-expanded-hover{
+	background-position: -112px -1px;
+}
+
+.layout-panel-west .tree-node .tree-icon{
+	height: 10px;
+	margin-right: 0.5em;
+	background-position: 9px 6px;
+}
+
+.layout-panel-west .tree-node .tree-folder-open{
+ 	width: 0.7em;
+	background-position: 3px 6px;
+}
+.layout-panel-center .tabs-header{
+  	height: 2.85em;
+	font-size: 14px;
+}
+
+
+.layout-panel-center .tabs-header .tabs{
+	margin: 0;
+}
+
+.tabs li.tabs-selected a.tabs-inner{
+	padding: 0 1.75em;
+	border: none ;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

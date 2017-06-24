@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+	<entry key="SQL_LIST">
+		<![CDATA[
+			select
+			    a.applicationid appid#,
+			    i.name name#,
+			    a.name  appname#,
+				a.description     description#,
+				i.units       units#,
+				i.key_        keymain#
+			from
+			i_t_application a 
+			left join i_t_template t on a.templateid=t.templateid
+			left join i_t_item i on a.applicationid=i.applicationid
+			WHERE 
+				t.templateid=#{templateid} 
+				and a.status = 1
+			order by a.applicationid
+		]]>
+	</entry>
+   
+</properties>

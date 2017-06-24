@@ -1,0 +1,117 @@
+
+body,
+label,
+.tableinfo tr td{
+	font-family: "Microsoft YaHei", Verdana,Arial,sans-serif;
+}
+
+
+div#content>div label, 
+div#content>div>div label{
+	padding-left:36px;
+}
+
+label{
+	color: #727272;
+	background: no-repeat 12px center;
+}
+
+.platform_information>label{
+	background-image: url(../../../../platform/iradar/styles/themes/originalblue/images/dashboard/favplatforminfo.png);
+}
+
+.platform_health>label{
+	background-image: url(../../../../platform/iradar/styles/themes/originalblue/images/dashboard/totalsituation.png);
+}
+
+.resource_use_rate>label{
+	background-image: url(../../../../platform/iradar/styles/themes/originalblue/images/dashboard/resusedrate.png);
+}
+
+.cloud_service_state >label{
+	background-image: url(../../../../platform/iradar/styles/themes/originalblue/images/dashboard/cloudserstat.png);
+}
+
+.server_load_top5 >label{
+	background-image: url(../../../../platform/iradar/styles/themes/originalblue/images/dashboard/topn.png);
+}
+
+.resource_use_trend >label{
+	background-image: url(../../../../platform/iradar/styles/themes/originalblue/images/dashboard/resusedrate.png);
+}
+
+.system_status >label{
+	background-image: url(../../../../platform/iradar/styles/themes/originalblue/images/dashboard/system_state.png);
+}
+
+.last_event >label{
+	background-image: url(../../../../platform/iradar/styles/themes/originalblue/images/dashboard/lastiss.png);
+}
+
+.graph_report >label{
+	background-image: url(../../../../platform/iradar/styles/themes/originalblue/images/dashboard/user_figure.png);
+}
+
+.last_event .tableinfo .header td{
+	color: #727272;
+	font-weight: bold;
+}
+
+.last_event .tableinfo tr td{
+	font-size: 14px;
+	height: 2.8em;
+	line-height: 2.8em;
+	padding-left: 0;
+	color: #727272;
+}
+
+.last_event .tableinfo tr td a{
+	color: #058fcd;
+}
+
+.server_load_top5 .echart_ctn div{
+	left: 36px;
+}
+
+.platform_information .ctn{
+	padding-top: 54px;
+}
+
+/*图形报表 start*/
+#hat_favgrph ul.firstshape li{
+	width: 48%;
+}
+
+#hat_favgrph ul.firstshape li.empty{
+	width: 100%;
+}
+
+/*图形报表 end*/
+
+/*最近发生的告警 start*/
+.last_event table.tableinfo{
+	table-layout: fixed;
+}
+
+.last_event table.tableinfo tr td:nth-child(2){
+	width: 60px !important;
+}
+
+.last_event table.tableinfo tr td:nth-child(4){
+	width: 150px !important;
+}
+
+.last_event table.tableinfo tr td:nth-child(6){
+	width: 50px !important;
+}
+
+
+.last_event{
+	overflow: hidden;
+}
+
+table.tableinfo > tbody > tr > td:first-child{
+	padding-left: 4px;
+}
+
+/*最近发生的告警 end*/

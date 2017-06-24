@@ -1,0 +1,44 @@
+/*
+ *设备中心.设备监控
+ *
+*/
+
+/*设备类型 下拉框*/
+table.header_wide select{
+	margin: 0 1em 0 0;
+}
+
+
+/* 添加设备.设备管理 删除图标(可用与不可用)*/
+#hostlist .link_menu.icon{
+	padding-top: 20px;
+}
+#hostlist  button.link_menu[disabled="disabled"] {	
+	background-image: url('../../images/iradar/disable_gray_small.png') !important;
+} 
+
+/* 设备管理.ip、端口号 */
+.interface-ip .text, .interface-port .text{
+	width: 8em;
+}
+/* 设备管理.DNS名称 */
+.interface-dns .text{
+	width: 12em;
+}
+
+/* 监控模型.链接新监控模型 */
+.multiselect .selected ul{
+	padding-bottom: 0px !important;
+	line-height: normal;
+}
+
+/* 添加设备.预定义宏 */
+#macrosFormList li.formrow div.dt{
+	display: none;
+}
+
+ul.formlist .formrow .dd{
+	margin-left: 0;
+}
+
+

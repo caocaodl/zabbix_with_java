@@ -1,0 +1,12 @@
+/*
+ *监控中心.所有监察都均引用此样式
+ *
+*/
+
+/* 云主机监察 */
+
+#tenant{
+	height: 2.5em !important;
+	line-height: 2.5em !important;
+}
+

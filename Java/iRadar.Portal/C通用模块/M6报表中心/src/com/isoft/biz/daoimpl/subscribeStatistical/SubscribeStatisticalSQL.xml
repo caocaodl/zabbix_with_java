@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>(MYSQL)</comment>
+	
+	<entry key="SQL_SUBSCRIBESTATISTICAL_PAGE">
+        <![CDATA[
+			SELECT
+				host		templateName#,
+				status		subscribeSum#           
+			FROM
+				hosts 
+		]]>
+	</entry>
+</properties>

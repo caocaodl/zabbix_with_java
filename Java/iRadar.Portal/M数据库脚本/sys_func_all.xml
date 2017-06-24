@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sys_func PUBLIC "sys_func" "../libs/sys_func.dtd" >
+<sys>
+	<!-- 运营商-->
+	<func func_name="策略中心" func_id="strategy" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="strategy" 
+		status="1" role="2" note="">
+		<func func_name="发现策略" func_id="discovery" func_url="/platform/iradar/discoveryconf.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="discovery" 
+			status="1" role="2" note=""> 			
+		</func>	
+        <func func_name="告警策略" func_id="analysis" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="analysis"
+            status="1" role="2" note="">
+			<func func_name="告警规则" func_id="triggers" func_url="/platform/iradar/triggers.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="triggers"
+			    status="1" role="2" note="">
+			</func> 
+			<func func_name="告警响应" func_id="triggerAct" func_url="/platform/iradar/triggerAct.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="triggerAct"
+			    status="1" role="2" note="">
+			</func> 
+        </func> 
+		<func func_name="监控模型" func_id="templates" func_url="/platform/iradar/templates.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="templates"
+			status="1" role="2" note="">
+		</func>
+		<func func_name="WEB监控策略" func_id="web_mon" func_url="/platform/iradar/httpconf.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="web_mon"
+			status="1" role="2" note="">
+		</func>
+	</func>
+    <func func_name="设备中心" func_id="host" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="host"
+        status="1" role="2" note="">
+	    <func func_name="设备监控配置" func_id="hostMonitor" func_url="/platform/iradar/hostMonitor.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="hostMonitor"
+	        status="1" role="2" note="">
+	    </func>
+	    <func func_name="资产列表" func_id="assetList" func_url="/platform/iradar/hostinventories.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="assetList"
+	        status="1" role="2" note="">
+	    </func>	 
+	    <func func_name="维护计划" func_id="maintenance" func_url="/platform/iradar/maintenance.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="maintenance"
+	        status="1" role="2" note="">
+	    </func>	
+	    <func func_name="监控类型" func_id="hostgroups" func_url="/platform/iradar/hostgroups.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="hostgroups"
+            status="1" role="2" note="">
+        </func>            
+    </func>
+	<func func_name="监控中心" func_id="monitor" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="monitor"
+		status="1" role="2" note="">
+		<func func_name="物理设备" func_id="mon_phy" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_phy accordion_title"
+			status="1" role="2" note="">
+		</func>
+		<func func_name="服务器" func_id="mon_server" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_server"
+			status="1" role="2" note="">
+			<func func_name="Windows系列" func_id="windows_server" func_url="/platform/iradar/windows_mon_server.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="windows_mon_server"
+			    status="1" role="2" note="">
+			</func> 
+			<func func_name="Linux系列" func_id="linux_server" func_url="/platform/iradar/linux_mon_server.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="linux_mon_server"
+			    status="1" role="2" note="">
+			</func> 
+		</func>
+		<func func_name="网络设备" func_id="mon_net" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_net"
+			status="1" role="2" note="">
+			<func func_name="Cisco系列" func_id="cisco_net" func_url="/platform/iradar/mon_net_cisco.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="cisco_mon_net"
+			    status="1" role="2" note="">
+			</func>
+			<func func_name="华为交换机" func_id="huawei_net" func_url="/platform/iradar/mon_net_huawei_switch.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="huawei_mon_net"
+			    status="1" role="2" note="">
+			</func>
+			<func func_name="中兴网络设备" func_id="zhongxing_net" func_url="/platform/iradar/mon_net_zhongxing_switch_latest.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="zhongxing_mon_net"
+			    status="1" role="2" note="">
+			</func>
+			<func func_name="通用网络设备" func_id="common_net" func_url="/platform/iradar/mon_common_net_host.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="common_mon_net"
+			    status="1" role="2" note="">
+			</func> 
+		</func>
+		<!-- /platform/iradar/mon_storage.action -->
+		<func func_name="存储设备" func_id="mon_storage" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_storage"
+			status="1" role="2" note="">
+		</func>
+		<func func_name="虚拟资源" func_id="mon_virt" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_virt accordion_title"
+			status="1" role="2" note="">
+		</func>
+		<func func_name="云主机" func_id="mon_vm" func_url="/platform/iradar/mon_vm.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_vm"
+			status="1" role="2" note="">
+		</func>
+		<func func_name="平台服务" func_id="mon_cloud" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_cloud" status="1" role="2" note="">
+			<func func_name="控制服务" func_id="mon_cloud_control" func_url="/platform/iradar/mon_cloud_control.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="" status="1" role="2" note="">
+			</func>
+			<func func_name="计算服务" func_id="mon_cloud_compute" func_url="/platform/iradar/mon_cloud_compute.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="" status="1" role="2" note="">
+			</func>
+			<func func_name="存储服务" func_id="mon_cloud_ceph" func_url="/platform/iradar/mon_cloud_ceph.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="" status="1" role="2" note="">
+			</func>
+			<func func_name="网络服务" func_id="mon_cloud_network" func_url="/platform/iradar/mon_cloud_network.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="" status="1" role="2" note="">
+			</func>
+			<func func_name="门户服务" func_id="mon_cloud_web" func_url="/platform/iradar/mon_cloud_web.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="" status="1" role="2" note="">
+			</func>
+		</func>
+		<func func_name="业务系统" func_id="mon_business" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_business accordion_title"
+			status="1" role="2" note="">
+		</func>
+		<func func_name="数据库" func_id="mon_db" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_db" status="1" role="2" note="">
+			<func func_name="MySQL" func_id="mysql_db" func_url="/platform/iradar/mon_db_mysql.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_db_mysql"
+			    status="1" role="2" note="">
+			</func> 
+			<func func_name="Oracle" func_id="oracle_db" func_url="/platform/iradar/mon_db_oracle.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_db_oracle"
+			    status="1" role="2" note="">
+			</func> 
+			<func func_name="MSSQL" func_id="sqlserver_db" func_url="/platform/iradar/mon_db_sqlserver.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_db_sqlserver"
+			    status="1" role="2" note="">
+			</func> 
+			  <func func_name="MongoDB" func_id="mongodb_db" func_url="/platform/iradar/mon_db_mongo.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_db_mongodb"
+			    status="1" role="2" note="">
+			</func>
+			<func func_name="DB2" func_id="db2_db" func_url="/platform/iradar/mon_db_db2.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_db_db2"
+			    status="1" role="2" note="">
+			</func> 
+		</func>
+		<func func_name="中间件" func_id="mon_middle" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_middle" status="1" role="2" note="">
+			<func func_name="Tomcat" func_id="tomcat_middle" func_url="/platform/iradar/mon_middle_tomcat.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_middle_tomcat"
+			    status="1" role="2" note="">
+			</func> 
+			<func func_name="WebLogic" func_id="weblogic_middle" func_url="/platform/iradar/mon_middle_weblogic.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_middle_weblogic"
+			    status="1" role="2" note="">
+			</func> 
+			<func func_name="WebSphere" func_id="websphere_middle" func_url="/platform/iradar/mon_middle_websphere.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_middle_websphere"
+			    status="1" role="2" note="">
+			</func> 
+			<func func_name="IIS" func_id="iis_middle" func_url="/platform/iradar/mon_middle_iis.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_middle_iis"
+			    status="1" role="2" note="">
+			</func> 
+		</func>
+		<func func_name="Web服务" func_id="mon_web" func_url="/platform/iradar/mon_web.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_web" status="1" role="2" note="">
+		</func>
+		<!-- <func func_name="集群监控" func_id="mon_cluster" func_url="/platform/iradar/mon_cluster.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_cluster"
+			status="1" role="2" note="">
+		</func>
+		<func func_name="桌面云监控" func_id="mon_desktopc" func_url="/platform/iradar/mon_desktopc.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_desktopc"
+			status="1" role="2" note="">
+		</func> -->
+		<func func_name="业务系统" func_id="mon_tenant_business" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_tenant_business"
+			status="1" role="2" note="">
+		</func>
+		<func func_name="其他" func_id="mon_other" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_other accordion_title"
+			status="1" role="2" note="">
+		</func>
+		<func func_name="其他" func_id="mon_others" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_others" status="1" role="2" note="">
+		</func>
+	</func>
+    <func func_name="告警中心" func_id="events" func_url="/platform/iradar/events.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="event"
+        status="1" role="2" note="">
+        <func func_name="活动告警" func_id="activealarm" func_url="/platform/iradar/activealarm.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="activealarm"
+            status="1" role="2" note="">
+        </func> 
+        <func func_name="历史告警" func_id="historyalarm" func_url="/platform/iradar/historyalarm.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="historyalarm"
+            status="1" role="2" note="">
+        </func>
+    </func>
+    <func func_name="报表中心" func_id="report" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="report"
+        status="1" role="2" note="">
+        <func func_name="巡检任务" func_id="inspectionReport" func_url="/platform/iradar/inspectionReport.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="inspectionReport"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="性能报表" func_id="performance_report" func_url="/platform/iradar/performance_report.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="performance_report"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="告警报表" func_id="eventsreport" func_url="/platform/iradar/events_report.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="eventsreport"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="资产报表" func_id="inventories_report" func_url="/platform/iradar/intvoisport.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="inventories_report"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="业务报表" func_id="business_report" func_url="/platform/iradar/business_report.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="business_report"
+            status="1" role="2" note="">
+        </func>
+    </func>
+    <func func_name="拓扑中心" func_id="topology" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="topology"
+        status="1" role="2" note="">
+        <func func_name="物理链路拓扑" func_id="topo_net" func_url="/platform/iradar/NetTopoPhyIndex.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="topo_net"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="虚拟链路拓扑" func_id="topo_virt" func_url="/platform/iradar/VirtLinkTopoIndex.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="topo_virt"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="机房拓扑" func_id="topo_computer_room" func_url="/platform/iradar/CabTopoTopoIndex.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="topo_computer_room"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="业务拓扑" func_id="topo_admin_biz" func_url="/platform/iradar/BizTopoAdminIndex.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="topo_admin_biz"
+            status="1" role="2" note="">
+        </func>
+        <!-- 拓扑图片注释掉，如果后续使用再打开 -->
+        <!-- <func func_name="拓扑图片" func_id="topo_img" func_url="/platform/iradar/TPicIndex.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="topo_computer_room"
+            status="1" role="2" note="">
+        </func> -->
+    </func>
+    <func func_name="工具管理" func_id="script" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="script"
+        status="1" role="2" note="">
+        <func func_name="脚本管理" func_id="scripts" func_url="/platform/iradar/scripts.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="scripts"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="监控代理" func_id="proxies" func_url="/platform/iradar/proxies.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="proxies"
+            status="1" role="2" note="">
+        </func>
+    </func>
+    <func func_name="系统管理" func_id="system" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="system"
+        status="1" role="2" note="">
+        <func func_name="用户参数" func_id="users" func_url="/platform/iradar/users.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="users"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="平台参数" func_id="adm.gui" func_url="/platform/iradar/adm.gui.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="adm.gui"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="系统日志" func_id="auditlogs" func_url="/platform/iradar/auditlogs.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="auditlogs"
+            status="1" role="2" note="">
+        </func>
+        <func func_name="公告管理" func_id="announce" func_url="/platform/iradar/announce.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="announce"
+            status="1" role="2" note="">
+        </func>
+		<func func_name="监控大屏" func_id="screens" func_url="/platform/iradar/screenconf.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon=""
+            status="1" role="2" note="">
+        </func>
+    </func>
+    
+    
+    <!-- 租户 -->
+    <func func_name="监控中心" func_id="monitor" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="monitor"
+		status="1" role="1" note="">
+		<func func_name="云主机监控" func_id="tmon_vm" func_url="/platform/iradar/tmon_vm.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="tmon_vm"
+			status="1" role="1" note="">
+		</func>
+		<func func_name="服务应用监控" func_id="tser_app" func_url="" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="tser_app"
+			status="1" role="1" note="">
+			<func func_name="Tomcat" func_id="app_tomcat" func_url="/platform/iradar/app_tomcat.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="app_tomcat"
+			    status="1" role="1" note="">
+			</func> 
+			<func func_name="MySQL" func_id="app_mysql" func_url="/platform/iradar/app_mysql.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="app_mysql"
+			    status="1" role="1" note="">
+			</func> 
+			<func func_name="简单应用" func_id="app_simple" func_url="/platform/iradar/app_simple.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="app_simple"
+			    status="1" role="1" note="">
+			</func> 
+		</func>
+		<func func_name="网站监控" func_id="thttpconf" func_url="/platform/iradar/thttpconf.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="mon_client_app"
+			status="1" role="1" note="">
+		</func>								
+	</func>
+    <func func_name="告警中心" func_id="event" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="event"
+        status="1" role="1" note="">
+        <func func_name="活动告警" func_id="tactivealarm" func_url="/platform/iradar/tactivealarm.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="tactivealarm"
+            status="1" role="1" note="">
+        </func> 
+        <func func_name="历史告警" func_id="thistoryalarm" func_url="/platform/iradar/thistoryalarm.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="thistoryalarm"
+            status="1" role="1" note="">
+        </func>
+    </func>
+    <func func_name="报表中心" func_id="report" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="report"
+        status="1" role="1" note="">
+        <func func_name="业务报表" func_id="tbusiness_report" func_url="/platform/iradar/tbusiness_report.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="tbusiness_report"
+            status="1" role="1" note="">
+        </func>
+    </func>
+    <func func_name="拓扑中心" func_id="topology" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="topology"
+        status="1" role="1" note="">
+        <func func_name="业务拓扑" func_id="topo_client_business" func_url="/platform/iradar/BizTopoTenantIndex.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="topo_client_business"
+            status="1" role="1" note="">
+        </func>
+        <func func_name="虚拟链路拓扑" func_id="topo_client_virtlink" func_url="/platform/iradar/VirtLinkTopoTenantIndex.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="topo_client_virtlink"
+            status="1" role="1" note="">
+        </func>
+    </func>
+    <func func_name="系统管理" func_id="system" func_url="" entrance="Y" leaf="N" render_type="tree" render_style="simple" render_url="" icon="system"
+        status="1" role="1" note="">
+        <func func_name="通知设置" func_id="tenantsystem" func_url="/platform/iradar/tenantsystem.action" entrance="Y" leaf="Y" render_type="" render_style="" render_url="" icon="tenantsystem"
+            status="1" role="1" note="">
+        </func>
+    </func>
+</sys>

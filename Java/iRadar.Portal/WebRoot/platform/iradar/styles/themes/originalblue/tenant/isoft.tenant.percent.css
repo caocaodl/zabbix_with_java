@@ -1,0 +1,94 @@
+/* start 租户首页百分比样式 */
+
+
+.headeractions + .tenant_first, .tenant_first >ul.formlist{
+	width:100%;
+}
+
+.tenant_first{
+	margin-top: 20px;
+}
+
+/*.tenant_first >ul.formlist{
+	width: 100%;
+}*/
+.tenant_first >ul.formlist>li.formrow>div.dt.right{
+	float: left;
+	width: 79%;
+	overflow: hidden;
+}
+.tenant_first .ui-widget{
+	margin: 0 0 1.08em 0;
+}
+.tenant_first >ul.formlist>li.formrow>div.dd{
+	float: right;
+	width: 20%;
+	margin-left: 0;
+	overflow: hidden;
+}
+.tenant_first >ul.formlist>li.formrow>div.dd>form>table{
+	width: 99%;
+}
+.formrow .dt.right table,
+.formrow .dd table{
+	table-layout:  fixed;
+}
+
+.dt .top >td:first-child{
+	float: left;
+	width: 50%;
+}
+.dt .top >td:last-child{
+	float: right;
+	width:48%;
+}
+/* 今日监控项目统计   服务应用监控项目状态统计*/
+#hat_todayArtSts_widget{
+	margin-right:0;
+}
+#hat_todayArtSts table.tableinfo tr td:first-child, 
+#hat_monStaSts table.tableinfo tr td:first-child{
+	width: 100%;
+	padding: 0;
+	text-align: center;
+}
+
+#todayMonItemChart span:first-child, #serviceAppChart span:first-child{
+	width: 95% !important;
+}
+#hat_todayArtSts .tableinfo, #todayMonItemChart svg, #serviceAppChart svg{
+	width: 100% !important;
+}
+
+#hat_resUsed table.tableinfo tr td{
+	width: 30%;
+}
+
+/* 最近前5个事件 */
+#hat_noRepFault_widget table.tableinfo tr td:first-child,
+#hat_noRepFault_widget table.tableinfo tr td:nth-child(4){
+	width: 10%;
+}
+
+#hat_noRepFault_widget table.tableinfo tr td:nth-child(3){
+	width: inherit;
+}
+
+.ui-widget-header.header{
+	overflow: hidden;
+}
+/* 公告 */
+#hat_Announcement table tr td{
+	background-color: #fff !important;
+}
+
+/* 鼠标接近 首页概览 模块 菜单或显示隐藏小图标 */
+.ui-widget-header.header .shadow:hover{
+	border: none !important;
+	background-color: transparent !important;
+}
+
+ul.formlist li .dt, ul.formlist li .dd{
+	padding-bottom: 0;
+}
+/* end 租户首页百分比样式 */

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_T_BIZ_LINE_LIST">
+<![CDATA[
+select
+  t.lineid       lineId#,
+  t.topoid       topoId#,
+  t.nodeid       nodeId#,
+  t.name         name#, 
+  t.tonode       toNode#,
+  t.g            g#,
+  t.tagname      tagName#,
+  t.strokeweight strokeWeight#,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_biz_line t 
+  where topoid = #{topoId} 
+  and t.nodeid = #{nodeId}
+#if($toNode && $toNode!='')
+  and t.tonode = #{toNode}
+#end
+  order by t.lineid desc
+]]>
+</entry>
+
+<entry key="SQL_T_BIZ_LINE_ADD">
+<![CDATA[
+insert into t_biz_line(
+ lineid,nodeid,topoid,name,tonode,g,tagname,strokeweight,
+ tenantid,userid,created_at,created_user 
+)values(
+ #{lineId},#{nodeId},#{topoId},#{name},#{toNode},#{g},#{tagName},#{strokeWeight},
+ #{tenantId},#{userId},now(),#{userName}
+)
+]]>
+</entry>
+
+
+<entry key="SQL_T_BIZ_LINE_DEL_BY_TOPO_ID">
+<![CDATA[
+delete from t_biz_line where topoid = #{topoId}
+]]>
+</entry>
+
+<entry key="SQL_T_BIZ_LINE_DEL_BY_ID">
+<![CDATA[
+delete from t_biz_line where topoid = #{topoId} and lineid = #{lineId}
+]]>
+</entry>
+
+</properties>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+ <entry key="SQL_UPDATE_COUNT">
+		<![CDATA[
+		
+		   select
+			  g.name            label#,
+              count(hg.groupid)  value#,
+              g.groupid         link#
+           FROM 
+              hosts_groups hg 
+           LEFT JOIN  hosts h ON h.hostid=hg.hostid
+           LEFT JOIN  groups g ON g.groupid=hg.groupid
+           GROUP BY g.name
+		]]>
+	</entry>
+	<entry key="SQL_UPDATE_ZU">
+		<![CDATA[
+		
+		   select
+		      groupid  groupid#,
+			  name     name#       
+              FROM 
+            groups
+		]]>
+	</entry>
+	 <entry key="SQL_UPDATE_COUNT_FEN">
+		<![CDATA[
+		  select
+			  name      label# ,
+              os        value#
+           
+              
+           FROM 
+             host_inventory  
+		]]>
+	</entry>
+	 <entry key="SQL_UPDATE_COUNT_FEN_WAI">
+		<![CDATA[
+		
+		   select
+			  g.name            label#,
+              count(hg.groupid)  value#,
+              g.groupid        groupid#
+           FROM 
+              hosts_groups hg 
+           LEFT JOIN  hosts h ON h.hostid=hg.hostid
+           LEFT JOIN  groups g ON g.groupid=hg.groupid
+           WHERE  g.groupid not in (#{groupid})
+		]]>
+	</entry>
+	<entry key="SQL_UPDATE_OS">
+		<![CDATA[
+		
+		   select
+		      hostid   hostid#,
+			  name     uselv#       
+              FROM 
+            hosts
+		]]>
+		</entry>
+		<entry key="SQL_UPDATE_OS_TU">
+		<![CDATA[
+		
+		   select 
+             h.name      label# ,
+             COUNT(h.os)  value#,
+             h.os     link#
+             FROM host_inventory  h
+             GROUP BY h.os
+		]]>
+		</entry>
+		 <entry key="SQL_UPDATE_COUNT_FEN_OS">
+		<![CDATA[
+		
+		   select
+			  name      label# ,
+              os        value#
+           
+              
+           FROM 
+             host_inventory  
+           
+          
+		]]>
+	</entry>
+	 <entry key="SQL_UPDATE_COUNT_FEN_OS_WAI">
+		<![CDATA[
+		
+		   select
+			  h.name      label# ,
+             COUNT(h.os)  value#,
+             h.os     hostid#
+              
+           FROM 
+             host_inventory  h
+           
+           WHERE  h.hostid not in (#{hostid})
+		]]>
+	</entry>
+</properties>

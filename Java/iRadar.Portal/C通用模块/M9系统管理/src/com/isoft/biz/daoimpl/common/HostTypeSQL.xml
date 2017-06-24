@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+	<entry key="SQL_ADD">
+		<![CDATA[
+			INSERT INTO sys_func
+				(id,pid,func_name,func_id,func_url,entrance,leaf,render_type,render_style,render_url,icon,status,seq_no,role,note)
+			VALUES
+				(#{id},#{pid},#{funcName},#{funcId},#{funcUrl},#{entrance},#{leaf},#{renderType},#{renderStyle},#{renderUrl},#{icon},#{status},#{seqNo},#{role},#{note})
+		]]>
+	</entry>	
+	<entry key="SQL_UPDATE">
+		<![CDATA[
+			UPDATE sys_func f SET
+				f.func_name = #{funcName},
+				f.pid = #{pid}
+			WHERE f.id = #{id}
+		]]>
+	</entry>
+	<entry key="SQL_SELECT_MAX_SEQNO">
+		<![CDATA[
+			SELECT
+				max(seq_no)    seqNo#
+			FROM 
+				sys_func 
+			WHERE 
+				pid = #{pid}
+		]]>
+	</entry>
+	<entry key="SQL_DELETE">
+		<![CDATA[
+			DELETE FROM 
+				sys_func 
+			WHERE 
+				id 
+			IN(#foreach($var in $idList)$var #if($velocityCount<$idList.size()),#end #end)
+		]]>
+	</entry>
+	<entry key="SQL_ID">
+		<![CDATA[
+			SELECT 
+				id             id#,
+				pid            pid#,
+				func_name      funcName#,
+				func_id        funcId#,
+			  	func_url       funcUrl#,
+				entrance       entrance#,
+				leaf           leaf#,
+				render_type    renderType#,
+				render_style   renderStyle#,
+				render_url     renderUrl#,
+				icon           icon#,
+				status         status#,
+				seq_no         seqNo#,
+				role           role#,
+				note           note#
+			FROM
+				sys_func
+			WHERE
+				id=#{id}
+		]]>
+	</entry>
+
+	<entry key="SQL_GROUPID">
+		<![CDATA[
+			SELECT 
+				gt.groupid             groupid#,
+				gt.templateid          hostid#,
+				h.name                name#
+			FROM
+				i_group_templates gt
+			LEFT JOIN hosts h ON h.hostid=gt.templateid
+			WHERE
+				gt.groupid=#{groupid}
+		]]>
+	</entry>	
+	<entry key="SQL_ADD_GROUP_TEMPLATES">
+		<![CDATA[
+			INSERT INTO i_group_templates
+				(groupid,templateid)
+			VALUES
+				(#{groupid},#{templateid})
+		]]>
+	</entry>		
+	<entry key="SQL_DELETE_GROUP_TEMPLATES">
+		<![CDATA[
+			DELETE FROM 
+				i_group_templates 
+			WHERE 
+				groupid 
+			IN(#foreach($var in $groupidList)$var #if($velocityCount<$groupidList.size()),#end #end)
+		]]>
+	</entry>		
+		
+</properties>

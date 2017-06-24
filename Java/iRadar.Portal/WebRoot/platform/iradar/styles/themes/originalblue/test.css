@@ -1,0 +1,43 @@
+.originalblue .ui-widget-header tr, table.ack_msgs tr.title{
+	background:#058fcd;
+}
+
+.originalblue .ui-widget-header tr td.header_l {
+	color: #fff;
+	padding-left: 10px;
+}
+ 
+table.ack_msgs{
+	margin-left:10px;
+	width:50%;
+}
+
+table.messageClass tr:nth-child(2) .form_row_l{
+	display: none;
+}
+
+table.messageClass .form_row_r .input{
+	margin-left: 0;
+}
+
+.textarea_big{
+	width: 99%;
+}
+
+table.messageClass tr td{
+	padding: 0;
+}
+
+/* 事件中心.活动告警.确认*/
+
+.messageClass .form_row_last{
+	padding: 10px 0px;
+}
+.messageClass .form_row_last input{	
+	height: 2.5em;
+	cursor: pointer;
+}
+
+.messageClass .buttongray{
+	margin-left: 0;
+}

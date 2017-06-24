@@ -1,0 +1,17 @@
+/*
+ *设备中心.设备类型
+ *
+*/
+
+/* 成员数目图标 */
+a.device_type{
+	background-position: left center;
+}
+
+/*下拉框*/
+#templates_left,
+#templates_right,
+#hosts_left,
+#hosts_right{
+	max-width: 20em;
+}

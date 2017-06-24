@@ -1,0 +1,16 @@
+//初始化业务列表
+SoftTopo.initTopoList_url="BizTopoTopoBizDataGet.action";
+//初始化拓扑图
+SoftTopo.initTopo_url="BizTopoGetBizTopoAllData.action";
+//保存
+SoftTopo.saveTopo_url="TopoDataOperSave.action";
+//获取所有设备信息
+SoftTopo.getHosts_url="BizTopoTopoBizHostDataGet.action";
+//保存创建业务拓扑设备信息
+SoftTopo.saveNodeData_url="BizTopoTopoBizTopoAndNodeDataSave.action";
+//删除业务拓扑
+SoftTopo.deleteTopoById_url="BizTopoTopoDataDel.action";
+//编辑业务拓扑
+SoftTopo.editorTopoById_url="BizTopoTopoBizTopoAndNodeDataEdit.action";
+//设备详情
+SoftTopo.detail_url="/platform/iradar/";

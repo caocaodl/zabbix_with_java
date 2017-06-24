@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="iradar-tenant-events" namespace="/platform/iradar" extends="default">
+        <!-- Events -->
+        <action name="tactivealarm" class="com.isoft.iradar.web.action.monitoring.TActiveAlarmAction" method="doWork"/>
+        <action name="thistoryalarm" class="com.isoft.iradar.web.action.monitoring.THistoryAlarmAction" method="doWork"/>
+      <!--   <action name="tactivefault" class="com.isoft.iradar.web.action.monitoring.TActiveFaultAction" method="doWork"/>
+        <action name="thistoryfault" class="com.isoft.iradar.web.action.monitoring.THistoryFaultAction" method="doWork"/>
+        --> <!-- /Events -->
+    </package>
+</struts>

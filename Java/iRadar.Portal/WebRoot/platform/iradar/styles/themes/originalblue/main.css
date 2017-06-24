@@ -1,0 +1,349 @@
+@import "jquery-ui.css";
+HTML, BODY, INPUT, SELECT,
+table.paging tr td SPAN, table.paging tr td a{
+	font-size: 12px !important;
+}
+
+.unknown, a.unknown { color: #777; }
+a.unknown:hover { color: #999; }
+
+table.filter { background: white; border: 1px solid #EEE; }
+table.filter tr td { border: 1px solid #EEE; }
+
+ul.formlist li.new { background: #EEFFEE; }
+
+.dropArea { background-color: #FFB; }
+.dropHereText { color: #5481AB; }
+
+table.ack_msgs tr.msg { background-color: #F8F8F8; }
+
+.ui-widget-content a.on { color: #EE0000; }
+.ui-widget-content a.on:hover { color: #CC4444; }
+
+div.preloader {
+	background: url("images/preloader.gif") no-repeat;
+}
+
+/* 顶部横条  */
+.flicker_table, .body_header{
+	margin-bottom: 20px;
+	box-shadow: -3px 2px 3px #c3c3c3;
+	padding: 15px;
+	background: #FFF;
+}
+.flicker_table{
+	padding: 0;
+}
+.body_header TABLE.header_wide{
+	margin-top: 0;
+}
+.flicker .body_header{
+	box-shadow: none;
+	margin-bottom: 0;
+}
+
+.originalblue .ui-widget-header{
+	background:#FFF;
+	border: none;
+	padding:8px 8px 8px 2px;
+}
+#dashboard_wdgt .ui-widget-header{
+	background:#779DC0 url(images/bg_h-hard_55.png) 50% 50% repeat-x;
+	border: none;
+	padding:8px 8px 8px 2px;
+}
+/* 横条内的按钮 */
+.header .button{
+	border:none;
+	border-bottom:1px #555 dotted;
+	background:none;
+	color:#555;
+}
+/* /顶部横条  */
+
+
+/* == 列表页面 == */
+FIELDSET.collapsible {
+	padding: 10px;
+	margin-bottom: 1em;
+	box-shadow:3px 3px 4px #ccc;
+	border-color: #ccc;
+	color: #555;
+}
+
+FIELDSET.collapsible table.flicker{
+	background: none;
+}
+FIELDSET.collapsible table.filter{
+	margin-top: 1em;
+	border: none;
+	border-top: 1px solid #eee;
+}
+FIELDSET.collapsible table.filter tr td{
+	border: none;
+}
+FIELDSET.collapsible table.flicker .textwhite{
+	color: #555;
+}
+
+/* 表格 */
+TABLE.tableinfo{
+	border-bottom:none;
+}
+TABLE.tableinfo > tbody > tr > td{
+	border: none;
+	padding:0 3px;
+	height: 28px;
+}
+TABLE.tableinfo > tbody tr td{
+	color:#47474F;
+}
+TABLE.tableinfo tr.selected > td{
+	background:#FBECE7;
+}
+
+/* 高级检索条 */
+TABLE.flicker{
+	background: #FFF;
+}
+
+/* 下方的操作按钮上移与分页平行 */
+form table.ui-corner-all.ui-widget-header{
+	background:none;
+	border: none;
+}
+form table.ui-corner-all.ui-widget-header{
+	 background: none !important;
+	 width: auto !important;
+	 border: none;
+	 margin-top: -35px;
+}
+form table.ui-corner-all.ui-widget-header .button{
+	color: #555;
+	border-color: #555;
+}
+form table.ui-corner-all.ui-widget-header SELECT{
+	margin: 0;
+}
+/* == /列表页面 == */
+
+
+/* == 编辑页 == */
+/* 隐藏无标签页的头部 */
+.ui-tabs .ui-widget-header.header{
+	display: none;
+}
+
+/* 标签页 */
+.tabs .ui-tabs-nav{
+	background:#FFF;
+	border: none;
+	border-bottom: 2px solid #e7edf3;
+}
+.originalblue .ui-state-default, 
+.originalblue .ui-widget-content .ui-state-default, 
+.originalblue .ui-widget-header .ui-state-default{
+	border: none;
+}
+.tabs .ui-tabs-nav .ui-state-active, 
+.tabs .ui-tabs-nav .ui-state-hover{
+	background: none;
+	border: none;
+}
+.tabs .ui-tabs-nav .ui-state-active A, 
+.tabs .ui-tabs-nav .ui-state-hover A{
+	color: #555;
+	outline:none;
+}
+.originalblue .ui-tabs .ui-tabs-nav li.ui-tabs-active{
+	margin-bottom: -2px;
+	padding-bottom: 2px;
+	border-bottom: 2px solid #f3774f;
+}
+.originalblue .ui-tabs .ui-tabs-nav li{
+	padding: 0 1em;
+	font-size: 14px;
+}
+/* 发现规则定制样式 */
+.discovery_edit #tab_druleTab,
+.discovery_edit #tab_conditionTab,
+.discovery_edit #tab_operationTab,
+.discovery_edit #tab_druleTab:hover,
+.discovery_edit #tab_conditionTab:hover,
+.discovery_edit #tab_operationTab:hover,
+.discovery_edit .ui-tabs-active #tab_druleTab,
+.discovery_edit .ui-tabs-active #tab_conditionTab,
+.discovery_edit .ui-tabs-active #tab_operationTab{
+	background: no-repeat 0 center;
+	padding-left: 25px;
+	padding-right: 0;
+}
+.discovery_edit #tab_druleTab{
+	background-image: url("images/discovery/normal_1.png");
+}
+.discovery_edit #tab_conditionTab{
+	background-image: url("images/discovery/normal_2.png");
+}
+.discovery_edit #tab_operationTab{
+	background-image: url("images/discovery/normal_3.png");
+}
+.discovery_edit #tabs .ui-tabs-nav .next{
+	background:no-repeat center center url("images/discovery/next.png");
+	padding: 16px 8px;
+}
+
+.discovery_edit .ui-tabs-active #tab_druleTab,
+.discovery_edit .ui-tabs-active #tab_conditionTab,
+.discovery_edit .ui-tabs-active #tab_operationTab,
+.discovery_edit #tab_druleTab:hover, 
+.discovery_edit #tab_conditionTab:hover, 
+.discovery_edit #tab_operationTab:hover{
+	color:#F16437;
+}
+
+.discovery_edit #tab_druleTab:hover{
+	background-image: url("images/discovery/normal_1hover.png");
+}
+
+.discovery_edit #tab_conditionTab:hover{
+	background-image: url("images/discovery/normal_2hover.png");
+}
+
+.discovery_edit #tab_operationTab:hover{
+	background-image: url("images/discovery/normal_3hover.png");
+}
+
+.discovery_edit .ui-tabs-active #tab_druleTab{
+	background-image: url("images/discovery/active_1.png");
+}
+
+.discovery_edit .ui-tabs-active #tab_conditionTab{
+	background-image: url("images/discovery/active_2.png");
+}
+
+.discovery_edit .ui-tabs-active #tab_operationTab{
+	background-image: url("images/discovery/active_3.png");
+}
+
+/* 去底部边线 */
+.originalblue .ui-widget-content{
+	border: none;	
+}
+/* 去底部边线 */
+.headeractions.originalblue .ui-widget-content{
+	border: 1px #d8d8d8 solid;	
+}
+/*底部按钮组边框*/
+.dd .ui-widget-content{
+	border: none;
+}
+/* 保存等操作按钮 */
+.objectgroup .formtable .formrow input{
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	padding:0;
+	font-size: 1.2em;
+	width:90px;
+	height: 2.5em;
+}
+.objectgroup .formtable .formrow .dt input, input.buttonorange{
+	background:#058fcd;
+	border:1px #058fcd solid;
+	color:#fff;
+}
+input#filter:hover,input#reset:hover, .dt .shadow:hover, .dd .shadow:hover, .dd #cancel:hover, input.buttonorange:hover, input.buttongray:hover,.device_monitor input.shadow:hover,.formtable input.shadow:hover,
+input#filter_rst:hover{
+	border: rgba(5,143,205,0.7) !important;
+	background-color: rgba(5,143,205,0.7) !important;	
+}
+.objectgroup .formtable .formrow .dd #cancel, input.buttongray,.dt #cancel{
+	margin-left:10px;
+	background: #C7C8CC;
+	border: 2px #C7C8CC solid;
+}
+.objectgroup .formtable .formrow .dd input{
+	background:#058fcd;
+	border:1px #058fcd solid;
+	color: #FFF; 
+	margin-right: 1px;
+	margin-left: 1px;
+	cursor:pointer;
+}
+.objectgroup .formtable .formrow .dd input.ui-button-disabled{
+	background: #058fcd;
+}
+/* == /编辑页 == */
+
+/* == 弹出框 == */
+/* 底部 */
+table.tableinfo tr.footer td{
+	background: none;
+	border: none !important;
+}
+/* 针对分析器表达式弹出框 */
+table.formtable tr td.form_row_first{
+	background:#058fcd;
+	color: #FFF;
+	border: none;
+	padding:8px 8px 8px 2px;
+}
+table.formtable tr td.form_row_last{
+	background: #FFF;
+	border: none;
+}
+/* == /弹出框 == */
+
+/* == 弹出菜单 == */
+/* 插入宏 */
+.pum_oheader{
+	background:#f16436;
+}
+.pum_o_item{
+	background: #FFF;
+	color: #555;
+}
+
+/* 监控中心的设备操作 */
+.menuPopup .title{
+	background:#058fcd;
+}
+.originalblue .ui-menu .ui-menu-item a.ui-state-focus, 
+.originalblue .ui-menu .ui-menu-item a.ui-state-active{
+	background: #727989;
+}
+/* window.open改造 */
+.originalblue .ui-dialog.open_win{
+	
+}
+.originalblue .open_win .ui-widget-header, .originalblue .ui-dialog.ui-widget-content.ui-dialog-buttons .ui-widget-header{
+	padding: 5px 8px;
+	background: #058fcd;
+	border: none;
+}
+.originalblue .open_win .ui-dialog-content{
+	padding: 0;
+}
+.open_win_body .ui-widget-header.header{
+	background: #FFF;
+	padding: 0;
+	color: #555;
+	font-weight: normal;
+}
+.open_win_body .ui-widget-header.header .left{
+	display: none;
+}
+/* == /弹出菜单 == */
+
+/* == 监控中心 == */
+.tableinfo .even_row TD.hosts, .tableinfo .odd_row TD.hosts{
+	height: auto;
+}
+.tableinfo .even_row TD.hosts A, .tableinfo .odd_row TD.hosts A{
+	display: block;
+	width: 100%;
+	height: 28px;
+	cursor: pointer;
+}
+/* == /监控中心 == */
+

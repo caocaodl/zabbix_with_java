@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="M框架定制/src"/>
+	<classpathentry kind="src" path="M框架定制/src_ovirt"/>
+	<classpathentry kind="src" path="M框架定制/src_iaas"/>
+	<classpathentry kind="src" path="C通用模块/M数据驱动/resource"/>
+	<classpathentry kind="src" path="L租户视角/M9系统管理/src"/>
+	<classpathentry kind="src" path="L租户视角/M5事件中心/src"/>
+	<classpathentry kind="src" path="L租户视角/M7拓扑中心/resource"/>
+	<classpathentry kind="src" path="L租户视角/M4监控中心/src"/>
+	<classpathentry kind="src" path="L租户视角/M7拓扑中心/src"/>
+	<classpathentry kind="src" path="L租户视角/M1首页概览/src"/>
+	<classpathentry kind="src" path="L租户视角/M5事件中心/resource"/>
+	<classpathentry kind="src" path="L租户视角/M9系统管理/resource"/>
+	<classpathentry kind="src" path="L租户视角/M4监控中心/resource"/>
+	<classpathentry kind="src" path="L租户视角/M1首页概览/resource"/>
+	<classpathentry kind="src" path="C通用模块/M7拓扑中心/nms"/>
+	<classpathentry kind="src" path="C通用模块/M事件驱动/src"/>
+	<classpathentry kind="src" path="C通用模块/M数据驱动/src"/>
+	<classpathentry kind="src" path="C通用模块/M2策略中心/resource"/>
+	<classpathentry kind="src" path="C通用模块/M2策略中心/src"/>
+	<classpathentry kind="src" path="C通用模块/MA对外接口/resource"/>
+	<classpathentry kind="src" path="C通用模块/MA对外接口/src"/>
+	<classpathentry kind="src" path="M框架定制/test"/>
+	<classpathentry kind="src" path="M框架定制/src_iradar"/>
+	<classpathentry kind="src" path="C通用模块/M9系统管理/src"/>
+	<classpathentry kind="src" path="C通用模块/M5事件中心/resource"/>
+	<classpathentry kind="src" path="C通用模块/M1首页概览/resource"/>
+	<classpathentry kind="src" path="C通用模块/M7拓扑中心/src"/>
+	<classpathentry kind="src" path="C通用模块/M9系统管理/resource"/>
+	<classpathentry kind="src" path="C通用模块/M6报表中心/resource"/>
+	<classpathentry kind="src" path="C通用模块/M7拓扑中心/resource"/>
+	<classpathentry kind="src" path="C通用模块/M1首页概览/src"/>
+	<classpathentry kind="src" path="C通用模块/M3资产中心/src"/>
+	<classpathentry kind="src" path="C通用模块/M4监控中心/resource"/>
+	<classpathentry kind="src" path="C通用模块/M8脚本管理/src"/>
+	<classpathentry kind="src" path="C通用模块/M8脚本管理/resource"/>
+	<classpathentry kind="src" path="C通用模块/M5事件中心/src"/>
+	<classpathentry kind="src" path="C通用模块/M3资产中心/resource"/>
+	<classpathentry kind="src" path="C通用模块/M4监控中心/src"/>
+	<classpathentry kind="src" path="C通用模块/M6报表中心/src"/>
+	<classpathentry kind="src" path="M框架定制/resource"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/tomcat.libs"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

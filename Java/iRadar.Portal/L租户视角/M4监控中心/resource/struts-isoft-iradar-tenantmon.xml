@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="iradar-tenant-mon" namespace="/platform/iradar" extends="default">
+        <!-- 租户云主机监察 -->
+		<action name="tmon_vm" class="com.isoft.iradar.web.action.TVMLatestAction" method="doWork"/>
+		 <!-- 服务应用监察 -->
+		<!-- <action name="tser_app" class="com.isoft.iradar.web.action.TserviceAppAction" method="doWork"/> -->
+		<action name="app_tomcat" class="com.isoft.iradar.web.action.ApptomcatAction" method="doWork"/>
+		<action name="app_mysql" class="com.isoft.iradar.web.action.AppmysqlAction" method="doWork"/>
+		<action name="app_simple" class="com.isoft.iradar.web.action.AppsimpleAction" method="doWork"/>
+		<!-- 网站监察 -->
+		<action name="thttpconf" class="com.isoft.iradar.web.action.THttpconfAction" method="doWork"/>
+		<!-- 云主机詳情頁面 -->
+		<action name="tenan" class="com.isoft.iradar.web.action.TenanAction" method="doWork"/>
+		<!-- MYSQL詳情頁面 -->
+		<action name="mysqlinfor" class="com.isoft.iradar.web.action.MySqlInforAction" method="doWork"/>
+		<!-- tomcat詳情頁面 -->
+		<action name="tomcatinfor" class="com.isoft.iradar.web.action.TomcatInforAction" method="doWork"/>
+    </package>
+</struts>

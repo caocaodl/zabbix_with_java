@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_BACKG_PIC_LIST">
+<![CDATA[
+select 
+  t.id         id#,
+  t.name       name#,
+  t.category   category#,
+  t.width      width#,
+  t.height     height#,
+  t.url        src#
+from t_pic t
+where 
+  t.tenantid = #{tenantId} 
+  and t.userid = #{userId} 
+  and t.category = #{category}
+#if($name && $name!='')
+  and t.name regexp toregexp(#{name})
+#end
+
+order by t.name asc
+]]>
+</entry>
+
+<entry key="SQL_BACKG_PIC_DETAIL_BY_TOPOID">
+<![CDATA[
+select 
+  t.id         id#,
+  t.width      width#,
+  t.height     height#,
+  t.url        src#
+FROM t_pic t
+INNER JOIN t_topo_pic t2 
+  ON t.id=t2.picid AND t2.topoid=#{topoId}
+]]>
+</entry>
+
+<entry key="SQL_BACKG_PIC_LIST_BY_PICID">
+<![CDATA[
+select 
+  t.id       id#
+from t_topo_pic t
+where 
+ t.picid = #{picId}
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+]]>
+</entry>
+
+<entry key="SQL_BACKG_PIC_DUPLICATE_CHECK">
+<![CDATA[
+select 
+  t.id       id#
+from t_topo_pic t
+where 
+ t.topoid = #{topoId}
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+]]>
+</entry>
+
+<entry key="SQL_BACKG_PIC_ADD">
+<![CDATA[
+insert into t_topo_pic(
+       id,
+       topoId,
+       picid, 
+       tenantid,
+       userid,
+       created_at,
+       created_user)
+VALUES (#{id},
+        #{topoId},
+        #{picId},
+        #{tenantId},
+        #{userId},
+        now(),
+        #{userName});
+]]>
+</entry>
+
+<entry key="SQL_BACKG_PIC_UPDATE">
+<![CDATA[
+update t_topo_pic t set
+ t.picid = #{picId}
+where 
+ t.topoid = #{topoId}
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+]]>
+</entry>
+
+<entry key="SQL_BACKG_PIC_DEL_BY_PICID">
+<![CDATA[
+delete from 
+ t_topo_pic 
+where 
+ picid = #{picId}
+ and  tenantid = #{tenantId}
+ and  userid = #{userId}
+]]>
+</entry>
+
+<entry key="SQL_BACKG_PIC_DEL_BY_TOPOID">
+<![CDATA[
+delete from 
+ t_topo_pic 
+where 
+ topoid = #{topoId}
+ and  tenantid = #{tenantId}
+ and  userid = #{userId}
+]]>
+</entry>
+
+</properties>

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_T_BIZ_NODE_LIST">
+<![CDATA[
+select
+  t.nodeid           nodeId#,
+  t.topoid           topoId#,
+  t.hostid           hostId#,
+  t.remark           remark#,
+  t.priority         priority#,
+  t.tagname          tagName#, 
+  t.name             name#,
+  t.g                g# ,
+  t.strokeweight     strokeweight# ,
+  t.stroke           stroke# ,
+  t.fill             fill# ,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#,
+  h.ipmi_username type#,
+  h.ipmi_password ownerHost#
+from t_biz_node t 
+LEFT JOIN hosts h ON h.hostid=t.hostid
+where topoid = #{topoId} 
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+#if($name && $name!='')
+  and t.name regexp toregexp(#{name})
+#end
+#if($tagName && $tagName!='')
+  and t.tagname = #{tagName}
+#end
+  order by t.priority asc
+]]>
+</entry>
+
+<entry key="SQL_T_BIZ_NODE_ADD">
+<![CDATA[
+insert into t_biz_node(
+nodeid,topoid,hostid,priority,remark,tagname,name,g,strokeweight,stroke,fill
+,tenantid,userid,created_at,created_user
+)values(
+#{nodeId},#{topoId},#{hostId},#{priority},#{remark},
+#{tagName},#{name},#{g},#{strokeweight},#{stroke},#{fill},#{tenantId},#{userId},now(),
+#{createdUser}
+)
+]]>
+</entry>
+
+<entry key="SQL_T_BIZ_NODE_DEL_BY_TOPOID">
+<![CDATA[
+delete from  
+   t_biz_node 
+where 
+   topoid = #{topoId}
+]]>
+</entry>
+
+<entry key="SQL_T_BIZ_NODE_DEL_BY_NODE_ID">
+<![CDATA[
+delete from  
+   t_biz_node 
+where 
+   topoid = #{topoId}
+   and  nodeid = #{nodeId}
+   and  tenantid = #{tenantId}
+   and  userid = #{userId}
+]]>
+</entry>
+
+<entry key="SQL_T_BIZ_LINE_DEL_BY_LINE_ID">
+<![CDATA[
+delete from  
+   t_biz_line 
+where 
+   topoid = #{topoId}
+   and  lineid = #{lineId}
+   and  tenantid = #{tenantId}
+   and  userid = #{userId}
+]]>
+</entry>
+
+<entry key="SQL_T_CABINET_NODE_UPDATE_G">
+<![CDATA[
+update t_biz_node set g=#{g} where nodeid=#{nodeId}
+]]>
+</entry>
+
+<entry key="SQL_T_BIZ_NODE_HOST_ID_LIST_BY_TOPO_ID">
+<![CDATA[
+select
+  t.hostid           hostId#
+from t_biz_node t 
+where topoid = #{topoId} 
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+]]>
+</entry>
+
+<!-- <entry key="SQL_GET_BIZ_TOPO_DATA">
+<![CDATA[
+select
+  t1.hostid           id#,
+  t1.name             name#,
+  t1.ipmi_username    type#,
+  t1.ipmi_password 	  ownerHost#
+from 
+  hosts t1
+WHERE status IN (0,1)
+and  t1.tenantid = #{tenantId}
+]]>
+</entry> -->
+
+<entry key="SQL_GET_BIZ_TOPO_VM_DATA">
+<![CDATA[
+select
+  t1.hostid           id#,
+  t1.name             name#
+from hosts t1
+WHERE status IN (0,1)
+#if(!$adminFlag)
+  and  t1.tenantid = #{tenantId}
+#end
+]]>
+</entry>
+
+<entry key="SQL_GET_BIZ_TOPO_APP_DATA">
+<![CDATA[
+select
+  t1.applicationid  id#,
+  t1.name           name#,
+  t1.type    	   	type#,
+  t1.hostid 	  	ownerHost#
+from applications t1
+where  t1.type in (#{appType})
+#if(!$adminFlag)
+  and t1.tenantid = #{tenantId}
+#end
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_DATA_SAVE">
+<![CDATA[
+insert into t_topo(
+id,toponame,topotype,tenantid,userid
+)values(
+#{id},#{topoName},'TopoBiz',#{tenantId},#{userId}
+)
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_DATA_SAVE">
+<![CDATA[
+insert into t_topo_extend(id,topoType,nodeType,hostId,bizTopoId,bizNodeName,tenantid,userid)values(#{id},#{topoType},#{nodeType},#{hostId},#{bizTopoId},#{bizNodeName},#{tenantId},#{userId})
+]]>
+</entry>
+
+<!-- 调整业务逻辑该段sql先注释掉，以防后续继续使用
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_HOST_DATA_GET">
+<![CDATA[
+select
+  t.id				 id#,
+  t.hostId           hostId#,
+  t.bizNodeId        bizNodeId#
+from t_topo_extend t
+where t.bizTopoId = #{bizTopoId}
+and t.hostId in (#{hostIds})
+]]>
+</entry> -->
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_HOST_DATA_GET">
+<![CDATA[
+select
+  t.id				 id#,
+  t.hostId           hostId#,
+  t.nodeType		 nodeType#
+from t_topo_extend t
+where t.bizTopoId = #{bizTopoId}
+]]>
+</entry>
+
+<!--增加bizAreaId字段，注释之前sql
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_HOST_DATA_SAVE">
+<![CDATA[
+insert into t_topo_extend(id,topoType,nodeType,hostId,bizTopoId,bizNodeId)values(#{id},#{topoType},#{nodeType},#{hostId},#{bizTopoId},#{bizNodeId})
+]]>
+</entry> -->
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_HOST_DATA_SAVE">
+<![CDATA[
+insert into t_topo_extend(id,topoType,nodeType,hostId,bizTopoId,bizNodeId,bizAreaId)values(#{id},#{topoType},#{nodeType},#{hostId},#{bizTopoId},#{bizNodeId},#{bizAreaId})
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_HOST_DATA_UPDATE">
+<![CDATA[
+update t_topo_extend 
+set bizNodeId = #{bizNodeId} 
+where id=#{id}
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_DATA_EDIT">
+<![CDATA[
+update t_topo_extend 
+set bizNodeName = #{bizNodeName} 
+where id=#{id}
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_HOST_DATA_EDIT_GET">
+<![CDATA[
+select
+  t.id				 id#,
+  t.hostId           hostId#,
+  t.bizNodeId        bizNodeId#
+from t_topo_extend t
+where t.bizTopoId = #{bizTopoId}
+]]>
+</entry>
+
+<!--业务调整，注释掉sql，以防后续使用 
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_HOST_DATA_DEL">
+<![CDATA[
+delete 
+from t_topo_extend 
+where bizTopoId = #{bizTopoId}
+and  bizNodeId = #{bizNodeId}
+and  hostId in (#{hostIds})
+]]>
+</entry> -->
+
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_HOST_DATA_DEL">
+<![CDATA[
+delete 
+from t_topo_extend 
+where bizTopoId = #{bizTopoId}
+and  bizNodeId = #{bizNodeId}
+and  nodeType = #{nodeType}
+and  hostId not in (#{hostIds})
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_DATA_DEL">
+<![CDATA[
+delete 
+from t_topo 
+where id = #{bizTopoId}
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_DATA_EDIT">
+<![CDATA[
+update t_topo 
+set toponame = #{toponame} 
+where id=#{bizTopoId}
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_AND_HOST_DATA_DEL">
+<![CDATA[
+delete 
+from t_topo_extend 
+where bizTopoId = #{bizTopoId}
+]]>
+</entry>
+
+<!--调整sql，注释掉之前，以便后续使用 
+<entry key="SQL_BIZ_TOPO_DATA_GET">
+<![CDATA[
+select
+  t.id				 bizTopoId#,
+  t.toponame         toponame#
+from t_topo t
+where t.tenantid = #{tenantId}
+and	t.userid = #{userId}
+and t.topotype = #{topoType}
+]]>
+</entry> -->
+
+<entry key="SQL_BIZ_TOPO_DATA_GET">
+<![CDATA[
+select
+  t.id				 bizTopoId#,
+  t.bizNodeName      toponame#
+from t_topo_extend t
+where t.tenantid = #{tenantId}
+and	t.userid = #{userId}
+and t.topotype = #{topoType}
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_HOST_GET">
+<![CDATA[
+select
+  t.id				 id#,
+  t.nodeType         nodeType#,
+  t.hostId         	 hostId#,
+  t.bizTopoId        bizTopoId#,
+  t.bizNodeId        bizNodeId#,
+  t.bizNodeName      bizNodeName#,
+  t.bizAreaId		 bizAreaId#,
+  t.width			 width#,
+  t.height			 height#
+from t_topo_extend t
+where t.topotype = #{topoType}
+and t.bizTopoId = #{bizTopoId}
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_HOST_LOCATION_DATA_DEL">
+<![CDATA[
+delete 
+from t_topo_location 
+where topoId = #{bizTopoId}
+#if($hostIds && $hostIds!='')
+  and hostId in (#{hostIds})
+#end
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_DATA_BIZAREA_UPDATE">
+<![CDATA[
+update t_topo_extend 
+set bizAreaId = #{bizAreaId} 
+where id=#{id}
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_DATA_GET_TENANT_TO_ADMIN">
+<![CDATA[
+SELECT t.tenantid tenantId#,
+       t.name     tenantName#
+FROM tenants t
+WHERE t.tenantid <> #{tenantId} AND t.tenantid <> '-'
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_DATA_GET_SUB_TO_ADMIN">
+<![CDATA[
+select
+  t.id				 bizTopoId#,
+  t.bizNodeName      toponame#,
+  t.tenantid		 tenantId#
+from t_topo_extend t
+where t.nodeType=#{nodeType}
+]]>
+</entry>
+
+<entry key="SQL_GET_LINK_DATA_BY_HOST">
+<![CDATA[
+SELECT tl.linkid id#,
+       tl.start_id f#,
+       tl.end_id t#
+FROM t_link tl
+WHERE tl.start_id IN (#{hostIds}) OR tl.end_id IN (#{hostIds})
+]]>
+</entry>
+
+<entry key="SQL_CHECK_BIZNODENAME_CONFLICT">
+<![CDATA[
+SELECT t.id id#
+FROM t_topo_extend t
+WHERE t.bizNodeName = #{bizNodeName}
+#if($bizTopoId && $bizTopoId!='')
+  AND t.id <> #{bizTopoId}
+#end
+]]>
+</entry>
+
+</properties>

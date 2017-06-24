@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="iradar-mon" namespace="/platform/iradar" extends="default">
+      	<!-- 设备详情页面 -->
+        <action name="host_detail" class="com.isoft.iradar.web.action.HostDetailAction" method="doWork"/>
+        
+        <!-- 监控中心_告警列表
+        <action name="mon_server_trigger" class="com.isoft.iradar.web.action.HostLatestAction" method="doWork" />
+         -->
+        
+        <!--windows服务器设备模块 -->
+        <action name="windows_mon_server" class="com.isoft.iradar.web.action.moncenter.WindowsSimpleDataAction" method="doWork"/>
+        <action name="windows_mon_server_latest" class="com.isoft.iradar.web.action.moncenter.WindowsLatestDataAction" method="doWork"/>
+
+        <!--linux服务器设备模块 -->
+        <action name="linux_mon_server" class="com.isoft.iradar.web.action.moncenter.LinuxSimpleDataAction" method="doWork"/>
+        <action name="linux_mon_server_latest" class="com.isoft.iradar.web.action.moncenter.LinuxLatestDataAction" method="doWork"/>
+
+        <!-- 通用网络设备 -->
+        <action name="mon_net_cisco" class="com.isoft.iradar.web.action.moncenter.CiscoSimpleDataAction" method="doWork"/>
+        <action name="mon_net_cisco_latest" class="com.isoft.iradar.web.action.moncenter.CiscoLatestDataAction" method="doWork"/>
+        
+        <action name="mon_net_huawei_switch" class="com.isoft.iradar.web.action.moncenter.HuaweiSwitchSimpleDataAction" method="doWork"/>
+        <action name="mon_net_huawei_switch_latest" class="com.isoft.iradar.web.action.moncenter.HuaweiSwitchLatestDataAction" method="doWork"/>
+        
+        <action name="mon_net_zhongxing_switch" class="com.isoft.iradar.web.action.moncenter.ZhongxingSwitchSimpleDataAction" method="doWork"/>
+        <action name="mon_net_zhongxing_switch_latest" class="com.isoft.iradar.web.action.moncenter.ZhongxingSwitchLatestDataAction" method="doWork"/>
+        
+        <action name="mon_common_net_host" class="com.isoft.iradar.web.action.moncenter.NetdevSimpleDataAction" method="doWork"/>
+        <action name="mon_common_net_host_latest" class="com.isoft.iradar.web.action.moncenter.NetdevLatestDataAction" method="doWork"/>
+        
+        <!-- DM数据库监察 -->
+        <action name="mon_db_dm" class="com.isoft.iradar.web.action.moncenter.DmSimpleDataAction" method="doWork"/>
+        <action name="mon_db_dm_latest" class="com.isoft.iradar.web.action.moncenter.DmLatestDataAction" method="doWork"/>
+        
+        <!-- mysql数据库监察 -->
+        <action name="mon_db_mysql" class="com.isoft.iradar.web.action.moncenter.MysqlSimpleDataAction" method="doWork"/>
+        <action name="mon_db_mysql_latest" class="com.isoft.iradar.web.action.moncenter.MysqlLatestDataAction" method="doWork"/>
+        
+        <!-- Oracle数据库监察 -->
+        <action name="mon_db_oracle" class="com.isoft.iradar.web.action.moncenter.OracleSimpleDataAction" method="doWork"/>
+        <action name="mon_db_oracle_latest" class="com.isoft.iradar.web.action.moncenter.OracleLatestDataAction" method="doWork"/>
+        
+        <!-- DB2数据库监察 -->
+        <action name="mon_db_db2" class="com.isoft.iradar.web.action.moncenter.Db2SimpleDataAction" method="doWork"/>
+        <action name="mon_db_db2_latest" class="com.isoft.iradar.web.action.moncenter.Db2LatestDataAction" method="doWork"/>
+        
+        <!-- SqlServer数据库监察 -->
+        <action name="mon_db_sqlserver" class="com.isoft.iradar.web.action.moncenter.MssqlSimpleDataAction" method="doWork"/>
+        <action name="mon_db_sqlserver_latest" class="com.isoft.iradar.web.action.moncenter.MssqlLatestDataAction" method="doWork"/>
+        
+        <!-- MongoDB数据库监察 -->
+        <action name="mon_db_mongo" class="com.isoft.iradar.web.action.moncenter.MongoSimpleDataAction" method="doWork"/>
+        <action name="mon_db_mongo_latest" class="com.isoft.iradar.web.action.moncenter.MongoLatestDataAction" method="doWork"/>
+        
+        <!-- 中间件监察 -->
+        <action name="mon_middle_tomcat" class="com.isoft.iradar.web.action.moncenter.TomcatSimpleDataAction" method="doWork"/>
+        <action name="mon_middle_tomcat_latest" class="com.isoft.iradar.web.action.moncenter.TomcatLatestDataAction" method="doWork"/>
+        
+        <action name="mon_middle_weblogic" class="com.isoft.iradar.web.action.moncenter.WebLogicSimpleDataAction" method="doWork"/>
+        <action name="mon_middle_weblogic_latest" class="com.isoft.iradar.web.action.moncenter.WebLogicLatestDataAction" method="doWork"/>
+        
+        <action name="mon_middle_websphere" class="com.isoft.iradar.web.action.moncenter.WebSphereSimpleDataAction" method="doWork"/>
+        <action name="mon_middle_websphere_latest" class="com.isoft.iradar.web.action.moncenter.WebSphereLatestDataAction" method="doWork"/>
+        
+        <action name="mon_middle_iis" class="com.isoft.iradar.web.action.moncenter.IISSimpleDataAction" method="doWork"/>
+        <action name="mon_middle_iis_latest" class="com.isoft.iradar.web.action.moncenter.IISLatestDataAction" method="doWork"/>
+        
+        
+        <!-- 云服务 -->
+        <action name="mon_cloud_control" class="com.isoft.iradar.web.action.moncenter.CloudControlSimpleDataAction" method="doWork"/>
+        <action name="mon_cloud_control_latest" class="com.isoft.iradar.web.action.moncenter.CloudControlLatestDataAction" method="doWork"/>
+        
+        <action name="mon_cloud_compute" class="com.isoft.iradar.web.action.moncenter.CloudComputeSimpleDataAction" method="doWork"/>
+        <action name="mon_cloud_compute_latest" class="com.isoft.iradar.web.action.moncenter.CloudComputeLatestDataAction" method="doWork"/>
+        
+        <action name="mon_cloud_network" class="com.isoft.iradar.web.action.moncenter.CloudNetworkSimpleDataAction" method="doWork"/>
+        <action name="mon_cloud_network_latest" class="com.isoft.iradar.web.action.moncenter.CloudNetworkLatestDataAction" method="doWork"/>
+        
+        <action name="mon_cloud_ceph" class="com.isoft.iradar.web.action.moncenter.CloudCephSimpleDataAction" method="doWork"/>
+        <action name="mon_cloud_ceph_latest" class="com.isoft.iradar.web.action.moncenter.CloudCephLatestDataAction" method="doWork"/>
+        
+        <action name="mon_cloud_web" class="com.isoft.iradar.web.action.moncenter.CloudWebSimpleDataAction" method="doWork"/>
+        <action name="mon_cloud_web_latest" class="com.isoft.iradar.web.action.moncenter.CloudWebLatestDataAction" method="doWork"/>
+        
+        <!-- 云主机监察 -->
+		<action name="mon_vm" class="com.isoft.iradar.web.action.moncenter.VmSimpleDataAction" method="doWork"/>
+		<action name="mon_vm_latest" class="com.isoft.iradar.web.action.moncenter.VmLatestDataAction" method="doWork"/>
+		
+        <!-- 集群监察 -->
+        <action name="mon_cluster" class="com.isoft.iradar.web.action.moncenter.ClusterSimpleDataAction" method="doWork"/>
+        <action name="mon_cluster_latest" class="com.isoft.iradar.web.action.moncenter.ClusterLatestDataAction" method="doWork"/>
+        
+        <!-- 桌面云监察 -->
+        <action name="mon_desktopc" class="com.isoft.iradar.web.action.moncenter.DeskCloudSimpleDataAction" method="doWork"/>
+        <action name="mon_desktopc_latest" class="com.isoft.iradar.web.action.moncenter.DeskCloudLatestDataAction" method="doWork"/>
+        
+        <!-- 存储设备监察 -->
+        <action name="mon_storage" class="com.isoft.iradar.web.action.moncenter.StorageSimpleDataAction" method="doWork"/>
+        <action name="mon_storage_latest" class="com.isoft.iradar.web.action.moncenter.StorageLatestDataAction" method="doWork"/>
+        
+        <!-- 其他统一页面 -->
+        <action name="mon_others" class="com.isoft.iradar.web.action.moncenter.OthersLatestDataAction" method="doWork"/>
+        
+        <!-- web服务 -->
+        <action name="mon_web" class="com.isoft.iradar.web.action.WebServiceHttpmonAction" method="doWork"/>
+    </package>
+</struts>

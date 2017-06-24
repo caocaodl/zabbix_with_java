@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="SQL_PAGE">
+<![CDATA[
+select 
+  t.id id#,
+  t.name name#,
+  t.contact contact#,
+  t.mobile mobile#,
+  t.email email#,
+  t.address address#,
+  t.postcode postcode#, 
+  t.os_tenant_id osTenantId#,
+  t.status status#,
+  date_format(t.status_at,'%Y-%m-%d %T') statusAt#,
+  t.status_user statusUser#,
+  t.deleted deleted#,
+  date_format(t.deleted_at,'%Y-%m-%d %T') deletedAt#,
+  t.deleted_user deletedUser#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from sys_tenant t
+where t.role = 1
+  and t.deleted = 'N'
+#if($dictName && $dictName!='')
+  and t.name regexp toregexp(#{dictName})
+#end 
+#if($dictContact && $dictContact!='')
+  and t.contact regexp toregexp(#{dictContact})
+#end 
+#if($dictMobile && $dictMobile!='')
+  and t.mobile = #{dictMobile}
+#end
+#if($dictEmail && $dictEmail!='')
+  and t.email = #{dictEmail}
+#end
+order by created_at desc
+]]>
+</entry>
+
+<entry key="SQL_TENANT_DUPLICATE_CHECK">
+<![CDATA[
+select id from sys_tenant
+where name=#{name} 
+  and deleted = 'N'
+#if( $id!='' )
+  and id<>#{id}
+#end
+limit 1
+]]>
+</entry>
+
+<entry key="SQL_ADD">
+<![CDATA[
+insert into sys_tenant(
+id,name,role,contact,mobile,email,address,postcode,
+status,status_at,status_user,deleted,modified_at,modified_user,created_at,created_user
+)values(
+#{id},#{name},1,#{contact},#{mobile},#{email},#{address},#{postcode},
+'N',now(),#{userId},'N',now(),#{userId},now(),#{userId}
+)
+]]>
+</entry>
+
+<entry key="SQL_EDIT">
+<![CDATA[
+update sys_tenant t set
+    t.name = #{name},
+    t.contact = #{contact},
+    t.mobile = #{mobile},
+    t.email = #{email},
+    t.address = #{address},
+    t.postcode = #{postcode},
+    t.modified_at = now(),
+    t.modified_user = #{userId}
+where t.id = #{id}
+  and t.role = 1
+  and t.deleted = 'N'
+]]>
+</entry>
+
+<entry key="SQL_DEL">
+<![CDATA[
+update sys_tenant t set
+    t.deleted = 'Y',
+    t.deleted_at = now(),
+    t.deleted_user = #{userId}
+where t.id = #{id}
+  and t.role = 1
+  and t.deleted = 'N'
+  and t.status in ('N','R')
+]]>
+</entry>
+
+<entry key="SQL_ACTIVE">
+<![CDATA[
+update sys_tenant t set
+    t.status = 'Y',
+    t.status_at = now(),
+    t.status_user = #{userId}
+where t.id = #{id}
+  and t.deleted = 'N'
+  and t.status = 'N'
+]]>
+</entry>
+
+<entry key="SQL_INACTIVE">
+<![CDATA[
+update sys_tenant t set
+    t.status = 'N',
+    t.status_at = now(),
+    t.status_user = #{userId}
+where t.id = #{id}
+  and t.deleted = 'N'
+  and t.status = 'Y'
+]]>
+</entry>
+
+<entry key="SQL_INIT_ROOT">
+<![CDATA[
+insert into sys_user
+(id,tenant_id,admin,name,pswd,status,deleted,modified_at,modified_user,created_at,created_user,email)
+select #{uid},#{id},'Y','root',#{password},'Y','N',now(),#{userId},now(),#{userId},#{email} 
+from dual 
+where not exists( select 1 from sys_user where tenant_id=#{id} and admin='Y')
+]]>
+</entry>
+
+<entry key="SQL_GET_OS_TENANT_ID">
+<![CDATA[
+select 
+  st.os_tenant_id osTenantId
+from sys_tenant st
+where st.id = #{id}
+]]>
+</entry>
+
+<entry key="SQL_GET_TENANT_EMAIL">
+<![CDATA[
+select 
+  st.email email#
+from sys_tenant st
+where st.id = #{id}
+]]>
+</entry>
+<entry key="SQL_SET_OS_TENANT_ID">
+<![CDATA[
+update sys_tenant st
+   set st.os_tenant_id = #{osTenantId}
+where st.id = #{id}
+]]>
+</entry>
+
+<entry key="SQL_FORBID">
+<![CDATA[
+update sys_tenant t set
+    t.status = 'F',
+    t.status_at = now(),
+    t.status_user = #{userId}
+where t.id = #{id}
+  and t.deleted = 'N'
+  and t.status = 'Y'
+]]>
+</entry>
+
+<entry key="SQL_RESUME">
+<![CDATA[
+update sys_tenant t set
+    t.status = 'Y',
+    t.status_at = now(),
+    t.status_user = #{userId}
+where t.id = #{id}
+  and t.deleted = 'N'
+  and t.status = 'F'
+]]>
+</entry>
+
+<entry key="SQL_RELEASE">
+<![CDATA[
+update sys_tenant t set
+    t.status = 'R',
+    t.status_at = now(),
+    t.status_user = #{userId}
+where t.id = #{id}
+  and t.deleted = 'N'
+  and t.status = 'F'
+]]>
+</entry>
+
+<entry key="SQL_GET_RELEASE_TENANT">
+<![CDATA[
+select os_tenant_id 
+from sys_tenant t
+where t.id = #{id}
+  and t.deleted = 'N'
+]]>
+</entry>
+
+<entry key="SQL_GET_VOLUMES_BY_TENANT">
+<![CDATA[
+select 
+    t.id id#,
+	t.host host#,
+	t.volume_type_id volumeTypeId#,  
+	t.user_id userId#,
+	t.status status#,
+	t.snapshot_id snapshotId#,
+	t.size size#, 
+	t.provider_location providerLocation#,
+	t.provider_auth providerAuth#,
+	t.project_id projectId#,
+	t.mountpoint mountpoint#,
+	t.instance_uuid instanceUuid#
+from cinder.volumes t  
+where 
+    t.deleted='0' and t.status!='error' and t.project_id=#{osTenantId}  
+]]>
+</entry>
+</properties>

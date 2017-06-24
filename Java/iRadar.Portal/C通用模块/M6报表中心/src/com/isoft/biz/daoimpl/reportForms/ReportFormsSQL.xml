@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+ <entry key="SQL_UPDATE_COUNT">
+		<![CDATA[
+		
+		   select
+			  g.name            label#,
+              count(hg.groupid)  value#,
+              g.groupid         link#
+           FROM 
+                groups g
+          
+          INNER JOIN  hosts_groups hg  ON g.groupid=hg.groupid
+          INNER JOIN  hosts h ON h.hostid=hg.hostid
+          WHERE g.groupid not in(5,19)
+          GROUP BY g.name
+		]]>
+	</entry>
+	<entry key="SQL_UPDATE_ZU">
+		<![CDATA[
+		
+		   select
+		      groupid  groupid#,
+			  name     name#       
+              FROM 
+            groups
+		]]>
+	</entry>
+	 <entry key="SQL_UPDATE_COUNT_FEN">
+		<![CDATA[
+			SELECT 
+				h.name                   name#,
+				i.ip                     ip#,
+				hi.os_full             os_full#,
+				hi.software             software#,
+				hi.url_a             url_a#,
+				hi.type_full             type_full#,
+				hi.vendor             vendor#
+			FROM  
+			  hosts h 
+			LEFT JOIN  host_inventory hi ON hi.hostid = h.hostid
+			LEFT JOIN hosts_groups hg ON hg.hostid = h.hostid
+			
+			LEFT JOIN interface i  ON h.hostid = i.hostid
+			LEFT JOIN groups g ON hg.groupid = g.groupid
+			WHERE 1=1  
+			#if($groupid && $groupid!='')  
+				AND hg.groupid = #{groupid}
+			#end						      	
+			#if($name && $name!='')  
+				AND h.name   like '%${name}%'  
+			#end 
+			#if($ip && $ip!='')  
+				AND i.ip   like '%${ip}%' 
+			#end 			
+			#if($os_full && $os_full!='')  
+				AND hi.os_full like '%${os_full}%' 
+			#end 
+		]]>
+	</entry>
+	 <entry key="SQL_UPDATE_COUNT_FEN_WAI">
+		<![CDATA[
+		
+		   select
+			  g.name            label#,
+              count(hg.groupid)  value#,
+              g.groupid        groupid#
+           FROM 
+              hosts_groups hg 
+           LEFT JOIN  hosts h ON h.hostid=hg.hostid
+           LEFT JOIN  groups g ON g.groupid=hg.groupid
+           WHERE  g.groupid not in (#{groupid})
+		]]>
+	</entry>
+	<entry key="SQL_UPDATE_OS">
+		<![CDATA[
+		
+		   select
+		      hostid   hostid#,
+			  name     name#       
+              FROM 
+            host_inventory
+		]]>
+		</entry>
+		<entry key="SQL_UPDATE_OS_TU">
+		<![CDATA[
+		
+		   select 
+             h.name      label# ,
+             COUNT(h.os)  value#,
+             h.os     link#
+             FROM host_inventory  h
+             GROUP BY h.os
+		]]>
+		</entry>
+		 <entry key="SQL_UPDATE_COUNT_FEN_OS">
+		<![CDATA[
+		
+		   select
+			  h.name      label# ,
+              COUNT(h.os)  value#,
+              h.os     hostid#
+              
+           FROM 
+             host_inventory  h
+           
+           WHERE  h.hostid=#{hostid}
+		]]>
+	</entry>
+	 <entry key="SQL_UPDATE_COUNT_FEN_OS_WAI">
+		<![CDATA[
+		
+		   select
+			  h.name      label# ,
+             COUNT(h.os)  value#,
+             h.os     hostid#
+              
+           FROM 
+             host_inventory  h
+           
+           WHERE  h.hostid not in (#{hostid})
+		]]>
+	</entry>
+</properties>

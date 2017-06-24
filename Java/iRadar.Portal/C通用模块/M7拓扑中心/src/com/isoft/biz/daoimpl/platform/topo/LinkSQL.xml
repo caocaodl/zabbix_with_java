@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_LINK_LIST">
+<![CDATA[
+select
+  t.linkid          id#, 
+  t.start_id        startId#,
+  t.start_if_index  startIfIndex#,
+  t.start_if_descr  startIfDescr#,
+  t.start_ip	    startIp#,
+  t.start_mac	    startMac#,
+  t.end_id	        endId#,
+  t.end_if_index	endIfIndex#,
+  t.end_if_descr    endIfDescr#,
+  t.end_ip          endIp#,
+  t.end_mac         endMac#,
+  t.band_width      bandWidth#,
+  t.type            type#,
+  t.tag             tag#,
+  t.traffic_if	    trafficIf#,
+  t.traffic_direct  trafficDirect#,
+  t.backup	        backup#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#
+from t_link t 
+where 1=1 
+#if($startId && $startId != '')
+  and t.start_id = #{startId}
+#end 
+#if($endId && $endId!='')
+  and t.end_id = #{endId}
+#end 
+  order by t.linkid desc
+]]>
+</entry>
+
+<entry key="SQL_LINK_ADD">
+<![CDATA[
+insert into t_link(
+linkid,start_id,start_if_index,start_if_descr,start_ip,start_mac,end_id,end_if_index,end_if_descr,
+end_ip,end_mac,band_width,type,tag,traffic_if,traffic_direct,backup,
+created_at
+)values(
+#{linkId},#{startId},#{startIfIndex},#{startIfDescr},#{startIp},#{startMac},#{endId},#{endIfIndex},#{endIfDescr},
+#{endIp},#{endMac},#{bandWidth},#{type},#{tag},#{trafficIf},#{trafficDirect},#{backup},now()
+)
+]]>
+</entry>
+
+<entry key="SQL_LINK_UPDATE">
+<![CDATA[
+UPDATE t_link
+SET start_if_descr = #{startIfDescr},
+start_ip = #{startIp},
+start_mac = #{startMac},
+end_if_descr = #{endIfDescr},
+end_ip = #{endIp},
+end_mac = #{endMac},
+band_width = #{bandWidth},
+type = #{type},
+tag = #{tag},
+traffic_if = #{trafficIf},
+traffic_direct = #{trafficDirect},
+backup = #{backup}
+WHERE start_id = #{startId}
+AND start_if_index = #{startIfIndex}
+AND end_id = #{endId}
+AND end_if_index = #{endIfIndex}
+]]>
+</entry>
+
+<entry key="SQL_LINK_GET">
+<![CDATA[
+SELECT
+  t.linkid	id#
+FROM t_link t 
+WHERE t.start_id = #{startId}
+AND t.start_if_index = #{startIfIndex}
+AND t.end_id = #{endId}
+AND t.end_if_index = #{endIfIndex}
+]]>
+</entry>
+<entry key="SQL_LINK_TRUNCATE">
+<![CDATA[
+truncate table t_link  
+]]>
+</entry>
+
+</properties>

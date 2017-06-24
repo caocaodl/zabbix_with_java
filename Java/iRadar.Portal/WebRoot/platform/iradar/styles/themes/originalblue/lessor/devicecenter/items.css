@@ -1,0 +1,33 @@
+/*
+ *设备中心.设备监控.监控指标
+ *策略中心.模型策略.监控指标
+ *
+*/
+
+/* 第四列事件中心 */
+table.tableinfo span.link_menu, .link_menu:hover{
+	padding-left: 0;
+}
+
+/* 第二列向导图标 */
+table.tableinfo span.iconmenu_b{
+	display: block;
+}
+
+/* 监控指标.名称.名称 */
+div.dd input[type="button"].formlist{
+	padding: 0 6px;
+	vertical-align: initial;
+}
+.pum_i_item_con{
+	border: black 1px solid;
+	background: #F3F7FC;
+}
+.pum_i_item_con .pum_o_item {
+    display: inline-block;
+    border: none;
+    border-bottom: black 1px solid;
+    -webkit-border;
+    background: #F3F7FC;
+    color: #727272;
+}

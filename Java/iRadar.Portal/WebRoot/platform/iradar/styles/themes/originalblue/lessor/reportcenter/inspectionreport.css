@@ -1,0 +1,12 @@
+/*
+ *报表中心.巡检任务
+ *
+*/
+
+/*报表中心的巡检任务的名称中的select大小*/
+#hosts_left,
+#hosts_right,
+#items_left,
+#items_right{
+	max-width: 20em;
+}

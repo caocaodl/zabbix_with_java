@@ -1,0 +1,15 @@
+/*
+ *系统管理.用户参数.存储策略
+ *
+*/
+
+
+
+.hk .element-row label{
+	text-align: left;
+	width: 185px;
+} 
+
+ul.formlist .formrow .dd{
+	margin-left:-52px;
+}

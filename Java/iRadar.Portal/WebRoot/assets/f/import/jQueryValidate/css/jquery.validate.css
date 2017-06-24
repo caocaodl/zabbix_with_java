@@ -1,0 +1,11 @@
+.poperror {
+	MARGIN:2px;
+	PADDING:0px;
+	background:#dfdfdf;
+}
+.error {
+	border: 1px dotted red !important; 
+	}
+.valid {
+	
+}

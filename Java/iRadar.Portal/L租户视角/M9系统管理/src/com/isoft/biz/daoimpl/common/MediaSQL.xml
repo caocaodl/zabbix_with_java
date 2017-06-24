@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="SQL_LIST_USERS_BY_TENANTID">
+<![CDATA[
+SELECT
+	u.userid    userid#,
+	u.name     name#
+FROM users u
+WHERE u.tenantid=#{tenantid}
+]]>
+</entry>
+
+<entry key="SQL_GET_MEDIA_TYPES">
+<![CDATA[
+SELECT
+	mt.description     name#,
+	mt.mediatypeid     id#,
+	mt.type            type#
+FROM media_type mt
+WHERE mt.tenantid='-' AND mt.status=0 
+ORDER BY mt.mediatypeid ASC	
+]]>
+</entry>
+
+<entry key="SQL_GET_MEDIABY_USERID">
+<![CDATA[
+SELECT
+	u.mediatypeid id#,
+	u.sendto name#
+FROM media u	
+WHERE  userid=#{userid} AND tenantid=#{tenantid}
+]]>
+</entry>
+
+<entry key="SQL_ADD_MEDIA_BY_USERID">
+<![CDATA[
+INSERT INTO media
+	(tenantid,mediaid,userid,mediatypeid,sendto,active,severity,period)
+VALUES
+	(#{tenantid},#{mediaid},#{userid},#{mediatypeid},#{sendto},"0","63","1-7,00:00-24:00")
+]]>
+</entry>
+
+<entry key="SQL_DELETE_MEDIA_BY_USERID">
+<![CDATA[
+DELETE FROM media
+WHERE tenantid=#{tenantid} AND userid=#{userid}
+]]>
+</entry>
+</properties>

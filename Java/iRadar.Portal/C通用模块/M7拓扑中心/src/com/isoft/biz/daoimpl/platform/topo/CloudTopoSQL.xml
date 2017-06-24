@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<!-- sql配置示例 -->
+<entry key="SQL_TOPO_LIST">
+<![CDATA[
+select
+  t.id               id#,
+  t.toponame         topoName#, 
+  t.topotype         topoType#,
+  t.is_public        isPublic#,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_topo t
+where 
+  t.tenantid = #{tenantId}
+  and t.topotype = #{topoType}   
+  and (t.userid = #{userId} or t.is_public='Y')
+#if($topoName && $topoName!='')
+  and t.toponame    like '%${topoName}%'
+#end
+]]>
+</entry>
+</properties>

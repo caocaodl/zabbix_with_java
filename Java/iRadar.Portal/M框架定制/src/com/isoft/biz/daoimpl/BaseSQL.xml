@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="SQL_POPULATE_USER">
+<![CDATA[
+select name from sys_user where id=#{id}
+]]>
+</entry>
+
+<entry key="SQL_POPULATE_TENANT">
+<![CDATA[
+select name from sys_tenant where id=#{id}
+]]>
+</entry>
+
+<entry key="SQL_POPULATE_DICT">
+<![CDATA[
+select dlabel from sys_dict where type=#{ekey} and dkey=#{id}
+]]>
+</entry>
+
+<entry key="SQL_POPULATE_OS_TENANT">
+<![CDATA[
+select name from sys_tenant where os_tenant_id=#{osTenantId}
+]]>
+</entry>
+
+</properties>

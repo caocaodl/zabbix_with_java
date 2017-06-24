@@ -1,0 +1,33 @@
+BODY{
+	background: #FFF;
+}
+.icon-add, .icon-edit, .icon-remove, .icon-user {
+	background: url('../../images/icons.png') no-repeat 0px 0px;
+}
+a.l-btn span span.icon-add{
+	background-position: -7px -2px;
+}
+a.l-btn:hover span span.icon-add{
+	background-position: -7px -22px;
+}
+
+a.l-btn span span.icon-edit{
+	background-position: -7px -44px;
+}
+a.l-btn:hover span span.icon-edit{
+	background-position: -7px -64px;
+}
+
+a.l-btn span span.icon-remove{
+	background-position: -7px -86px;
+}
+a.l-btn:hover span span.icon-remove{
+	background-position: -7px -110px;
+}
+
+a.l-btn span span.icon-user{
+	background-position: -7px -133px;
+}
+a.l-btn:hover span span.icon-user{
+	background-position: -7px -155px;
+}

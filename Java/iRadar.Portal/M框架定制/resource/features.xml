@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(features)</comment>
+
+<!-- 调试输出开关 -->
+<entry key="debug">false</entry>
+<entry key="debugout">false</entry>
+
+<!-- 调试模式下，可以不用通过接口，直接登录； 有三种状态【C、T、A】，C：关闭此功能； T：以租户身份登录； A：以运营商身份登录  -->
+<entry key="codeLogin">C</entry>
+
+<!-- 运营商的租户ID -->
+<entry key="defaultTenantId">5e4d0a6d39a44b9c906a3173b448aa4a</entry>
+
+<!-- 登录页面默认用户名 -->
+<entry key="defaultUser">admin</entry>
+<!-- 登录页面默认密码 -->
+<entry key="defaultPassword">admin</entry>
+<!-- 登录页面默认图形校验码 -->
+<entry key="defaultCheckCode">AAAA</entry>
+
+<!-- 平台名称 -->
+<entry key="title"><![CDATA[一体化监控系统]]></entry>
+
+<!-- iradar数据库事务 -->
+<entry key="autoCommit">false</entry>
+<entry key="idsUseConnection">false</entry>
+
+<!-- iradar监控服务器地址 -->
+<entry key="iradarServer">192.168.10.251</entry>
+<!-- iradar监控服务器端口 -->
+<entry key="iradarPort">10051</entry>
+
+<!-- 权限校验之登录校验开关 -->
+<entry key="enableLoginCheck">false</entry>
+
+<!-- 拓扑开关 -->
+<entry key="enableTopo">false</entry>
+<entry key="enableIPMI">false</entry>
+<entry key="enableJMX">false</entry>
+
+<!-- 页眉开关 -->
+<entry key="ignorePageFooter">true</entry>
+<!-- 页脚开关 -->
+<entry key="ignorePageHeader">true</entry>
+
+<!-- 全屏图标开关 -->
+<entry key="showFullscreenIcon">false</entry>
+<!-- 收藏图标开关 -->
+<entry key="showFavouriteIcon">true</entry>
+<!-- 输出图标开关 -->
+<entry key="showExportCsvIcon">true</entry>
+<!-- 弹出菜单开关 -->
+<entry key="showPopupMenu">true</entry>
+<!-- 代理设置开关 -->
+<entry key="showProxy">false</entry>
+
+<!-- 图形字符集 -->
+<!--entry key="validateCodeChars">0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ</entry-->
+<entry key="validateCodeChars">A</entry>
+
+</properties>

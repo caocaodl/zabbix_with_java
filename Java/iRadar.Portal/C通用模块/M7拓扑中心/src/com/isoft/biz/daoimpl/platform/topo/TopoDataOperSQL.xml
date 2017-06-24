@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_TOPO_DATA_LOCATION_SAVE">
+<![CDATA[
+insert into t_topo_location(id,hostId,X,Y,topoType,nodeType,tenantId,userId)values(
+#{id},#{hostId},#{X},#{Y},#{topoType},#{nodeType},#{tenantId},#{userId})
+]]>
+</entry>
+
+<entry key="SQL_TOPO_DATA_LOCATION_GET">
+<![CDATA[
+select
+  t.id           id#,
+  t.hostId       hostId#,
+  t.X         	 X#,
+  t.Y            Y#,
+  t.topoType     topoType#
+from t_topo_location t 
+where t.topoType = #{topoType}
+#if($tenant && $tenant!='')
+  and t.tenantId regexp toregexp(#{tenantId})
+#end
+#if($user && $user!='')
+  and t.userId = #{userId}
+#end
+]]>
+</entry>
+
+<entry key="SQL_TOPO_DATA_LOCATION_DEL">
+<![CDATA[
+DELETE 
+FROM t_topo_location
+WHERE topoType=#{topoType}
+#if($tenant && $tenant!='')
+  and tenantId regexp toregexp(#{tenantId})
+#end
+#if($user && $user!='')
+  and userId = #{userId}
+#end
+]]>
+</entry>
+
+<entry key="SQL_CAB_TOPO_CABINET_DATA_LOCATION_SAVE">
+<![CDATA[
+insert into t_topo_location(id,hostId,X,Y,topoType,nodeType)values(
+#{id},#{hostId},#{X},#{Y},'TopoCab','NODECABINET')
+]]>
+</entry>
+
+<entry key="SQL_CAB_TOPO_HOST_DATA_LOCATION_SAVE">
+<![CDATA[
+insert into t_topo_location(id,hostId,X,Y,topoType,nodeType)values(
+#{id},#{hostId},#{X},#{Y},'TopoCab','NODEHOST')
+]]>
+</entry>
+
+<entry key="SQL_TOPO_DATA_LOCATION_DEL_BY_HOSTIDS">
+<![CDATA[
+DELETE 
+FROM t_topo_location
+WHERE topoType=#{topoType}
+AND hostId IN (#{hostIds})
+]]>
+</entry>
+
+<!-- <entry key="SQL_PHY_TOPO_TBNAIL_DATA_SAVE">
+<![CDATA[
+insert into t_topo_extend(id,topoType,nodeType,hostId,tbnailName)values(#{id},'TopoPhy','NODEGROUP',#{hostId},#{tbnailName})
+]]>
+</entry>
+
+<entry key="SQL_PHY_TOPO_TBNAIL_HOST_DATA_SAVE">
+<![CDATA[
+insert into t_topo_extend(id,topoType,nodeType,hostId,tbnailId,tbnailNX,tbnailNY)values(#{id},'TopoPhy','NODEHOST',#{hostId},#{tbnailId},#{tbnailNX},#{tbnailNY})
+]]>
+</entry> -->
+
+<entry key="SQL_PHY_TOPO_TBNAIL_DATA_SAVE">
+<![CDATA[
+insert into t_topo_extend(id,topoType,nodeType,hostId,tbnailId,tbnailName,width,height)values(#{id},'TopoPhy',#{nodeType},#{hostId},#{tbnailId},#{tbnailName},#{width},#{height})
+]]>
+</entry>
+
+<entry key="SQL_PHY_TOPO_TBNAIL_HOST_DATA_SAVE">
+<![CDATA[
+insert into t_topo_extend(id,topoType,nodeType,hostId,tbnailId,tbnailNX,tbnailNY)values(#{id},'TopoPhy',#{nodeType},#{hostId},#{tbnailId},#{tbnailNX},#{tbnailNY})
+]]>
+</entry>
+
+<entry key="SQL_PHY_TOPO_TBNAIL_DATA_DEL">
+<![CDATA[
+DELETE 
+FROM t_topo_extend
+WHERE topoType='TopoPhy'
+AND id = #{tbnailId}
+]]>
+</entry>
+
+<entry key="SQL_PHY_TOPO_TBNAIL_HOST_DATA_GET">
+<![CDATA[
+select
+  t.hostId       hostId#,
+  t.tbnailNX     X#,
+  t.tbnailNY     Y#
+from t_topo_extend t 
+where t.topoType = 'TopoPhy'
+and t.tbnailId = #{tbnailId}
+]]>
+</entry>
+
+<entry key="SQL_PHY_TOPO_TBNAIL_HOST_DATA_DEL">
+<![CDATA[
+DELETE 
+FROM t_topo_extend
+WHERE topoType='TopoPhy'
+AND tbnailId = #{tbnailId}
+]]>
+</entry>
+
+<entry key="SQL_PHY_TOPO_DATA_SAVE">
+<![CDATA[
+insert into t_topo_location(id,hostId,X,Y,topoType,nodeType)values(
+#{id},#{hostId},#{X},#{Y},'TopoPhy',#{nodeType})
+]]>
+</entry>
+
+<entry key="SQL_PHY_TOPO_TBNAIL_HOST_DATA">
+<![CDATA[
+select
+  t.hostId       hostId#,
+  t.nodeType	 nodeType#,
+  t.tbnailId	 tbnailId#,
+  t.tbnailName	 tbnailName#,
+  t.tbnailNX     tbnailNX#,
+  t.tbnailNY     tbnailNY#,
+  t.width        width#,
+  t.height       height#
+from t_topo_extend t 
+where t.topoType = 'TopoPhy'
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_DATA_SAVE">
+<![CDATA[
+insert into t_topo_location(id,hostId,X,Y,topoType,nodeType,tenantId,userId,topoId)values(
+#{id},#{hostId},#{X},#{Y},'TopoBiz',#{nodeType},#{tenantId},#{userId},#{bizTopoId})
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_DATA_LOCATION_DEL_BY_HOSTIDS">
+<![CDATA[
+DELETE 
+FROM t_topo_extend
+WHERE topoType='TopoBiz'
+AND topoId = #{bizTopoId}
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_DATA_LOCATION_GET">
+<![CDATA[
+select
+  t.id           id#,
+  t.hostId       hostId#,
+  t.X         	 X#,
+  t.Y            Y#,
+  t.topoType     topoType#
+from t_topo_location t 
+where t.topoType = #{topoType}
+and t.topoId = #{bizTopoId}
+#if($tenant && $tenant!='')
+  and t.tenantId regexp toregexp(#{tenantId})
+#end
+#if($user && $user!='')
+  and t.userId = #{userId}
+#end
+]]>
+</entry>
+
+<entry key="SQL_BIZ_TOPO_BIZ_NODE_DATA_UPDATE">
+<![CDATA[
+update t_topo_extend 
+set width = #{width},
+	height = #{height}
+where id=#{hostId}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_GET_GROUP_ID_BY_HOSTTYPE_AND_HOST_ID">
+<![CDATA[
+SELECT hg.groupid groupId#
+FROM hosts_groups hg
+WHERE hg.hostid = #{hostId}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_GET_GROUP_ID_BY_HOSTNAME_FROM_NET">
+<![CDATA[
+SELECT the.hostid hostid#
+FROM t_host_exp the
+WHERE the.sys_name = #{name}
+]]>
+</entry>
+
+<entry key="SQL_PHY_TOPO_NODE_DATA_DELETE">
+<![CDATA[
+DELETE 
+FROM t_topo_extend
+WHERE topoType=#{TopoPhy}
+]]>
+</entry>
+
+<entry key="SQL_PHY_TOPO_LOC_DATA_DELETE">
+<![CDATA[
+DELETE 
+FROM t_topo_location
+WHERE topoType=#{TopoPhy}
+]]>
+</entry>
+
+</properties>

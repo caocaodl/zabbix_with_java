@@ -1,0 +1,150 @@
+body, label, .tableinfo tr td {
+	font-family: "Microsoft YaHei", Verdana, Arial, sans-serif;
+}
+div#content>div label, div#content>div>div label {
+	padding-left: 36px;
+}
+label {
+	color: #727272;
+	background: no-repeat 12px center;
+}
+.platform_information>label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/favplatforminfo.png);
+}
+.platform_health>label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/totalsituation.png);
+}
+.resource_use_rate>label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/favplatforminfo.png);
+}
+.cloud_service_state >label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/cloudserstat.png);
+}
+.server_load_top5 >label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/topn.png);
+}
+.resource_use_trend >label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/resusedrate.png);
+}
+.system_status >label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/system_state.png);
+}
+.last_event >label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/lastiss.png);
+}
+.graph_report >label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/user_figure.png);
+}
+.server_cpuRate_top5 >label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/alarm.png);
+}
+.server_memoryRate_top5 >label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/resusedrate.png);
+}
+.triggerTrend >label {
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/user_topology.png);
+}
+.last_event .tableinfo .header td {
+	color: #727272;
+	font-weight: bold;
+}
+.last_event .tableinfo tr td {
+	font-size: 14px;
+	height: 2.8em;
+	line-height: 2.8em;
+	padding-left: 0;
+	color: #727272;
+}
+.last_event .tableinfo tr td a {
+	color: #058fcd;
+}
+.server_load_top5 .echart_ctn div {
+	left: 36px;
+}
+.platform_information .ctn {
+	padding-top: 70px;
+}
+
+/*鍥惧舰鎶ヨ〃 start*/
+#hat_favgrph ul.firstshape li {
+	width: 48%;
+}
+
+/*鍥惧舰鎶ヨ〃 end*/
+
+/*鏈�繎鍙戠敓鐨勫憡璀�start*/
+.last_event table.tableinfo {
+	table-layout: fixed;
+}
+
+/*鏈�繎鍙戠敓鐨勫憡璀�end*/
+
+/*公告 start*/
+.resource_use_rate table.tableinfo tr.even_row td:first-child, .resource_use_rate table.tableinfo tr.odd_row td:first-child {
+	text-align: left;
+}
+.resource_use_rate table.tableinfo tr.titleClass td{
+	text-align: left;
+}
+.resource_use_rate table.tableinfo tr.even_row td:nth-child(2), .resource_use_rate table.tableinfo tr.odd_row td:nth-child(2) {
+	text-align: center;
+}
+.resource_use_rate table.tableinfo tr.titleClass td.title_class {
+	width: 70%;
+}
+.resource_use_rate table.tableinfo tr.titleClass td.time_class {
+	width: 30%;
+}
+.resource_use_rate table.tableinfo tr.titleClass td span {
+	width: 100%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/*公告 end*/
+
+/*最近前5个事件 start*/
+.last_event table.tableinfo tr td {
+	text-align: center;
+}
+
+/*最近前5个事件 end*/
+
+/*首页公告.标题*/
+.resource_use_rate .titleClass {
+	height: 18px;
+	line-height: 18px;
+	font-weight: bold;
+	background-color: #e7edf3;
+}
+
+.resource_use_rate .iconmenu{
+	float: right;
+	width: inherit;
+	height: inherit;
+	padding-right: 10px;
+	background-image: none;
+	cursor: pointer;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-o-border-radius: 2px;
+	-moz-margin-start:-47px;
+}
+
+
+.graph_report .iconmenu{
+	display: inline-block;
+	background-repeat: no-repeat;
+	height: 16px;
+	width: 16px;
+	cursor: pointer;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-o-border-radius: 2px;
+	border-radius: 2px;
+	background-image: url(../../../platform/iradar/styles/themes/originalblue/images/dashboard/menu.png);
+	float: right;
+	background-position: center;
+	margin: 7px 7px 0 0;
+}

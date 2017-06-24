@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_TOPO_LINE_LIST">
+<![CDATA[
+select
+  t.lineid       lineId#,
+  t.topoid       topoId#,
+  t.tbnailid     tbnailId#,
+  t.nodeid       nodeId#, 
+  t.tonode       toNode#,
+  t.g            g#,
+  t.tagname      tagName#,
+  t.strokeweight strokeWeight#,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_line t 
+  where topoid = #{topoId} and tbnailid = #{tbnailId}
+#if($nodeId && $nodeId!='')
+  and t.nodeid = #{nodeId}
+#end
+#if($toNode && $toNode!='')
+  and t.tonode = #{toNode}
+#end
+  order by t.lineid desc
+]]>
+</entry>
+ 
+<entry key="SQL_TOPO_TARGET_NODE_ID_BY_NODE_ID">
+<![CDATA[
+SELECT 
+  t2.nodeid nodeId#
+FROM t_line t , t_node t2 
+WHERE
+  t.tonode = t2.name 
+  AND t.nodeid = #{nodeId}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_LINE_DUPLICATE_CHECK">
+<![CDATA[
+select 
+   t.lineid lineId#
+from t_line t
+where topoid = #{topoId} 
+  and tbnailid = #{tbnailId}
+#if($nodeId && $nodeId!='')
+  and t.nodeid = #{nodeId}
+#end
+#if($toNode && $toNode!='')
+  and t.tonode = #{toNode}
+#end
+limit 1
+]]>
+</entry>
+
+<entry key="SQL_TOPO_LINE_ADD">
+<![CDATA[
+insert into t_line(
+ lineid,nodeid,topoid,tbnailid,tonode,g,tagname,strokeweight,
+ tenantid,userid,created_at,created_user 
+)values(
+ #{lineId},#{nodeId},#{topoId},#{tbnailId},#{toNode},#{g},#{tagName},#{strokeWeight},
+ #{tenantId},#{userId},now(),#{userName}
+)
+]]>
+</entry>
+
+<entry key="SQL_TOPO_LINE_UPDATE_ATTR">
+<![CDATA[
+update t_line set 
+ tagname=#{tagName},
+ strokeweight=#{strokeWeight},
+ modified_at = now(),
+ modified_user = #{userName}
+where lineid = #{lineId} and tbnailid = #{tbnailId}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_DEL_LINE_BY_NODEID_OR_TONODE">
+<![CDATA[
+delete from t_line where topoId=#{topoId} and tbnailId=#{tbnailId} and nodeid=#{nodeId} or tonode=#{toNode}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_DEL_LINE_BY_TOPO_ID">
+<![CDATA[
+delete from t_line where topoid = #{topoId}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_DEL_LINE_BY_ID">
+<![CDATA[
+delete from t_line where lineid = #{lineId}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_LINE_UPDATE_BY_ID">
+<![CDATA[
+update t_line set 
+ tagname=#{tagName},
+ strokeweight=#{strokeWeight},
+ g = #{g},
+ modified_at = now(),
+ modified_user = #{userName}
+where lineid = #{lineId}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_DEL_EXCLUDE_LINE_OF_THUMBNAIL">
+<![CDATA[
+delete from t_line where topoid = #{topoId} and tbnailid = #{tbnailId}
+]]>
+</entry>
+</properties>

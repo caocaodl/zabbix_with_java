@@ -1,0 +1,16 @@
+/*
+ *策略中心.发现策略.创建发现规则.3操作 .选择
+ *策略中心.分析策略.动作规则.送到用户.添加
+ *
+*/
+
+table.maxwidth{
+	display: none;
+}
+form[id="users"] table.systemlog tr.header{
+	display:table-row !important;
+}
+form[id="users"] table.systemlog tr.header td:first-child{
+	display:none !important;
+}
+

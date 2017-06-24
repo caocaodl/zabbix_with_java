@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>(MYSQL)</comment>
+	
+	<entry key="SQL_PAGE">
+        <![CDATA[
+        	SELECT 
+				r.id               id#,
+				r.name             name#,
+				r.frequent         frequent#,
+				r.time             time#,
+				r.week             week#,
+				r.day              day#,
+				r.sendMode         sendMode#,
+				r.status           status#,
+				r.created_at       createdAt#,
+				r.created_user     createdUser#,
+				r.modified_at      modifiedAt#,
+				r.modified_user    modifiedUser#,
+				r.description      description#
+			FROM
+				i_inspection_report r
+			WHERE 1=1
+			#if($name && $name!='')
+				AND r.name regexp  toregexp(#{name})
+			#end
+			ORDER BY r.status DESC,r.created_at DESC
+		]]>
+	</entry>
+	<entry key="SQL_ADD">
+        <![CDATA[
+       		INSERT INTO i_inspection_report
+				(id,name,frequent,time,week,day,timeRule,sendMode,status,created_at,created_user,modified_at,modified_user,description)
+			VALUES
+				(#{id},#{name},#{frequent},#{time},#{week},#{day},#{timeRule},#{sendMode},#{status},now(),#{userId},now(),#{userId},#{description})
+		]]>
+	</entry>	
+	<entry key="SQL_UPDATE">
+        <![CDATA[
+			UPDATE i_inspection_report i SET
+				i.name = #{name},
+				i.frequent = #{frequent},
+				i.time = #{time},
+				i.week = #{week},
+				i.day = #{day},
+				i.timeRule = #{timeRule},
+				i.sendMode = #{sendMode},
+				i.status = #{status},
+				i.modified_at = now(),
+				i.modified_user = #{userId},
+				i.description = #{description}
+			WHERE i.id= #{id}
+		]]>
+	</entry>	
+	<entry key="SQL_UPDATE_STATUS">
+        <![CDATA[
+			UPDATE i_inspection_report i SET
+				i.status = #{status},	
+				i.modified_at = now(),	
+				i.modified_user = #{userId}
+			WHERE i.id= #{id}
+		]]>
+	</entry>	
+	<entry key="SQL_CHECK_NAME">
+        <![CDATA[
+			SELECT id 
+			FROM i_inspection_report
+			WHERE name=#{name}
+			#if($id && $id!='' )
+			  AND id<>#{id}
+			#end
+		]]>
+	</entry>	
+	<entry key="SQL_MONITOR_HOST">
+        <![CDATA[
+			SELECT 
+				hostid         hostId#,
+				host           hostName#
+			FROM
+				`hosts`
+			WHERE
+				status=0
+		]]>
+	</entry>	
+	<entry key="SQL_MONITOR_APPLICATION">
+        <![CDATA[
+			SELECT 
+				id         applicationId#,
+				name       applicationIdName#
+			FROM
+				i_application
+		]]>
+	</entry>	
+	<entry key="SQL_ADD_INSPECTION_HOST">
+        <![CDATA[
+       		INSERT INTO i_inspection_host_application
+				(id,inspection_id,host_id,application_id)
+			VALUES
+				(#{id},#{inspectionId},#{hostId},#{applicationId})
+		]]>
+	</entry>	
+	<entry key="SQL_INSPECTION_HOST_APPLICATION">
+        <![CDATA[
+        	SELECT 
+				r.id               id#,
+				r.inspection_id    inspectionId#,
+				r.host_id          hostId#,
+				r.application_id   applicationId#
+			FROM
+				i_inspection_host_application r
+			WHERE 1=1
+			#if($inspectionId && $inspectionId!='' )
+			  AND r.inspection_id = #{inspectionId}
+			#end				
+		]]>
+	</entry>
+	<entry key="SQL_DELETE_INSPECTION_HOST">
+        <![CDATA[
+			DELETE FROM i_inspection_host_application WHERE inspection_id=#{inspectionId}		
+		]]>
+	</entry>
+	<entry key="SQL_INSPECTION_HISTORY_PAGE">
+        <![CDATA[
+			SELECT
+				ih.id              id#,
+				ir.name            inspectionName#,
+				h.host             hostName#,
+				ih.issue_number    issueNumber#,
+				ih.item_number     itemNumber#,
+				date_format(ih.create_At,'%Y-%m-%d %H:%i')     createTime#				       
+			FROM
+				i_inspection_history ih
+			LEFT JOIN `hosts` h ON ih.host_id=h.hostid
+			LEFT JOIN i_inspection_report ir ON ih.inspection_id=ir.id	
+			WHERE 1=1
+			#if($inspectionId && $inspectionId!='' )
+			  AND ih.inspection_id = #{inspectionId}
+			#end								
+		]]>
+	</entry>
+	<entry key="SQL_INSPECTION_HISTORY_INFO">
+        <![CDATA[
+			SELECT
+				ihi.id               historyInfoId#,
+				a.name               applicationName#,
+				i.name               itemName#,
+				ihi.value            itemValue#,
+				ihi.is_issue         isIssue#
+			FROM
+				i_inspection_history_item ihi
+			LEFT JOIN i_application a ON ihi.application_id=a.id
+			LEFT JOIN items i ON ihi.item_id=i.itemid
+			WHERE 1=1
+			#if($inspectionId && $inspectionId!='')
+			  AND ihi.inspection_history_id = #{inspectionHistoryId}
+			#end						
+		]]>
+	</entry>	
+	<entry key="SQL_INSPECTION_TIMERULE">
+        <![CDATA[
+			SELECT
+				r.id   id#,
+				r.name name#,
+				r.timeRule  timeRule#
+			FROM
+				i_inspection_report r
+			WHERE 
+				status='Y'		
+		]]>
+	</entry>	
+	
+</properties>

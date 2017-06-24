@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="SQL_SELECT">
+<![CDATA[
+select 
+  u.name     name#,
+  u.userid     id#
+from userserves u   
+
+]]>
+</entry>
+
+</properties>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_CABINET_TOPO_NODE_LIST">
+<![CDATA[
+select
+  t.nodeid           nodeId#,
+  t.topoid           topoId#,
+  t.picid            picId#,
+  t.hostid           hostId#,
+  t.category         category#,
+  t.tagname          tagName#, 
+  t.name             name#,
+  t.priority         priority#,
+  t.g                g# ,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_cabinet_node t 
+where topoid = #{topoId} 
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+#if($name && $name!='')
+  and t.name regexp toregexp(#{name})
+#end
+#if($tagName && $tagName!='')
+  and t.tagname = #{tagName}
+#end
+  order by t.priority asc
+]]>
+</entry>
+
+<entry key="SQL_T_CABINET_NODE_ADD">
+<![CDATA[
+insert into t_cabinet_node(
+nodeid,topoid,hostid,priority,category,
+picid,tagname,name,g,tenantid,userid,
+created_at,created_user
+)values(
+#{nodeId},#{topoId},#{hostId},#{priority},
+#{category},#{picId},#{tagName},#{name},
+#{g},#{tenantId},#{userId},now(),
+#{createdUser}
+)
+]]>
+</entry>
+
+<entry key="SQL_T_CABINET_NODE_DEL_BY_TOPOID">
+<![CDATA[
+delete from  
+   t_cabinet_node 
+where 
+   topoid = #{topoId}
+]]>
+</entry>
+
+<entry key="SQL_T_CABINET_NODE_DEL_BY_NODEID">
+<![CDATA[
+delete from  
+   t_cabinet_node 
+where 
+   nodeid = #{nodeId}
+]]>
+</entry>
+<entry key="SQL_T_CABINET_NODE_DEL_BY_PICID">
+<![CDATA[
+delete from  
+   t_cabinet_node 
+where 
+   picid = #{picid}
+]]>
+</entry>
+<entry key="SQL_T_CABINET_NODE_DEL_BY_PICID_SELECT">
+<![CDATA[
+select 
+   t.nodeid           nodeId
+    from  
+   t_cabinet_node t
+where 
+   t.picid = #{picid}
+]]>
+</entry>
+<entry key="SQL_T_CABINET_NODE_UPDATE_G">
+<![CDATA[
+update t_cabinet_node set g=#{g} where nodeid=#{nodeId}
+]]>
+</entry>
+
+<entry key="SQL_T_NODE_HOST_ID_LIST_BY_TOPO_ID">
+<![CDATA[
+select
+  t.hostid           hostId#
+from t_cabinet_node t 
+where topoid = #{topoId} 
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+]]>
+</entry>
+
+<entry key="SQL_GET_MOTOR_ROOM_DATA">
+<![CDATA[
+SELECT sd.dlabel name#,
+       sd.dkey   id#
+FROM sys_dict sd
+WHERE sd.type='MOTOR_ROOM'
+#if($roomId && $roomId!='')
+  and sd.id = #{roomId}
+#end
+]]>
+</entry>
+
+<entry key="SQL_GET_CABINET_DATA">
+<![CDATA[
+SELECT sd.dlabel name#,
+       sd.dkey   id#,
+       sd.seq_no roomId#
+FROM sys_dict sd
+WHERE sd.type='CABINET'
+#if($roomId && $roomId!='')
+  and sd.seq_no = #{roomId}
+#end
+]]>
+</entry>
+
+<entry key="SQL_GET_CABINET_TOPO_DATA">
+<![CDATA[
+SELECT h.hostid id#,
+       h.host   name#,
+       GROUP_CONCAT(hg.groupid) hostType#,
+       hi.url_a cabId#
+FROM hosts h
+LEFT JOIN hosts_groups hg ON h.hostid=hg.hostid
+LEFT JOIN host_inventory hi ON h.hostid=hi.hostid 
+WHERE h.status IN ('0','1')
+#if($roomId && $roomId!='')
+  AND hi.software=#{roomId}
+#end 
+#if($cabId && $cabId!='')
+  AND hi.url_a=#{cabId}
+#end
+#if($groupIds && $groupIds!='')
+  AND hg.groupid IN (#{groupIds})
+#end 
+GROUP BY id
+]]>
+</entry>
+
+</properties>

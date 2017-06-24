@@ -1,0 +1,14 @@
+.originalblue .ui-widget-content {
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+}
+
+/**
+* 事件来源 事件详情 首列固定宽度
+**/
+#hat_triggerdetails table.tableinfo tr.event_row td:first-child, 
+#hat_triggerdetails table.tableinfo tr.odd_row td:first-child, 
+#hat_eventdetails table.tableinfo tr.event_row td:first-child, 
+#hat_eventdetails table.tableinfo tr.odd_row td:first-child {
+	width: 100px;
+}

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+<entry key="SQL_CONFIG">
+	<![CDATA[
+		select
+	    search_limit search_limit#
+		FROM config WHERE tenantid='-'
+		
+	]]>
+</entry>
+<entry key="SQL_LIST">
+	<![CDATA[
+		select
+			i.announcementid   announcementid#,
+			i.content     content#,
+			i.title     title#,
+			i.active_since     active_since#,
+			i.active_till     active_till#,
+			i.issuer       issuer#,
+			i.status       status#
+		from
+		i_announcement i  
+		limit  #{search_limit}
+		
+	]]>
+</entry>
+<entry key="SQL_EFFECTIVE_LIST">
+	<![CDATA[
+		select
+			i.announcementid   announcementid#,
+			i.content     content#,
+			i.title     title#,
+			i.active_since     active_since#,
+			i.active_till     active_till#,
+			u.alias     issuer#
+		from
+		i_announcement i  
+		left join users u on u.userid=i.issuer
+		where  i.status not in(3)
+		and unix_timestamp() between   active_since  and active_till
+		order by i.announcementid DESC
+		limit #{search_limit}
+	]]>
+</entry>
+<entry key="SQL_START">
+	<![CDATA[
+		UPDATE i_announcement  f SET
+			f.status =1
+		WHERE f.announcementid = #{announcementid}
+	]]>
+</entry>
+<entry key="SQL_END">
+	<![CDATA[
+		UPDATE i_announcement  f SET
+			f.status =0
+		WHERE f.announcementid = #{announcementid}
+	]]>
+</entry>
+<entry key="SQL_LIST_ONE">
+	<![CDATA[
+		select
+			announcementid   announcementid#,
+			content     content#,
+			title     title#,
+			active_since     active_since#,
+			active_till     active_till#,
+			issuer     issuer#
+		from 
+		i_announcement  
+		 where announcementid=#{announcementid}
+	]]>
+</entry>
+<entry key="SQL_UPDATA">
+	<![CDATA[
+		UPDATE i_announcement  f SET
+			f.content =#{content},
+			f.title =#{title},
+			f.active_since =#{active_since},
+			f.active_till =#{active_till},
+			f.status=#{status}
+		WHERE f.announcementid = #{announcementid}
+		]]>
+</entry>
+	<entry key="SQL_CREATE">
+	<![CDATA[
+		insert into i_announcement (tenantid,announcementid,content,title,active_since,active_till,issuer,status)
+           values(#{tenantid},#{announcementid},#{content},#{title},#{active_since},#{active_till},#{userName},#{status})
+		]]>
+</entry>
+<entry key="SQL_DELETE">
+	<![CDATA[
+		DELETE FROM 
+			i_announcement  
+		WHERE 
+			announcementid 
+		IN(#foreach($var in $idList)$var #if($velocityCount<$idList.size()),#end #end)
+	]]>
+</entry>
+<entry key="SQL_CEASE">
+	<![CDATA[
+		UPDATE i_announcement  f SET
+			f.status =3
+		WHERE 
+			announcementid 
+		IN(#foreach($var in $idList)$var #if($velocityCount<$idList.size()),#end #end)
+	]]>
+</entry>
+
+<entry key="SQL_ENABLE">
+	<![CDATA[
+		UPDATE i_announcement  f SET
+			f.status =1
+		WHERE 
+			f.status != 2
+			and	announcementid 
+		IN(#foreach($var in $idList)$var #if($velocityCount<$idList.size()),#end #end)
+	]]>
+</entry>
+	
+<entry key="SQL_CONFLICT_NAME_CHECK">
+	<![CDATA[
+		SELECT an.announcementid id#
+		FROM i_announcement an
+		WHERE an.title=#{title}
+	]]>
+</entry>
+	
+</properties>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_TOPO_LIST">
+<![CDATA[
+select
+  t.id               id#,
+  t.toponame         topoName#, 
+  t.topotype         topoType#,
+  t.is_public        isPublic#,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_topo t
+where 
+  t.tenantid = #{tenantId}
+  and t.topotype = #{topoType}   
+  and (t.userid = #{userId} or t.is_public='Y')
+#if($topoName && $topoName!='')
+  and t.toponame    like '%${topoName}%'
+#end
+#if($topoId && $topoId!='')
+  and t.id  in (#{topoId})
+#end
+]]>
+</entry>
+
+<entry key="SQL_TOPO_DATA_SELECT">
+<![CDATA[
+select
+  t.id               id#,
+  t.toponame         toponame#, 
+  t.topotype         topotype#,
+  t.is_public        is_public#,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_topo t
+where t.id = #{id}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_DUPLICATE_CHECK">
+<![CDATA[
+select
+  t.id           id#
+from t_topo t 
+where 
+  t.tenantid = #{tenantId}   
+  and t.userid = #{userId} 
+  and t.toponame = #{topoName}
+  and t.topoType = #{topoType}
+#if($id && $id!='')
+ and t.id <> #{id}
+#end
+limit 1
+]]>
+</entry>
+
+<entry key="SQL_TOPO_ADD">
+<![CDATA[
+insert into t_topo(
+id,toponame,topotype,is_public,tenantid,userid,created_at,created_user 
+)values(
+#{id},#{topoName},#{topoType},#{isPublic},#{tenantId},#{userId},now(),#{userName}
+)
+]]>
+</entry>
+
+<entry key="SQL_TOPO_QUERY_ISPUBLIC">
+<![CDATA[
+select is_public from t_topo where id = #{topoId}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_DEL">
+<![CDATA[
+delete from 
+   t_topo 
+where 
+   id IN(#foreach($var in $topoIdList)$var #if($velocityCount<$topoIdList.size()),#end #end) 
+   and userid = #{userId} 
+   and tenantid = #{tenantId}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_UPDATE">
+<![CDATA[
+update t_topo set
+  toponame = #{topoName} ,
+  topoType = #{topoType} ,
+  is_public = #{isPublic},
+  modified_at = now(),
+  modified_user = #{userName}
+where id=#{id}
+]]>
+</entry>
+
+<entry key="SQL_TOPO_PUBLIC">
+<![CDATA[
+update t_topo set
+  is_public = 'Y',
+  modified_at = now(),
+  modified_user = #{userName}
+where id IN(#foreach($var in $topoIdList)$var #if($velocityCount<$topoIdList.size()),#end #end)
+]]>
+</entry>
+
+<entry key="SQL_TOPO_HIDE">
+<![CDATA[
+update t_topo set
+  is_public = 'N',
+  modified_at = now(),
+  modified_user = #{userName}
+where id IN(#foreach($var in $topoIdList)$var #if($velocityCount<$topoIdList.size()),#end #end)
+]]>
+</entry>
+</properties>

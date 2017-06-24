@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+<entry key="SQL_T_PIC_PAGE">
+<![CDATA[
+select 
+  t.id              id#,
+  t.name            name#,
+  t.category        category#,
+  t.width           width#,
+  t.height          height#,
+  t.url             url#,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_pic t
+where 
+  t.tenantid = #{tenantId} 
+  and t.userid = #{userId} 
+#if($name && $name!='')
+  and t.name like '%${name}%'
+#end
+#if($category && $category!='')
+  and t.category = #{category}
+#end
+  OR tenantid IS NULL
+
+order by t.name asc 
+limit #{search_limit}
+]]>
+</entry>
+
+<entry key="SQL_T_PIC_LOAD_BY_ID">
+<![CDATA[
+select 
+  t.id              id#,
+  t.name            name#,
+  t.category        category#,
+  t.width           width#,
+  t.height          height#,
+  t.url             url#,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_pic t
+where 
+  t.id = #{id}
+]]>
+</entry>
+<entry key="SQL_T_PIC_LIST">
+<![CDATA[
+select 
+  t.id              id#,
+  t.name            name#,
+  t.category        category#,
+  t.width           width#,
+  t.height          height#,
+  t.url             url#,
+  t.tenantid        tenantId#,
+  t.userid          userId#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from t_pic t
+where 
+  t.tenantid = #{tenantId} 
+  and t.userid = #{userId}
+  and t.category = #{category}
+  or tenantid is null
+order by t.name asc
+]]>
+</entry>
+<entry key="SQL_T_PIC_DUPLICATE_CHECK">
+<![CDATA[
+select 
+  t.id       id#
+from t_pic t
+where 
+ t.name = #{name}
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+#if($id && $id!='')
+ and t.id <> #{id}
+#end
+limit 1
+]]>
+</entry>
+
+<entry key="SQL_T_PIC_ADD">
+<![CDATA[
+INSERT INTO t_pic(
+       id,
+       name,
+       category,
+       width,
+       height,
+       url,
+       tenantid,
+       userid,
+       created_at,
+       created_user)
+VALUES (#{id},
+        #{name},
+        #{category},
+        #{width},
+        #{height},
+        #{url},
+        #{tenantId},
+        #{userId},
+        now(),
+        #{userName});
+]]>
+</entry>
+
+<entry key="SQL_T_PIC_DEL">
+<![CDATA[
+delete from 
+   t_pic 
+where 
+   id IN(#foreach($var in $tpIdList)$var #if($velocityCount<$tpIdList.size()),#end #end) 
+]]>
+</entry>
+
+<entry key="SQL_T_PIC_REFERENCE">
+<![CDATA[
+select 
+  t.id       id#
+from t_topo_pic t
+where 
+ t.picid = #{picid}
+ and  t.tenantid = #{tenantId}
+ and  t.userid = #{userId}
+limit 1
+]]>
+</entry>
+
+<entry key="SQL_TOPO_PIC_DEL">
+<![CDATA[
+delete from 
+   t_topo_pic 
+where 
+   picid = #{picid}
+]]>
+</entry>
+
+</properties>

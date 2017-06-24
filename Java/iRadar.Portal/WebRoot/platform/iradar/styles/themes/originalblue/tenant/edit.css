@@ -1,0 +1,278 @@
+/*锟斤拷锟斤拷锟斤拷应锟矫硷拷锟�start*/
+body{
+	font-family:"Microsoft YaHei";
+	font-size:12px;
+}
+
+ul.formlist li .dt{	
+	color:#777;
+}
+
+.multiline ul.formlist .formrow .dt, ul.formlist .formrow.multiline .dt{
+	font-size:12px;
+}
+
+ul.formlist li .dt, ul.formlist li .dd{
+	padding-bottom:17px;
+	color:#717171;
+}
+
+.pack{
+	background:#F8FBFD;
+}
+
+ul.formlist li .dt{
+	font-weight:bold;
+}
+
+ul.formlist li .dt div.sm_title{
+	font-weight:normal;
+}
+
+.multiline ul.formlist .formrow .dt{
+	border:none;
+}
+
+ul.formlist li.formrow .dd input.text{
+	width:200px !important;
+	height:26px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	border:1px #D7D7D9 solid;
+	color:#777777;
+	text-indent:7px;
+	padding:0px;
+}
+
+ul.formlist li.formrow .dd input.button{
+	height:2.1em;
+	line-height:2em;
+	padding:0 1.25em 0 1.25em;
+	border: none;
+	background:#058fcd no-repeat 6px center;
+	color:#fff;
+}
+
+ul.formlist li.formrow .dd input#chooseitem{
+	width:125px;
+}
+
+ul.formlist li.formrow .dd input#addCustom, 
+ul.formlist li.formrow .dd input#cancalCustom,
+ul.formlist li.formrow .dd input#addAlarmLine{
+	width:auto;
+	background-image:url(../images/deit/add_graybig_hover.png);
+	padding-left:22px;	
+	color:#fff;
+}
+
+ul.formlist li.formrow .dd input#showcalCustom{
+	width:auto;
+	background-image:url(../images/deit/add_graybig_hover.png);
+	background-color: #058fcd;
+	padding-left:22px;	
+	color:#fff;
+}
+
+/*服务应用监察中tomcat和mysql中的添加自定义告警的鼠标状态*/
+input#showcalCustom:hover{
+	border: none !important;
+	background-image:url(../images/deit/add_graybig_hover.png) !important;
+	background-color:rgba(5,143,205,0.7) !important;
+}
+
+ul.formlist li.formrow .dd table tr.header, ul.formlist li.formrow .dd table tr.pack{
+	height:28px;		
+}
+
+ul.formlist li.formrow .dd table tr.header{
+	background:#E8EDF4;
+}
+
+ul.formlist li.formrow .dd table tr.pack{
+	color:#717171;
+}
+
+ul.formlist li.formrow .dd table tr td{
+	padding-left:10px;
+}
+
+ul.formlist li.formrow .dd table tr td .ind{
+	font-weight:bold;
+	color:#717171;
+}
+
+ul.formlist li.formrow .dd table tr td .instructions{
+	color:#AAAAAA;
+	background:url(../images/deit/instructions.png) no-repeat left center;
+	padding-left:18px;
+	
+}
+
+ul.formlist li.formrow .dd table tr.instruct td div.instructions{
+	margin-bottom:27px;
+}
+
+ul.formlist li.formrow .dd div.op_button{
+	padding-left:458px;
+}
+
+ul.formlist li.formrow .dd div.op_button #add, 
+ul.formlist li.formrow .dd div.op_button #cancel, 
+ul.formlist li.formrow .dd .savebtn input.button{
+	height:2.8em;
+	color:#fff;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	border:none;
+}
+
+ul.formlist li.formrow .dd div.op_button #add, form div.savebtn #save{
+	background:rgba(5,143,205,1);
+}
+#showcalCustom:hover{
+	background: #F3F3F3 no-repeat 6px center !important;
+  	border: 1px #CDCDCD solid !important;
+}
+ul.formlist li.formrow .dd div.op_button #cancel, form div.savebtn #cancel{
+	background:#B2B2B2;
+}
+
+#tvmFormList ul.formlist li.formrow div.ttind{
+	height:26px;
+	line-height:26px;
+	border:2px #BAE0FA solid;
+	background:#E5F5FF url(../images/deit/ttind.png) no-repeat 14px center;
+	padding-left:36px;
+}
+
+ul.formlist li.formrow .dd table tr td div.type_0, 
+ul.formlist li.formrow .dd table tr td div.type_2,
+ul.formlist li.formrow .dd table tr td div.type_3
+{
+	background:no-repeat left center;
+	padding-left:20px;
+	cursor:pointer;
+	color:#5B697A;
+}
+
+ul.formlist li.formrow .dd table tr td div.type_0{
+	background-image:url(../images/deit/icon_email.gif); 
+}
+
+ul.formlist li.formrow .dd table tr td div.type_2{
+	background-image:url(../images/deit/icon_sms.gif)
+}
+ul.formlist li.formrow .dd table tr td div.type_3{
+	background-image:url(../images/deit/icon_sms.gif)
+}
+div.ui-tabs-panel ul.formlist li.formrow .sm_title label.ui-state-active,
+form div.control-severity label.ui-state-active,
+.leftDivClass label.ui-state-active{
+	background:#058fcd !important;
+	border:1px #058fcd solid !important;
+	color:#fff !important;
+}
+.originalblue .ui-button.ui-state-active .ui-button-text{
+	color:#fff !important;
+}
+
+div.ui-tabs-panel ul.formlist li.formrow .jqueryinputset.control-severity label,
+form div.control-severity label,
+.leftDivClass label{
+	border:1px #ccc solid !important;
+	margin-right:10px !important;
+	-webkit-border-radius:2px !important;
+	-moz-border-radius:2px !important;
+	border-radius:2px !important;	
+	background:#fff !important;
+}
+
+div.ui-tabs-panel ul.formlist li.formrow .jqueryinputset.control-severity label.ui-state-active
+{
+	background:#058fcd !important;
+	border:1px #058fcd solid !important;
+	color:#fff;
+}
+
+div.ui-tabs-panel ul.formlist li.formrow .jqueryinputset.control-severity label .ui-state-active span{
+	color:#fff;
+}
+
+ul.formlist li.formrow .dd div.savebtn{
+	float:right;
+	padding-right:148px;
+}
+
+ul.formlist li.formrow .dd input#vmname, ul.formlist li.formrow .dd input#vmip{
+	border:none;
+	background:none;
+}
+
+table.alarm_id tr td{
+	height:35px;
+	border-bottom:1px #ccc solid;
+	padding:0 15px 0 15px;
+}
+
+table.alarm_id tr td div.currentId, table.alarm_id tr td div.otherId{
+	min-width: 80px;
+}
+
+table.alarm_id tr td div.current_user{
+	width:206px;
+}
+
+table.alarm_id tr td div.currentId, table.alarm_id tr td div.currentId{
+	font-weight:bold;
+}
+
+ul.formlist li#monit_id div{
+	border-top:1px #ccc solid;
+	margin:0px;
+	padding-top:14px;
+}
+
+ul.formlist li#monit_id{
+	padding-bottom:30px;
+}
+#formElementTable tr td div.savebtn{
+	padding-right:0px;
+}
+input#url{
+	width:252px !important;
+}
+
+/*锟斤拷锟斤拷锟斤拷应锟矫硷拷锟�end*/
+
+table#conditionTable td{
+	padding-left:0;
+}
+
+.multiline ul.formlist .formrow .dt, ul.formlist .formrow.multiline .dt{
+	padding:0;
+}
+/* 租户.添加自定义告警 */
+input#filter:hover,input#reset:hover, .dt .shadow:hover, .dd .shadow:hover, .dd #cancel:hover, input.buttonorange:hover, input.buttongray:hover,.device_monitor input.shadow:hover,.formtable input.shadow:hover{
+	color: #fff !important;
+	border: none;
+	background-color: rgba(5,143,205,0.7) !important;	
+}
+ul.formlist li.formrow .dd input#addCustom:hover, ul.formlist li.formrow .dd input#cancalCustom:hover{
+	background: rgba(5,143,205,0.7) url(../images/deit/add_graybig_hover.png) no-repeat 6px center !important;	
+}
+#tvmFormList table#itemtableid{
+	background:transparent;
+}
+/* 调整 保存 取消按钮 间距*/
+ul.formlist li.formrow .dd .savebtn input.button,
+ul.formlist li.formrow .dd .op_button input.button{
+	margin-right: 0.8em;
+}
+
+/*网站监察-创建网站监察-自定义告警线*/
+#formElementTable .describe_div_id #new_alarmLine_condition{
+	margin: 0 8px; 
+}

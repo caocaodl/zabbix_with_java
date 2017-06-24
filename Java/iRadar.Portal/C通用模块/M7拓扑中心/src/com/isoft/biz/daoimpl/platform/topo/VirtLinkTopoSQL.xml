@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL_LOG)</comment>
+
+<entry key="SQL_GET_ITEM_KEY">
+<![CDATA[
+SELECT itemid itemid#
+FROM items
+WHERE hostid=#{hostid}
+AND key_ LIKE #{itemkey}
+]]>
+</entry>
+
+<entry key="SQL_GET_MONITOR_VALUE">
+<![CDATA[
+(SELECT h.value value#
+FROM history h
+WHERE h.itemid=#{itemId}
+ORDER BY h.clock DESC LIMIT 1)
+UNION ALL
+(SELECT hu.value value#
+FROM history_uint hu
+WHERE hu.itemid=#{itemId}
+ORDER BY hu.clock DESC LIMIT 1)
+]]>
+</entry>
+
+</properties>

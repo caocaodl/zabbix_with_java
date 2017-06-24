@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="SQL_ROLE_PAGE">
+<![CDATA[
+select 
+  t.id     id#,
+  t.role_name   roleName#,
+  t.role_desc   roleDesc#,
+  t.deleted deleted#,
+  date_format(t.deleted_at,'%Y-%m-%d %T') deletedAt#,
+  t.deleted_user deletedUser#,
+  date_format(t.modified_at,'%Y-%m-%d %T') modifiedAt#,
+  t.modified_user modifiedUser#,
+  date_format(t.created_at,'%Y-%m-%d %T') createdAt#,
+  t.created_user createdUser#
+from sys_role t
+where t.tenant_id = #{tenantId}
+  and t.deleted = 'N'
+#if($ditcRoleName && $ditcRoleName!='')
+  and t.role_name regexp toregexp(#{ditcRoleName})
+#end  
+order by t.created_at desc
+]]>
+</entry>
+
+<entry key="SQL_ROLE_ADD">
+<![CDATA[
+insert into sys_role(
+id,tenant_id,role_name,role_desc,deleted,modified_at,modified_user,created_at,created_user
+)values(
+#{id},#{tenantId},#{roleName},#{roleDesc},'N',now(),#{userId},now(),#{userId}
+)
+]]>
+</entry>
+
+<entry key="SQL_ROLE_EDIT">
+<![CDATA[
+update sys_role t set
+    t.role_name = #{roleName},
+    t.role_desc = #{roleDesc},
+    t.modified_at = now(),
+    t.modified_user = #{userId}
+where t.id = #{id}
+  and t.tenant_id = #{tenantId}
+  and t.deleted = 'N'
+]]>
+</entry>
+
+<entry key="SQL_ROLE_USED_CNT">
+<![CDATA[
+select count(1) cnt
+from sys_user_role sur
+inner join sys_user su on su.deleted = 'N' and su.tenant_id = sur.tenant_id and su.id = sur.user_id
+where sur.tenant_id = #{tenantId}
+  and sur.role_id = #{id}
+]]>
+</entry>
+
+<entry key="SQL_ROLE_DEL">
+<![CDATA[
+update sys_role t set
+    t.deleted = 'Y',
+    t.deleted_at = now(),
+    t.deleted_user = #{userId}
+where t.id = #{id}
+  and t.tenant_id = #{tenantId}
+  and t.deleted = 'N'
+]]>
+</entry>
+
+<entry key="SQL_STATUS">
+<![CDATA[
+update sys_user t set
+    t.status = #{status},
+    t.status_at = now(),
+    t.status_user = #{userId}
+where t.id = #{id}
+  and t.tenant_id = #{tenantId}
+  and t.deleted = 'N'
+]]>
+</entry>
+
+<entry key="SQL_ROLE_DUPLICATE_CHECK">
+<![CDATA[
+select id from sys_role
+where role_name=#{roleName} 
+  and tenant_id = #{tenantId}
+  and deleted = 'N'
+#if( $id!='' )
+  and id<>#{id}
+#end
+limit 1
+]]>
+</entry>
+
+<entry key="SQL_ROLE_GET_FUNCS">
+<![CDATA[
+select 
+  srf.func_id funcId
+from sys_role_func srf
+where srf.tenant_id = #{tenantId} 
+  and srf.role_id=#{roleId}
+]]>
+</entry>
+
+<entry key="SQL_ROLE_GET_ALL_FUNC_SET">
+<![CDATA[
+select 
+  sf.id id#,
+  sf.pid pid#,
+  sf.func_name funcName#,
+  sf.seq_no seqNo,
+  'module' icon#
+from sys_func sf
+where sf.status = 1
+  and sf.role = #{tenantRole}
+union all
+select 
+  sfb.id id,
+  sfb.fid pid,
+  sfb.bt_alias funcName,
+  sfb.seq_no seqNo,
+  'button' icon#
+from sys_func_bt sfb
+inner join sys_func sf on sfb.fid=sf.id
+where sf.status = 1
+  and sf.leaf='Y'
+  and sf.role = #{tenantRole}
+  and sfb.bt_extra = 'N'
+  and sfb.status = 1
+order by seqNo asc
+]]>
+</entry>
+
+<entry key="SQL_ROLE_GRANT_FUNCS">
+<![CDATA[
+insert into sys_role_func(tenant_id,func_id,role_id)
+values(#{tenantId},#{funcId},#{roleId})
+]]>
+</entry>
+
+<entry key="SQL_ROLE_GRANT_FUNCS_DEP">
+<![CDATA[
+insert into sys_role_func(tenant_id,func_id,role_id)
+select #{tenantId}, id, #{roleId} from (
+	select distinct sft.id from sys_func_bt sft
+	inner join (
+		select fid,group_concat(bt_deps) deps
+		from (
+			select distinct sfb.fid, sfb.bt_deps
+			from sys_role_func srf
+			inner join sys_func_bt sfb on srf.func_id = sfb.id and sfb.status = '1' and sfb.bt_deps is not null and sfb.bt_deps <> ''
+			where srf.tenant_id = #{tenantId} and srf.role_id = #{roleId}
+		) t
+		group by fid
+	) v on sft.fid = v.fid and concat(',',v.deps,',') regexp concat(',',sft.bt_name,',')
+) u where u.id not in (select func_id from sys_role_func where tenant_id = #{tenantId} and role_id = #{roleId} )
+]]>
+</entry>
+
+<entry key="SQL_ROLE_DELETE_FUNCS">
+<![CDATA[
+delete from sys_role_func 
+where tenant_id = #{tenantId} 
+  and role_id = #{roleId}]]>
+</entry>
+
+<entry key="SQL_ROLE_GRANT_FUNCS_MODIFIED">
+<![CDATA[
+update sys_role set
+    modified_at = now(),
+    modified_user = #{userId}
+where id = #{roleId}
+  and tenant_id = #{tenantId}
+  and deleted = 'N'
+]]>
+</entry>
+</properties>

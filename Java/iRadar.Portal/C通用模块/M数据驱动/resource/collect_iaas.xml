@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vm_templates -->
+<root vm_templates="vm">
+
+ 	<host name="iaas_server" template="vm_admin, vm_tenant" />
+	
+	<collectors>
+		<admin>
+			<collector key="servers">$.getComputeClient().servers().list(true).queryParam("all_tenants", "1").execute()</collector>
+			<collector key="flavors">$.getComputeClient().flavors().list(true).queryParam("all_tenants", "1").execute()</collector>
+			<collector key="hypervisor_statistics">$.getComputeClient().hypervisors().statistic().execute()</collector>
+			<collector key="cpuRatio">$.getComputeClient().osConfigInfos().getVal("controller", "cpu_allocation_ratio").execute().getKeyNum()</collector>
+			<collector key="ramRatio">$.getComputeClient().osConfigInfos().getVal("controller", "ram_allocation_ratio").execute().getKeyNum()</collector>
+			<collector key="volumes">$.getComputeClient().volumes().list(true).queryParam("all_tenants", "1").execute()</collector>
+			<collector key="tenants">$.getIdentityClient().tenants().list().execute()</collector>
+			<collector key="images">$.getImageClient().images().list(true).queryParam("sort_key", "name").queryParam("sort_dir", "asc").queryParam("limit", "20").queryParam("is_public", "None").execute()</collector>
+			<collector key="alarms">$.getTelemetryClient().alarms().list().execute()</collector>
+			<collector key="networks">$.getNetworkClient().networks().list().execute()</collector>
+			<collector key="services">$.getComputeClient().services().list().queryParam("binary", "nova-compute").execute()</collector>
+			<collector key="cinder">$.getVolumeClient().volumes().backStor().execute()</collector>
+			
+			<collector key="quota_set">$.getComputeClient().quotaSets().showQuota($tid).execute()</collector>
+			<collector key="floatingips">$.getNetworkClient().floatingIps().list().execute()</collector>
+			<collector key="quota">$.getNetworkClient().quotas().show($tid).execute()</collector>
+			<collector key="security_groups">$.getNetworkClient().securityGroups().list().execute()</collector>
+			<collector key="subnets">$.getNetworkClient().subnets().list().execute()</collector>
+			<collector key="routers">$.getNetworkClient().routers().list().execute()</collector>
+			
+			<collector key="tenant_names"><![CDATA[
+				new function(){
+					var tenants = _collects['tenants']();
+					var rs = {};
+					$g.each(tenants.getList(), function(){
+						rs[this.getId()] = this.getName();
+					})
+					return {
+						getById: function(id){
+							var name = rs[id];
+							return name || id;
+						}
+					};
+				}
+			]]></collector>
+			<!-- 使用users的list不能获取普通用户信息，需要会用show来补充 -->
+			<collector key="user_names"><![CDATA[
+				new function(){
+					var userDBO = $.getIdentityClient().users();
+					var users = userDBO.list().execute();
+					var rs = {};
+					$g.each(users.getList(), function(){
+						rs[this.getId()] = this.getName();
+					})
+					return {
+						getById: function(id){
+							var name = rs[id];
+							if(!name){
+								var user = userDBO.show(id).execute();
+								name = user.getName();
+							}
+							return name || id;
+						}
+					};
+				}
+			]]></collector>
+			<collector key="flavor_hash"><![CDATA[
+				new function(){
+					var fm = {};
+					var flavors = $.getComputeClient().flavors().list(true).queryParam("all_tenants", "1").execute();
+					$g.each(flavors.getList(), function(){
+						fm[this.getId()] = this;
+					})
+					return {
+						getById: function(id){
+							return fm[id];
+						}
+					};
+				}
+			]]></collector>
+		</admin>
+		<tenant>
+			<collector key="servers_t"><![CDATA[
+				new function(){
+					var servers = _collects['servers']();
+					var rs = [];
+					$g.each(servers.getList(), function(){
+						if(this.getTenantId() == $tid) rs.push(this);
+					})
+					rs.size = function(){ return this.length; }
+					rs.get = function(i){ return this[i]; }
+					return {getList: function(){return rs;}};
+				}
+			]]></collector>
+		</tenant>
+	</collectors>
+	
+	<template name="vm_admin">
+		<admin>
+			<!--实例个数-->
+			<item key="iaas.vm.count" collectors="servers" interval="3600"><![CDATA[
+				return servers.getList().size();				
+			]]></item>
+			<!--2实例个数-运行-->
+			<item key="iaas.vm.count.active" collectors="servers" interval="600"><![CDATA[
+				var i = 0;
+				$g.each(servers.getList(), function(){
+					if("ACTIVE" == this.getStatus() ){
+						i++;
+					}
+				})
+				return i;
+			]]></item>
+			<!--3实例个数-故障-->
+			<item key="iaas.vm.count.error" collectors="servers" interval="600"><![CDATA[
+				var i = 0;
+				$g.each(servers.getList(), function(){
+					if("ERROR" == this.getStatus() ){
+						i++;
+					}
+				})
+				return i;
+			]]></item>
+			<!--4实例个数-停止-->
+			<item key="iaas.vm.count.shutoff" collectors="servers" interval="600"><![CDATA[
+				var i = 0;
+				$g.each(servers.getList(), function(){
+					if("SHUTOFF" == this.getStatus() ){
+						i++;
+					}
+				})
+				return i;
+			]]></item>
+			<!--5虚拟内核总量-->
+			<item key="iaas.vm.core.total" collectors="hypervisor_statistics, cpuRatio" interval="3600"><![CDATA[
+				return hypervisor_statistics.getVcpus()*cpuRatio;
+			]]></item>
+			<!--6虚拟内核已使用-->
+			<item key="iaas.vm.core.used" collectors="hypervisor_statistics" interval="600"><![CDATA[
+				return hypervisor_statistics.getVcpusUsed();
+			]]></item>
+			<!--7内存总量-->
+			<item key="iaas.vm.memory.total" collectors="hypervisor_statistics, ramRatio" interval="3600"><![CDATA[
+				return hypervisor_statistics.getMemoryMb()*ramRatio;
+			]]></item>
+			<!--8内存已使用-->
+			<item key="iaas.vm.memory.used" collectors="hypervisor_statistics" interval="600"><![CDATA[
+				return hypervisor_statistics.getMemoryMbUsed();
+			]]></item>
+			<!--10卷存储已使用-->
+			<item key="iaas.vol.used" collectors="volumes" interval="600"><![CDATA[
+				var size = 0;
+				$g.each(volumes.getList(), function(){
+					size += this.getSize();
+				});
+				return size;
+			]]></item>
+			<!--11租户总个数-->
+			<item key="iaas.tenant.count" collectors="tenants" interval="600"><![CDATA[
+				return tenants.getList().size();
+			]]></item>
+			<!--12镜像总个数-->
+			<item key="iaas.image.count" collectors="images" interval="3600"><![CDATA[
+				return images.getList().size();
+			]]></item>
+			<!--13告警个数-->
+			<item key="iaas.alert.count" collectors="alarms" interval="600"><![CDATA[
+				return alarms.length;
+			]]></item>
+			<!--14VXLAN个数-->
+			<item key="iaas.vxlan.count" collectors="networks" interval="3600"><![CDATA[
+				return networks.getList().size();
+			]]></item>
+			<!--15宿主机个数-->
+			<item key="iaas.hypervisorserver.count" collectors="services" interval="3600"><![CDATA[
+				return services.getList().size();
+			]]></item>
+			<!--16宿主机个数-运行-->
+			<item key="iaas.hypervisorserver.count.up" collectors="services" interval="600"><![CDATA[
+				var count = 0;
+				$g.each(services.getList(), function(){
+					if("up" == this.getState() ){
+						count++;
+					}
+				})
+				return count;
+			]]></item>
+			<!--17宿主机个数-故障-->
+			<item key="iaas.hypervisorserver.count.down" collectors="services" interval="600"><![CDATA[
+				var count = 0;
+				$g.each(services.getList(), function(){
+					if("down" == this.getState() ){
+						count++;
+					}
+				})
+				return count;
+			]]></item>
+			<!--18宿主机个数-停止-->
+			<item key="iaas.hypervisorserver.count.disabled" collectors="services" interval="600"><![CDATA[
+				var count = 0;
+				$g.each(services.getList(), function(){
+					if("disabled" == this.getState() ){
+						count++;
+					}
+				})
+				return count;
+			]]></item>
+			<!--19云平台Cinder-总大小-->
+			<item key="iaas.cinder.total" collectors="cinder" interval="3600"><![CDATA[
+				return cinder.getAllCapGb();
+			]]></item>
+			<!--20云平台Cinder-可用大小-->
+			<item key="iaas.cinder.free" collectors="cinder" interval="600"><![CDATA[
+				return cinder.getFreeCapGb();
+			]]></item>
+			<!--21云平台Cinder-已用大小-->
+			<item key="iaas.cinder.used" collectors="cinder" interval="600"><![CDATA[
+				return cinder.getAllCapGb()-cinder.getFreeCapGb();
+			]]></item>
+		</admin>
+	</template>
+	
+	<template name="vm_tenant">		
+		<tenant>
+			<!--2.1租户云主机使用量-->
+			<item key="iaas.vm.used[$tid]" collectors="servers_t"  interval="600"><![CDATA[
+				return servers_t.getList().size()+'';
+			]]></item>
+			<!--2.2租户云主机额度-->
+			<item key="iaas.vm.quota[$tid]" collectors="quota_set"  interval="3600"><![CDATA[
+				return quota_set.getInstances()+'';
+			]]></item>
+			<!--2.3租户虚拟内核使用量-->
+			<item key="iaas.vmcore.used[$tid]" collectors="flavors, servers_t"  interval="600"><![CDATA[
+				var fm = {};
+				$g.each(flavors.getList(), function(){
+					fm[this.getId()] = this.getVcpus()*1;
+				})				
+				var r = 0 ;
+				$g.each(servers_t.getList(), function(){
+					var f = this.getFlavor();
+					r += fm[f.getId()];
+				})
+				return r+'';
+			]]></item>
+			<!--2.4租户虚拟内核额度-->
+			<item key="iaas.vmcore.quota[$tid]" collectors="quota_set"  interval="3600"><![CDATA[
+				return quota_set.getCores()+'';
+			]]></item>
+			<!--2.5租户内存使用量-->
+			<item key="iaas.vmmem.used[$tid]" collectors="flavors, servers_t"  interval="600"><![CDATA[
+				var fm = {},r=0;
+				$g.each(flavors.getList(), function(){
+					fm[this.getId()] = this.getRam()*1;
+				})				
+				$g.each(servers_t.getList(), function(){
+					var f = this.getFlavor();
+					r += fm[f.getId()];
+				})
+				return r+'';
+			]]></item>
+			<!--2.6租户内存额度-->
+			<item key="iaas.vmmem.quota[$tid]" collectors="quota_set"  interval="3600"><![CDATA[
+				return quota_set.getRam()+'';
+			]]></item>
+			<!--2.7租户浮动IP使用量-->
+			<item key="iaas.floatip.used[$tid]" collectors="floatingips"  interval="600"><![CDATA[
+				var count=0;
+				$g.each(floatingips.getList(),function(){
+					if(this.getTenantId()==$tid){
+						count++;
+					}
+				})
+				return count+'';
+			]]></item>
+			<!--2.8租户浮动IP额度-->
+			<item key="iaas.floatip.quota[$tid]" collectors="quota"  interval="3600"><![CDATA[
+				return quota.getFloatingIp()+'';
+			]]></item>
+			<!--2.9租户安全组规则使用量-->
+			<item key="iaas.securityrules.used[$tid]" collectors="security_groups"  interval="600"><![CDATA[
+				var count=0;
+				$g.each(security_groups.getList(),function(){
+					if(this.getTenantId()==$tid){
+						count+=this.getRules().size();
+					}
+				})
+				return count+'';
+			]]></item>
+			<!--2.10租户安全组规则额度-->
+			<item key="iaas.securityrules.quota[$tid]" collectors="quota"  interval="3600"><![CDATA[
+				return quota.getSecurityGroupRule()+'';
+			]]></item>
+			<!--2.11租户子网使用量-->
+			<item key="iaas.subnet.used[$tid]" collectors="subnets"  interval="600"><![CDATA[
+				var count=0;
+				$g.each(subnets.getList(),function(){
+					if(this.getTenantId()==$tid){
+						count++;
+					}
+				})
+				return count+'';
+			]]></item>
+			<!--2.12租户子网额度-->
+			<item key="iaas.subnet.quota[$tid]" collectors="quota"  interval="3600"><![CDATA[
+				return quota.getSubnet()+'';
+			]]></item>
+			<!--2.13租户路由器使用量-->
+			<item key="iaas.router.used[$tid]" collectors="routers"  interval="600"><![CDATA[
+				var count=0;
+				$g.each(routers.getList(),function(){
+					if(this.getTenantId()==$tid){
+						count++;
+					}
+				})
+				return count+'';
+			]]></item>
+			<!--2.14租户路由器额度-->
+			<item key="iaas.router.quota[$tid]" collectors="quota"  interval="3600"><![CDATA[
+				return quota.getRouter()+'';
+			]]></item>
+		</tenant>
+	</template>
+	
+	<template name="vm">
+		<admin>
+			<!-- 虚拟机状态 -->
+			<item key="vm.status" collectors="servers" interval="60"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					rs.push({
+						"host": this.getId(),
+						"value": this.getStatus(),
+						"tenantid": this.getTenantId()
+					});					
+				})
+				return rs;
+			]]></item>
+			<!-- 所属计算节点 -->
+			<item key="vm.host" collectors="servers" interval="3600"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					rs.push({
+						"host": this.getId(),
+						"value": this.getHost(),
+						"tenantid": this.getTenantId()
+					});					
+				})
+				return rs;
+			]]></item>
+			<!-- 创建时间 -->
+			<item key="vm.created" collectors="servers" interval="86400"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					var time = this.getCreated();
+					if(time){
+						time = time.replace('T', ' ');
+						time = time.replace('Z', '');
+					}
+					rs.push({
+						"host": this.getId(),
+						"value": time,
+						"tenantid": this.getTenantId()
+					});					
+				})
+				return rs;
+			]]></item>
+			<!-- 浮动IP/外网IP -->
+			<item key="vm.floatingIps" collectors="servers" interval="3600"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					var addressArray = [];
+					var addressMap = this.getAddresses().getAddresses();
+					if(addressMap != null){
+						$g.iterate(addressMap.values(), function(){
+							var addressesList = this;
+							$g.each(addressesList, function(){
+								if("floating" == this.getType()){
+	    							addressArray.push(this.getAddr());
+	    						}
+							});
+						});
+					}
+					rs.push({
+						"host": this.getId(),
+						"value": addressArray.join(","),
+						"tenantid": this.getTenantId()
+					});					
+				})
+				return rs;
+			]]></item>
+			<!-- 固定IP/内网IP -->
+			<item key="vm.fixedIps" collectors="servers" interval="3600"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					var addressArray = [];
+					var addressMap = this.getAddresses().getAddresses();
+					if(addressMap != null){
+						$g.iterate(addressMap.values(), function(){
+							var addressesList = this;
+							$g.each(addressesList, function(){
+								if("fixed" == this.getType()){
+	    							addressArray.push(this.getAddr());
+	    						}
+							});
+						});
+					}
+					rs.push({
+						"host": this.getId(),
+						"value": addressArray.join(","),
+						"tenantid": this.getTenantId()
+					});					
+				})
+				return rs;
+			]]></item>
+			<!-- 所属用户 -->
+			<item key="vm.user" collectors="servers, user_names" interval="86400"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					var userid = this.getUserId();
+					var username = user_names.getById(userid); 
+					rs.push({
+						"host": this.getId(),
+						"value": username,
+						"tenantid": this.getTenantId()
+					});					
+				})
+				return rs;
+			]]></item>
+			<!-- 所属租户 -->
+			<item key="vm.tenant" collectors="servers, tenant_names" interval="86400"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					var tenantid = this.getTenantId();
+					var tenantname = tenant_names.getById(tenantid);
+					rs.push({
+						"host": this.getId(),
+						"value": tenantname,
+						"tenantid": this.getTenantId()
+					});					
+				})
+				return rs;
+			]]></item>
+			<!-- 虚拟内核 -->
+			<item key="vm.vcpus" collectors="servers, flavor_hash"  interval="3600"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					var tenantid = this.getTenantId();
+					var flavorId = this.getFlavor().getId();
+					var flavor = flavor_hash.getById(flavorId);
+					if(flavor){
+						var value = flavor.getVcpus() * 1;
+						rs.push({
+							"host": this.getId(),
+							"value": value,
+							"tenantid": this.getTenantId()
+						});	
+					}
+				})
+				return rs;
+			]]></item>
+			<!-- 内存大小 -->
+			<item key="vm.ram" collectors="servers, flavor_hash"  interval="3600"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					var tenantid = this.getTenantId();
+					var flavorId = this.getFlavor().getId();
+					var flavor = flavor_hash.getById(flavorId);
+					if(flavor){
+						var value = flavor.getRam() * 1;
+						rs.push({
+							"host": this.getId(),
+							"value": value,
+							"tenantid": this.getTenantId()
+						});	
+					}
+				})
+				return rs;
+			]]></item>
+			<!-- 硬盘大小 -->
+			<item key="vm.disk" collectors="servers, flavor_hash"  interval="3600"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					var tenantid = this.getTenantId();
+					var flavorId = this.getFlavor().getId();
+					var flavor = flavor_hash.getById(flavorId);
+					if(flavor){
+						var value = flavor.getDisk() * 1;
+						rs.push({
+							"host": this.getId(),
+							"value": value,
+							"tenantid": this.getTenantId()
+						});	
+					}
+				})
+				return rs;
+			]]></item>
+			<!-- 所属安全组 -->
+			<item key="vm.security_groups" collectors="servers"  interval="3600"><![CDATA[
+				var rs = [];
+				$g.each(servers.getList(), function(){
+					var tenantid = this.getTenantId();
+					var securityGroups = [];
+					$g.each(this.getSecurityGroups(), function(){
+						securityGroups.push(this.getName());
+					});
+				})
+				return rs;
+			]]></item>
+		</admin>
+	</template>
+	<init><![CDATA[
+		return {
+			each: function(obj, callback, count, fetch) {
+				var count = count || function(){return obj.size()};
+				var fetch=fetch||function(i){return obj.get(i)};
+				var value, i = 0, length = count();
+				for ( ; i < length; i++ ) {
+					var v = fetch(i);
+					value = callback.call(v, i, v);
+					if ( value === false ) break;
+				}
+			},
+			iterate: function(obj, callback){
+				var it = obj.iterator();
+				while(it.hasNext()){
+					var o = it.next();
+					callback.call(o, o);
+				}
+			}
+		}
+	]]></init>
+</root>

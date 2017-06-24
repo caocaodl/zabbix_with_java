@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>(MYSQL)</comment>
+	
+	<entry key="SQL_SUBSCRIBECURRENT_PAGE">
+        <![CDATA[
+			SELECT 
+				hostid		hostId#,
+				host		hostName#,
+				status		score#           
+			FROM
+				hosts 
+		]]>
+	</entry>
+</properties>

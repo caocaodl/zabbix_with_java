@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+<entry key="SQL_ADD_MEDIA_BY_USERID">
+<![CDATA[
+INSERT INTO media (tenantid,mediaid,userid,mediatypeid,sendto,active,severity,period)
+VALUES(#{tenantid}, #{mediaid},#{userid},#{mediatypeid},#{sendto},#{active},#{severity},#{period})
+]]>
+</entry>
+  
+<entry key="SQL_DELETE_MEDIA_BY_USERID">
+<![CDATA[
+DELETE FROM media
+WHERE tenantid=#{tenantid} AND userid=#{userid}
+]]>
+</entry>
+
+<entry key="SQL_GET_MEDIA_BY_USERID">
+<![CDATA[
+SELECT 
+	t.mediaid	mediaid#,
+	t.mediatypeid	mediatypeid#,
+	t.sendto	sendto#,
+	t.active	active#,
+	t.period	period#,
+	t.severity	severity#,
+	m.description	description#
+FROM  media t 
+LEFT JOIN media_type m ON m.tenantid='-' AND m.mediatypeid=t.mediatypeid
+WHERE t.tenantid=#{tenantid} AND t.userid=#{userid}
+]]>
+</entry>
+
+<entry key="SQL_ENABLE_MEDIA_BY_USERID">
+<![CDATA[
+    UPDATE media m SET m.active =0
+    WHERE t.tenantid=#{tenantid} AND m.mediaid=#{mediaid}
+]]>
+</entry>
+
+<entry key="SQL_DISABLE_MEDIA_BY_USERID">
+<![CDATA[
+UPDATE media m SET m.active =1
+WHERE m.tenantid=#{tenantid} AND m.mediaid=#{mediaid}
+]]>
+</entry>
+</properties>

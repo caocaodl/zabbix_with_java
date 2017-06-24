@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GB18030"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>(MYSQL)</comment>
+
+<entry key="SUBTITUDES"><![CDATA[]]></entry>
+
+<entry key="FLOWCODETAB"><![CDATA[sys_id]]></entry>
+
+</properties>

@@ -1,0 +1,1628 @@
+/*默认字体*/
+HTML, BODY, INPUT, SELECT, table.paging tr td SPAN, table.paging tr td a, #hat_platformInfo div {
+	font-size: 14px !important;
+	font-family: Microsoft YaHei, Verdana, arial, helvetica, sans-serif;
+}
+a.off:link {
+	color: #058fcd;
+}
+div#hat_favgrph ul.firstshape li {
+	list-style: none;
+}
+table.flicker_table tr td form#rda_filter {
+	border-top: 1px #E7EDF3 solid;
+}
+table.flicker_table tr td form#rda_filter table.filter {
+	width: auto;
+	border: none !important;
+	border-top: 1px #ccc solid;
+	background: none;
+}
+table.flicker_table tr td form#rda_filter table.filter tr td {
+	padding: 0;
+}
+table.flicker_table tr td form#rda_filter table.filter tr td:first-child {
+	padding-left: 12px;
+}
+tr.host-inventories div.device_monitor {
+	padding: 10px 0 10px 0px !important;
+}
+input.darkgray, .header input.orange, .header input.gray, .toolbar .more_ctn, .body_header .header_l form input.orange, .exportclass form input.orange, .host-list table.filter tr:last-child .button, form.intvoisportClass input.orange, table.flicker_table form input.button, table.header_wide input.button, table.formtable .T, table.formtable .form_row_r #trigger, div.flickerarea table.formtable .form_row_r input#tenant, input.buttonorange, input.buttongray {
+	height: 2.5em;
+	line-height: 2.5em;
+	border: none;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+table.formtable .T, div.flickerarea table.formtable .form_row_r input#tenant {
+	border: 1px #E0E8EF solid;
+	background: #F1F3F5;
+}
+.header input.orange, .header input.gray, .toolbar .more_ctn, .body_header 
+.header_l form input.orange, .exportclass form input.orange, form.intvoisportClass input.orange {
+	background: no-repeat 20px center;
+	cursor: pointer;
+	font-size: 16px !important;
+	margin-right: 1em;
+	padding: 0 1.25em 0 2.8em;
+	color: #fff !important;
+}
+table.formtable .T, .host-list table.filter tr:last-child .button, table.flicker_table form input.button, table.header_wide input.button, input.darkgray {
+	padding: 0 1.25em 0 1.25em !important;
+	font-size: 16px !important;
+}
+.host-list table.filter tr:last-child .button, table.flicker_table form input.button, table.header_wide input.button, table.filter input.button, table.filter input#reset, .flickerarea table.formtable tr td.form_row_r input[type="button"], .flickerarea table.formtable tr td.form_row_r input[type="submit"], input#filter_rst {
+	background: #058fcd;
+	margin-left: 10px;
+	color: #fff !important;
+}
+table.formtable .form_row_r #trigger, table.formtable .form_row_r #tenant, .flickerarea table.formtable tr td.form_row_r input.T {
+	border: 1px #DFE5E7 solid;
+	background: #F3F5F7;
+	color: rgb(0, 0, 0) !important;
+}
+input.orange, #dataTabFilter a.button, .originalblue .ui-dialog.ui-widget-content.ui-dialog-buttons .ui-dialog-buttonset button {
+	background-color: rgba(5, 143, 205, 1) !important;
+}
+input.gray, input.disabled {
+	background-color: #ccc !important;
+}
+.disabled {
+	cursor: default !important;
+}
+input.orange:hover, #dataTabFilter a.button:hover, .originalblue .ui-dialog.ui-widget-content.ui-dialog-buttons .ui-dialog-buttonset button:hover, .originalblue .ui-dialog.ui-widget-content.ui-dialog-buttons .ui-dialog-buttonset button#cancel:hover, div.ui-dialog-buttonpane div.ui-dialog-buttonset button.main {
+	background-color: rgba(5, 143, 205, 0.7) !important;
+}
+input.gray:hover, input.disabled:hover {
+	background-color: #ccc !important;
+}
+input.create {
+	background-image: url(images/iradar/create.png) !important;
+}
+input.delete {
+	background-image: url(images/iradar/delete.png) !important;
+}
+input.copy {
+	background-image: url(images/iradar/copy.png) !important;
+}
+input.export {
+	background-image: url(images/iradar/export.png) !important;
+}
+input.activate {
+	background-image: url(images/iradar/activate.png) !important;
+}
+input.more {
+	background-image: url(images/iradar/more.png) !important;
+}
+input.disable {
+	background-image: url(images/iradar/disable.png) !important;
+}
+input.massupdate {
+	background-image: url(images/iradar/massupdate.png) !important;
+}
+
+/* 清空 */
+input.clearAll {
+	background-image: url(images/iradar/clearAll.png) !important;
+}
+div.more_ctn {
+	width: 120px;
+	background: #F16337 !important;
+	padding: 0 !important;
+	padding-left: 20px !important;
+	display: none;
+}
+div.more_ctn .more_btn {
+	background: url(images/iradar/more_t.png) no-repeat 80px center !important;
+}
+.toolbar .more_ctn .more_show_ctn {
+	position: absolute;
+	width: 160px;
+	border: 1px #F5F5F5 solid;
+	background: #fff;
+	box-shadow: 0 4px 4px #E6E6E6;
+}
+.toolbar .more_ctn .more_show_ctn a {
+	text-decoration: none;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	color: #969696;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: 17px center;
+}
+.toolbar .more_ctn .more_show_ctn {
+	z-index: 9999;
+}
+.toolbar .more_ctn .more_show_ctn .delete {
+	background-image: url(images/iradar/delete_gray.png);
+}
+.toolbar .more_ctn .more_show_ctn .activate {
+	background-image: url(images/iradar/massupdate_red.png);
+}
+.toolbar .more_ctn .more_show_ctn .activate:hover {
+	background: #FFD6AC url(images/iradar/massupdate_red.png) no-repeat 17px center;
+}
+.toolbar .more_ctn .more_show_ctn .stopUser {
+	background-image: url(images/iradar/massupdate_red.png);
+}
+.toolbar .more_ctn .more_show_ctn .stopUser:hover {
+	background: #FFD6AC url(images/iradar/massupdate_red.png) no-repeat 17px center;
+}
+.originalblue {
+	display: inherit;
+	margin: 0;
+	padding: 0;
+	overflow-x: auto !important;
+	overflow-y: auto !important;
+}
+#dashboard_wdgt {
+	margin: 0 !important;
+	padding: 0 !important;
+	min-width: 770px;
+}
+
+/* 每个模块对应界面最小宽度1024*/
+#message-global-wrap + div, div.w {
+	min-width: 1024px;
+}
+
+/*弹框最小宽度不采用1024*/
+body.open_win_body div.w {
+	min-width: inherit;
+}
+
+/*弹出窗体 滚动条自动*/
+body.open_win_body {
+	overflow: auto !important;
+}
+.originalblue .ui-widget-header a {
+	color: #f00;
+}
+
+/* 修复设备中心.监控模型 选择设备出现...的问题*/
+
+/*界面所有左侧菜单对应的 table 内文字12px*/
+.multiselect .selected ul li span.text, div.w table tr td {
+	font-size: 12px !important;
+}
+
+/* 首页模块内 header */
+#dashboard_wdgt div.header {
+	height: 2.5em;
+	padding: 0px;
+	font-size: 16px;
+	line-height: 2.5em;
+	text-indent: 2.45em;
+	background-position: 0.84em center !important;
+}
+#dashboard_wdgt table.header {
+	text-indent: 0em;
+	padding: 0;
+}
+#dashboard_wdgt .header td.header_l {
+	padding: 0;
+	text-indent: 2.45em;
+	background-position: 0.84em center !important;
+	font-size: 16px !important;
+}
+#dashboard_wdgt .header td.header_r {
+	padding: 0;
+}
+#dashboard_wdgt .column {
+	margin: 0 !important;
+}
+#dashboard_wdgt .column .ui-widget {
+	margin: 0 0 1.08em 0;
+}
+#dashboard_wdgt .menu_icon {
+	height: 100% !important;
+	margin-right: 0;
+	background-position: center;
+}
+#dashboard_wdgt .iconmenu {
+	margin-right: 0.5em;
+}
+#dashboard_wdgt .arrowdown, #dashboard_wdgt .arrowup, #dashboard_wdgt .iconconfig {
+	margin-right: 0.84em;
+}
+.pum_i_submenu {
+	padding-left: 20px;
+}
+
+/* button end*/
+
+/* calendar start日期*/
+
+div.calendar span.title {
+	color: #7984A6;
+	font-size: 16px;
+	font-weight: normal;
+}
+table.calendarhat .header td {
+	color: #49A2E2;
+	font-weight: normal;
+}
+div.calendar {
+	width: 250px;
+	border: 1px #DADEE5 solid;
+	background: #fff;
+}
+div.calendar input.calendar_textbox {
+	height: 26px;
+	padding: 0px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	border: 1px #D7D7D9 solid !important;
+	background: #fff !important;
+	color: #596879;
+	margin-top: 0px !important;
+}
+table.calendartab {
+	background-color: #fff;
+}
+table.calendartab tr td {
+	width: 40px;
+	height: 26px;
+}
+div.calendardays {
+	border: none;
+	border-top: 1px #E8EDF4 solid;
+}
+table.calendarhat, table.calendartab tr td.holiday {
+	background-color: #fff;
+}
+table.calendartab tr td.selected {
+	background-color: #C8E2F6;
+	color: #5A6979;
+}
+table.calendartab tr td.disabled {
+	background: rgba(175, 175, 175, 0.5);
+	color: #5A6979;
+	cursor: default;
+}
+div.calendartime {
+	background: #fff;
+	height: 35px;
+}
+div.calendartime input {
+	width: 44px;
+	height: 28px;
+	border: 1px #058fcd solid !important;
+	background: #fff !important;
+	margin-top: -27px !important;
+	color: #058fcd;
+}
+div.calendartime input+input {
+	background: #058fcd !important;
+	border: 1px #058fcd solid !important;
+	color: #fff;
+}
+table.calendartab {
+	border-spacing: 0px;
+	font-size: 12px;
+}
+div.scrollbar .info .timeline {
+	width: 380px;
+	text-align: right;
+}
+.timeline span {
+	display: inline-block;
+}
+
+/* calendar end*/
+
+/* 鏃堕敓鏂ゆ嫹閿熸枻鎷� start*/
+
+div.scrollbar {
+	background-color: #F8F9FA;
+	border: none;
+}
+div.scrollbar .sublevel .bg {
+	height: 30px;
+	background: url(images/iradar/sublevel_bg.png) repeat-x;
+}
+div.scrollbar .sublevel .left, div.scrollbar .sublevel .right {
+	background: no-repeat;
+	width: 17px;
+	height: 32px;
+}
+div.scrollbar .sublevel .left {
+	background-image: url(images/bar/left.png);
+	margin: -1px 0 0 -1px;
+}
+div.scrollbar .sublevel .right {
+	background-image: url(images/bar/right.png);
+	margin: -1px -1px 0 0;
+}
+div.scrollbar .overlevel .left_arr, div.scrollbar .overlevel .right_arr {
+	background-image: url(images/bar/arr.png);
+	width: 11px;
+	height: 20px;
+	top: 6px;
+}
+div.scrollbar .overlevel .bar .icon {
+	background: #C8E2F6;
+}
+div.scrollbar .overlevel .bar .icon .center {
+	background: none;
+}
+div.scrollbar .overlevel .bar {
+	border: none;
+	border-left: 1px #49A2E2 solid;
+}
+div.scrollbar .overlevel .ghost {
+	border: 1px #49A2E2 solid;
+	height: 28px;
+	background: #C8E2F6;
+}
+div.scrollbar .info .zoom .text {
+	font-size: 13px;
+	color: #B1B6BC;
+	font-family: Arial;
+	font-weight: bold
+}
+div.scrollbar .info .zoom .links .link, div.scrollbar .subline .nav_links .link, div.scrollbar .subline .period .period_state, div.scrollbar .subline .info_period, div.scrollbar .info .timeline .info_left, div.scrollbar .info .timeline .info_right {
+	text-decoration: none !important;
+	font-size: 14px !important;
+	color: #6C7681 !important;
+	font-family: Arial !important;
+	font-weight: bold !important;
+}
+div.scrollbar .info .timeline .info_left, div.scrollbar .info .timeline .info_right {
+	border: 1px #E4EBF0 solid;
+	margin-bottom: 6px;
+	padding: 1% 2% 1% 8%;
+	background: url(images/iradar/calendar.png) no-repeat 6px center;
+}
+div.scrollbar .info .timeline .info_sep1 {
+	color: #fff;
+}
+div.scrollbar .subline .nav_links .text {
+	color: #69B2E6;
+}
+div.scrollbar .overlevel, div.scrollbar .sublevel {
+	margin: 14px 0 10px 0;
+}
+div.scrollbar .subline .nav_links {
+	padding-bottom: 22px;
+}
+div.scrollbar .info {
+	margin-top: 28px;
+}
+
+/* 鏃堕敓鏂ゆ嫹閿熸枻鎷�end */
+
+/*閿熷彨鎲嬫嫹椤甸敓绔》鎷烽敓鏂ゆ嫹閿熸枻鎷�start*/
+
+table.textwhite {
+	border-collapse: collapse;
+}
+table.textwhite tr td .flicker_c_div {
+	width: 118px;
+	height: 2.1em;
+	line-height: 2.1em;
+	background: #F8F9FA;
+	border: 1px #E7EDF3 solid;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin-right: 14px;
+}
+table.textwhite tr td span {
+	color: #717171;
+	padding-left: 20px;
+	float: left;
+}
+div.dbl_arrow_down, div.dbl_arrow_up {
+	background: no-repeat 2px center;
+}
+div.dbl_arrow_up, div.dbl_arrow_down {
+	width: 10px;
+	height: 100%;
+	margin-right: 20px;
+}
+div.dbl_arrow_up {
+	background-image: url(images/iradar/dbl_arrow_down2.png);
+}
+div.dbl_arrow_down {
+	background-image: url(images/iradar/dbl_arrow_up2.png);
+}
+table.filter {
+	background: #F8F9FA;
+	border: 1px #E7EDF3 solid;
+	text-align: initial;
+}
+table.filter tr td div.device_monitor {
+	padding: 10px 0 10px 12px;
+}
+table.filter tr td {
+	border: none;
+	color: #47474F;
+}
+table.flicker tr td.flicker_c {
+	padding: 16px 0 16px 0;
+	width: 130px;
+}
+table.header_wide form .select {
+	height: 26px;
+	line-height: 26px;
+	border: 1px #E4E4E4 solid;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.host-list table.filter tr td input.text, td.header_l input#txtTopoName, td.header_l input#txtPicName {
+	height: 26px;
+	line-height: 26px;
+	border: 1px #E4E4E4 solid;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+table.formtable .form_row_r .input {
+	margin-left: 4px;
+	vertical-align: middle;
+}
+.latest-mon .formtable input.text {
+	height: auto;
+	line-height: 2px;
+}
+.host-list table.filter tr td {
+	width: auto;
+}
+.switch {
+	background: none;
+	border: none;
+}
+.switch A.off, .switch A.on.switch A.unknown {
+	display: inline-block;
+	padding-left: 20px;
+}
+.switch A.off, .switch A.enabled {
+	margin: 0px;
+	color: #47474F !important;
+}
+.switch span.off, .switch span.stop, .switch span.unknown {
+	margin: 0px;
+	color: #F16437 !important;
+}
+
+/*未知 图标 间距*/
+.switch span {
+	display: block;
+	text-align: center;
+}
+.switch .off, .switch .enabled, .switch .on, .switch .disabled, .iconok, .switch .start, .switch .stop, .switch .unknown {
+	background: no-repeat left center;
+}
+
+/*停用*/
+.switch .off, .switch .disabled {
+	background-image: url(../../../images/gradients/anormal.png);
+}
+
+/*启用*/
+.switch .on, .switch .enabled {
+	background-image: url(../../../images/gradients/normal.png);
+}
+.switch A.on, .switch A.disabled {
+	margin: 0px;
+	color: #F16437 !important;
+}
+.iconok {
+	background-image: url(images/iradar/right_.png);
+	width: 17px;
+	height: 16px;
+}
+.iconerror {
+	background-image: url(images/iradar/error_pic.png);
+	width: 17px;
+	height: 17px;
+}
+.multiselect .selected ul.active {
+	border-shadow: 0 0 0 #fff;
+	-webkit-border-shadow: 0 0 0 #fff;
+	-moz-border-shadow: 0 0 0 #fff;
+}
+.switch a.start, .switch a.stop, .switch .unknown {
+	padding-left: 0px;
+}
+.switch a.start {
+	background-image: url(images/iradar/start.png);
+	color: #8BBD1F !important;
+}
+.switch a.stop {
+	background-image: url(images/iradar/stop.png);
+	color: #F16337 !important;
+}
+.switch .unknown {
+	background-image: url(images/iradar/unknown.png);
+	color: #8D8F8E !important;
+}
+.item-list table.filter tr td.col1 {
+	width: auto;
+}
+.item-list table.filter #filter_delay {
+	border: 1px solid #ACA899;
+}
+form table.filter input.ui-button {
+	padding: 0px;
+}
+.item-list table.filter tr td.label {
+	text-align: left;
+}
+table.formtable {
+	border: 1px #fff solid;
+	margin-left: 10px;
+	background: none;
+}
+.device_type {
+	color: #49A2E2;
+	background: url(images/iradar/equipment_manage.png) no-repeat;
+	padding-left: 18px;
+}
+.inventory-host {
+	margin-right: 10px;
+}
+.inventory-host .page_header .head_left, .inventory-host .page_header .head_right {
+	display: inline-block;
+	vertical-align: top;
+}
+.inventory-host .page_header .head_left {
+	width: 60%;
+}
+.inventory-host .page_header .head_right {
+	width: 37%;
+}
+.inventory-host .page_header .head_left {
+	margin-right: 2%;
+}
+.inventory-host .page_header .head_right {
+	margin-left: 1%;
+}
+.inventory-host .page_header .head_left ul.formlist {
+	width: 100%;
+	overflow: hidden;
+}
+.inventory-host .page_header .head_left .equipment_details>div>ul.formlist > li.formrow>.dt, .inventory-host .page_header .head_left .equipment_details>div>ul.formlist > li.formrow>.dt {
+	width: 50%;
+}
+.inventory-host .page_header .head_left .equipment_details>div.vmCommonClass>ul.formlist > li.formrow>.dt {
+	display: none;
+}
+.inventory-host .page_header .equipment_details {
+	height: 180px;
+}
+.inventory-host .page_header .common {
+	height: 200px;
+}
+.inventory-host .page_header .special {
+	height: 272px;
+	overflow: hidden;
+}
+
+/*.inventory-host .page_header .vmCommonClass .formrow .formrow DIV{
+	padding-top: 3px;
+}*/
+.inventory-host .page_header .vmCommonClass .overviewClass>ul.formlist>.formrow>.dt, .inventory-host .page_header .vmCommonClass .overviewClass>ul.formlist>.formrow>.dd, .inventory-host .page_header .vmCommonClass .overviewClass>ul.formlist>.formrow>.dt>#leftFormDiv, .inventory-host .page_header .vmCommonClass .overviewClass>ul.formlist>.formrow>.dd>#rightFormDiv, .inventory-host .page_header .vmCommonClass .overviewClass>ul.formlist>.formrow>.dt>.leftFormDiv>ul.formlist {
+	padding-top: 0;
+}
+.inventory-host .page_header ul.formlist, .inventory-host .page_header .head_left .equipment_details>div {
+	margin-left: 4%;
+}
+.inventory-host .page_header .head_left .equipment_details .vmCommonClass>ul.formlist {
+	margin-left: 3%;
+}
+.inventory-host .page_header .head_left .equipment_details .vmCommonClass {
+	margin-left: 0;
+}
+.inventory-host .page_header .head_left ul.formlist li .overviewClass>ul.formlist >li>.dd, .inventory-host .page_header .head_left ul.formlist li .overviewClass>ul.formlist >li>.dt {
+	width: 50% !important;
+}
+.inventory-host .page_header .head_left .equipment_details>div>ul.formlist li:nth-child(2)>.dd>div>ul.formlist {
+	margin-left: 6%;
+}
+.inventory-host .page_header .nn span {
+	padding-top: 30px !important;
+}
+.inventory-host .page_header .vmCommonClass #rightFormDiv .dd span.text-field-notServer {
+	display: block;
+}
+.inventory-host table.detail .leftClass .dd, .inventory-host table.detail .rightClass .dd {
+	height: 2.8em;
+	line-height: 2.8em;
+}
+.inventory-host table.detail .leftClass .dd span, .inventory-host table.detail .rightClass .dd span {
+	width: 100%;
+	height: 100%;
+}
+.inventory-host .page_header .vmCommonClass #leftFormDiv .dd, .inventory-host .page_header .vmCommonClass #rightFormDiv .dd span, .inventory-host .page_header .vmCommonClass>ul.formlist>li:nth-child(2)>.dd>div>ul.formlist .dd>span, .inventory-host table.detail .equipment_details>div>ul.formlist>li:nth-child(2) .dd>div>ul.formlist>li .dd span, .inventory-host .head_left .equipment_details>div>ul.formlist>li>.dt>div>ul.formlist .dd>span, .inventory-host .head_left .equipment_details>div>ul.formlist>li>.dd>div>ul.formlist .dd>span, .inventory-host table.detail .leftClass .dd span, .inventory-host table.detail .rightClass .dd span {
+	font-size: 12px !important;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.inventory-host .page_header .vmCommonClass #leftFormDiv .dd, .inventory-host .page_header .vmCommonClass #rightFormDiv .dd span, .inventory-host table.detail .leftClass .dd span, .inventory-host .head_left .equipment_details>div>ul.formlist>li>.dt>div>ul.formlist .dd>span, .inventory-host .head_left .equipment_details>div>ul.formlist>li>.dd>div>ul.formlist .dd>span, .inventory-host table.detail .rightClass .dd span {
+	width: 190px;
+	display: block;
+}
+.inventory-host .page_header .vmCommonClass>ul.formlist>li:nth-child(2)>.dd>div>ul.formlist .dd>span, .inventory-host table.detail .equipment_details>div>ul.formlist>li:nth-child(2) .dd>div>ul.formlist>li .dd span {
+	width: 500px;
+	display: block;
+}
+.inventory-host .page_header .formrow .formrow .dt {
+	width: 1% !important;
+}
+.inventory-host .page_header .formrow .formrow .dd {
+	padding-left: 1em !important;
+}
+.inventory-host .page_header .formrow .formrow DIV {
+	padding-top: 7px;
+}
+.inventory-host table.tableinfo .first_td td {
+	vertical-align: top;
+}
+.inventory-host table.tableinfo {
+	background: none;
+	border: none;
+}
+.inventory-host table.tableinfo tr.speed_center {
+	background: #fff;
+}
+.inventory-host table.tableinfo, .inventory-host .page_header .equipment_details {
+	border: 1px #d8d8d8 solid;
+	background-color: #fff;
+	text-align: center;
+}
+.inventory-host table.tableinfo .even_row td div.equipment_details {
+	height: 205px;
+}
+.inventory-host table.tableinfo .even_row td div.equipment_details_notServer {
+	height: 150px;
+}
+.inventory-host table.tableinfo tr.even_row > td, .inventory-host table.tableinfo tr.odd_row >td {
+	background: none;
+}
+.inventory-host TABLE.tableinfo > tbody > tr > td {
+	height: auto;
+	padding-left: 20px;
+}
+TABLE.tableinfo > tbody > tr > td a.disabled:hover {
+	cursor: pointer !important;
+}
+.inventory-host TABLE.tableinfo > tbody > tr > td ul li {
+	list-style: none;
+}
+.inventory-host DIV.details, .inventory-host DIV.norm, .inventory-host DIV.alarm, .inventory-host DIV.health {
+	background: #f3f3f3 no-repeat 16px center;
+	padding-left: 40px;
+}
+.inventory-host DIV.details {
+	background-image: url(images/dashboard/lastiss.png);
+}
+.inventory-host DIV.norm {
+	background-image: url(images/dashboard/norm.png);
+}
+.inventory-host DIV.alarm {
+	background-image: url(images/dashboard/alarm.png);
+}
+.inventory-host DIV.health {
+	background-image: url(images/dashboard/totalsituation.png);
+}
+
+/*租户详情页面 start*/
+.inventory-host table.detail, .inventory-host table.tbClass {
+	border: none;
+}
+.inventory-host table.detail .equipment_details, .inventory-host table.tbClass .equipment_details {
+	border: 1px #d8d8d8 solid;
+}
+.inventory-host table.detail tr.first_td td:first-child, .inventory-host table.tbClass tr.first_td td:first-child {
+	width: 60%;
+}
+.inventory-host table.detail tr.first_td td:nth-child(2), .inventory-host table.tbClass tr.first_td td:nth-child(2) {
+	width: 40%;
+}
+.inventory-host table.detail #trend_chart span {
+	left: 1px;
+}
+.inventory-host table.detail .rightClass .dt {
+	width: 1%;
+}
+.inventory-host table.detail .equipment_details>div>ul.formlist {
+	margin-left: 3%;
+}
+.inventory-host table.detail .equipment_details>div>ul.formlist>li>.dt {
+	display: none;
+}
+.inventory-host table.detail .equipment_details>div>ul.formlist>li:nth-child(2)>.dd>div>ul.formlist {
+	margin-left: 11%;
+}
+
+/*租户详情页面 end*/
+span.link_menu, span.link_menu:hover {
+	text-decoration: underline;
+	color: #3C3089;
+}
+div.maintenance-abs-cont span.link_menu, div.maintenance-abs-cont span.link_menu:hover {
+	border: none;
+	color: #727272;
+}
+table.header_wide div.floatright input.details_pic, table.header_wide div.floatright input.simpleness_pic {
+	width: 70px;
+	height: 30px;
+	background: no-repeat;
+	border: none;
+}
+table.header_wide div.floatright input.details_pic, table.header_wide div.floatright input.simpleness_pic {
+	cursor: pointer;
+	outline: none;
+}
+table.header_wide div.floatright input.details_pic {
+	background-image: url("images/iradar/simpleness_pic.png");
+}
+table.header_wide div.floatright input.simpleness_pic {
+	background-image: url("images/iradar/details_pic.png");
+}
+.originalblue label.ui-state-hover {
+	color: #4e4e4e !important;
+}
+.item-list td.col1 #btn_app, td.col1 .multiselect-wrapper input.filter-multiselect-select-button {
+	background: url("images/iradar/select-popup.png") no-repeat 6px center;
+	color: #727272;
+	width: auto;
+	height: 20px;
+	padding-left: 25px;
+	line-height: 8px;
+}
+
+/* 影响 设备监控.监控指标.高级检索选择按钮样式*/
+
+/* .item-list td.col1 .multiselect-wrapper input.filter-multiselect-select-button{
+	border:none;
+} */
+
+.item-list td.col1 #btn_app {
+	margin: 0px;
+}
+table.filter .filter-select-button {
+	vertical-align: middle;
+}
+.host-edit .formElementTable tr td {
+	padding: 5px 0 5px 5px;
+}
+div.ui-tabs-panel ul.formlist li.formrow #priority label, div.ui-tabs-panel ul.formlist li.formrow #monitoringid label {
+	border: 1px #DBDBDB solid;
+	margin-right: 10px;
+}
+
+/* start 事件中心.活动告警.描述.阈值规则(严重性级别) */
+.information, .warning, .average, .high, .disaster {
+	border: none !important;
+}
+
+/* end */
+
+/* start 策略中心.分析策略.阈值规则.告警规则(严重性级别) */
+.ui-button.information, .ui-button.warning, .ui-button.average, .ui-button.high, .ui-button.disaster {
+	border: 1px solid #fff !important;
+}
+
+/* end */
+table.tableinfo > tbody > tr.first_td > td:first-child {
+	width: 60%;
+	padding-right: 20px;
+}
+.inventory-host table.tableinfo .even_row table.tableinfo tbody:first-child {
+	padding-right: 20px;
+}
+div.ui-dialog div.ui-dialog-titlebar button.ui-button {
+	border: none;
+	background: none;
+}
+.originalblue .ui-state-hover .ui-icon, .originalblue .ui-state-focus .ui-icon, .originalblue .ui-state-default .ui-icon {
+	background: url("images/iradar/close_pic.png") no-repeat !important;
+}
+div.ui-dialog div.ui-dialog-titlebar, div.ui-dialog div.ui-widget-header, div.ui-dialog div.ui-corner-all {
+	padding: 0px !important;
+	height: 30px;
+	line-height: 30px;
+}
+div.ui-dialog div.ui-dialog-titlebar span {
+	padding-left: 16px;
+}
+div#hat_resUsedRate tr.centertext svg {
+	padding-left: 5px;
+}
+div.host-edit label.ui-state-default {
+	border: 1px solid #058fcd !important;
+	background: #fff !important;
+	font-weight: bold !important;
+	color: #058fcd !important;
+}
+div.host-edit label.ui-button-text-only .ui-button-text {
+	padding: 3px 1em;
+}
+div.host-edit label.ui-state-active {
+	background: #058fcd !important;
+}
+div.host-edit label.ui-state-active span.ui-button-text {
+	color: #fff !important;
+}
+table.filter .filter-select-button {
+	vertical-align: initial;
+}
+.originalblue .ui-dialog .ui-dialog-title {
+	margin: 0;
+}
+table.tableinfo tr td a, span.link_menu, span.link_menu:hover, .link {
+	color: #058fcd;
+	cursor: pointer;
+}
+.originalblue .ui-widget-header, div.body_header table tr.first td.header_l, table.ui-widget-header tr td.header_l {
+	color: #47474F;
+}
+form table.ui-corner-all.ui-widget-header {
+	margin-top: 0px;
+}
+.originalblue .ui-widget-header span.ui-dialog-title {
+	color: #fff;
+}
+div.ui-dialog-buttonset button.ui-state-hover span.ui-button-text, div.ui-dialog-buttonset button.main span.ui-button-text {
+	color: #fff;
+}
+.originalblue table.formlongtable tr.header {
+	height: 30px;
+}
+.originalblue table.formlongtable tr.header td.form_row_first {
+	padding: 0;
+}
+
+/*设备详情  start*/
+.inventory-host table.tableinfo tr.first_td div.equipment_details_notServer ul.formlist li.formrow div.dt ul.formlist li.formrow div.dd span.text-field-notServer {
+	padding: 0px;
+	margin: 0px;
+	text-align: left;
+	width: 250px;
+}
+.inventory-host ul.formlist li .dt, .inventory-host ul.formlist li .dd {
+	padding: 0;
+}
+
+/*设备详情  end*/
+
+/*公告  start*/
+
+table tr.tenanteditle td {
+	padding: 8px 0 8px 0;
+}
+table tr td span.tenanteditletwo {
+	display: block;
+	padding: 20px 15px 0px 23px;
+}
+#hat_Announcement span.announcement_time {
+	float: right;
+	padding-right: 5px;
+}
+.tenant_first ul.formlist {
+	margin-left: 0px;
+}
+#hat_todayArtSts .tableinfo {
+	width: 395px !important;
+}
+
+/*公告  end*/
+#memoryUsedRateChart {
+	margin-left: 30px;
+}
+#t_mon tr td:hover {
+	background: #fff !important;
+}
+#t_mon tr.even_row:hover > td {
+	background: #fff !important;
+}
+#t_mon tr.even_row > td {
+	background: #fff !important;
+}
+#filter_delay {
+	color: #000;
+	cursor: text;
+}
+#filter_delay.ui-state-hover {
+	color: #000;
+}
+table.formtable tr.header .new_alarm {
+	padding: 0;
+}
+.headeractions form.comboxRight {
+	float: left;
+}
+table.mainTable tr td {
+	text-align: left !important;
+}
+table.mainTable > tbody > tr > td:first-child {
+	width: 50%;
+}
+
+/*topn性能  start*/
+#dataTabFilter a.button {
+	font-family: Microsoft YaHei, Verdana, arial, helvetica, sans-serif;
+}
+table.datagrid-btable .datagrid-row-alt, .datagrid-row-alt .datagrid-td-rownumber {
+	background: #f6f9fb;
+}
+.datagrid-header {
+	background: #e7edf3;
+}
+.datagrid-header td.datagrid-header-over {
+	background: #e7edf3;
+}
+
+/*topn性能  end*/
+.tableinfo .device_monitor #csv_export, .tableinfo .device_monitor #search {
+	color: #fff !important;
+}
+TABLE.tableinfo span.menu-host {
+	height: 100%;
+}
+.exportButtonClass {
+	width: 104px;
+	height: 28px;
+	line-height: 28px;
+	background: #F16337;
+	border: none;
+	margin-left: 10px;
+	color: #fff;
+	font-size: 14px !important;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	cursor: pointer;
+}
+.body_header .header_l form input.orange {
+	display: inline-block;
+}
+#shownumbtnid, #shownumid, #orderid {
+	display: inline-block;
+	width: 200px;
+	padding-left: 14px;
+}
+#comboxId {
+	float: right;
+	display: inline-block;
+	margin: -31px 0 0 783px;
+}
+#hostsAndGroupsFormList ul li div.dt {
+	padding-top: 8px;
+}
+table.tableinfo > tbody > tr > td:first-child {
+	padding-left: 0.8em;
+}
+.originalblue .ui-dialog .ui-resizable-se {
+	background-position: -64px -224px;
+	right: 1px;
+	bottom: 1px;
+}
+.floatright form {
+	font-size: 12px;
+}
+table.formtable tr.header td.form_row_first {
+	padding: 0;
+	padding-left: 4px;
+}
+.header .header_l {
+	padding-left: 0px;
+}
+.originalblue .ui-widget-header {
+	padding: 8px 8px 8px 0px;
+}
+.objectgroup .formtable .formrow .dd input, .objectgroup .formtable .formrow .dd #cancel, input.buttongray, .dt #cancel, .dt #save, input.buttonorange, .objectgroup .formtable .formrow .dt input {
+	border: none;
+}
+.dd #cancel, input.buttongray, .dt #cancel, input.darkgray, input#reset, button#cancel {
+	background: #888888 !important;
+	color: #fff !important;
+}
+.objectgroup .formtable .formrow input, .messageClass .form_row_last input, input.buttonorange, input.buttongray {
+	width: auto;
+	font-size: 16px !important;
+	padding: 0 1.25em 0 1.25em;
+}
+.centertext td {
+	width: 20%;
+}
+
+/* start 首页概览 百分比*/
+.headeractions table {
+	padding-left: 0 !important;
+}
+#dashboard_wdgt .headeractions + table {
+	margin-top: 20px;
+}
+.headeractions + table tr.top > td:first-child, table.headermodels tr.top > td:first-child {
+	float: left;
+	width: 20%;
+	overflow: hidden;	/* background-color: green; */
+}
+.headeractions + table tr.top > td:last-child, table.headermodels tr.top > td:last-child {
+	float: right;
+	width: 79%;
+	overflow: hidden;	/* background: greenyellow; */
+}
+table.tableinfo > tbody > tr > td {
+	overflow: hidden;	/* white-space: pre-wrap !important; */
+}
+.column, .widget {
+	min-width: 180px;
+}
+
+/* 总体概况 */
+#totalSituation span, #totalSituation svg {
+	width: 100% !important;
+}
+#hat_cloudSerStat table.tableinfo, #hat_stsrda_widget table.tableinfo, #hat_hoststat table.tableinfo, #hat_lastiss table.tableinfo, #hat_syssum table.tableinfo, #hat_dscvry table.tableinfo, #hat_webovr table.tableinfo, table.applications, #hat_resUsedRate table.tableinfo, table.table_discovery, open_win_body
+div.w table.tableinfo {
+	table-layout: fixed;
+	overflow: hidden;
+}
+.column table.tableinfo > tbody > tr > td:first-child {
+	padding: 0 !important;
+}
+
+/* 调整首页table表格 第一列的左间距 */
+.column table.tableinfo tr.header td:first-child, .column table.tableinfo tr.headerStyle td:first-child, .column table.tableinfo tr.even_row td:first-child, .column table.tableinfo tr.odd_row td:first-child {
+	padding-left: 2.7em !important;
+}
+table.tableinfo  div.maintenance-abs-cont span {
+	padding-left: 0;
+}
+table.tableinfo > tbody > tr > td:first-child {
+	width: inherit;
+}
+#hat_cloudSerStat table.tableinfo  tr  td:nth-child(2), #hat_cloudSerStat table.tableinfo   tr  td:nth-child(3) {
+	width: 40px;
+}
+
+/* 总体资源利用率 */
+#hat_resUsedRate table.tableinfo tr.centertext td {
+	width: 25%;
+}
+#hat_resUsedRate span.fusioncharts-container, #hat_resUsedRate span.fusioncharts-container svg {
+	width: 100%;
+	padding: 0 !important;
+	text-align: center !important;
+}
+#memoryUsedRateChart {
+	margin: 0 !important;
+}
+
+/* 常用的图形 */
+#hat_favgrph_widget ul.firstshape {
+	margin: 0;
+	padding: 0;
+}
+#hat_favgrph_widget ul.firstshape li {
+	margin: 1em 0;
+}
+#hat_favgrph_widget ul.firstshape li div {
+	width: 95% !important;
+	height: 95% !important;
+	margin: 0 auto;
+}
+
+/* 系统信息 */
+#hat_stsrda_widget table.tableinfo  tr  td:nth-child(2) {
+	width: 10%;
+}
+#hat_stsrda_widget table.tableinfo  tr  td:nth-child(3) {
+	width: 30%;
+}
+
+/* cpuTOP负载 */
+#cpuLoadPanel span.fusioncharts-container, #cpuLoadPanel span.fusioncharts-container svg {
+	width: 100% !important;
+}
+#hat_hoststat table.tableinfo  tr  td:nth-child(2), #hat_hoststat table.tableinfo  tr  td:nth-child(3), #hat_hoststat table.tableinfo  tr  td:nth-child(4) {
+	width: 10%;
+}
+
+/* 最近20个事件 */
+#hat_lastiss table.tableinfo tr td:nth-child(1) {
+	width: 20% !important;
+}
+#hat_lastiss table.tableinfo tr td:nth-child(3), #hat_lastiss table.tableinfo tr td:nth-child(4) {
+	width: 18% !important;
+}
+#hat_lastiss table.tableinfo tr td:nth-child(5), #hat_lastiss table.tableinfo tr td:nth-child(6) {
+	width: 8% !important;
+}
+#hat_lastiss table.tableinfo tr td:nth-child(7) {
+	width: 10% !important;
+}
+#hat_syssum table.tableinfo tr td:nth-child(2), #hat_syssum table.tableinfo tr td:nth-child(3), #hat_syssum table.tableinfo tr td:nth-child(4), #hat_syssum table.tableinfo tr td:nth-child(5), #hat_syssum table.tableinfo tr td:nth-child(6), #hat_syssum table.tableinfo tr td:nth-child(7) {
+	width: 10% !important;
+}
+#hat_dscvry table.tableinfo tr td:nth-child(2), #hat_dscvry table.tableinfo tr td:nth-child(3) {
+	width: 10% !important;
+}
+#hat_webovr table.tableinfo tr td:nth-child(2), #hat_webovr table.tableinfo tr td:nth-child(3), #hat_webovr table.tableinfo tr td:nth-child(4) {
+	width: 15% !important;
+}
+.header, TABLE.tableinfo > tbody > tr > td {
+	height: 2.8em;
+	border-radius: 0;
+}
+
+/* table 表头*/
+TABLE.tableinfo tr.header td {
+	height: 2.8em;
+	line-height: 1em;
+}
+
+/* 云服务状态 */
+#hat_cloudSerStat table.tableinfo tr> td:first-child {
+	width: inherit;
+}
+#hat_cloudSerStat table.tableinfo tr> td:nth-child(2), #hat_cloudSerStat table.tableinfo tr> td:nth-child(3) {
+	width: 18%;
+}
+
+/* 每个模块最小宽度 */
+
+/* 系统健康度 平台信息 云服务状态*/
+#hat_totalSituation_widget, #hat_platformInfo_widget, #hat_cloudSerStat_widget {
+	min-width: 180px;
+}
+#hat_dscvry_widget table.tableinfo tr.header {
+	margin: 0;
+	padding: 0;
+}
+
+/* 系统状态 发现策略 物理资源利用率 设备状态 系统信息 web服务监控*/
+#hat_syssum_widget, #hat_dscvry_widget, #hat_resUsedRate_widget, #hat_hoststat, #hat_stsrda_widget, #hat_webovr_widget {
+	min-width: 500px !important;
+}
+
+/* 常用的拓扑图 常用的图形*/
+#hat_favmap_widget, #hat_favgrph_widget {
+	min-width: 200px !important;
+}
+
+/* 最近前20个事件*/
+#hat_lastiss_widget {
+	min-width: 600px !important;
+}
+
+/* 常用的监控大屏 */
+#hat_favscr_widget {
+	min-width: 220px !important;
+}
+
+/* 服务器负载TOP5 */
+#hat_topN_widget {
+	min-width: 250px !important;
+}
+
+/* end 首页概览 百分比*/
+TABLE.tableinfo  tr  td, div.column.ui-sortable table tr td {
+	font-size: 14px !important;
+}
+table.filter tr td.hostConfig {
+	text-align: center;
+	padding-bottom: 0.3em !important;
+}
+.inventory-host table.tableinfo table.tableinfo > tbody > tr > td:first-child {
+	width: auto;
+}
+
+/* 资产中心.运维管理*/
+table.unFloter tr.footer, .headeractions_hide, #flicker_icon_l, #shownumid input, #shownumbtnid input, #orderid input {
+	display: none;
+}
+#rda_filter table {
+	margin-top: 18px;
+}
+#tabs #topoFormTab ul.formlist li .dt {
+	width: 5em;
+}
+
+/* 内容为空的 */
+li.empty {
+	text-align: center;
+}
+
+/* 首页.平台信息 */
+#hat_platformInfo .ctn {
+	width: 32% !important;
+	margin: 0 !important;
+}
+.ui-widget-content {
+	background: none;	/*overflow: hidden; 设备监控-批量管理-选择下拉框显示不全*/
+}
+input[type="text"] {
+	height: 20px !important;
+	line-height: 20px !important;
+	padding: 0 !important;
+}
+
+/* 下拉框最大宽度 */
+select.select {
+	max-width: 12em;
+}
+select.select, #hosts_left {
+	max-width: 18em;
+}
+
+/* start 界面 页脚保存按钮*/
+div.footer {
+	padding-left: 1.6em;
+}
+div.footer .formtable {
+	margin-left: 8%;
+	width: inherit;
+}
+div.footer .formtable div.dt {
+	display: inline-block;
+	width: inherit;
+	text-align: left;
+}
+
+/* li样式 发现策略.创建发现策略 下一步 */
+div.footer .formtable div.dd, li.btns_li div.formtable {
+	display: inline-block;
+	margin-left: 0;
+}
+
+/* 按钮间距 */
+.objectgroup .formtable .formrow .dd input, .objectgroup .formtable .formrow .dt input, .messageClass .form_row_last input, input.buttonorange, input.buttongray {
+	margin-right: 0.8em;
+}
+.objectgroup .formtable .formrow .dd #cancel {
+	margin-left: 0;
+}
+
+/* end */
+
+/* start 数据列表分页 */
+table.paging {
+	border-top: 1px rgba(5, 143, 206, 0.7) solid;
+}
+
+/* end */
+
+/*"运维管理中的阈值规则“选择”按钮/系统管理-系统日志“选择”按钮"*/
+input.formlist[type="button"], input.formlist[type="submit"] {
+	height: 22px;
+	padding: 0 6px;
+}
+
+/* start 给设备监控服务监察图形报表页面名称加样式 */
+table.header_wide form span.name_font {
+	color: #000;
+	font-weight: bold;
+}
+
+/* end */
+
+/* start 策略中心. 发现策略.名称(1/0) */
+
+table.table_discovery tr td:first-child, table.table_discovery tr td:nth-child(2), table.table_discovery tr td:nth-child(4) {
+	width: inherit;
+}
+table.table_discovery tr td:nth-child(3) {
+	width: 15%;
+}
+
+/* end */
+
+/* start 事件中心.活动告警.高级检索|监控中心. 云主机监察*/
+formtable tr td.form_row_r {
+	padding-left: 0;
+}
+table.formtable tr td {
+	padding: 0;
+}
+table.formtable tr td input {
+	margin-left: 10px;
+}
+
+/* end */
+
+/*拓扑中心-拓扑图片“名称”与input框之间的间距*/
+#tPicFormList .dt {
+	width: 5em;
+}
+
+/*模型策略-监控大屏-监控大屏配置*/
+.originalblue .ui-button.ui-state-active {
+	background: #fb8302;
+}
+.originalblue #screenFormList .ui-button.ui-state-active .ui-button-text {
+	color: #fff;
+}
+
+/*工具管理.脚本管理.名称.测试确认*/
+.originalblue .ui-dialog.ui-widget-content.ui-dialog-buttons .ui-dialog-buttonset button {
+
+	/*background-color: rgb(221, 221, 221);*/
+	color: #fff;
+}
+
+/*页面提示信息的对齐方式*/
+table.msgerr tr td, table.msgok tr td {
+	text-align: left;
+	padding-left: 3px;
+}
+
+/*监控中心-服务器应用监察-MySQL-健康度的对齐方式*/
+#trend_chart {
+	text-align: center;
+}
+
+/*发现策略-身份验证协议按钮*/
+#new_check_form .ui-button.ui-state-active span {
+	color: #fff;
+}
+
+/*设备中心-发现策略-检查发现错误，检查已发现*/
+.ui-dialog-content.ui-widget-content {
+	min-width: 200px;
+}
+
+/*创建监控指标-创建阈值规则*/
+.pum_oheader {
+	background: #058FCD;
+}
+.flicker_table, .body_header {
+	margin-bottom: 8px;
+}
+
+/*首页概览-平台信息*/
+.information_core {
+	background-image: url('../../../../../assets/c/images/np.png') !important;
+}
+.information_mem {
+	background-image: url('../../../../../assets/c/images/stroage.png') !important;
+}
+#hat_platformInfo_widget .footer {
+	margin-top: 30px;
+}
+#hat_platformInfo .information_mem, #hat_platformInfo .information_core {
+	width: 50% !important;
+}
+
+/*系统参数-用户参数弹出框居中*/
+table.messagerecive {
+	margin: 0 auto;
+}
+
+/*报警信息-设备类型*/
+table.triggers_info tr td.header, table.hosts_info tr td.header, .flickerfreescreen .ui-widget-header {
+	background: #058fcd !important;
+}
+.flickerfreescreen .ui-widget-header {
+	color: #fff;
+	padding-left: 5px;
+}
+
+/* 数据分页 禁止显示| */
+div.w table.paging tr td {
+	font-size: 0px !important;
+}
+
+/*仪表盘配置分区样式*/
+#panelFormList, #dashconfFormList {
+	margin-left: 78px;
+	width: 630px;
+	padding: 10px 0;
+}
+#dashconfFormList {
+	border: 1px dashed #ccc;
+	margin-bottom: 20px;
+}
+
+/*策略中心-分析策略-阈值规则-创建阈值规则.选择.条件.input*/
+#expressionFormList .dd input#select {
+	vertical-align: bottom;
+}
+
+/* start 表格头部拖拽 样式*/
+.rc-handle-container {
+	position: relative;
+}
+.rc-handle {
+	position: absolute;
+	width: 7px;
+	cursor: ew-resize;
+	margin-left: -3px;
+	z-index: 2;
+}
+table.rc-table-resizing {
+	cursor: ew-resize;
+}
+table.rc-table-resizing thead, table.rc-table-resizing thead > th, table.rc-table-resizing thead > th > a {
+	cursor: ew-resize;
+}
+
+/* end 表格头部拖拽 样式*/
+
+/*监控中心-服务器监察-Windows系列-设备-设备详情（所有详情页）*/
+ul.firstshape img {
+	width: 100%;
+	height: 100%;
+}
+
+/*监控中心-状态“图片与文字垂直居中”*/
+table.tableinfo td img {
+	vertical-align: middle;
+	padding-right: 8px;
+}
+
+/*设备中心-设备监控-监控指标-名称-选择-弹窗 start*/
+body.open_win_body table.standard_n {
+	table-layout: auto;
+}
+
+/*设备中心-设备监控-监控指标-名称-选择-弹窗 end*/
+
+/*巡检任务 start*/
+
+table.inspection_gauge {
+	margin: 1px 0 20px 0;
+	border: 1px solid #ccc;
+}
+table.inspection_gauge tr, table.inspection_gauge tr td {
+	border: 1px solid #ccc !important;
+}
+table.inspection_gauge tr td {
+	padding-left: 0.8em !important;
+}
+table.inspection_gauge tr.header td {
+	text-align: center;
+	background-color: #fff;
+	font-size: 15px !important;
+}
+div#todayMonItemChart {
+	width: 600px;
+	height: 500px;
+}
+
+/*巡检任务 end*/
+
+/*阈值规则-监控指标-“检索按钮” start*/
+div.floatright form input#keyNameSearch {
+	height: 22px;
+	line-height: 20px;
+	border: 1px #ccc solid;
+}
+
+/*阈值规则-监控指标-“检索按钮” end*/
+
+/*资产列表-字段  start*/
+table.flicker_table table.filter select#filter_exact {
+	vertical-align: inherit;
+}
+table.flicker_table table.filter select#filter_exact, table.flicker_table table.filter select#filter_field {
+	height: 20px;
+	line-height: 20px;
+}
+table.filter .host-inventories .text {
+	vertical-align: top;
+}
+
+/*资产列表-字段  end*/
+
+/*发现策略-添加到“选择按钮”  监控中心-设备详情start*/
+#operationlist ul.formlist li .dd, .inventory-host ul.formlist li .dd {
+	width: inherit;
+}
+
+/*发现策略-添加到“选择按钮”end*/
+
+/*告警中心.活动告警.发生时间.操作 弹出窗体*/
+.hintbox-tableCon {
+	max-height: 280px;
+	overflow: auto;
+}
+
+/* 首页.最近发生的告警 级别一列 事件中心.各个事件.级别一列 start*/
+.circle {
+	margin-left: 0;
+	margin-right: 35px;
+	line-height: 20px;
+	text-indent: 22px;
+}
+
+/* 首页.最近发生的告警 级别一列 事件中心.各个事件.级别一列 end*/
+.inventory-host table.tableinfo > tbody > tr.first_td > td:first-child {
+	padding-right: 5px;
+}
+
+/*滚动条自动加载界面 html body样式*/
+.body-scroll {
+	height: inherit;
+	min-height: 1024px;
+}
+
+/* start input 自动检索选中时 文字颜色*/
+.ui-autocomplete.ui-widget-content li.ui-menu-item {
+	border: 1px solid transparent;
+}
+.ui-autocomplete.ui-widget-content li.ui-menu-item.ui-state-focus {
+	border: 1px solid #999;
+	background: #dadada url(images/iradar/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;
+	font-weight: 400;
+	color: #212121;
+}
+ul.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content {
+	max-height: 200px;
+	overflow: auto;
+	border: 1px solid #058fcd;
+	z-index: 1;
+}
+
+/* end*/
+
+/*滚动加载分页*/
+.scrollLoading {
+	display: none;
+	position: fixed;
+	top: 200px;
+	left: 400px;
+	width: 260px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	border-radius: 5px;
+	background: gray;
+	opacity: 0.7;
+	font-size: 14px;
+}
+
+/*租户公告弹出框文本样式修改*/
+.originalblue.open_win_body #content {
+	display: block;
+	width: 98%;
+	height: 85%;
+	margin:5px auto;
+}
+
+/*租户设备详情加入宽度和间距*/
+.inventory-host .vmCommonClass .dd .overviewClass >ul {
+	margin-left: 0%;
+}
+.inventory-host .vmCommonClass .dd .overviewClass >ul >li.formrow >div.dt.right {
+	width: 100%;
+}
+.inventory-host .vmCommonClass .dd .overviewClass #leftFormDiv >ul.formlist >li.formrow >div.dt.right, .inventory-host .vmCommonClass .dd .overviewClass #rightFormDiv >ul.formlist >li.formrow >div.dt.right {
+	width: 20%;
+}
+.inventory-host table.detail .equipment_details .vmCommonClass >ul.formlist >li:nth-child(2) >div:nth-child(2) >div >ul.formlist {
+	margin-left: 30px;
+}
+
+/*运营商设备详情加入宽度和间距*/
+.inventory-host div.special.equipment_details  .vmCommonClass >ul.formlist >li:nth-child(2) >div:nth-child(2) >div >ul.formlist {
+	margin-left: 10px;
+}
+
+/*运营商图形报表菜单常用图形删除小三角*/
+.pum_oheader.triangle {
+	background: none;
+}
+.pum_oheader.triangle:hover {
+	background: none;
+}
+/*发现策略.监控类型.引起双滚动条*/
+.originalblue .ui-helper-hidden-accessible{
+	display: none;
+}
+/*bug13300*/
+.originalblue .formlongtable.formtable>tbody>tr.header:first-child{
+	display: none;
+}

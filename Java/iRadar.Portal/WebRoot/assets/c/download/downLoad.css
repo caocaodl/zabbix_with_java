@@ -1,0 +1,47 @@
+BODY{
+	background:url("downbackground.png") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: "Microsoft YaHei", verdana, arial, helvetica, sans-serif;
+}
+
+.wallpaper-current{
+	width:800px;
+	height:400px;
+	position:relative;
+	left:50px;
+	top:150px;
+}
+
+.downloadBox {
+    width: 100%;
+}
+.downloadBox tr:hover td {
+    background-color: rgb(229, 229, 229);
+}
+.downloadBox tr:hover td a {
+    
+}
+.productName {
+    font-size: 1.5em; margin-bottom: 0.2em;
+}
+.downloadBox tr th {
+    border: 0px currentColor;
+}
+.downloadBox tr.top th {
+    background: linear-gradient(rgba(178, 178, 178, 0.65) 0%, rgba(124, 124, 124, 0) 100%); padding: 0.5em;
+}
+.downloadBox .license {
+    text-align: right;
+}
+.downloadDesc {
+    background-color: rgb(224, 224, 224);
+}
+.downloadBox tr td {
+    margin-bottom: 1px; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid;font-size:14px;align:center;'
+}
+.downloadBox a.download {
+    padding-left: 20px; 
+}

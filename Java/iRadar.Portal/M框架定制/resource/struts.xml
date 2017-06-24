@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="false"/>
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.ui.theme" value="simple"/>
+	<constant name="struts.multipart.maxSize" value="10485760"/>
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.custom.i18n.resources" value="GlobalResource"/>
+	<constant name="struts.action.extension" value="action" />   
+
+	<package name="default" namespace="/" extends="struts-default">
+	
+        <result-types>
+            <result-type name="rosjson" class="com.isoft.json.JsonResult"/>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+            <result-type name="jqGrid" class="com.isoft.struts2.result.JQGridResult"/>
+        </result-types>
+  
+        <interceptors>
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+              
+            <interceptor-stack name="rosdefaultstack">
+            	<interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+            <interceptor-stack name="unAuthStack">
+            	<interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="rosdefaultstack"></default-interceptor-ref>
+ 
+        <global-results>
+        	<result name="success">/page/frame/success.jsp</result>
+        	<result name="successinfo">/page/frame/success.jsp</result>
+        	<result name="404">/a.html</result>
+        	<result name="error">/error.jsp</result>
+        	<result name="error-ajax" type="rosjson">
+				<param name="jsonProperty">result</param>
+        	</result>
+      		<result name="fatal-error">/page/frame/fatal-error.jsp</result>
+      		<result name="info">/page/frame/info.jsp</result>
+      		<result name="noright">/page/frame/noright.jsp</result>
+      		<result name="homepage"  type="redirect">/frame/frame.action</result>
+      		<result name="modifypwd">/page/frame/modifypwd.jsp</result>
+        </global-results>
+<!--         
+        <global-exception-mappings>
+            <exception-mapping result="error" exception="java.lang.Exception">
+            </exception-mapping>
+        </global-exception-mappings>
+ -->
+	</package>
+	
+	<include file="struts-isoft-*.xml"></include>
+</struts>

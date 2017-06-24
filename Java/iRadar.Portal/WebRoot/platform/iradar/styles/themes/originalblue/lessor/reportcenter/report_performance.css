@@ -1,0 +1,176 @@
+/*容量报表 start*/
+.header_l DIV{display: inline-block;}
+.header_l DIV.hidden{display: none}
+.header_l .select_ctn{margin-right: 2em; float: left;}
+
+.affix {
+    width:600px;
+	height : 400px;
+}
+.trend .affix {
+	display:table;
+    width:600px;
+	height :400px;
+	margin: 0 auto;
+}
+
+.affix>div{
+	margin: 0 auto;
+}
+
+.report_body .top .topleft,
+.report_body .top .topright,
+.report_body .middle .middleleft,
+.report_body .middle .middleright,
+.report_body .ttir .ttirleft,
+.report_body .ttir .ttirright{
+	float: left;
+	width: 44%;
+	margin: 10px 0 10px 10px;
+}
+.trend .report_body .top .topleft,
+.trend  .report_body .top .topright,
+.trend  .report_body .middle .middleleft,
+.trend  .report_body .middle .middleright,
+.trend .report_body .ttir .ttirleft,
+.trend .report_body .ttir .ttirright{
+	clear: both;
+	width: 100%;
+	margin: 10px 0 10px 10px;
+}
+.report_body .top .areatitle,
+.report_body .middle .areatitle,
+.report_body .ttir .areatitle{
+	text-align: center;
+}
+/*容量报表 end*/
+
+/*事件报表 start*/
+.leftbottomClass{
+	width:550px;
+	height:440px;
+} 
+.rightTopClass, .rightbottomClass{
+	width:550px;
+	height:350px;
+}
+
+.totalDivClass .leftDivClass{
+	width: 48%;
+}
+
+.totalDivClass .rightDivClass{
+	width: 40%;
+}
+
+.totalDivClass .leftDivClass,
+.totalDivClass .rightDivClass{
+	margin: 18px 0 0 3%;
+}
+
+.totalDivClass .leftDivClass{
+	float: left;
+}
+
+.totalDivClass .leftDivClass .leftTopDivClass{
+	margin-bottom: 60px;
+}
+
+.totalDivClass .leftDivClass .leftTopDivClass div{
+	font-size: 13px !important;
+}
+
+.totalDivClass .leftDivClass .leftTopDivClass div span{
+	color: #2EA7E0;
+	padding: 0 3px;
+	font-size: 14px !important;
+}
+
+.totalDivClass .leftDivClass .leftTopDivClass div{
+	padding-bottom: 8px;
+}
+
+.totalDivClass .leftDivClass .topn_period{
+	margin-bottom: 40px;
+}
+
+.totalDivClass .leftDivClass .topn_period span{
+	float: left;
+}
+
+.totalDivClass .rightDivClass{
+	float: right;
+}
+
+.totalDivClass .rightDivClass #rightTop{
+	margin-bottom: 20px;
+	border-bottom: 1px #ccc dashed;
+}
+
+.fontcl {
+	color:#131212;
+    font-weight:bold;
+    text-align:center;
+    padding-top:20px
+}
+
+/*事件报表 end*/
+
+div.top,div.middle,div.ttir{
+	margin-bottom: 50px;
+	/* min-width:1350px; */
+}
+.trend div.top,.trend div.middle,.trend div.ttir{
+    width: 100%;
+	margin-bottom: 50px;
+	min-width: 0;
+}
+div.top:after,div.middle:after,div.ttir:after{
+	display: block;
+	height: 0;
+	content: "";
+	clear: both;
+}
+
+table.tableinfo tr.header td {
+    background-color: #e7edf3;
+}
+
+.multiselect .selected ul li span.text, div.w table tr td {
+    font-size: 12px !important;
+}
+
+TABLE.tableinfo > tbody tr td {
+    color: #47474f;
+}
+
+table.tableinfo > tbody > tr > td {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.body_header .header_l form input.orange.export {
+	  height: 2em !important;
+  padding: 0 1em 0 2.8em !important;
+  line-height: 2em !important;
+  font-size: 14px !important;
+}
+
+.titletop{
+	text-align: center;
+	font-size: 19px;
+	padding: 0.4em 1em;
+}
+
+.eventcsvexport {
+  height: 2em !important;
+  margin-right: 20px;
+  padding: 0 1em 0 2.8em !important;
+  line-height: 2em !important;
+  font-size: 14px !important;
+  background: rgba(0, 0, 0, 0) none no-repeat scroll 20px center;
+  color: #fff !important;
+  border: medium none;
+  background-color: rgba(5, 143, 205, 1) !important;
+}

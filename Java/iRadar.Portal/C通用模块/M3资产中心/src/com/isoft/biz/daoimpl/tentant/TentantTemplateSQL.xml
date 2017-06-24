@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>(MYSQL)</comment>
+	<!-- ******************************查询部分********************************************-->
+	<!-- **************************监控指标查询部分  ********************************-->
+	<!-- 获取附表中将要更新的item -->
+	<entry key="GET_ONE_VICE_ITEM">
+        <![CDATA[
+        	SELECT 
+        	    t.itemid itemid#,
+        	    t.name   name#,
+               	t.hostid  hostid#,
+               	t.key_  key_#,
+               	t.status  status#,
+               	t.units  units#
+			FROM
+				i_tenant_items t
+			WHERE t.itemid=#{itemid}
+		]]>
+	</entry>
+	<!-- 从备份监控指标表中查找要要更新到监控指标表的item -->
+	<entry key="GET_I_UPDATA_ITEM">
+        <![CDATA[
+        	SELECT 
+        	    t.itemid itemid#,
+        	    t.name   name#,
+               	t.hostid  hostid#,
+               	t.key_  key_#,
+               	t.status  status#,
+               	t.units  units#
+			FROM
+				i_tenant_items t
+			WHERE t.hostid=#{hostid}
+			AND  t.relase_itemid=#{relaseitemid}
+			AND  t.flags=#{flags}
+		]]>
+	</entry>
+	
+	<!-- 获取发布前的监控指标 -->
+	<entry key="SQL_GET_BEFORE_ITEM">
+        <![CDATA[
+        	SELECT
+        	    t.name   name#,
+               	t.hostid  hostid#,
+               	t.key_  key_#,
+               	t.status  status#,
+               	t.units  units#,
+               	t.relase_itemid itemid# 
+			FROM
+				i_tenant_items t
+			WHERE t.hostid=#{hostid}
+			AND t.relase_itemid !=0
+			AND    t.flags=0
+		]]>
+	</entry>
+	
+	<!-- 获取指标备份表是否关联监控指标表 -->
+	<entry key="SQL_GET_RELASE_ITEMID">
+        <![CDATA[
+        	SELECT 
+        	    t.itemid itemid#
+			FROM
+				i_tenant_items t
+			WHERE t.relase_itemid=#{itemid}
+		]]>
+	</entry>
+	<!-- 判断监控指标副表是否有跟主表一样的数据 -->
+	<entry key="GET_IS_VICE_ITEMID">
+        <![CDATA[
+        	SELECT 
+        	    t.itemid itemid#
+			FROM
+				i_tenant_items t
+			WHERE t.itemid=#{itemid}
+		]]>
+	</entry>
+	
+	<!-- 
+	            在监控指标主表中，获取当前最大id
+	-->
+	<entry key="GET_MAIN_ITEM_MAXID">
+         <![CDATA[
+       		select max(itemid) as itemid from i_tenant_main_items
+		]]>
+	</entry>
+	
+	<!-- ******************************添加操作部分********************************************-->
+	
+	<!-- 在副表添加监控指标备份数据-->
+	<entry key="SQL_ADD_TENANT_ITEM">
+         <![CDATA[
+       		INSERT INTO i_tenant_items
+				(itemid,name,hostid,key_,status,units,relase_itemid)
+			VALUES
+				(#{itemid},#{name},#{hostid},#{key_},#{status},#{units},#{relaseitemid})
+		]]>
+	</entry>
+	<!-- 
+	            在租户模型主表中，创建新的监控模型
+	-->
+	<entry key="ADD_MAIN_HOST">
+         <![CDATA[
+       		INSERT INTO i_tenant_template
+				(tenantid,hostid,host,status, name)
+			VALUES
+			    (#{tenantid},#{hostid},#{host},#{status}, #{name})
+		]]>
+	</entry>
+	<!-- 
+	            在监控指标主表中，创建新的监控指标
+	-->
+	<entry key="ADD_MAIN_ITEM">
+         <![CDATA[
+       		INSERT INTO i_tenant_main_items
+				(tenantid, itemid, hostid, name, key_, status, units, flags,description,state) 
+			VALUES
+			    (#{tenantid},#{itemid},#{hostid},#{name}, #{key_},#{status},#{units},0,'wu',0)
+		]]>
+	</entry>
+	
+	<!-- ******************************更新操作部分********************************************-->
+	<!-- 更新审批状态 -->
+	<entry key="SQL_UPDATE_STATUS">
+           <![CDATA[
+			UPDATE i_tenant_template h SET
+				h.process_status = #{process_status}	
+			WHERE h.hostid= #{hostid}
+		]]>
+	</entry>
+	<!-- 在监控指标副表中更新监控指标数据，此数据用于审批期间实时更新
+	     注意：该监控指标副表中插入时同时生成两个监控指标数据，
+	     一个为发布上一版本的监控指标，一个为本次更新的监控指标数据，
+	    前者通过relase_itemid关联原数据，后者通过itemid实时更新-->
+	<entry key="SQL_UPDATE_TENANT_ITEM">
+         <![CDATA[
+            UPDATE i_tenant_items SET
+               	name = #{name},
+               	hostid = #{hostid},
+               	key_ = #{key_},
+               	status = #{status},
+               	units = #{units}
+			WHERE itemid= #{itemid}
+		]]>
+	</entry>
+	<!-- 将发布前的状态监控维度数据更新到监控指标副表-->
+	<entry key="UPDATE_VICE_TENANT_ITEM">
+         <![CDATA[
+            UPDATE  i_tenant_items SET
+               	name = #{name},
+               	hostid = #{hostid},
+               	key_ = #{key_},
+               	status = #{status},
+               	units = #{units}
+			WHERE relase_itemid= #{itemid}
+		]]>
+	</entry>
+	<!-- 在发布时，将副表中实时数据更新到监控指标主表对应的item数据-->
+	<entry key="UPDATE_TENANT_ITEM">
+         <![CDATA[
+            UPDATE i_tenant_main_items SET
+               	name = #{name},
+               	hostid = #{hostid},
+               	key_ = #{key_},
+               	status = #{status},
+               	units = #{units}
+			WHERE itemid= #{itemid}
+		]]>
+	</entry>
+	<!-- 更新主表监控指标使用状态-->
+	<entry key="SQL_UPDATE_ITEM_STATUS">
+         <![CDATA[
+            UPDATE i_tenant_main_items SET
+               	status = #{status}
+			WHERE itemid= #{itemid}
+		]]>
+	</entry>
+	<!-- 更新副表监控指标使用状态-->
+	<entry key="UPDATE_VICE_ITEM_STATUS">
+         <![CDATA[
+            UPDATE i_tenant_items SET
+               	status = #{status}
+			WHERE itemid= #{itemid}
+		]]>
+	</entry>
+	
+	
+	<!-- ******************************删除操作部分********************************************-->
+	<!-- 删除监控指标副表中对应的item-->
+	<entry key="DELETE_VICE_ITEM">
+         <![CDATA[
+            DELETE  FROM i_tenant_items 
+			WHERE itemid= #{itemid}
+		]]>
+	</entry>
+	<!-- 重置后删除副表上一版本的item数据-->
+	<entry key="SQL_DELETE_BEFORE_ITEM">
+         <![CDATA[
+            DELETE  FROM i_tenant_items 
+			WHERE relase_itemid= #{relaseitemid}
+		]]>
+	</entry>
+	
+	
+</properties>
